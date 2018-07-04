@@ -1,4 +1,10 @@
-.selected-item {
+.selected-item-view {
   display: flex;
   justify-content: center;
   align-items: center; }
+  .selected-item-view .selected-item {
+    position: relative; }
+    .selected-item-view .selected-item .group-item-view, .selected-item-view .selected-item .person-item-view {
+      background: #bb3838; }
+      .selected-item-view .selected-item .group-item-view:after, .selected-item-view .selected-item .person-item-view:after {
+        border-right: 7px solid #bb3838; }

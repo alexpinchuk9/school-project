@@ -1,5 +1,16 @@
-.selected-item {
+@import 'variables.scss';
+
+.selected-item-view {
   display: flex;
   justify-content: center;
   align-items: center;
+  .selected-item {
+    position: relative;
+    .group-item-view, .person-item-view {
+      background: $red;
+      &:after {
+        border-right: 7px solid $red;
+      }
+    }
+  }
 }

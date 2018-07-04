@@ -32,7 +32,9 @@ class MainPageComponent extends Component {
               return <RelatedItemsViewComponent
                                 people={peopleAbove}
                                 groups={groupsAbove}
-                                selectItem={this.props.selectItem}/>
+                                selectItem={this.props.selectItem}
+                                className="related-items-view-above"
+                                />
 
           } else if(selectedItem) {
 
@@ -46,7 +48,10 @@ class MainPageComponent extends Component {
 
              return  <RelatedItemsViewComponent
                                 groups={groupsAbove}
-                                selectItem={this.props.selectItem}/>
+                                people={[]}
+                                selectItem={this.props.selectItem}
+                                className="related-items-view-above"
+                                />
           }
     }
 
@@ -74,7 +79,10 @@ class MainPageComponent extends Component {
 
             return <RelatedItemsViewComponent
                                 people={peopleBelow}
-                                selectItem={this.props.selectItem} />
+                                groups={[]}
+                                selectItem={this.props.selectItem}
+                                className="related-items-view-below"
+                                />
 
         } else if(selectedItem) {
 
@@ -106,7 +114,9 @@ class MainPageComponent extends Component {
            return <RelatedItemsViewComponent
                                 people={peopleBelow}
                                 groups={groupsBelow}
-                                selectItem={this.props.selectItem}/>
+                                selectItem={this.props.selectItem}
+                                className="related-items-view-below"
+                                />
         }
     }
 

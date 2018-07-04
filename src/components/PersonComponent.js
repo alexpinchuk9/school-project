@@ -8,8 +8,12 @@ class PersonComponent extends Component {
         if(isSelected) {
             return (
                 <div className={`${className} person person-full-representation`}>
-                    <div className="person-image">
-                        <img src={require('../statics/img/single_user.png')} alt="User Avatar" />
+                    <div className="person-image-view">
+                        <img 
+                            src={require('../statics/img/single_user.png')} 
+                            alt="User Avatar"
+                            className="person-image"
+                            />
                     </div>
                     <div className="person-info">
                         <div className="person-name">
@@ -32,8 +36,12 @@ class PersonComponent extends Component {
         }
             return (
                 <div className={`${className} person person-short-representation`} onClick={this.props.onClick}>
-                    <div className="person-image">
-                        <img src={require('../statics/img/single_user.png')}  alt="User Avatar" />
+                    <div className="person-image-view">
+                        <img 
+                            src={require('../statics/img/single_user.png')} 
+                            alt="User Avatar"
+                            className="person-image"
+                            />
                     </div>
                     <div className="person-info">
                         <div className="person-name">

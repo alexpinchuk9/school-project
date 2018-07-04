@@ -32,8 +32,10 @@ class RelatedItemsViewComponent extends Component {
     }
 
     render() {
+        const { className, people, groups } = this.props;
+        if(!people.length && !groups.length) return null;
         return (
-            <div className="related-items">
+            <div className={`${className} related-items-view`}>
                 {this.renderPeople()}
                 {this.renderGroups()}
             </div>

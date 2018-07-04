@@ -1,4 +1,4 @@
-//@import $white from './variables.scss';
+@import 'variables.scss';
 
 .group {
   box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
@@ -6,16 +6,17 @@
   flex-direction: row-reverse;
   padding: 20px 15px;
   border-radius: 12px;
-  background: white;
+  background: $white;
   width: 250px;
-  .group-image {
+  flex: none;
+  .group-image-view {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-    background: #bb3838;
+    background: $blue;
     border-radius: 12px;
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     &:after {
       content: "";
@@ -23,8 +24,11 @@
       left: 0;
       border-top: 7px solid transparent;
       border-bottom: 7px solid transparent;
-      border-right: 7px solid #bb3838;
+      border-right: 7px solid $blue;
       transform: translate(-100%, 0);
+    }
+    .group-image {
+
     }
   }
   .group-info {
@@ -41,6 +45,7 @@
   }
   .group-actions {
     display: flex;
+    margin-top: 10px;
     .message, .edit {
       display: block;
       height: 30px;
@@ -62,7 +67,4 @@
     }
   }
 }
-.group-short-representation {
 
-
-}

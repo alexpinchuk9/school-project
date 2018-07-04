@@ -1,4 +1,4 @@
-//@import $white from './variables.scss';
+@import 'variables.scss';
 
 .person {
   box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
@@ -6,16 +6,17 @@
   flex-direction: row-reverse;
   padding: 20px 15px;
   border-radius: 12px;
-  background: white;
+  background: $white;
   width: 250px;
-  .person-image {
+  flex: none;
+  .person-image-view {
     display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
-    background: #bb3838;
+    background: $lightgreen;
     border-radius: 12px;
-    width: 80px;
+    min-width: 80px;
     height: 80px;
     &:after {
       content: "";
@@ -23,8 +24,11 @@
       left: 0;
       border-top: 7px solid transparent;
       border-bottom: 7px solid transparent;
-      border-right: 7px solid #bb3838;
+      border-right: 7px solid $lightgreen;
       transform: translate(-100%, 0);
+    }
+    .person-image {
+      
     }
   }
   .person-info {
@@ -41,6 +45,7 @@
   }
   .person-actions {
     display: flex;
+    margin-top: 10px;
     .mail, .message, .call, .edit {
       display: block;
       height: 30px;
@@ -67,8 +72,4 @@
       background: url("./statics/img/edit_md_icon.png") no-repeat center center;
     }
   }
-}
-.person-short-representation {
-
-
 }

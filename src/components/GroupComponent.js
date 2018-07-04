@@ -9,8 +9,12 @@ class GroupComponent extends Component {
         if(isSelected) {
             return (
                 <div className={`${className} group group-full-representation`}>
-                    <div className="group-image">
-                        <img src={require('../statics/img/group_sm_icon.png')} alt="Group Avatar" />
+                    <div className="group-image-view">
+                        <img 
+                            src={require('../statics/img/group_sm_icon.png')} 
+                            alt="Group Avatar"
+                            className="group-image"
+                            />
                     </div>
                     <div className="group-info">
                         <div className="group-name">
@@ -28,8 +32,12 @@ class GroupComponent extends Component {
         }
         return (
             <div className={`${className} group group-short-representation`} onClick={this.props.onClick}>
-                <div className="group-image">
-                    <img src={require('../statics/img/group_sm_icon.png')}  alt="Group Avatar" />
+                <div className="group-image-view">
+                        <img 
+                            src={require('../statics/img/group_sm_icon.png')} 
+                            alt="Group Avatar"
+                            className="group-image"
+                            />
                 </div>
                 <div className="group-info">
                     <div className="group-name">
