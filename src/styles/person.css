@@ -1,0 +1,53 @@
+.person {
+  box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 20px 15px;
+  border-radius: 12px;
+  background: white;
+  width: 250px; }
+  .person .person-image {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: #bb3838;
+    border-radius: 12px;
+    width: 80px;
+    height: 80px; }
+    .person .person-image:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-right: 7px solid #bb3838;
+      transform: translate(-100%, 0); }
+  .person .person-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+    text-align: right;
+    align-items: flex-end; }
+    .person .person-info .person-name .name, .person .person-info .person-name .surname {
+      margin: 0; }
+  .person .person-actions {
+    display: flex; }
+    .person .person-actions .mail, .person .person-actions .message, .person .person-actions .call, .person .person-actions .edit {
+      display: block;
+      height: 30px;
+      width: 30px;
+      background-size: 30px 30px; }
+      .person .person-actions .mail:hover, .person .person-actions .message:hover, .person .person-actions .call:hover, .person .person-actions .edit:hover {
+        cursor: pointer;
+        transform: scale(1.1); }
+      .person .person-actions .mail:not(:first-child), .person .person-actions .message:not(:first-child), .person .person-actions .call:not(:first-child), .person .person-actions .edit:not(:first-child) {
+        margin-left: 5px; }
+    .person .person-actions .mail {
+      background: url("./statics/img/mail_icon.png") no-repeat center center; }
+    .person .person-actions .message {
+      background: url("./statics/img/mail_md_icon.png") no-repeat center center; }
+    .person .person-actions .call {
+      background: url("./statics/img/phone_md_icon.png") no-repeat center center; }
+    .person .person-actions .edit {
+      background: url("./statics/img/edit_md_icon.png") no-repeat center center; }

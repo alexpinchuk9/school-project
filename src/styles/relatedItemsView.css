@@ -1,0 +1,7 @@
+.related-items {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .related-items .related-item {
+    margin: 5px; }
