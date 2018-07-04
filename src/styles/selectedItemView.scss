@@ -6,7 +6,7 @@
   align-items: center;
   .selected-item {
     position: relative;
-    .group-item-view, .person-item-view {
+    .group-image-view, .person-image-view {
       background: $red;
       &:after {
         border-right: 7px solid $red;
