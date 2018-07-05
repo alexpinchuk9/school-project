@@ -7,8 +7,14 @@
   padding: 20px 15px;
   border-radius: 12px;
   background: $white;
-  width: 250px;
+  min-width: 250px;
+  width: 20%;
   flex: none;
+  //@media only screen and (min-width: 1024px) {
+  //  min-width: 250px;
+  //  width: 20%;
+  //  flex: none;
+  //}
   .person-image-view {
     display: flex;
     position: relative;
@@ -28,7 +34,7 @@
       transform: translate(-100%, 0);
     }
     .person-image {
-      
+
     }
   }
   .person-info {
@@ -58,9 +64,26 @@
       &:not(:first-child) {
         margin-left: 5px;
       }
+      &.disabled {
+        &:hover {
+          cursor: not-allowed;
+          transform: none;
+        }
+        .mail-link {
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
     }
     .mail {
       background: url("./statics/img/mail_icon.png") no-repeat center center;
+      .mail-link {
+        display: block;
+        height: 30px;
+        width: 30px;
+        opacity: 0;
+      }
     }
     .message {
       background: url("./statics/img/mail_md_icon.png") no-repeat center center;

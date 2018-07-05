@@ -5,7 +5,8 @@
   padding: 20px 15px;
   border-radius: 12px;
   background: #ffffff;
-  width: 250px;
+  min-width: 250px;
+  width: 20%;
   flex: none; }
   .person .person-image-view {
     display: flex;
@@ -45,8 +46,18 @@
         transform: scale(1.1); }
       .person .person-actions .mail:not(:first-child), .person .person-actions .message:not(:first-child), .person .person-actions .call:not(:first-child), .person .person-actions .edit:not(:first-child) {
         margin-left: 5px; }
+      .person .person-actions .mail.disabled:hover, .person .person-actions .message.disabled:hover, .person .person-actions .call.disabled:hover, .person .person-actions .edit.disabled:hover {
+        cursor: not-allowed;
+        transform: none; }
+      .person .person-actions .mail.disabled .mail-link:hover, .person .person-actions .message.disabled .mail-link:hover, .person .person-actions .call.disabled .mail-link:hover, .person .person-actions .edit.disabled .mail-link:hover {
+        cursor: not-allowed; }
     .person .person-actions .mail {
       background: url("./statics/img/mail_icon.png") no-repeat center center; }
+      .person .person-actions .mail .mail-link {
+        display: block;
+        height: 30px;
+        width: 30px;
+        opacity: 0; }
     .person .person-actions .message {
       background: url("./statics/img/mail_md_icon.png") no-repeat center center; }
     .person .person-actions .call {

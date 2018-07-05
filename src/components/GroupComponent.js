@@ -1,17 +1,39 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { MESSAGE, UPDATE } from "../constants/popupTypes";
+import PopupComponent from './PopupComponent';
 
 class GroupComponent extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            popup: {
+                open: false,
+                type: null
+            }
+        };
+    }
+
+
+    handlePopupOpen = (type) => {
+        this.setState({popup: { open: true, type: type }})
+    }
+
+
+    handlePopupClose = () => {
+        this.setState({popup: { open: false, type: null }})
+    }
+
     render() {
         const { isSelected, group, className } = this.props;
-        console.log(group);
+        const { open, type } = this.state.popup;
         if(isSelected) {
             return (
                 <div className={`${className} group group-full-representation`}>
                     <div className="group-image-view">
-                        <img 
-                            src={require('../statics/img/group_sm_icon.png')} 
+                        <img
+                            src={require('../statics/img/group_sm_icon.png')}
                             alt="Group Avatar"
                             className="group-image"
                             />
@@ -23,18 +45,22 @@ class GroupComponent extends Component {
                             </h1>
                         </div>
                         <div className="group-actions">
-                            <span className="message"></span>
-                            <span className="edit"></span>
+                            { group.email ?
+                                <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
+                                <span className="message disabled"></span>
+                            }
+                            <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
                         </div>
                     </div>
+                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group}/>}
                 </div>
             );
         }
         return (
             <div className={`${className} group group-short-representation`} onClick={this.props.onClick}>
                 <div className="group-image-view">
-                        <img 
-                            src={require('../statics/img/group_sm_icon.png')} 
+                        <img
+                            src={require('../statics/img/group_sm_icon.png')}
                             alt="Group Avatar"
                             className="group-image"
                             />

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SelectedItemViewComponent from "./SelectedItemViewComponent";
 import RelatedItemsViewComponent from "./RelatedItemsViewComponent";
 import { ClipLoader } from 'react-spinners';
+import PopupComponent from "./PopupComponent";
 
 class MainPageComponent extends Component {
     componentDidMount() {

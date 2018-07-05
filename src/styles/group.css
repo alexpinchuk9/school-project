@@ -5,7 +5,8 @@
   padding: 20px 15px;
   border-radius: 12px;
   background: #ffffff;
-  width: 250px;
+  min-width: 250px;
+  width: 20%;
   flex: none; }
   .group .group-image-view {
     display: flex;
@@ -45,6 +46,11 @@
         transform: scale(1.1); }
       .group .group-actions .message:not(:first-child), .group .group-actions .edit:not(:first-child) {
         margin-left: 5px; }
+      .group .group-actions .message.disabled:hover, .group .group-actions .edit.disabled:hover {
+        cursor: not-allowed;
+        transform: none; }
+      .group .group-actions .message.disabled .mail-link:hover, .group .group-actions .edit.disabled .mail-link:hover {
+        cursor: not-allowed; }
     .group .group-actions .message {
       background: url("./statics/img/mail_md_icon.png") no-repeat center center; }
     .group .group-actions .edit {

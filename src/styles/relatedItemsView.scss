@@ -47,6 +47,7 @@
   }
   &.related-items-view-above {
     padding-bottom: 20px;
+    flex-wrap: wrap-reverse;
     &:after {
       content: "";
       position: absolute;
@@ -59,7 +60,7 @@
     }
     .related-item {
        @media only screen and (min-width: 1024px) {
-      &:last-child, &:nth-last-child(2), &:nth-last-child(3), &:nth-last-child(4) {
+         &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
         position: relative;
         &:after {
           content: "";
@@ -76,4 +77,3 @@
     }
   }
 }
-
