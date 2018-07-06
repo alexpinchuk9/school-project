@@ -52,15 +52,15 @@
       .person .person-actions .mail.disabled .mail-link:hover, .person .person-actions .message.disabled .mail-link:hover, .person .person-actions .call.disabled .mail-link:hover, .person .person-actions .edit.disabled .mail-link:hover {
         cursor: not-allowed; }
     .person .person-actions .mail {
-      background: url("./statics/img/mail_icon.png") no-repeat center center; }
+      background: url("/statics/img/mail_icon.png") no-repeat center center; }
       .person .person-actions .mail .mail-link {
         display: block;
         height: 30px;
         width: 30px;
         opacity: 0; }
     .person .person-actions .message {
-      background: url("./statics/img/mail_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/mail_md_icon.png") no-repeat center center; }
     .person .person-actions .call {
-      background: url("./statics/img/phone_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/phone_md_icon.png") no-repeat center center; }
     .person .person-actions .edit {
-      background: url("./statics/img/edit_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/edit_md_icon.png") no-repeat center center; }

@@ -6,8 +6,10 @@ import GroupComponent from "./GroupComponent";
 class RelatedItemsViewComponent extends Component {
 
     renderPeople = () => {
+
         const { people } = this.props;
-        if(people) {
+
+        if (people) {
             return people.map(person => <PersonComponent
                                                 person={person}
                                                 key={person.id}
@@ -19,8 +21,10 @@ class RelatedItemsViewComponent extends Component {
     }
 
     renderGroups = () => {
+
         const { groups } = this.props;
-        if(groups) {
+
+        if (groups) {
             return groups.map(group => <GroupComponent
                                                 group={group}
                                                 key={group.id}
@@ -33,7 +37,9 @@ class RelatedItemsViewComponent extends Component {
 
     render() {
         const { className, people, groups } = this.props;
-        if(!people.length && !groups.length) return null;
+
+        if (!people.length && !groups.length) return null;
+
         return (
             <div className={`${className} related-items-view`}>
                 {this.renderPeople()}

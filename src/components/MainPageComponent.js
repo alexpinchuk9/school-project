@@ -10,9 +10,10 @@ class MainPageComponent extends Component {
     }
 
     renderRelatedItemsAbove = () => {
+
         const { items, selectedItem } = this.props.items;
 
-          if(selectedItem && selectedItem.hasOwnProperty('surname')) {
+          if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
               const peopleAboveIds = items.p2p
                   .filter(relation => relation.guardianId === selectedItem.id)
@@ -36,7 +37,7 @@ class MainPageComponent extends Component {
                                 className="related-items-view-above"
                                 />
 
-          } else if(selectedItem) {
+          } else if (selectedItem) {
 
               const groupsAboveIds = items.g2g
                   .filter(relation => relation.containedGroupId === selectedItem.id)
@@ -56,9 +57,10 @@ class MainPageComponent extends Component {
     }
 
     renderRelatedItemsBelow = () => {
+
         const {items, selectedItem } = this.props.items;
 
-        if(selectedItem && selectedItem.hasOwnProperty('surname')) {
+        if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
             const peopleBelowIds = items.p2p
                 .filter(relation => relation.peopleId === selectedItem.id)
@@ -70,10 +72,11 @@ class MainPageComponent extends Component {
                 .map(person => {
                     let result = {};
                     peopleBelowIds.map(personBelowId => {
-                        if(person.id === personBelowId.id) {
+                        if (person.id === personBelowId.id) {
                             result = {...person, relation: personBelowId.relation}
                         }
                     });
+
                     return result;
                 });
 
@@ -84,7 +87,7 @@ class MainPageComponent extends Component {
                                 className="related-items-view-below"
                                 />
 
-        } else if(selectedItem) {
+        } else if (selectedItem) {
 
             const peopleBelowIds = items.p2g
                 .filter(relation => relation.groupId === selectedItem.id)
@@ -99,10 +102,11 @@ class MainPageComponent extends Component {
                     .map(person => {
                     let result = {};
                     peopleBelowIds.map(personBelowId => {
-                        if(person.id === personBelowId.id) {
+                        if (person.id === personBelowId.id) {
                             result = {...person, relation: personBelowId.relation}
                         }
                     });
+
                     return result;
                 });
 
@@ -123,19 +127,20 @@ class MainPageComponent extends Component {
     renderSelectedItem = () => {
         const { selectedItem } = this.props.items;
 
-        if(selectedItem) {
+        if (selectedItem) {
             return <SelectedItemViewComponent item={selectedItem} />
         }
     }
 
     render() {
         const {  loading, error } = this.props.items;
-        if(loading) {
+
+        if (loading) {
             return (
                 <div className="main-page">
                     <ClipLoader  color={'#123abc'} />
                 </div>);
-        } else if(error) {
+        } else if (error) {
             return (
                 <div className="main-page">
                     <div className="error-message">
@@ -144,6 +149,7 @@ class MainPageComponent extends Component {
                 </div>
             );
         }
+
         return (
             <div className="main-page">
                 {this.renderRelatedItemsAbove()}

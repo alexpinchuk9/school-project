@@ -52,18 +52,18 @@
       .person .person-actions .mail.disabled .mail-link:hover, .person .person-actions .message.disabled .mail-link:hover, .person .person-actions .call.disabled .mail-link:hover, .person .person-actions .edit.disabled .mail-link:hover {
         cursor: not-allowed; }
     .person .person-actions .mail {
-      background: url("../public/statics/img/mail_icon.png") no-repeat center center; }
+      background: url("/statics/img/mail_icon.png") no-repeat center center; }
       .person .person-actions .mail .mail-link {
         display: block;
         height: 30px;
         width: 30px;
         opacity: 0; }
     .person .person-actions .message {
-      background: url("../public/statics/img/mail_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/mail_md_icon.png") no-repeat center center; }
     .person .person-actions .call {
-      background: url("../public/statics/img/phone_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/phone_md_icon.png") no-repeat center center; }
     .person .person-actions .edit {
-      background: url("../public/statics/img/edit_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/edit_md_icon.png") no-repeat center center; }
 
 .group {
   box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
@@ -119,9 +119,9 @@
       .group .group-actions .message.disabled .mail-link:hover, .group .group-actions .edit.disabled .mail-link:hover {
         cursor: not-allowed; }
     .group .group-actions .message {
-      background: url("../public/statics/img/mail_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/mail_md_icon.png") no-repeat center center; }
     .group .group-actions .edit {
-      background: url("../public/statics/img/edit_md_icon.png") no-repeat center center; }
+      background: url("/statics/img/edit_md_icon.png") no-repeat center center; }
 
 .selected-item-view {
   display: flex;

@@ -35,48 +35,55 @@ class GroupComponent extends Component {
         });
     }
 
-    render() {
-        const { isSelected, group, className } = this.props;
+    renderGroupFullRepresentation = () => {
+
+        const { group, className } = this.props;
         const { open, type } = this.state.popup;
         const initialValues = {
             groupName: group.groupName
-        }
-        if(isSelected) {
-            return (
-                <div className={`${className} group group-full-representation`}>
-                    <div className="group-image-view">
-                        <img
-                            src='/statics/img/group_sm_icon.png'
-                            alt="Group Avatar"
-                            className="group-image"
-                            />
-                    </div>
-                    <div className="group-info">
-                        <div className="group-name">
-                            <h1 className="name">
-                                {group.groupName}
-                            </h1>
-                        </div>
-                        <div className="group-actions">
-                            { group.email ?
-                                <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
-                                <span className="message disabled"></span>
-                            }
-                            <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
-                        </div>
-                    </div>
-                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group} initialValues={initialValues}/>}
+        };
+
+        const messageActionButton = group.email ?
+            <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
+            <span className="message disabled"></span>;
+
+        return (
+            <div className={`${className} group group-full-representation`}>
+                <div className="group-image-view">
+                    <img
+                        src='/statics/img/group_sm_icon.png'
+                        alt="Group Avatar"
+                        className="group-image"
+                    />
                 </div>
-            );
-        }
+                <div className="group-info">
+                    <div className="group-name">
+                        <h1 className="name">
+                            {group.groupName}
+                        </h1>
+                    </div>
+                    <div className="group-actions">
+                        {messageActionButton}
+                        <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
+                    </div>
+                </div>
+                { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group} initialValues={initialValues}/>}
+            </div>
+        );
+    }
+
+    renderGroupShortRepresentation = () => {
+
+        const { group, className } = this.props;
+
         return (
             <div className={`${className} group group-short-representation`} onClick={this.props.onClick}>
                 <div className="group-image-view">
-                        <img
-                            src='/statics/img/group_sm_icon.png'
-                            alt="Group Avatar"
-                            className="group-image"
-                            />
+                    <img
+                        src='/statics/img/group_sm_icon.png'
+                        alt="Group Avatar"
+                        className="group-image"
+                    />
                 </div>
                 <div className="group-info">
                     <div className="group-name">
@@ -87,6 +94,13 @@ class GroupComponent extends Component {
                 </div>
             </div>
         );
+    }
+
+    render() {
+        const { isSelected } = this.props;
+        let render = isSelected ? this.renderGroupFullRepresentation() : this.renderGroupShortRepresentation();
+
+        return render;
     }
 }
 

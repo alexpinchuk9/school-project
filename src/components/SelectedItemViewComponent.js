@@ -6,13 +6,16 @@ import GroupComponent from "./GroupComponent";
 class SelectedItemViewComponent extends Component {
 
     renderSelectedItem = () => {
+
         const { item } = this.props;
-        if(item.hasOwnProperty('surname')) {
+
+        if (item.hasOwnProperty('surname')) {
             return <PersonComponent person={item} isSelected={true} className="selected-item" />
         } else {
             return <GroupComponent group={item} isSelected={true} className="selected-item"/>
         }
     }
+
     render() {
         return (
             <div className="selected-item-view">

@@ -17,12 +17,12 @@ class PersonComponent extends Component {
 
 
     handlePopupOpen = (type) => {
-       this.setState({
-           popup: {
-               open: true,
-               type: type
-           }
-       });
+        this.setState({
+            popup: {
+                open: true,
+                type: type
+            }
+        });
     }
 
 
@@ -36,15 +36,27 @@ class PersonComponent extends Component {
     }
 
     renderPersonFullRepresentation = () => {
-        const { person, className } = this.props;
-        const { open, type } = this.state.popup;
+
+        const {person, className} = this.props;
+        const {open, type} = this.state.popup;
         const initialValues = {
             name: person.name,
             surname: person.surname,
             email: person.email,
             cellphone: person.cellphone,
             picture: person.picSource
-        }
+        };
+
+        const mailActionButton = person.email ?
+            <span className="mail"><a href={`mailto:${person.email}`} className="mail-link"></a></span> :
+            <span className="mail disabled"></span>;
+        const messageActionButton =    person.email ?
+            <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
+            <span className="message disabled"></span>;
+        const callActionButton =      person.cellphone ?
+            <span className="call" onClick={() => this.handlePopupOpen(PHONE)}></span> :
+            <span className="call disabled"></span>;
+
         return (
             <div className={`${className} person person-full-representation`}>
                 <div className="person-image-view">
@@ -64,30 +76,21 @@ class PersonComponent extends Component {
                         </h3>
                     </div>
                     <div className="person-actions">
-                        { person.email ?
-                            <span className="mail"><a href={`mailto:${person.email}`} className="mail-link"></a></span> :
-                            <span className="mail disabled"></span>
-                        }
-                        {
-                            person.email ?
-                                <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
-                                <span className="message disabled"></span>
-                        }
-                        {
-                            person.cellphone ?
-                                <span className="call" onClick={() => this.handlePopupOpen(PHONE)}></span> :
-                                <span className="call disabled"></span>
-                        }
+                        {mailActionButton}
+                        {messageActionButton}
+                        {callActionButton}
                         <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
                     </div>
                 </div>
-                { open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person} initialValues={initialValues}/>}
+                {open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person}
+                                         initialValues={initialValues}/>}
             </div>
         );
     }
 
     renderPersonShortRepresentation = () => {
         const { person, className } = this.props;
+
         return (
             <div className={`${className} person person-short-representation`} onClick={this.props.onClick}>
                 <div className="person-image-view">
@@ -115,14 +118,11 @@ class PersonComponent extends Component {
     }
 
     render() {
-        const { isSelected, person, className } = this.props;
-        const { open, type } = this.state.popup;
+        const {isSelected} = this.props;
+        let render = isSelected ? this.renderPersonFullRepresentation() : this.renderPersonShortRepresentation();
 
-        if(isSelected) {
-
-        }
-
-        }
+        return render;
+    }
 }
 
 PersonComponent.propTypes = {
