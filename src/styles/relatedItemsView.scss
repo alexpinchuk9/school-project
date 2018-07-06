@@ -1,0 +1,126 @@
+@import 'variables.scss';
+
+.related-items-view {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid $lightgrey;
+  border-radius: 12px;
+  margin: 25px;
+  position: relative;
+  @media only screen and (max-width: 360px) {
+    padding: 25px 5px;
+  }
+  .related-item {
+    margin: 5px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &.related-items-view-below {
+    padding-top: 20px;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 25px;
+      background: $lightgrey;
+      transform: translate(-100%, -100%);
+    }
+    .related-item {
+      &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+      position: relative;
+        &:after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 25px;
+        background: $lightgrey;
+        top: 0;
+        left: 50%;
+        transform: translate(-100%, -100%);
+        }
+      }
+      @media only screen and (max-width: 1024px) {
+        &:nth-child(4) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        &:nth-child(3) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+      @media only screen and (max-width: 480px) {
+        &:nth-child(2) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+    }
+  }
+  &.related-items-view-above {
+    padding-bottom: 20px;
+    flex-wrap: wrap-reverse;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      height: 25px;
+      background: $lightgrey;
+      transform: translate(-100%, 100%);
+    }
+    .related-item {
+       &:first-child, &:nth-child(2), &:nth-child(3), &:nth-child(4) {
+      position: relative;
+      &:after {
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: 25px;
+        background: $lightgrey;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-100%, 100%);
+        }
+      }
+      @media only screen and (max-width: 1024px) {
+        &:nth-child(4) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+      @media only screen and (max-width: 768px) {
+        &:nth-child(3) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+      @media only screen and (max-width: 480px) {
+        &:nth-child(2) {
+          &:after {
+            width: 0;
+            height: 0;
+          }
+        }
+      }
+    }
+  }
+}

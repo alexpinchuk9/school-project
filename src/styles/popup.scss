@@ -1,0 +1,139 @@
+@import 'variables.scss';
+
+.popup {
+  position: fixed;
+  padding: 20px;
+  width: 280px;
+  left: 50%;
+  margin-left: -150px;
+  top: 50%;
+  margin-top: -100px;
+  background: $white;
+  z-index: 3;
+  box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.75);
+  @media only screen and (max-width: 1024px) {
+    top: 25%;
+  }
+  @media only screen and (max-width: 480px) {
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    .button-close {
+      position: absolute;
+      top: 0;
+      left: 5px;
+      border: none;
+      outline: none;
+      background: white;
+      width: 15px;
+      height: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:after, &:before {
+        content: "";
+        width: 2px;
+        height: 15px;
+        background: $lightgrey;
+        border-radius: 1px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      &:after {
+        transform: rotate(45deg);
+      }
+      &:before {
+        transform: rotate(-45deg);
+      }
+    }
+    .form-row {
+      display: flex;
+      width: 90%;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .form-text {
+      margin: 5px;
+      text-align: right;
+    }
+    .field-label {
+      display: block;
+      text-align: right;
+      margin: 0 5px;
+    }
+    .form-image-row {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      .form-image {
+        background: $lightgrey;
+        margin: 5px;
+      }
+    }
+    .picture-label {
+      display: block;
+      background: $lightgrey;
+      border: 1px solid $grey;
+      color: $white;
+      margin: 5px;
+      border-radius: 3px;
+      padding: 5px 15px;
+      &:hover {
+        cursor: pointer;
+        background: $grey;
+      }
+    }
+    .form-field {
+      border-radius: 3px;
+      text-align: right;
+      padding: 5px;
+      margin: 5px;
+      &[type="file"] {
+        display: none;
+      }
+    }
+    .button-submit {
+      background: $lightgreen;
+      color: $white;
+      max-width: 120px;
+      font-size: 16px;
+      padding: 5px 15px;
+      border-radius: 4px;
+      outline: none;
+      border: none;
+      margin: 5px;
+      &:hover {
+        cursor: pointer;
+        background: $green;
+      }
+    }
+  }
+  &:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: $white;
+    z-index: -1;
+  }
+}
+
