@@ -17,12 +17,22 @@ class GroupComponent extends Component {
 
 
     handlePopupOpen = (type) => {
-        this.setState({popup: { open: true, type: type }})
+        this.setState({
+            popup: {
+                open: true,
+                type: type
+            }
+        });
     }
 
 
     handlePopupClose = () => {
-        this.setState({popup: { open: false, type: null }})
+        this.setState({
+            popup: {
+                open: false,
+                type: null
+            }
+        });
     }
 
     render() {
@@ -36,7 +46,7 @@ class GroupComponent extends Component {
                 <div className={`${className} group group-full-representation`}>
                     <div className="group-image-view">
                         <img
-                            src={require('../statics/img/group_sm_icon.png')}
+                            src='/statics/img/group_sm_icon.png'
                             alt="Group Avatar"
                             className="group-image"
                             />
@@ -63,7 +73,7 @@ class GroupComponent extends Component {
             <div className={`${className} group group-short-representation`} onClick={this.props.onClick}>
                 <div className="group-image-view">
                         <img
-                            src={require('../statics/img/group_sm_icon.png')}
+                            src='/statics/img/group_sm_icon.png'
                             alt="Group Avatar"
                             className="group-image"
                             />

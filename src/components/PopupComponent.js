@@ -84,7 +84,7 @@ class PopupComponent extends Component {
                             <label htmlFor="picture">
                                 {person.picSource ?
                                     <img src={person.picSource} alt="User Avatar"/> :
-                                    <img src={require('../statics/img/single_user.png')} className="form-image" alt="User Avatar"/>}
+                                    <img src={require('../../public/statics/img/single_user.png')} className="form-image" alt="User Avatar"/>}
                             </label>
                             <label htmlFor="picture" className="picture-label">Upload pic</label>
                             {/*// TODO: find a solution for redux-form field with file type*/}

@@ -19,7 +19,7 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
         case GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};
         case SELECT_ITEM:
-            return {...state, selectedItem: action.payload}
+            return {...state, selectedItem: action.payload};
         default:
             return state;
     }
