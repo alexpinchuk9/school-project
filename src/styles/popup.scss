@@ -6,12 +6,19 @@
   width: 280px;
   left: 50%;
   margin-left: -150px;
-  //height: 180px;
   top: 50%;
   margin-top: -100px;
   background: $white;
   z-index: 3;
   box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.75);
+  @media only screen and (max-width: 1024px) {
+    top: 25%;
+  }
+  @media only screen and (max-width: 480px) {
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
   .form {
     display: flex;
     flex-direction: column;
@@ -22,6 +29,7 @@
       top: 0;
       left: 5px;
       border: none;
+      outline: none;
       background: white;
       width: 15px;
       height: 15px;

@@ -56,11 +56,12 @@ export const selectItem = (item) => {
     }
 }
 
-export const updatePerson = (person) => {
+export const updatePerson = (id, values) => {
     return (dispatch) => {
         dispatch({
             type: UPDATE_PERSON_REQUEST
         });
+        console.log('UPDATE PERSON', id, values);
         // TODO: make a request
         // let bodyFormData = new FormData();
         // bodyFormData.set('formName', 'getTree');
@@ -85,11 +86,12 @@ export const updatePerson = (person) => {
     }
 }
 
-export const updateGroup = (group) => {
+export const updateGroup = (id, groupName) => {
     return (dispatch) => {
         dispatch({
             type: UPDATE_GROUP_REQUEST
         });
+        console.log('UPDATE PERSON', id, groupName);
         // TODO: make a request
         // let bodyFormData = new FormData();
         // bodyFormData.set('formName', 'getTree');
@@ -114,11 +116,12 @@ export const updateGroup = (group) => {
     }
 }
 
-export const messagePerson = (person, message) => {
+export const messagePerson = (id, message) => {
     return (dispatch) => {
         dispatch({
             type: MESSAGE_PERSON_REQUEST
         });
+        console.log('MESSAGE PERSON', id, message);
         // TODO: make a request
         // let bodyFormData = new FormData();
         // bodyFormData.set('formName', 'getTree');
@@ -143,11 +146,12 @@ export const messagePerson = (person, message) => {
     }
 }
 
-export const messageGroup = (person, message) => {
+export const messageGroup = (id, message) => {
     return (dispatch) => {
         dispatch({
-            type: MESSAGE_PERSON_REQUEST
+            type: MESSAGE_GROUP_REQUEST
         });
+        console.log('MESSAGE GROUP', id, message);
         // TODO: make a request
         // let bodyFormData = new FormData();
         // bodyFormData.set('formName', 'getTree');

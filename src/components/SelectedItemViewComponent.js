@@ -22,6 +22,8 @@ class SelectedItemViewComponent extends Component {
     }
 }
 
-SelectedItemViewComponent.propTypes = {};
+SelectedItemViewComponent.propTypes = {
+    item: PropTypes.object
+};
 
 export default SelectedItemViewComponent;

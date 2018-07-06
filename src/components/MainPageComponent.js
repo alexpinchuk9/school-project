@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SelectedItemViewComponent from "./SelectedItemViewComponent";
 import RelatedItemsViewComponent from "./RelatedItemsViewComponent";
 import { ClipLoader } from 'react-spinners';
-import PopupComponent from "./PopupComponent";
 
 class MainPageComponent extends Component {
     componentDidMount() {
@@ -155,6 +154,10 @@ class MainPageComponent extends Component {
     }
 }
 
-MainPageComponent.propTypes = {};
+MainPageComponent.propTypes = {
+    items: PropTypes.object,
+    getItems: PropTypes.func.isRequired,
+    selectItem: PropTypes.func.isRequired
+};
 
 export default MainPageComponent;

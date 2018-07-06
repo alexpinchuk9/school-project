@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { MESSAGE, UPDATE } from "../constants/popupTypes";
-import PopupComponent from './PopupComponent';
+import PopupComponent from '../containers/PopupContainer';
 
 class GroupComponent extends Component {
 
@@ -28,6 +28,9 @@ class GroupComponent extends Component {
     render() {
         const { isSelected, group, className } = this.props;
         const { open, type } = this.state.popup;
+        const initialValues = {
+            groupName: group.groupName
+        }
         if(isSelected) {
             return (
                 <div className={`${className} group group-full-representation`}>
@@ -52,7 +55,7 @@ class GroupComponent extends Component {
                             <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
                         </div>
                     </div>
-                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group}/>}
+                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group} initialValues={initialValues}/>}
                 </div>
             );
         }
@@ -77,6 +80,9 @@ class GroupComponent extends Component {
     }
 }
 
-GroupComponent.propTypes = {};
+GroupComponent.propTypes = {
+    isSelected: PropTypes.bool,
+    group: PropTypes.object
+};
 
 export default GroupComponent;

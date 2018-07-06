@@ -8,4 +8,7 @@
   min-height: 100vh;
   background: $backgroundColor;
   padding: 20px 0;
+  @media only screen and (max-width: 1024px) {
+    justify-content: flex-start;
+  }
 }

@@ -6,3 +6,6 @@
   min-height: 100vh;
   background: #e8f1f3;
   padding: 20px 0; }
+  @media only screen and (max-width: 1024px) {
+    .main-page {
+      justify-content: flex-start; } }

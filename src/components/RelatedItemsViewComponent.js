@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import PersonComponent from "./PersonComponent";
 import GroupComponent from "./GroupComponent";
-import { CSSTransitionGroup } from 'react-transition-group'
 
 class RelatedItemsViewComponent extends Component {
 
@@ -44,6 +43,10 @@ class RelatedItemsViewComponent extends Component {
     }
 }
 
-RelatedItemsViewComponent.propTypes = {};
+RelatedItemsViewComponent.propTypes = {
+    people: PropTypes.array,
+    groups: PropTypes.array,
+    selectItem: PropTypes.func
+};
 
 export default RelatedItemsViewComponent;

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { MESSAGE, PHONE, UPDATE } from "../constants/popupTypes";
-import PopupComponent from "./PopupComponent";
+import PopupComponent from "../containers/PopupContainer";
 
 class PersonComponent extends Component {
 
@@ -29,6 +28,13 @@ class PersonComponent extends Component {
     render() {
         const { isSelected, person, className } = this.props;
         const { open, type } = this.state.popup;
+        const initialValues = {
+            name: person.name,
+            surname: person.surname,
+            email: person.email,
+            cellphone: person.cellphone,
+            picture: person.picSourse
+        }
         if(isSelected) {
             return (
                 <div className={`${className} person person-full-representation`}>
@@ -66,7 +72,7 @@ class PersonComponent extends Component {
                             <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
                         </div>
                     </div>
-                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person}/>}
+                    { open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person} initialValues={initialValues}/>}
                 </div>
             );
         }
@@ -97,6 +103,9 @@ class PersonComponent extends Component {
         }
 }
 
-PersonComponent.propTypes = {};
+PersonComponent.propTypes = {
+    isSelected: PropTypes.bool,
+    person: PropTypes.object,
+};
 
 export default PersonComponent;
