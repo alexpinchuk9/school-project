@@ -196,7 +196,7 @@ class PopupComponent extends Component {
 
         reset();
     }
-    
+
     render() {
         return (
             <div className={`popup`}>

@@ -50,9 +50,11 @@ class PersonComponent extends Component {
         const mailActionButton = person.email ?
             <span className="mail"><a href={`mailto:${person.email}`} className="mail-link"></a></span> :
             <span className="mail disabled"></span>;
+
         const messageActionButton =    person.email ?
             <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
             <span className="message disabled"></span>;
+
         const callActionButton =      person.cellphone ?
             <span className="call" onClick={() => this.handlePopupOpen(PHONE)}></span> :
             <span className="call disabled"></span>;

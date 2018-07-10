@@ -14,10 +14,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
 
         case GET_ITEMS_REQUEST:
-            return {...state, loading: true};
+            return {...state, loading: true, error: null };
 
         case GET_ITEMS_SUCCESS:
-            return {...state, items: action.payload, loading: false, selectedItem: action.payload.groups[0]};
+            return {...state, items: action.payload, loading: false, error: null, selectedItem: action.payload.groups[0]};
 
         case GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};

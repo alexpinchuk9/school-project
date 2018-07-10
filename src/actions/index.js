@@ -41,7 +41,9 @@ export const getItems = () => {
             .catch(response => {
                 dispatch({
                     type: GET_ITEMS_FAILURE,
-                    error: response.error
+                    error: {
+                        message: 'Sorry, we couldn\'t get the items from the server'
+                    }
                 })
             });
     }
