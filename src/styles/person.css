@@ -5,9 +5,15 @@
   padding: 20px 15px;
   border-radius: 12px;
   background: #ffffff;
-  min-width: 250px;
-  width: 20%;
+  min-width: 200px;
+  width: 13%;
   flex: none; }
+  @media only screen and (max-width: 767px) {
+    .person {
+      min-width: 250px; } }
+  .person.person-full-representation {
+    width: 300px;
+    font-size: 150%; }
   .person .person-image-view {
     display: flex;
     position: relative;

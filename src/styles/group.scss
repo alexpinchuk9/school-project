@@ -7,13 +7,16 @@
   padding: 20px 15px;
   border-radius: 12px;
   background: $white;
-  min-width: 250px;
-  width: 20%;
+  min-width: 200px;
+  width: 13%;
   flex: none;
-  //@media only screen and (min-width: 1024px) {
-  //  width: 20%;
-  //  flex: none;
-  //}
+  @media only screen and (max-width: 767px) {
+    min-width: 250px;
+  }
+  &.group-full-representation {
+    width: 300px;
+    font-size: 150%;
+  }
   .group-image-view {
     display: flex;
     position: relative;
