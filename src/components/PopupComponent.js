@@ -55,9 +55,14 @@ class PopupComponent extends Component {
     }
 
 
+    handleUploadImage = () => {
+        let image = document.getElementById('picture').files[0];
+        this.props.uploadImage(image);
+    }
+
     renderUpdateForm = () => {
 
-        const { group, person, handleClose, handleSubmit, pristine, submitting } = this.props;
+        const { group, person, handleClose, handleSubmit, pristine, submitting, image } = this.props;
 
         if (group) {
             return (
@@ -107,12 +112,11 @@ class PopupComponent extends Component {
                                     <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>}
                             </label>
                             <label htmlFor="picture" className="picture-label">Upload pic</label>
-                            {/*// TODO: find a solution for redux-form field with file type*/}
-                            <input id="picture" type="file" name="picture" accept="image/*" className="form-field"/>
+                            <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                         </div>
 
                         <div className="form-row">
-                            <button type="submit" className="button-submit" disabled={pristine || submitting}>Update</button>
+                            <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>Update</button>
                         </div>
 
                     </form>
@@ -164,7 +168,8 @@ class PopupComponent extends Component {
 
     handleSubmit = (values, ACTION_TYPE) => {
 
-        const { reset, messagePerson, messageGroup, updatePerson, updateGroup, person, group } = this.props;
+
+        const { reset, messagePerson, messageGroup, updatePerson, updateGroup, person, group, image } = this.props;
 
         switch(ACTION_TYPE) {
             case MESSAGE_PERSON_REQUEST:
@@ -176,12 +181,7 @@ class PopupComponent extends Component {
                 break;
 
             case UPDATE_PERSON_REQUEST:
-                // TODO: find a way to make the fileField work with redux form
-                // TODO: find out how to upload the picture onto the server (once it's working)
-                const fileField = document.getElementById("picture");
-                const picture = fileField.files[0];
-                const picSource = fileField.value;
-                let updatedValues = {...values, picture, picSource};
+                let updatedValues = {...values,name: image.name};
 
                 updatePerson(person.id, updatedValues);
                 break;
