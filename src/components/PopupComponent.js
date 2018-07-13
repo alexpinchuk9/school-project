@@ -36,13 +36,14 @@ class PopupComponent extends Component {
         const { group, person, handleClose, handleSubmit, pristine, submitting } = this.props;
         const ACTION_TYPE = person ? MESSAGE_PERSON_REQUEST : MESSAGE_GROUP_REQUEST;
         const fieldName = person ? "personMessage" : "groupMessage";
+        const messageName = person ? person.name : group.groupName;
 
         return (
           <form className="form message-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ACTION_TYPE))}>
               <button className="button-close" onClick={handleClose}></button>
 
               <div className="form-row">
-                  <label htmlFor="message" className="field-label">Message for {person.name || group.groupName}</label>
+                  <label htmlFor="message" className="field-label">Message for {messageName}</label>
                   <Field name={fieldName} component="textarea" className="form-field textarea-field"></Field>
               </div>
 
