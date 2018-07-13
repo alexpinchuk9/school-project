@@ -2,16 +2,18 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import PopupComponent from "../components/PopupComponent";
 import {
-    messagePerson, 
-    messageGroup, 
-    updatePerson, 
+    messagePerson,
+    messageGroup,
+    updatePerson,
     updateGroup,
-    uploadImage
+    uploadImage,
+    resetPopupState
 } from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        image: state.image
+        image: state.image,
+        popup: state.popup
     };
 };
 
@@ -32,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
         uploadImage: (image) => {
             dispatch(uploadImage(image))
         },
+        resetPopupState: () => {
+            dispatch(resetPopupState())
+        }
     }
 };
 

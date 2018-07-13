@@ -17,7 +17,7 @@ import {
     MESSAGE_GROUP_FAILURE,
     UPLOAD_IMAGE_REQUEST,
     UPLOAD_IMAGE_SUCCESS,
-    UPLOAD_IMAGE_FAILURE
+    UPLOAD_IMAGE_FAILURE, RESET_POPUP_STATE
 } from '../constants/actionTypes';
 import axios from 'axios';
 
@@ -61,34 +61,50 @@ export const selectItem = (item) => {
 }
 
 export const uploadImage = (image) => {
-    
+
     return(dispatch) => {
+
         dispatch({
             type: UPLOAD_IMAGE_REQUEST,
-            payload: image.name
+            payload: image
         });
 
-        let bodyFormData = new FormData();
-        bodyFormData.append('image', image, image.name)
-
-        axios({
-            method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
-            data: bodyFormData,
-            config: { headers: {'Content-Type': 'multipart/form-data' }}
-        })
-            .then(response => {
-                dispatch({
-                    type: UPLOAD_IMAGE_SUCCESS,
-                    payload: response.data
-                })
-            })
-            .catch(response => {
-                dispatch({
-                    type: UPLOAD_IMAGE_FAILURE,
-                    error: response.error
-                })
+        const getBase64 = (file, onLoadCallback) => {
+            return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                reader.onload = function() { resolve(reader.result); };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
             });
+        }
+
+        let bodyFormData = new FormData();
+        let promise = getBase64(image);
+
+        promise.then(result => {
+            let base64result = result.split(',')[1];
+            bodyFormData.set('pic', base64result);
+            axios({
+                    method: 'post',
+                    url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+                    data: bodyFormData,
+                    config: { headers: {'Content-Type': 'multipart/form-data' }}
+                })
+                    .then(response => {
+                        console.log(response);
+                        dispatch({
+                            type: UPLOAD_IMAGE_SUCCESS,
+                            payload: response.data
+                        })
+                    })
+                    .catch(response => {
+                        console.log(response);
+                        dispatch({
+                            type: UPLOAD_IMAGE_FAILURE,
+                            error: response.error
+                        })
+                    });
+        });
     }
 }
 
@@ -98,7 +114,7 @@ export const updatePerson = (id, values) => {
             type: UPDATE_PERSON_REQUEST
         });
         console.log('UPDATE PERSON', id, values);
-        
+
         const { name, surname, email, cellphone } = values;
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'updatePerson');
@@ -107,7 +123,7 @@ export const updatePerson = (id, values) => {
         bodyFormData.set('surname', surname);
         bodyFormData.set('email', email);
         bodyFormData.set('cellphone', cellphone);
-    
+
 
         axios({
             method: 'post',
@@ -116,9 +132,10 @@ export const updatePerson = (id, values) => {
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
+                console.log('UPDATE_PERSON', response);
                 dispatch({
                     type: UPDATE_PERSON_SUCCESS,
-                    payload: response.data
+                    payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
@@ -135,8 +152,7 @@ export const updateGroup = (id, groupName) => {
         dispatch({
             type: UPDATE_GROUP_REQUEST
         });
-        console.log('UPDATE PERSON', id, groupName);
-    
+
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'updateGroup');
         bodyFormData.set('id', id);
@@ -151,7 +167,7 @@ export const updateGroup = (id, groupName) => {
             .then(response => {
                 dispatch({
                     type: UPDATE_GROUP_SUCCESS,
-                    payload: response.data
+                    payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
@@ -168,7 +184,7 @@ export const messagePerson = (id, message) => {
         dispatch({
             type: MESSAGE_PERSON_REQUEST
         });
-      
+
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'sendMessageToPeople');
         bodyFormData.set('peopleId', id);
@@ -181,12 +197,14 @@ export const messagePerson = (id, message) => {
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
+                console.log(response);
                 dispatch({
                     type: MESSAGE_PERSON_SUCCESS,
-                    payload: response.data
+                    payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
+                console.log(response);
                 dispatch({
                     type: MESSAGE_PERSON_FAILURE,
                     error: response.error
@@ -200,8 +218,7 @@ export const messageGroup = (id, message) => {
         dispatch({
             type: MESSAGE_GROUP_REQUEST
         });
-        console.log('MESSAGE GROUP', id, message);
-        
+
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'sendMessageToPeople');
         bodyFormData.set('groupId', id);
@@ -214,9 +231,10 @@ export const messageGroup = (id, message) => {
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
+                console.log(response);
                 dispatch({
                     type: MESSAGE_PERSON_SUCCESS,
-                    payload: response.data
+                    payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
@@ -225,5 +243,13 @@ export const messageGroup = (id, message) => {
                     error: response.error
                 })
             });
+    }
+}
+
+export const resetPopupState = () => {
+    return (dispatch) => {
+        dispatch({
+            type: RESET_POPUP_STATE
+        })
     }
 }

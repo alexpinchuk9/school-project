@@ -4,7 +4,8 @@ import { getItems, selectItem } from '../actions';
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items
+        items: state.items,
+        popup: state.popup
     };
 };
 

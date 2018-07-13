@@ -71,7 +71,7 @@ class PopupComponent extends Component {
                     <button className="button-close" onClick={handleClose}></button>
 
                     <div className="form-row">
-                        <label htmlFor="groupName" className="field-label">Group name:</label>
+                        <label htmlFor="groupName" className="field-label">Group name</label>
                         <Field component="input" type="text" name="groupName" className="form-field" />
                     </div>
 
@@ -169,7 +169,6 @@ class PopupComponent extends Component {
 
     handleSubmit = (values, ACTION_TYPE) => {
 
-
         const { reset, messagePerson, messageGroup, updatePerson, updateGroup, person, group, image } = this.props;
 
         switch(ACTION_TYPE) {
@@ -198,7 +197,25 @@ class PopupComponent extends Component {
         reset();
     }
 
+    handleServerResponse = (serverMessage) => {
+
+        const { handleClose, resetPopupState } = this.props;
+
+        alert(serverMessage);
+
+        resetPopupState();
+        setTimeout(handleClose, 0);
+    }
+
     render() {
+        const { serverResponse, error } = this.props.popup;
+
+        if (serverResponse) {
+            this.handleServerResponse(serverResponse)
+        } else if (error) {
+            this.handleServerResponse(error);
+        }
+
         return (
             <div className={`popup`}>
                 {this.renderForm()}
