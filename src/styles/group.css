@@ -1,7 +1,7 @@
 .group {
   box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   padding: 20px 15px;
   border-radius: 12px;
   background: #ffffff;
@@ -35,13 +35,16 @@
     display: flex;
     flex-direction: column;
     margin-right: 25px;
-    text-align: right;
-    align-items: flex-end; }
-    .group .group-info .group-name .name {
-      margin: 0; }
+    text-align: right; }
+    .group .group-info .group-name {
+      font-size: 90%; }
+      .group .group-info .group-name .name {
+        margin: 0; }
   .group .group-actions {
     display: flex;
-    margin-top: 10px; }
+    margin-top: 10px;
+    flex-direction: row-reverse;
+    justify-content: flex-end; }
     .group .group-actions .message, .group .group-actions .edit {
       display: block;
       height: 30px;
