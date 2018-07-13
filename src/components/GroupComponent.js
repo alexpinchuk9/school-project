@@ -43,9 +43,6 @@ class GroupComponent extends Component {
             groupName: group.groupName
         };
 
-        const messageActionButton = group.email ?
-            <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
-            <span className="message disabled"></span>;
 
         return (
             <div className={`${className} group group-full-representation`}>
@@ -63,7 +60,7 @@ class GroupComponent extends Component {
                         </h1>
                     </div>
                     <div className="group-actions">
-                        {messageActionButton}
+                        <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span>
                         <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
                     </div>
                 </div>
