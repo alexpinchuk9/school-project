@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import {
     GET_ITEMS_REQUEST,
     GET_ITEMS_SUCCESS,
@@ -19,10 +21,11 @@ import {
     UPLOAD_IMAGE_SUCCESS,
     UPLOAD_IMAGE_FAILURE, RESET_POPUP_STATE
 } from '../constants/actionTypes';
-import axios from 'axios';
+import { serverUrl } from "../constants/api";
 
 export const getItems = () => {
     return (dispatch) => {
+
         dispatch({
             type: GET_ITEMS_REQUEST
         });
@@ -30,7 +33,7 @@ export const getItems = () => {
         bodyFormData.set('formName', 'getTree');
         axios({
             method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+            url: serverUrl,
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
@@ -66,8 +69,11 @@ export const uploadImage = (image) => {
 
         dispatch({
             type: UPLOAD_IMAGE_REQUEST,
-            payload: image
+            payload: image.name
         });
+
+        let formImageRow = document.getElementsByClassName("form-image-row")[0];
+        formImageRow.classList.remove('upload-success', 'upload-failure');
 
         const getBase64 = (file, onLoadCallback) => {
             return new Promise(function(resolve, reject) {
@@ -78,61 +84,68 @@ export const uploadImage = (image) => {
             });
         }
 
-        let bodyFormData = new FormData();
         let promise = getBase64(image);
 
         promise.then(result => {
+
             let base64result = result.split(',')[1];
-            bodyFormData.set('pic', base64result);
-            axios({
-                    method: 'post',
-                    url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
-                    data: bodyFormData,
-                    config: { headers: {'Content-Type': 'multipart/form-data' }}
-                })
-                    .then(response => {
-                        console.log(response);
-                        dispatch({
-                            type: UPLOAD_IMAGE_SUCCESS,
-                            payload: response.data
-                        })
-                    })
-                    .catch(response => {
-                        console.log(response);
-                        dispatch({
-                            type: UPLOAD_IMAGE_FAILURE,
-                            error: response.error
-                        })
+            let xhr = new XMLHttpRequest();
+
+            xhr.onreadystatechange = function(ev) {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    formImageRow.classList.add('upload-success');
+
+                    dispatch({
+                        type: UPLOAD_IMAGE_SUCCESS,
+                        payload: this.responseText || this.statusText
                     });
+
+                } else if ( this.readyState === 4) {
+
+                    formImageRow.classList.add('upload-failure');
+
+                    dispatch({
+                        type: UPLOAD_IMAGE_FAILURE,
+                        error: this.error
+                    });
+                }
+            };
+
+            xhr.open("POST", serverUrl, true);
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            let data =  "&pic=" + base64result;
+            xhr.send(data);
         });
     }
 }
 
 export const updatePerson = (id, values) => {
     return (dispatch) => {
+
         dispatch({
             type: UPDATE_PERSON_REQUEST
         });
-        console.log('UPDATE PERSON', id, values);
 
-        const { name, surname, email, cellphone } = values;
+        const { name, surname, email, cellphone, picture } = values;
         let bodyFormData = new FormData();
+
         bodyFormData.set('formName', 'updatePerson');
         bodyFormData.set('id', id);
         bodyFormData.set('name', name);
         bodyFormData.set('surname', surname);
         bodyFormData.set('email', email);
         bodyFormData.set('cellphone', cellphone);
+        bodyFormData.set('picture', picture)
 
 
         axios({
             method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+            url: serverUrl,
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
-                console.log('UPDATE_PERSON', response);
                 dispatch({
                     type: UPDATE_PERSON_SUCCESS,
                     payload: response.data ? response.data : response.statusText
@@ -149,18 +162,20 @@ export const updatePerson = (id, values) => {
 
 export const updateGroup = (id, groupName) => {
     return (dispatch) => {
+
         dispatch({
             type: UPDATE_GROUP_REQUEST
         });
 
         let bodyFormData = new FormData();
+
         bodyFormData.set('formName', 'updateGroup');
         bodyFormData.set('id', id);
         bodyFormData.set('groupName', groupName);
 
         axios({
             method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+            url: serverUrl,
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
@@ -181,30 +196,30 @@ export const updateGroup = (id, groupName) => {
 
 export const messagePerson = (id, message) => {
     return (dispatch) => {
+
         dispatch({
             type: MESSAGE_PERSON_REQUEST
         });
 
         let bodyFormData = new FormData();
+
         bodyFormData.set('formName', 'sendMessageToPeople');
         bodyFormData.set('peopleId', id);
         bodyFormData.set('txt', message);
 
         axios({
             method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+            url: serverUrl,
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: MESSAGE_PERSON_SUCCESS,
                     payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
-                console.log(response);
                 dispatch({
                     type: MESSAGE_PERSON_FAILURE,
                     error: response.error
@@ -215,31 +230,32 @@ export const messagePerson = (id, message) => {
 
 export const messageGroup = (id, message) => {
     return (dispatch) => {
+
         dispatch({
             type: MESSAGE_GROUP_REQUEST
         });
 
         let bodyFormData = new FormData();
-        bodyFormData.set('formName', 'sendMessageToPeople');
+
+        bodyFormData.set('formName', 'sendMessageToGroup');
         bodyFormData.set('groupId', id);
         bodyFormData.set('txt', message);
 
         axios({
             method: 'post',
-            url: 'http://www.tefenschool.org.il/contact/ajaxServer.php',
+            url: serverUrl,
             data: bodyFormData,
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
-                console.log(response);
                 dispatch({
-                    type: MESSAGE_PERSON_SUCCESS,
+                    type: MESSAGE_GROUP_SUCCESS,
                     payload: response.data ? response.data : response.statusText
                 })
             })
             .catch(response => {
                 dispatch({
-                    type: MESSAGE_PERSON_FAILURE,
+                    type: MESSAGE_GROUP_FAILURE,
                     error: response.error
                 })
             });

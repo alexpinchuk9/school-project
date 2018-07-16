@@ -11,13 +11,13 @@ const imageReducer = (state = INITIAL_STATE, action) => {
         case UPLOAD_IMAGE_REQUEST:
             return {...state, imageUploading: true, name: action.payload};
 
-        case UPLOAD_IMAGE_SUCCESS: 
+        case UPLOAD_IMAGE_SUCCESS:
             return {...state, imageUploading: false};
 
         case UPLOAD_IMAGE_FAILURE:
             return {...state, imageUploading: false, name: null, error: action.payload}
 
-        default: 
+        default:
             return state;
     }
 }
