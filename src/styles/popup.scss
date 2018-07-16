@@ -72,6 +72,38 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+      &.upload-success {
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 10px;
+          width: 3px;
+          height: 6px;
+          border: solid $lightgreen;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+      &.upload-failure {
+        &:after, &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          right: 10px;
+          width: 2px;
+          background: $red;
+        }
+        &:after {
+          height: 10px;
+          transform: rotate(45deg);
+        }
+        &:before {
+          height: 8px;
+          transform: rotate(-45deg);
+        }
+
+      }
       .form-image {
         background: $lightgrey;
         margin: 5px;

@@ -170,6 +170,7 @@ class PopupComponent extends Component {
     handleSubmit = (values, ACTION_TYPE) => {
 
         const { reset, messagePerson, messageGroup, updatePerson, updateGroup, person, group, image } = this.props;
+        console.log('IMAGE', image);
 
         switch(ACTION_TYPE) {
             case MESSAGE_PERSON_REQUEST:
@@ -181,7 +182,7 @@ class PopupComponent extends Component {
                 break;
 
             case UPDATE_PERSON_REQUEST:
-                let updatedValues = {...values,name: image.name};
+                let updatedValues = {...values, picture: image.name };
 
                 updatePerson(person.id, updatedValues);
                 break;

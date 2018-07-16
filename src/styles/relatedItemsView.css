@@ -50,7 +50,7 @@
         height: 0; } }
   .related-items-view.related-items-view-above {
     padding-bottom: 20px;
-    flex-wrap: wrap-reverse; }
+    flex-wrap: wrap; }
     .related-items-view.related-items-view-above:after {
       content: "";
       position: absolute;
