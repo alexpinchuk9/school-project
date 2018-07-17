@@ -77,7 +77,7 @@ export const uploadImage = (image) => {
 
         formImageRow.classList.remove('upload-success', 'upload-failure');
         submitButton.classList.add('upload-request');
-        submitButton.innerText = "Uploading...";
+        submitButton.innerText = "בטעינה...";
 
         const MAX_HEIGHT = 256;
 
@@ -128,7 +128,7 @@ export const uploadImage = (image) => {
                 if (this.readyState === 4 && this.status === 200) {
 
                     submitButton.classList.remove('upload-request');
-                    submitButton.innerText = "Update";
+                    submitButton.innerText = "עדכון";
                     formImageRow.classList.add('upload-success');
 
                     dispatch({
@@ -139,7 +139,7 @@ export const uploadImage = (image) => {
                 } else if ( this.readyState === 4) {
 
                     submitButton.classList.remove('upload-request');
-                    submitButton.innerText = "Update";
+                    submitButton.innerText = "עדכון";
                     formImageRow.classList.add('upload-failure');
 
                     dispatch({
