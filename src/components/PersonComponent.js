@@ -102,14 +102,21 @@ class PersonComponent extends Component {
     renderPersonShortRepresentation = () => {
         const { person, className } = this.props;
 
+        const image = person.picSource ?
+            <img src={`${filePath}${person.picSource}`}
+                 alt="User Avatar"
+                 className="person-image"
+            /> :
+            <img
+                src='/statics/img/single_user.png'
+                alt="User Avatar"
+                className="person-image"
+            />;
+
         return (
             <div className={`${className} person person-short-representation`} onClick={this.props.onClick}>
                 <div className="person-image-view">
-                    <img
-                        src='/statics/img/single_user.png'
-                        alt="User Avatar"
-                        className="person-image"
-                    />
+                    {image}
                 </div>
                 <div className="person-info">
                     <div className="person-name">
