@@ -87,7 +87,8 @@
         transform: rotate(-45deg); }
       .popup .form .form-image-row .form-image {
         background: #939d9f;
-        margin: 5px; }
+        margin: 5px;
+        height: 70px; }
     .popup .form .picture-label {
       display: block;
       background: #939d9f;
@@ -96,8 +97,6 @@
       margin: 5px;
       border-radius: 3px;
       padding: 5px 15px; }
-      .popup .form .picture-label.upload-request {
-        color: #808080; }
       .popup .form .picture-label:hover {
         cursor: pointer;
         background: #808080; }
@@ -118,6 +117,8 @@
       outline: none;
       border: none;
       margin: 5px; }
+      .popup .form .button-submit.upload-request {
+        background: #808080; }
       .popup .form .button-submit:hover {
         cursor: pointer;
         background: #328332; }

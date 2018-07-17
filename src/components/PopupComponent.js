@@ -8,6 +8,7 @@ import {
     UPDATE_GROUP_REQUEST,
     UPDATE_PERSON_REQUEST
 } from "../constants/actionTypes";
+import {filePath, serverUrl} from "../constants/api";
 
 class PopupComponent extends Component {
 
@@ -109,7 +110,7 @@ class PopupComponent extends Component {
                         <div className="form-row form-image-row">
                             <label htmlFor="picture">
                                 {person.picSource ?
-                                    <img src={person.picSource} alt="User Avatar"/> :
+                                    <img src={`${filePath}${person.picSource}`} alt="User Avatar" className="form-image"/> :
                                     <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>}
                             </label>
                             <label htmlFor="picture" className="picture-label">Upload pic</label>

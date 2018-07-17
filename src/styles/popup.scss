@@ -107,6 +107,7 @@
       .form-image {
         background: $lightgrey;
         margin: 5px;
+        height: 70px;
       }
     }
     .picture-label {
@@ -117,9 +118,6 @@
       margin: 5px;
       border-radius: 3px;
       padding: 5px 15px;
-      &.upload-request {
-        color: $grey;
-      }
       &:hover {
         cursor: pointer;
         background: $grey;
@@ -144,6 +142,9 @@
       outline: none;
       border: none;
       margin: 5px;
+      &.upload-request {
+        background: $grey;
+      }
       &:hover {
         cursor: pointer;
         background: $green;

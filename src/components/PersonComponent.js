@@ -137,7 +137,7 @@ class PersonComponent extends Component {
 
     render() {
         const { isSelected } = this.props;
-        console.log(this.props);
+
         let render = isSelected ? this.renderPersonFullRepresentation() : this.renderPersonShortRepresentation();
 
         return render;

@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PersonComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PersonComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/popup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/relatedItemsView.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/relatedItemsView.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/relatedItemsView.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/relatedItemsView.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,8 +30,8 @@
       <file leaf-file-name="popup.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/popup.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
-              <caret line="127" column="17" lean-forward="true" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
+            <state relative-caret-position="306">
+              <caret line="145" column="18" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -37,20 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainPage.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/mainPage.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
+            <state relative-caret-position="921">
+              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -70,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonComponent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PersonComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PersonComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="471">
-              <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+            <state relative-caret-position="396">
+              <caret line="128" column="26" lean-forward="true" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -91,6 +90,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="relatedItemsView.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/styles/relatedItemsView.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="726">
+              <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/constants/api.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -103,8 +111,8 @@
       <file leaf-file-name="PopupComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-540">
-              <caret line="114" column="78" lean-forward="true" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
+            <state relative-caret-position="336">
+              <caret line="115" column="78" lean-forward="true" selection-start-line="115" selection-start-column="78" selection-end-line="115" selection-end-column="78" />
             </state>
           </provider>
         </entry>
@@ -158,14 +166,14 @@
         <option value="$PROJECT_DIR$/src/components/GroupComponent.js" />
         <option value="$PROJECT_DIR$/src/styles/group.scss" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/styles/relatedItemsView.scss" />
-        <option value="$PROJECT_DIR$/src/components/PopupComponent.js" />
-        <option value="$PROJECT_DIR$/src/styles/popup.scss" />
         <option value="$PROJECT_DIR$/src/reducers/imageReducer.js" />
         <option value="$PROJECT_DIR$/src/constants/api.js" />
         <option value="$PROJECT_DIR$/src/styles/person.scss" />
-        <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/components/PersonComponent.js" />
+        <option value="$PROJECT_DIR$/src/components/PopupComponent.js" />
+        <option value="$PROJECT_DIR$/src/actions/index.js" />
+        <option value="$PROJECT_DIR$/src/styles/popup.scss" />
+        <option value="$PROJECT_DIR$/src/styles/relatedItemsView.scss" />
       </list>
     </option>
   </component>
@@ -186,7 +194,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1745" />
+    <option name="x" value="-1615" />
     <option name="y" value="-4" />
     <option name="width" value="1615" />
     <option name="height" value="1054" />
@@ -308,12 +316,12 @@
       <workItem from="1530874763244" duration="1975000" />
       <workItem from="1531485144025" duration="700000" />
       <workItem from="1531724560742" duration="4980000" />
-      <workItem from="1531807693544" duration="7186000" />
+      <workItem from="1531807693544" duration="8893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103313000" />
+    <option name="totallyTimeSpent" value="105020000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
@@ -648,13 +656,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/relatedItemsView.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="74" column="19" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/mainPage.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -679,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-540">
-          <caret line="114" column="78" lean-forward="true" selection-start-line="114" selection-start-column="78" selection-end-line="114" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/popupTypes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -700,13 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/popup.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="127" column="17" lean-forward="true" selection-start-line="127" selection-start-column="17" selection-end-line="127" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/person.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -714,23 +701,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PersonComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="128" column="26" lean-forward="true" selection-start-line="128" selection-start-column="26" selection-end-line="128" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="115" column="78" lean-forward="true" selection-start-line="115" selection-start-column="78" selection-end-line="115" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="279" />
+        <state relative-caret-position="921">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PersonComponent.js">
+    <entry file="file://$PROJECT_DIR$/src/styles/popup.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="306">
+          <caret line="145" column="18" selection-start-line="145" selection-start-column="18" selection-end-line="145" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/relatedItemsView.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="726">
+          <caret line="116" column="25" selection-start-line="116" selection-start-column="25" selection-end-line="116" selection-end-column="25" />
         </state>
       </provider>
     </entry>

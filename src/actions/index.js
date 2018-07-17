@@ -73,11 +73,11 @@ export const uploadImage = (image) => {
         });
 
         let formImageRow = document.getElementsByClassName("form-image-row")[0];
-        let pictureButton = document.getElementsByClassName("picture-label")[0];
+        let submitButton = document.getElementsByClassName("button-submit")[0];
 
         formImageRow.classList.remove('upload-success', 'upload-failure');
-        pictureButton.classList.add('upload-request');
-        pictureButton.innerText = "Uploading...";
+        submitButton.classList.add('upload-request');
+        submitButton.innerText = "Uploading...";
 
         const MAX_HEIGHT = 256;
 
@@ -127,8 +127,8 @@ export const uploadImage = (image) => {
             xhr.onreadystatechange = function(ev) {
                 if (this.readyState === 4 && this.status === 200) {
 
-                    pictureButton.classList.remove('upload-request');
-                    pictureButton.innerText = "Upload pic";
+                    submitButton.classList.remove('upload-request');
+                    submitButton.innerText = "Update";
                     formImageRow.classList.add('upload-success');
 
                     dispatch({
@@ -138,8 +138,8 @@ export const uploadImage = (image) => {
 
                 } else if ( this.readyState === 4) {
 
-                    pictureButton.classList.remove('upload-request');
-                    pictureButton.innerText = "Upload pic";
+                    submitButton.classList.remove('upload-request');
+                    submitButton.innerText = "Update";
                     formImageRow.classList.add('upload-failure');
 
                     dispatch({
