@@ -69,20 +69,53 @@ export const uploadImage = (image) => {
 
         dispatch({
             type: UPLOAD_IMAGE_REQUEST,
-            payload: image.name
+            payload: image
         });
 
         let formImageRow = document.getElementsByClassName("form-image-row")[0];
+        let pictureButton = document.getElementsByClassName("picture-label")[0];
+
         formImageRow.classList.remove('upload-success', 'upload-failure');
+        pictureButton.classList.add('upload-request');
+        pictureButton.innerText = "Uploading...";
+
+        const MAX_HEIGHT = 256;
+
+        const resize = (src) => {
+            return new Promise(function(resolve, reject) {
+                let image = new Image();
+
+                image.onload = function(){
+                    let canvas = document.createElement('canvas');
+                    if(image.height > MAX_HEIGHT) {
+                        image.width *= MAX_HEIGHT / image.height;
+                        image.height = MAX_HEIGHT;
+                    }
+                    let ctx = canvas.getContext("2d");
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(image, 0, 0, image.width, image.height);
+                    let result = canvas.toDataURL("image/jpeg");
+                    resolve(result);
+                };
+                image.src = src;
+            })
+
+        }
 
         const getBase64 = (file, onLoadCallback) => {
             return new Promise(function(resolve, reject) {
                 var reader = new FileReader();
-                reader.onload = function() { resolve(reader.result); };
+                reader.onload = function() {
+                    let promise = resize(reader.result);
+                    promise.then(result => resolve(result));
+                };
                 reader.onerror = reject;
                 reader.readAsDataURL(file);
             });
         }
+
 
         let promise = getBase64(image);
 
@@ -92,17 +125,21 @@ export const uploadImage = (image) => {
             let xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function(ev) {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState === 4 && this.status === 200) {
 
+                    pictureButton.classList.remove('upload-request');
+                    pictureButton.innerText = "Upload pic";
                     formImageRow.classList.add('upload-success');
 
                     dispatch({
                         type: UPLOAD_IMAGE_SUCCESS,
-                        payload: this.responseText || this.statusText
+                        payload: this.response
                     });
 
                 } else if ( this.readyState === 4) {
 
+                    pictureButton.classList.remove('upload-request');
+                    pictureButton.innerText = "Upload pic";
                     formImageRow.classList.add('upload-failure');
 
                     dispatch({

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { MESSAGE, PHONE, UPDATE } from "../constants/popupTypes";
+import { filePath } from "../constants/api";
 import PopupComponent from "../containers/PopupContainer";
 
 class PersonComponent extends Component {
@@ -59,14 +60,22 @@ class PersonComponent extends Component {
             <span className="call" onClick={() => this.handlePopupOpen(PHONE)}></span> :
             <span className="call disabled"></span>;
 
+
+        const image = person.picSource ?
+                                        <img src={`${filePath}${person.picSource}`}
+                                        alt="User Avatar"
+                                        className="person-image"
+                                        /> :
+                                            <img
+                                            src='/statics/img/single_user.png'
+                                            alt="User Avatar"
+                                            className="person-image"
+                                        />;
+
         return (
             <div className={`${className} person person-full-representation`}>
                 <div className="person-image-view">
-                    <img
-                        src='/statics/img/single_user.png'
-                        alt="User Avatar"
-                        className="person-image"
-                    />
+                    {image}
                 </div>
                 <div className="person-info">
                     <div className="person-name">
@@ -121,6 +130,7 @@ class PersonComponent extends Component {
 
     render() {
         const { isSelected } = this.props;
+        console.log(this.props);
         let render = isSelected ? this.renderPersonFullRepresentation() : this.renderPersonShortRepresentation();
 
         return render;

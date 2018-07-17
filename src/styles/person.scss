@@ -36,7 +36,12 @@
       transform: translate(-100%, 0);
     }
     .person-image {
-
+      margin: 0;
+      height: 70px;
+      border-radius: 12px;
+      width: auto;
+      object-fit: contain;
+     // box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
     }
   }
   .person-info {

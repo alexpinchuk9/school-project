@@ -117,6 +117,9 @@
       margin: 5px;
       border-radius: 3px;
       padding: 5px 15px;
+      &.upload-request {
+        color: $grey;
+      }
       &:hover {
         cursor: pointer;
         background: $grey;

@@ -31,6 +31,12 @@
       border-bottom: 7px solid transparent;
       border-right: 7px solid #5dbb38;
       transform: translate(-100%, 0); }
+    .person .person-image-view .person-image {
+      margin: 0;
+      height: 70px;
+      border-radius: 12px;
+      width: auto;
+      object-fit: contain; }
   .person .person-info {
     display: flex;
     flex-direction: column;

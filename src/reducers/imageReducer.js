@@ -9,13 +9,14 @@ const INITIAL_STATE = {
 const imageReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case UPLOAD_IMAGE_REQUEST:
-            return {...state, imageUploading: true, name: action.payload};
+
+            return {...state, imageUploading: true};
 
         case UPLOAD_IMAGE_SUCCESS:
-            return {...state, imageUploading: false};
+            return {...state, name: action.payload, imageUploading: false};
 
         case UPLOAD_IMAGE_FAILURE:
-            return {...state, imageUploading: false, name: null, error: action.payload}
+            return {...state, imageUploading: false, name: null, error: action.payload};
 
         default:
             return state;
