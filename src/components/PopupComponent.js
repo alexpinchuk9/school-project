@@ -44,12 +44,12 @@ class PopupComponent extends Component {
               <button className="button-close" onClick={handleClose}></button>
 
               <div className="form-row">
-                  <label htmlFor="message" className="field-label">Message for {messageName}</label>
+                  <label htmlFor="message" className="field-label">הודעה אל {messageName}</label>
                   <Field name={fieldName} component="textarea" className="form-field textarea-field"></Field>
               </div>
 
               <div className="form-row">
-                  <button type="submit" className="button-submit" disabled={pristine || submitting}>Send</button>
+                  <button type="submit" className="button-submit" disabled={pristine || submitting}>שליחה</button>
               </div>
 
           </form>
@@ -88,22 +88,22 @@ class PopupComponent extends Component {
                         <button className="button-close" onClick={handleClose}></button>
 
                         <div className="form-row">
-                            <label htmlFor="name" className="field-label">Name:</label>
+                            <label htmlFor="name" className="field-label">שם פרטי:</label>
                             <Field component="input" type="text" name="name" className="form-field"/>
                         </div>
 
                         <div className="form-row">
-                            <label htmlFor="surname" className="field-label">Surname:</label>
+                            <label htmlFor="surname" className="field-label">שם משפחה:</label>
                             <Field component="input" type="text" name="surname" className="form-field"/>
                         </div>
 
                         <div className="form-row">
-                            <label htmlFor="email" className="field-label">Email:</label>
+                            <label htmlFor="email" className="field-label">אימייל:</label>
                             <Field component="input" type="email" name="email"   className="form-field"/>
                         </div>
 
                         <div className="form-row">
-                            <label htmlFor="cellphone" className="field-label">Cellphone:</label>
+                            <label htmlFor="cellphone" className="field-label">טלפון נייד:</label>
                             <Field component="input" type="phone" name="cellphone"  className="form-field"/>
                         </div>
 
@@ -113,12 +113,12 @@ class PopupComponent extends Component {
                                     <img src={`${filePath}${person.picSource}`} alt="User Avatar" className="form-image"/> :
                                     <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>}
                             </label>
-                            <label htmlFor="picture" className="picture-label">Upload pic</label>
+                            <label htmlFor="picture" className="picture-label">בחר תמונה</label>
                             <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                         </div>
 
                         <div className="form-row">
-                            <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>Update</button>
+                            <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכון</button>
                         </div>
 
                     </form>
@@ -155,12 +155,12 @@ class PopupComponent extends Component {
 
               <div className="form-row">
                   <div className="form-text">
-                      Copied to clipboard
+                      המספר הועתק ללוח העריכה
                   </div>
               </div>
 
               <div className="form-row">
-                  <button onClick={handleClose} className="button-submit">Close</button>
+                  <button onClick={handleClose} className="button-submit">סגירה</button>
               </div>
 
           </div>
