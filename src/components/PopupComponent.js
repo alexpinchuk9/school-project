@@ -72,12 +72,12 @@ class PopupComponent extends Component {
                     <button className="button-close" onClick={handleClose}></button>
 
                     <div className="form-row">
-                        <label htmlFor="groupName" className="field-label">Group name</label>
+                        <label htmlFor="groupName" className="field-label">שם הקבוצה</label>
                         <Field component="input" type="text" name="groupName" className="form-field" />
                     </div>
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={pristine || submitting}>Update</button>
+                        <button type="submit" className="button-submit" disabled={pristine || submitting}>עדכון</button>
                     </div>
 
                 </form>
