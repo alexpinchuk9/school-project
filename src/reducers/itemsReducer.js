@@ -1,7 +1,9 @@
-import { GET_ITEMS_REQUEST,
-         GET_ITEMS_SUCCESS,
-         GET_ITEMS_FAILURE,
-         SELECT_ITEM } from '../constants/actionTypes';
+import {
+    GET_ITEMS_REQUEST,
+    GET_ITEMS_SUCCESS,
+    GET_ITEMS_FAILURE,
+    SELECT_ITEM, REFRESH_ITEMS_SUCCESS, REFRESH_ITEMS_REQUEST, REFRESH_ITEMS_FAILURE
+} from '../constants/actionTypes';
 
 const INITIAL_STATE = {
     items: {},
@@ -24,6 +26,29 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
         case SELECT_ITEM:
             return {...state, selectedItem: action.payload};
+
+        case REFRESH_ITEMS_REQUEST:
+            return {...state, loading: true};
+
+        case REFRESH_ITEMS_SUCCESS:
+            let selectedItem = JSON.parse(localStorage.getItem("selectedItem"));
+            let selectedItemId = selectedItem["id"];
+            let selectedItemType = selectedItem["type"];
+            let items = action.payload;
+            let item;
+
+
+            if (selectedItemType === "person") {
+                item = items.people.filter(person => person.id === selectedItemId)[0];
+            } else {
+                item = items.groups.filter(group => group.id === selectedItemId)[0];
+            }
+
+
+            return { ...state, loading: false, items, selectedItem: item };
+
+        case REFRESH_ITEMS_FAILURE:
+            return { ...state, loading: false };
 
         default:
             return state;

@@ -32,7 +32,10 @@ import {
     ADD_GROUP_FAILURE,
     ADD_PERSON_REQUEST,
     ADD_PERSON_SUCCESS,
-    ADD_PERSON_FAILURE
+    ADD_PERSON_FAILURE,
+    REFRESH_ITEMS_REQUEST,
+    REFRESH_ITEMS_SUCCESS,
+    REFRESH_ITEMS_FAILURE
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -426,7 +429,6 @@ export const addGroup = (values) => {
 export const addPerson = (values) => {
     return (dispatch) => {
 
-        console.log(values);
         dispatch({
             type: ADD_PERSON_REQUEST
         });
@@ -442,27 +444,63 @@ export const addPerson = (values) => {
         bodyFormData.set('cellphone', cellphone);
         bodyFormData.set('pic', pic)
 
-        for (var pair of bodyFormData.entries()) {
-            console.log(pair[0]+ ', ' + pair[1]);
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                dispatch({
+                    type: ADD_PERSON_SUCCESS,
+                    payload: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: ADD_PERSON_FAILURE,
+                    error: response.error
+                })
+            });
+    }
+}
+
+export const refreshItems = (selectedItem) => {
+    return (dispatch) => {
+
+        dispatch({
+            type: REFRESH_ITEMS_REQUEST
+        });
+
+        if(selectedItem.surname) {
+            localStorage.setItem("selectedItem", JSON.stringify({type: "person", id: selectedItem.id}))
+        } else {
+            localStorage.setItem("selectedItem", JSON.stringify({type: "group", id: selectedItem.id}))
         }
-        // axios({
-        //     method: 'post',
-        //     url: serverUrl,
-        //     data: bodyFormData,
-        //     config: { headers: {'Content-Type': 'multipart/form-data' }}
-        // })
-        //     .then(response => {
-        //         dispatch({
-        //             type: ADD_PERSON_SUCCESS,
-        //             payload: response.data ? response.data : response.statusText
-        //         })
-        //     })
-        //     .catch(response => {
-        //         dispatch({
-        //             type: ADD_PERSON_FAILURE,
-        //             error: response.error
-        //         })
-        //     });
+
+
+        let bodyFormData = new FormData();
+        bodyFormData.set('formName', 'getTree');
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                dispatch({
+                    type: REFRESH_ITEMS_SUCCESS,
+                    payload: response.data,
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: REFRESH_ITEMS_FAILURE,
+                    error: {
+                        message: 'Sorry, we couldn\'t get the items from the server'
+                    }
+                })
+            });
     }
 }
 

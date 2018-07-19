@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import SelectedItemViewComponent from "./SelectedItemViewComponent";
 import RelatedItemsViewComponent from "./RelatedItemsViewComponent";
+import HeaderComponent from "./HeaderComponent";
 import { ClipLoader } from 'react-spinners';
 
 class MainPageComponent extends Component {
@@ -15,24 +16,18 @@ class MainPageComponent extends Component {
 
           if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
-              const peopleAboveIds = items.p2p
-                  .filter(relation => relation.guardianId === selectedItem.id)
-                  .map(relation => ({id: relation.peopleId}));
               const groupsAboveIds = items.p2g
                   .filter(relation => relation.peopleId === selectedItem.id)
                   .map(relation => relation.groupId);
 
-              let peopleAbove = items.people
-                  .filter(person => peopleAboveIds
-                      .some(personAboveId => personAboveId.id === person.id));
 
               const groupsAbove = items.groups
                   .filter(group => groupsAboveIds
                       .some(groupAboveId => groupAboveId === group.id));
 
               return <RelatedItemsViewComponent
-                                people={peopleAbove}
                                 groups={groupsAbove}
+                                people={[]}
                                 selectItem={this.props.selectItem}
                                 className="related-items-view-above"
                                 />
@@ -62,23 +57,33 @@ class MainPageComponent extends Component {
 
         if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
-            const peopleBelowIds = items.p2p
+            const dependantPeopleIds = items.p2p
+                .filter(relation => relation.guardianId === selectedItem.id)
+                .map(relation => ({id: relation.peopleId}));
+
+            const dependantPeople = items.people
+                .filter(person => dependantPeopleIds
+                    .some(dependantPeopleId => dependantPeopleId.id === person.id));
+
+            const guardianPeopleIds = items.p2p
                 .filter(relation => relation.peopleId === selectedItem.id)
                 .map(relation => ({id: relation.guardianId, relation: relation.relation}));
 
-            const peopleBelow = items.people
-                .filter(person => peopleBelowIds
-                    .some(personBelowId => personBelowId.id === person.id))
+            const guardianPeople = items.people
+                .filter(person => guardianPeopleIds
+                    .some(guardianPeopleId => guardianPeopleId.id === person.id))
                 .map(person => {
                     let result = {};
-                    peopleBelowIds.map(personBelowId => {
-                        if (person.id === personBelowId.id) {
-                            result = {...person, relation: personBelowId.relation}
+                    guardianPeopleIds.map(guardianPeopleId => {
+                        if (person.id === guardianPeopleId.id) {
+                            result = {...person, relation: guardianPeopleId.relation}
                         }
                     });
 
                     return result;
                 });
+
+            const peopleBelow = [...dependantPeople, ...guardianPeople];
 
             return <RelatedItemsViewComponent
                                 people={peopleBelow}
@@ -134,10 +139,12 @@ class MainPageComponent extends Component {
 
     render() {
         const {  loading, error } = this.props.items;
+        const { selectedItem } = this.props.items;
+        const { refreshItems } = this.props;
 
         if (loading) {
             return (
-                <div className="main-page">
+                <div className="main-page loading">
                     <ClipLoader  color={'#123abc'} />
                 </div>);
         } else if (error) {
@@ -152,6 +159,7 @@ class MainPageComponent extends Component {
 
         return (
             <div className="main-page">
+                <HeaderComponent onRefresh={() => refreshItems(selectedItem)}></HeaderComponent>
                 {this.renderRelatedItemsAbove()}
                 {this.renderSelectedItem()}
                 {this.renderRelatedItemsBelow()}

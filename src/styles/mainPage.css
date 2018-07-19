@@ -2,10 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
   background: #e8f1f3;
   padding: 20px 0; }
+  .main-page.loading {
+    justify-content: center; }
   @media only screen and (max-width: 1024px) {
     .main-page {
       justify-content: flex-start; } }

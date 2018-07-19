@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  width: 90%;
+  flex: none;
+  padding: 25px;
+  margin-bottom: 40px; }
+  @media only screen and (max-width: 767px) {
+    .header {
+      justify-content: center; } }
+  .header .refresh-button {
+    position: relative;
+    width: auto;
+    padding: 10px 10px 10px 45px;
+    font-size: 150%;
+    background: transparent;
+    border: 3px solid #000000; }
+    .header .refresh-button:before {
+      content: "";
+      display: block;
+      background: url("/statics/img/refresh.svg") no-repeat center center;
+      background-size: 30px 30px;
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translate(0, -50%); }
+    .header .refresh-button:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
