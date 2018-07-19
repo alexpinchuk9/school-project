@@ -1,23 +1,30 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
 
 .actions {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 10px; }
+  @media only screen and (max-width: 767px) {
+    .actions {
+      left: 0; } }
   .actions .relate-people-people, .actions .delete-people {
     display: block;
     height: 30px;
-    width: 30px; }
+    width: 30px;
+    margin-top: 5px; }
     .actions .relate-people-people:hover, .actions .delete-people:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .actions .relate-people-people:not(:first-child), .actions .delete-people:not(:first-child) {
-      margin-left: 5px; }
     .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover {
       cursor: not-allowed;
       transform: none; }

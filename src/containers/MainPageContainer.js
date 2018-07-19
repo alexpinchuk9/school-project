@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import MainPageComponent from '../components/MainPageComponent';
-import { getItems, selectItem } from '../actions';
+import { getItems, selectItem, refreshItems } from '../actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         selectItem: (item) => {
             dispatch(selectItem(item))
+        },
+        refreshItems: (selectedItem) => {
+            dispatch(refreshItems(selectedItem))
         }
     }
 };

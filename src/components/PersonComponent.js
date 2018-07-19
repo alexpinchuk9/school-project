@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { MESSAGE, PHONE, UPDATE, DELETE } from "../constants/popupTypes";
+import { MESSAGE, PHONE, UPDATE_PERSON, DELETE } from "../constants/popupTypes";
 import { filePath } from "../constants/api";
 import styled from 'styled-components';
 
@@ -93,7 +93,7 @@ class PersonComponent extends Component {
                             {mailActionButton}
                             {messageActionButton}
                             {callActionButton}
-                            <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
+                            <span className="edit" onClick={() => this.handlePopupOpen(UPDATE_PERSON)}></span>
                         </div>
                     </div>
                     {open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person}

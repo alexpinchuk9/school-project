@@ -5,7 +5,7 @@
   justify-content: center;
   border: 1px solid #939d9f;
   border-radius: 12px;
-  margin: 25px;
+  margin: 0 25px;
   position: relative; }
   @media only screen and (max-width: 360px) {
     .related-items-view {
@@ -15,7 +15,8 @@
     .related-items-view .related-item:hover {
       cursor: pointer; }
   .related-items-view.related-items-view-below {
-    padding-top: 20px; }
+    padding-top: 20px;
+    margin-top: 25px; }
     .related-items-view.related-items-view-below:after {
       content: "";
       position: absolute;
@@ -50,6 +51,7 @@
         height: 0; } }
   .related-items-view.related-items-view-above {
     padding-bottom: 20px;
+    margin-bottom: 25px;
     flex-wrap: wrap; }
     .related-items-view.related-items-view-above:after {
       content: "";

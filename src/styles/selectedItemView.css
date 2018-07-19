@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center; }
   .selected-item-view .selected-item {
-    position: relative; }
+    position: relative;
+    min-height: 150px; }
     .selected-item-view .selected-item .group-image-view, .selected-item-view .selected-item .person-image-view {
       background: #bb3838; }
       .selected-item-view .selected-item .group-image-view:after, .selected-item-view .selected-item .person-image-view:after {

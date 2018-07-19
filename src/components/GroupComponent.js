@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, UPDATE, DELETE, ADD_GROUP, ADD_PERSON } from "../constants/popupTypes";
+import {MESSAGE, UPDATE_GROUP, DELETE, ADD_GROUP, ADD_PERSON } from "../constants/popupTypes";
 import PopupComponent from '../containers/PopupContainer';
 import styled from "styled-components";
 
@@ -41,7 +41,8 @@ class GroupComponent extends Component {
         const { group, className } = this.props;
         const { open, type } = this.state.popup;
         const initialValues = {
-            groupName: group.groupName
+            groupName: group.groupName,
+            groupId: group.id
         };
 
 
@@ -64,7 +65,7 @@ class GroupComponent extends Component {
                             </div>
                             <div className="group-actions">
                                 <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span>
-                                <span className="edit" onClick={() => this.handlePopupOpen(UPDATE)}></span>
+                                <span className="edit" onClick={() => this.handlePopupOpen(UPDATE_GROUP)}></span>
                             </div>
                         </div>
                         { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group} initialValues={initialValues}/>}

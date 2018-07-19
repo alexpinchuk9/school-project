@@ -1,23 +1,30 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
 
 .actions {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 10px; }
+  @media only screen and (max-width: 767px) {
+    .actions {
+      left: 0; } }
   .actions .relate-people-people, .actions .delete-people {
     display: block;
     height: 30px;
-    width: 30px; }
+    width: 30px;
+    margin-top: 5px; }
     .actions .relate-people-people:hover, .actions .delete-people:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .actions .relate-people-people:not(:first-child), .actions .delete-people:not(:first-child) {
-      margin-left: 5px; }
     .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover {
       cursor: not-allowed;
       transform: none; }
@@ -94,23 +101,30 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
 
 .actions {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 10px; }
+  @media only screen and (max-width: 767px) {
+    .actions {
+      left: 0px; } }
   .actions .add-group, .actions .relate-people-group, .actions .delete-group, .actions .add-people {
     display: block;
     height: 30px;
-    width: 30px; }
+    width: 30px;
+    margin-top: 5px; }
     .actions .add-group:hover, .actions .relate-people-group:hover, .actions .delete-group:hover, .actions .add-people:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .actions .add-group:not(:first-child), .actions .relate-people-group:not(:first-child), .actions .delete-group:not(:first-child), .actions .add-people:not(:first-child) {
-      margin-left: 5px; }
     .actions .add-group.disabled:hover, .actions .relate-people-group.disabled:hover, .actions .delete-group.disabled:hover, .actions .add-people.disabled:hover {
       cursor: not-allowed;
       transform: none; }
@@ -178,7 +192,8 @@
   justify-content: center;
   align-items: center; }
   .selected-item-view .selected-item {
-    position: relative; }
+    position: relative;
+    min-height: 150px; }
     .selected-item-view .selected-item .group-image-view, .selected-item-view .selected-item .person-image-view {
       background: #bb3838; }
       .selected-item-view .selected-item .group-image-view:after, .selected-item-view .selected-item .person-image-view:after {
@@ -191,7 +206,7 @@
   justify-content: center;
   border: 1px solid #939d9f;
   border-radius: 12px;
-  margin: 25px;
+  margin: 0 25px;
   position: relative; }
   @media only screen and (max-width: 360px) {
     .related-items-view {
@@ -201,7 +216,8 @@
     .related-items-view .related-item:hover {
       cursor: pointer; }
   .related-items-view.related-items-view-below {
-    padding-top: 20px; }
+    padding-top: 20px;
+    margin-top: 25px; }
     .related-items-view.related-items-view-below:after {
       content: "";
       position: absolute;
@@ -236,6 +252,7 @@
         height: 0; } }
   .related-items-view.related-items-view-above {
     padding-bottom: 20px;
+    margin-bottom: 25px;
     flex-wrap: wrap; }
     .related-items-view.related-items-view-above:after {
       content: "";
@@ -274,10 +291,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
   background: #e8f1f3;
   padding: 20px 0; }
+  .main-page.loading {
+    justify-content: center; }
   @media only screen and (max-width: 1024px) {
     .main-page {
       justify-content: flex-start; } }
@@ -446,3 +464,34 @@
 
 body {
   direction: rtl; }
+
+.header {
+  display: flex;
+  width: 90%;
+  flex: none;
+  padding: 25px;
+  margin-bottom: 40px; }
+  @media only screen and (max-width: 767px) {
+    .header {
+      justify-content: center; } }
+  .header .refresh-button {
+    position: relative;
+    width: auto;
+    padding: 10px 10px 10px 45px;
+    font-size: 150%;
+    background: transparent;
+    border: 3px solid #000000; }
+    .header .refresh-button:before {
+      content: "";
+      display: block;
+      background: url("/statics/img/refresh.svg") no-repeat center center;
+      background-size: 30px 30px;
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translate(0, -50%); }
+    .header .refresh-button:hover {
+      cursor: pointer;
+      transform: scale(1.1); }

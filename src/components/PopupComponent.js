@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, UPDATE, PHONE, DELETE, ADD_GROUP, ADD_PERSON} from "../constants/popupTypes";
-import { Field } from 'redux-form';
+import {MESSAGE, UPDATE_PERSON, UPDATE_GROUP, PHONE, DELETE, ADD_GROUP, ADD_PERSON} from "../constants/popupTypes";
 import {
     DELETE_GROUP_REQUEST,
     DELETE_PERSON_REQUEST,
@@ -12,273 +11,84 @@ import {
     ADD_GROUP_REQUEST,
     ADD_PERSON_REQUEST
 } from "../constants/actionTypes";
-import { filePath } from "../constants/api";
+
+import AddGroupForm from "./popup-forms/AddGroupForm";
+import PhoneForm from "./popup-forms/PhoneForm";
+import MessageForm from "./popup-forms/MessageForm";
+import UpdatePersonForm from "./popup-forms/UpdatePersonForm";
+import UpdateGroupForm from "./popup-forms/UpdateGroupForm";
+import DeleteForm from "./popup-forms/DeleteForm";
+import AddPersonForm from "./popup-forms/AddPersonForm";
 
 class PopupComponent extends Component {
 
     renderForm = () => {
 
-        const { type } = this.props;
+        const { type, group, person, handleSubmit, handleClose, uploadImage, image } = this.props;
 
         switch(type) {
 
             case MESSAGE:
-                return this.renderMessageForm();
+                return <MessageForm
+                            group={group}
+                            person={person}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}/>;
 
-            case UPDATE:
-                return this.renderUpdateForm();
+            case UPDATE_GROUP:
+                return <UpdateGroupForm
+                            group={group}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}/>;
+
+            case UPDATE_PERSON:
+                return <UpdatePersonForm
+                            person={person}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}
+                            uploadImage={uploadImage}
+                            image={image}/>;
 
             case PHONE:
-                return this.renderPhoneForm();
+                return <PhoneForm
+                            person={person}
+                            handleClose={handleClose}/>;
 
             case DELETE:
-                return this.renderDeleteForm();
+                return <DeleteForm
+                            person={person}
+                            group={group}
+                            handleClose={handleClose}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                        />;
 
             case ADD_GROUP:
-                return this.renderAddGroupForm();
+                return <AddGroupForm
+                            group={group}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}/>;
 
             case ADD_PERSON:
-                return this.renderAddPersonForm();
+                return <AddPersonForm
+                            person={person}
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}
+                            uploadImage={uploadImage}
+                            image={image}/>
 
             default:
                 return null;
         }
     }
 
-    renderMessageForm = () => {
-
-        const { group, person, handleClose, handleSubmit, pristine, submitting } = this.props;
-        const ACTION_TYPE = person ? MESSAGE_PERSON_REQUEST : MESSAGE_GROUP_REQUEST;
-        const fieldName = person ? "personMessage" : "groupMessage";
-        const messageName = person ? person.name : group.groupName;
-
-        return (
-          <form className="form message-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ACTION_TYPE))}>
-              <button className="button-close" onClick={handleClose}></button>
-
-              <div className="form-row">
-                  <label htmlFor="message" className="field-label">הודעה אל {messageName}</label>
-                  <Field name={fieldName} component="textarea" className="form-field textarea-field"></Field>
-              </div>
-
-              <div className="form-row">
-                  <button type="submit" className="button-submit" disabled={pristine || submitting}>שליחה</button>
-              </div>
-
-          </form>
-        );
-    }
-
-    renderAddGroupForm = () => {
-
-        const { group, handleClose, handleSubmit, pristine, submitting, image } = this.props;
-
-            return (
-                <form className="form add-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ADD_GROUP_REQUEST))}>
-                    <button className="button-close" onClick={handleClose}></button>
-
-                    <div className="form-row">
-                        <label htmlFor="name" className="field-label">Group Name</label>
-                        <Field component="input" type="text" name="name" className="form-field" />
-                    </div>
-
-                    <div className="form-row">
-                        <label htmlFor="parentGroupId" className="field-label">Parent Group ID (optional)</label>
-                        <Field component="input" type="text" name="parentGroupId" className="form-field" />
-                    </div>
-
-
-                    <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={pristine || submitting}>Add Group</button>
-                    </div>
-
-                </form>
-            );
-    }
-
-    renderAddPersonForm = () => {
-
-        const { person, handleClose, handleSubmit, pristine, submitting, image } = this.props;
-
-        return (
-            <form className="form add-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ADD_PERSON_REQUEST))}>
-                <button className="button-close" onClick={handleClose}></button>
-
-                <div className="form-row">
-                    <label htmlFor="groupId" className="field-label">Group id</label>
-                    <Field component="input" type="text" name="groupId" className="form-field"/>
-                </div>
-
-                <div className="form-row">
-                    <label htmlFor="name" className="field-label">שם פרטי:</label>
-                    <Field component="input" type="text" name="name" className="form-field"/>
-                </div>
-
-                <div className="form-row">
-                    <label htmlFor="surname" className="field-label">שם משפחה:</label>
-                    <Field component="input" type="text" name="surname" className="form-field"/>
-                </div>
-
-                <div className="form-row">
-                    <label htmlFor="email" className="field-label">אימייל:</label>
-                    <Field component="input" type="email" name="email"   className="form-field"/>
-                </div>
-
-                <div className="form-row">
-                    <label htmlFor="cellphone" className="field-label">טלפון נייד:</label>
-                    <Field component="input" type="phone" name="cellphone"  className="form-field"/>
-                </div>
-
-                <div className="form-row form-image-row">
-                    <label htmlFor="picture">
-                            <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
-                    </label>
-                    <label htmlFor="picture" className="picture-label">בחר תמונה</label>
-                    <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
-                </div>
-
-                <div className="form-row">
-                    <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכון</button>
-                </div>
-
-            </form>
-        );
-    }
-
-    renderDeleteForm = () => {
-        const { group, person, handleClose } = this.props;
-        const ACTION_TYPE = person ? DELETE_PERSON_REQUEST : DELETE_GROUP_REQUEST;
-        const message = person ? "Are you sure you want to delete this person?" : "Are you sure you want to delete this group?";
-        const id = person ? person.id : group.groupId;
-
-        return (
-          <div className="form delete-form">
-              <button className="button-close" onClick={handleClose}></button>
-              <div className="form-row">
-                  {message}
-              </div>
-              <div className="form-row">
-                  <button className="button-submit" onClick={() => this.handleSubmit(id, ACTION_TYPE)}>YES</button>
-                  <button className="button-cancel" onClick={handleClose}>NO</button>
-              </div>
-          </div>
-        );
-    }
-
-
-    handleUploadImage = () => {
-        let image = document.getElementById('picture').files[0];
-        this.props.uploadImage(image);
-    }
-
-    renderUpdateForm = () => {
-
-        const { group, person, handleClose, handleSubmit, pristine, submitting, image } = this.props;
-
-        if (group) {
-            return (
-                <form className="form update-form" onSubmit={handleSubmit(values => this.handleSubmit(values, UPDATE_GROUP_REQUEST))}>
-                    <button className="button-close" onClick={handleClose}></button>
-
-                    <div className="form-row">
-                        <label htmlFor="groupName" className="field-label">שם הקבוצה</label>
-                        <Field component="input" type="text" name="groupName" className="form-field" />
-                    </div>
-
-                    <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={pristine || submitting}>עדכון</button>
-                    </div>
-
-                </form>
-            );
-        } else if (person) {
-            return (
-                    <form className="form update-form" onSubmit={handleSubmit(values => this.handleSubmit(values, UPDATE_PERSON_REQUEST))}>
-                        <button className="button-close" onClick={handleClose}></button>
-
-                        <div className="form-row">
-                            <label htmlFor="name" className="field-label">שם פרטי:</label>
-                            <Field component="input" type="text" name="name" className="form-field"/>
-                        </div>
-
-                        <div className="form-row">
-                            <label htmlFor="surname" className="field-label">שם משפחה:</label>
-                            <Field component="input" type="text" name="surname" className="form-field"/>
-                        </div>
-
-                        <div className="form-row">
-                            <label htmlFor="email" className="field-label">אימייל:</label>
-                            <Field component="input" type="email" name="email"   className="form-field"/>
-                        </div>
-
-                        <div className="form-row">
-                            <label htmlFor="cellphone" className="field-label">טלפון נייד:</label>
-                            <Field component="input" type="phone" name="cellphone"  className="form-field"/>
-                        </div>
-
-                        <div className="form-row form-image-row">
-                            <label htmlFor="picture">
-                                {person.picSource ?
-                                    <img src={`${filePath}${person.picSource}`} alt="User Avatar" className="form-image"/> :
-                                    <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>}
-                            </label>
-                            <label htmlFor="picture" className="picture-label">בחר תמונה</label>
-                            <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
-                        </div>
-
-                        <div className="form-row">
-                            <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכון</button>
-                        </div>
-
-                    </form>
-                );
-        }
-    }
-
-    copyToClipboard = (str) => {
-        const el = document.createElement('textarea');
-        el.value = str;
-        el.setAttribute('readonly', '');
-        el.style.position = 'absolute';
-        el.style.left = '-9999px';
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-    };
-
-    renderPhoneForm = () => {
-
-        const { person, handleClose } = this.props;
-
-        this.copyToClipboard(person.cellphone);
-
-        return (
-          <div className="form phone-form">
-
-              <div className="form-row">
-                  <div className="form-text">
-                      {person.cellphone}
-                  </div>
-              </div>
-
-              <div className="form-row">
-                  <div className="form-text">
-                      המספר הועתק ללוח העריכה
-                  </div>
-              </div>
-
-              <div className="form-row">
-                  <button onClick={handleClose} className="button-submit">סגירה</button>
-              </div>
-
-          </div>
-        );
-    }
-
 
     handleSubmit = (values, ACTION_TYPE) => {
-
 
         const {
             reset,
@@ -320,7 +130,7 @@ class PopupComponent extends Component {
                 break;
 
             case ADD_PERSON_REQUEST:
-                
+
                 addPerson({...values, pic: image.name, groupId: group.id });
                 break;
 

@@ -1,5 +1,6 @@
 export const MESSAGE = 'MESSAGE';
-export const UPDATE = 'UPDATE';
+export const UPDATE_PERSON = 'UPDATE_PERSON';
+export const UPDATE_GROUP = 'UPDATE_GROUP';
 export const PHONE = 'PHONE';
 export const DELETE = 'DELETE';
 export const ADD_GROUP = 'ADD_GROUP';

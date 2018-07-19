@@ -1,23 +1,30 @@
 .wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  position: relative; }
 
 .actions {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: -50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 10px; }
+  @media only screen and (max-width: 767px) {
+    .actions {
+      left: 0px; } }
   .actions .add-group, .actions .relate-people-group, .actions .delete-group, .actions .add-people {
     display: block;
     height: 30px;
-    width: 30px; }
+    width: 30px;
+    margin-top: 5px; }
     .actions .add-group:hover, .actions .relate-people-group:hover, .actions .delete-group:hover, .actions .add-people:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .actions .add-group:not(:first-child), .actions .relate-people-group:not(:first-child), .actions .delete-group:not(:first-child), .actions .add-people:not(:first-child) {
-      margin-left: 5px; }
     .actions .add-group.disabled:hover, .actions .relate-people-group.disabled:hover, .actions .delete-group.disabled:hover, .actions .add-people.disabled:hover {
       cursor: not-allowed;
       transform: none; }
