@@ -19,7 +19,20 @@ import {
     MESSAGE_GROUP_FAILURE,
     UPLOAD_IMAGE_REQUEST,
     UPLOAD_IMAGE_SUCCESS,
-    UPLOAD_IMAGE_FAILURE, RESET_POPUP_STATE
+    UPLOAD_IMAGE_FAILURE,
+    RESET_POPUP_STATE,
+    DELETE_GROUP_REQUEST,
+    DELETE_GROUP_SUCCESS,
+    DELETE_GROUP_FAILURE,
+    DELETE_PERSON_REQUEST,
+    DELETE_PERSON_SUCCESS,
+    DELETE_PERSON_FAILURE,
+    ADD_GROUP_REQUEST,
+    ADD_GROUP_SUCCESS,
+    ADD_GROUP_FAILURE,
+    ADD_PERSON_REQUEST,
+    ADD_PERSON_SUCCESS,
+    ADD_PERSON_FAILURE
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -306,3 +319,150 @@ export const resetPopupState = () => {
         })
     }
 }
+
+export const deleteGroup = (id) => {
+    return (dispatch) => {
+
+        dispatch({
+            type: DELETE_GROUP_REQUEST
+        });
+
+        let bodyFormData = new FormData();
+
+        bodyFormData.set('formName', 'deleteGroup');
+        bodyFormData.set('groupId', id);
+
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                dispatch({
+                    type: DELETE_GROUP_SUCCESS,
+                    payload: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: DELETE_GROUP_FAILURE,
+                    error: response.error
+                })
+            });
+    }
+}
+
+export const deletePerson = (id) => {
+    return (dispatch) => {
+
+        dispatch({
+            type: DELETE_PERSON_REQUEST
+        });
+
+        let bodyFormData = new FormData();
+
+        bodyFormData.set('formName', 'deletePeople');
+        bodyFormData.set('peopleId', id);
+
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                dispatch({
+                    type: DELETE_PERSON_SUCCESS,
+                    payload: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: DELETE_PERSON_FAILURE,
+                    error: response.error
+                })
+            });
+    }
+}
+
+
+export const addGroup = (values) => {
+    return (dispatch) => {
+
+        dispatch({
+            type: ADD_GROUP_REQUEST
+        });
+
+        let bodyFormData = new FormData();
+        const { name, parentGroupId } = values;
+
+        bodyFormData.set('formName', 'addGroup');
+        bodyFormData.set('name', name);
+        if (parentGroupId) bodyFormData.set('parentGroupId', parentGroupId);
+
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                dispatch({
+                    type: ADD_GROUP_SUCCESS,
+                    payload: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: ADD_GROUP_FAILURE,
+                    error: response.error
+                })
+            });
+    }
+}
+
+
+export const addPerson = (values) => {
+    return (dispatch) => {
+
+        console.log(values);
+        dispatch({
+            type: ADD_PERSON_REQUEST
+        });
+
+        let bodyFormData = new FormData();
+        const { name, surname, cellphone, email, pic, groupId  } = values;
+
+        bodyFormData.set('formName', 'addPeople');
+        bodyFormData.set('groupId', groupId);
+        bodyFormData.set('name', name);
+        bodyFormData.set('surname', surname);
+        bodyFormData.set('email', email);
+        bodyFormData.set('cellphone', cellphone);
+        bodyFormData.set('pic', pic)
+
+        for (var pair of bodyFormData.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]);
+        }
+        // axios({
+        //     method: 'post',
+        //     url: serverUrl,
+        //     data: bodyFormData,
+        //     config: { headers: {'Content-Type': 'multipart/form-data' }}
+        // })
+        //     .then(response => {
+        //         dispatch({
+        //             type: ADD_PERSON_SUCCESS,
+        //             payload: response.data ? response.data : response.statusText
+        //         })
+        //     })
+        //     .catch(response => {
+        //         dispatch({
+        //             type: ADD_PERSON_FAILURE,
+        //             error: response.error
+        //         })
+        //     });
+    }
+}
+

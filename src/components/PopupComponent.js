@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { MESSAGE, UPDATE, PHONE } from "../constants/popupTypes";
+import {MESSAGE, UPDATE, PHONE, DELETE, ADD_GROUP, ADD_PERSON} from "../constants/popupTypes";
 import { Field } from 'redux-form';
 import {
+    DELETE_GROUP_REQUEST,
+    DELETE_PERSON_REQUEST,
     MESSAGE_GROUP_REQUEST,
     MESSAGE_PERSON_REQUEST,
     UPDATE_GROUP_REQUEST,
-    UPDATE_PERSON_REQUEST
+    UPDATE_PERSON_REQUEST,
+    ADD_GROUP_REQUEST,
+    ADD_PERSON_REQUEST
 } from "../constants/actionTypes";
-import {filePath, serverUrl} from "../constants/api";
+import { filePath } from "../constants/api";
 
 class PopupComponent extends Component {
 
@@ -26,6 +30,15 @@ class PopupComponent extends Component {
 
             case PHONE:
                 return this.renderPhoneForm();
+
+            case DELETE:
+                return this.renderDeleteForm();
+
+            case ADD_GROUP:
+                return this.renderAddGroupForm();
+
+            case ADD_PERSON:
+                return this.renderAddPersonForm();
 
             default:
                 return null;
@@ -53,6 +66,102 @@ class PopupComponent extends Component {
               </div>
 
           </form>
+        );
+    }
+
+    renderAddGroupForm = () => {
+
+        const { group, handleClose, handleSubmit, pristine, submitting, image } = this.props;
+
+            return (
+                <form className="form add-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ADD_GROUP_REQUEST))}>
+                    <button className="button-close" onClick={handleClose}></button>
+
+                    <div className="form-row">
+                        <label htmlFor="name" className="field-label">Group Name</label>
+                        <Field component="input" type="text" name="name" className="form-field" />
+                    </div>
+
+                    <div className="form-row">
+                        <label htmlFor="parentGroupId" className="field-label">Parent Group ID (optional)</label>
+                        <Field component="input" type="text" name="parentGroupId" className="form-field" />
+                    </div>
+
+
+                    <div className="form-row">
+                        <button type="submit" className="button-submit" disabled={pristine || submitting}>Add Group</button>
+                    </div>
+
+                </form>
+            );
+    }
+
+    renderAddPersonForm = () => {
+
+        const { person, handleClose, handleSubmit, pristine, submitting, image } = this.props;
+
+        return (
+            <form className="form add-form" onSubmit={handleSubmit(values => this.handleSubmit(values, ADD_PERSON_REQUEST))}>
+                <button className="button-close" onClick={handleClose}></button>
+
+                <div className="form-row">
+                    <label htmlFor="groupId" className="field-label">Group id</label>
+                    <Field component="input" type="text" name="groupId" className="form-field"/>
+                </div>
+
+                <div className="form-row">
+                    <label htmlFor="name" className="field-label">שם פרטי:</label>
+                    <Field component="input" type="text" name="name" className="form-field"/>
+                </div>
+
+                <div className="form-row">
+                    <label htmlFor="surname" className="field-label">שם משפחה:</label>
+                    <Field component="input" type="text" name="surname" className="form-field"/>
+                </div>
+
+                <div className="form-row">
+                    <label htmlFor="email" className="field-label">אימייל:</label>
+                    <Field component="input" type="email" name="email"   className="form-field"/>
+                </div>
+
+                <div className="form-row">
+                    <label htmlFor="cellphone" className="field-label">טלפון נייד:</label>
+                    <Field component="input" type="phone" name="cellphone"  className="form-field"/>
+                </div>
+
+                <div className="form-row form-image-row">
+                    <label htmlFor="picture">
+                            <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
+                    </label>
+                    <label htmlFor="picture" className="picture-label">בחר תמונה</label>
+                    <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
+                </div>
+
+                <div className="form-row">
+                    <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכון</button>
+                </div>
+
+            </form>
+        );
+    }
+
+    renderDeleteForm = () => {
+        const { group, person, handleClose } = this.props;
+        const ACTION_TYPE = person ? DELETE_PERSON_REQUEST : DELETE_GROUP_REQUEST;
+        const message = person ? "Are you sure you want to delete this person?" : "Are you sure you want to delete this group?";
+        const id = person ? person.id : group.groupId;
+
+        return (
+          <div className="form delete-form">
+              <button className="button-close" onClick={handleClose}></button>
+              <div className="form-row">
+                  {message}
+              </div>
+              <div className="form-row">
+                  <button className="button-submit" onClick={() => this.handleSubmit(id, ACTION_TYPE)}>YES</button>
+                  <button className="button-cancel" onClick={handleClose}>NO</button>
+              </div>
+          </div>
         );
     }
 
@@ -170,8 +279,20 @@ class PopupComponent extends Component {
 
     handleSubmit = (values, ACTION_TYPE) => {
 
-        const { reset, messagePerson, messageGroup, updatePerson, updateGroup, person, group, image } = this.props;
-        console.log('IMAGE', image);
+
+        const {
+            reset,
+            messagePerson,
+            messageGroup,
+            updatePerson,
+            updateGroup,
+            deletePerson,
+            deleteGroup,
+            addGroup,
+            addPerson,
+            person,
+            group,
+            image } = this.props;
 
         switch(ACTION_TYPE) {
             case MESSAGE_PERSON_REQUEST:
@@ -183,13 +304,28 @@ class PopupComponent extends Component {
                 break;
 
             case UPDATE_PERSON_REQUEST:
-                let updatedValues = {...values, picture: image.name };
-
-                updatePerson(person.id, updatedValues);
+                updatePerson(person.id, {...values, picture: image.name });
                 break;
 
             case UPDATE_GROUP_REQUEST:
                 updateGroup(group.id, values.groupName);
+                break;
+
+            case DELETE_GROUP_REQUEST:
+                deleteGroup(group.id);
+                break;
+
+            case DELETE_PERSON_REQUEST:
+                deletePerson(person.id);
+                break;
+
+            case ADD_PERSON_REQUEST:
+                
+                addPerson({...values, pic: image.name, groupId: group.id });
+                break;
+
+            case ADD_GROUP_REQUEST:
+                addGroup(values);
                 break;
 
             default:

@@ -1,3 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; }
+  .actions .relate-people-people, .actions .delete-people {
+    display: block;
+    height: 30px;
+    width: 30px; }
+    .actions .relate-people-people:hover, .actions .delete-people:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+    .actions .relate-people-people:not(:first-child), .actions .delete-people:not(:first-child) {
+      margin-left: 5px; }
+    .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover {
+      cursor: not-allowed;
+      transform: none; }
+  .actions .relate-people-people {
+    background: url("/statics/img/connect_icon_small.png") no-repeat center center; }
+  .actions .delete-people {
+    background: url("/statics/img/delete_icon_small.png") no-repeat center center; }
+
 .person {
   box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
   display: flex;
@@ -14,29 +42,12 @@
   .person.person-full-representation {
     width: 300px;
     font-size: 150%; }
-  .person .person-image-view {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: #5dbb38;
+  .person .person-image {
+    margin: 0;
+    height: 70px;
     border-radius: 12px;
-    min-width: 80px;
-    height: 80px; }
-    .person .person-image-view:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: 7px solid #5dbb38;
-      transform: translate(-100%, 0); }
-    .person .person-image-view .person-image {
-      margin: 0;
-      height: 70px;
-      border-radius: 12px;
-      width: auto;
-      object-fit: contain; }
+    width: auto;
+    object-fit: contain; }
   .person .person-info {
     display: flex;
     flex-direction: column;

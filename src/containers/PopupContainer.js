@@ -7,7 +7,11 @@ import {
     updatePerson,
     updateGroup,
     uploadImage,
-    resetPopupState
+    resetPopupState,
+    deleteGroup,
+    deletePerson,
+    addGroup,
+    addPerson
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -36,6 +40,18 @@ const mapDispatchToProps = (dispatch) => {
         },
         resetPopupState: () => {
             dispatch(resetPopupState())
+        },
+        deleteGroup: (id) => {
+            dispatch(deleteGroup(id))
+        },
+        deletePerson: (id) => {
+            dispatch(deletePerson(id))
+        },
+        addGroup: (values) => {
+            dispatch(addGroup(values))
+        },
+        addPerson: (values) => {
+            dispatch(addPerson(values))
         }
     }
 };

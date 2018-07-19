@@ -1,3 +1,31 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; }
+  .actions .relate-people-people, .actions .delete-people {
+    display: block;
+    height: 30px;
+    width: 30px; }
+    .actions .relate-people-people:hover, .actions .delete-people:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+    .actions .relate-people-people:not(:first-child), .actions .delete-people:not(:first-child) {
+      margin-left: 5px; }
+    .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover {
+      cursor: not-allowed;
+      transform: none; }
+  .actions .relate-people-people {
+    background: url("/statics/img/connect_icon_small.png") no-repeat center center; }
+  .actions .delete-people {
+    background: url("/statics/img/delete_icon_small.png") no-repeat center center; }
+
 .person {
   box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
   display: flex;
@@ -14,29 +42,12 @@
   .person.person-full-representation {
     width: 300px;
     font-size: 150%; }
-  .person .person-image-view {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: #5dbb38;
+  .person .person-image {
+    margin: 0;
+    height: 70px;
     border-radius: 12px;
-    min-width: 80px;
-    height: 80px; }
-    .person .person-image-view:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: 7px solid #5dbb38;
-      transform: translate(-100%, 0); }
-    .person .person-image-view .person-image {
-      margin: 0;
-      height: 70px;
-      border-radius: 12px;
-      width: auto;
-      object-fit: contain; }
+    width: auto;
+    object-fit: contain; }
   .person .person-info {
     display: flex;
     flex-direction: column;
@@ -80,6 +91,38 @@
     .person .person-actions .edit {
       background: url("/statics/img/edit_md_icon.png") no-repeat center center; }
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px; }
+  .actions .add-group, .actions .relate-people-group, .actions .delete-group, .actions .add-people {
+    display: block;
+    height: 30px;
+    width: 30px; }
+    .actions .add-group:hover, .actions .relate-people-group:hover, .actions .delete-group:hover, .actions .add-people:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+    .actions .add-group:not(:first-child), .actions .relate-people-group:not(:first-child), .actions .delete-group:not(:first-child), .actions .add-people:not(:first-child) {
+      margin-left: 5px; }
+    .actions .add-group.disabled:hover, .actions .relate-people-group.disabled:hover, .actions .delete-group.disabled:hover, .actions .add-people.disabled:hover {
+      cursor: not-allowed;
+      transform: none; }
+  .actions .add-group {
+    background: url("/statics/img/add_icon_small.png") no-repeat center center; }
+  .actions .relate-people-group {
+    background: url("/statics/img/connect_icon_small.png") no-repeat center center; }
+  .actions .delete-group {
+    background: url("/statics/img/delete_icon_small.png") no-repeat center center; }
+  .actions .add-people {
+    background: url("/statics/img/add_people_small.png") no-repeat center center; }
+
 .group {
   box-shadow: 2px 2px 5px -1px rgba(0, 0, 0, 0.75);
   display: flex;
@@ -96,23 +139,6 @@
   .group.group-full-representation {
     width: 300px;
     font-size: 150%; }
-  .group .group-image-view {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: #3869bb;
-    border-radius: 12px;
-    min-width: 80px;
-    height: 80px; }
-    .group .group-image-view:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: 7px solid #3869bb;
-      transform: translate(-100%, 0); }
   .group .group-info {
     display: flex;
     flex-direction: column;
@@ -280,6 +306,25 @@
     flex-direction: column;
     align-items: flex-end;
     position: relative; }
+    .popup .form.delete-form .form-row {
+      display: flex;
+      flex-direction: row;
+      padding: 5px; }
+    .popup .form.delete-form .button-cancel {
+      background: #bb3838;
+      color: #ffffff;
+      max-width: 120px;
+      font-size: 16px;
+      padding: 5px 15px;
+      border-radius: 4px;
+      outline: none;
+      border: none;
+      margin: 5px; }
+      .popup .form.delete-form .button-cancel.upload-request {
+        background: #808080; }
+      .popup .form.delete-form .button-cancel:hover {
+        cursor: pointer;
+        background: #8B0000; }
     .popup .form .button-close {
       position: absolute;
       top: 0;

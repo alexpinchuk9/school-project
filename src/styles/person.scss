@@ -1,5 +1,42 @@
 @import 'variables.scss';
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  .relate-people-people, .delete-people {
+    display: block;
+    height: 30px;
+    width: 30px;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+    &:not(:first-child) {
+      margin-left: 5px;
+    }
+    &.disabled {
+      &:hover {
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+  .relate-people-people {
+    background: url("/statics/img/connect_icon_small.png") no-repeat center center;
+  }
+  .delete-people {
+    background: url("/statics/img/delete_icon_small.png") no-repeat center center;
+  }
+}
 .person {
   box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
   display: flex;
@@ -17,32 +54,14 @@
     width: 300px;
     font-size: 150%;
   }
-  .person-image-view {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background: $lightgreen;
+
+  .person-image {
+    margin: 0;
+    height: 70px;
     border-radius: 12px;
-    min-width: 80px;
-    height: 80px;
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      border-top: 7px solid transparent;
-      border-bottom: 7px solid transparent;
-      border-right: 7px solid $lightgreen;
-      transform: translate(-100%, 0);
-    }
-    .person-image {
-      margin: 0;
-      height: 70px;
-      border-radius: 12px;
-      width: auto;
-      object-fit: contain;
-     // box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
-    }
+    width: auto;
+    object-fit: contain;
+   // box-shadow: 2px 2px 5px -1px rgba(0,0,0,0.75);
   }
   .person-info {
     display: flex;
