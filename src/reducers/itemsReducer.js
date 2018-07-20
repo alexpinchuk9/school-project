@@ -39,7 +39,7 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 error: null,
                 selectedItem: action.payload.groups[0],
-                shortcutItems: shortcutItems
+                shortcutItems: [...shortcutItems, action.payload.groups[0]]
             };
 
         case GET_ITEMS_FAILURE:
