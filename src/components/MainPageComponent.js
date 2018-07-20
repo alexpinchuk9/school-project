@@ -138,9 +138,9 @@ class MainPageComponent extends Component {
     }
 
     render() {
-        const {  loading, error } = this.props.items;
-        const { selectedItem } = this.props.items;
-        const { refreshItems } = this.props;
+        const {  loading, error, selectedItem, previousSelectedItem, shortcutItems } = this.props.items;
+
+        const { refreshItems, goBack, selectItem } = this.props;
 
         if (loading) {
             return (
@@ -159,7 +159,14 @@ class MainPageComponent extends Component {
 
         return (
             <div className="main-page">
-                <HeaderComponent onRefresh={() => refreshItems(selectedItem)}></HeaderComponent>
+                <HeaderComponent
+                    onRefresh={() => refreshItems(selectedItem)}
+                    onGoBack={goBack}
+                    previousItem={previousSelectedItem}
+                    shortcutItems={shortcutItems}
+                    selectItem={selectItem}
+                >
+                </HeaderComponent>
                 {this.renderRelatedItemsAbove()}
                 {this.renderSelectedItem()}
                 {this.renderRelatedItemsBelow()}

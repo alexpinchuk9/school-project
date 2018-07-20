@@ -35,7 +35,8 @@ import {
     ADD_PERSON_FAILURE,
     REFRESH_ITEMS_REQUEST,
     REFRESH_ITEMS_SUCCESS,
-    REFRESH_ITEMS_FAILURE
+    REFRESH_ITEMS_FAILURE,
+    GO_BACK
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -466,6 +467,7 @@ export const addPerson = (values) => {
 }
 
 export const refreshItems = (selectedItem) => {
+
     return (dispatch) => {
 
         dispatch({
@@ -501,6 +503,16 @@ export const refreshItems = (selectedItem) => {
                     }
                 })
             });
+    }
+}
+
+export const goBack = () => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: GO_BACK
+        })
     }
 }
 

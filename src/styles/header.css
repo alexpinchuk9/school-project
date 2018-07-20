@@ -1,5 +1,7 @@
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   flex: none;
   padding: 25px;
@@ -13,7 +15,8 @@
     padding: 10px 10px 10px 45px;
     font-size: 150%;
     background: transparent;
-    border: 3px solid #000000; }
+    border: 3px solid #000000;
+    margin-left: 20px; }
     .header .refresh-button:before {
       content: "";
       display: block;
@@ -28,3 +31,41 @@
     .header .refresh-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
+  .header .go-back-button {
+    position: relative;
+    width: auto;
+    padding: 10px 10px 10px 45px;
+    font-size: 150%;
+    background: transparent;
+    border: 3px solid #000000; }
+    .header .go-back-button:before {
+      content: "";
+      display: block;
+      background: url("/statics/img/go_back_icon.svg") no-repeat center center;
+      background-size: 30px 30px;
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translate(0, -50%); }
+    .header .go-back-button:hover {
+      cursor: pointer;
+      transform: scale(1.1); }
+    .header .go-back-button.disabled:hover {
+      cursor: not-allowed;
+      transform: none; }
+  .header .shortcut-button {
+    border: none;
+    background: transparent;
+    font-size: 200%;
+    margin-right: 15px;
+    padding: 0 10px; }
+    .header .shortcut-button:not(:first-child) {
+      border-right: 2px solid #000000; }
+    .header .shortcut-button:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+      color: #bb3838; }
+    .header .shortcut-button:active, .header .shortcut-button:focus {
+      outline: none; }

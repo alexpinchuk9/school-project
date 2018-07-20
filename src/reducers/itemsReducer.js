@@ -2,14 +2,20 @@ import {
     GET_ITEMS_REQUEST,
     GET_ITEMS_SUCCESS,
     GET_ITEMS_FAILURE,
-    SELECT_ITEM, REFRESH_ITEMS_SUCCESS, REFRESH_ITEMS_REQUEST, REFRESH_ITEMS_FAILURE
+    SELECT_ITEM,
+    REFRESH_ITEMS_SUCCESS,
+    REFRESH_ITEMS_REQUEST,
+    REFRESH_ITEMS_FAILURE,
+    GO_BACK
 } from '../constants/actionTypes';
 
 const INITIAL_STATE = {
     items: {},
     selectedItem: null,
+    previousSelectedItem: null,
     loading: false,
-    error: null
+    error: null,
+    shortcutItems: []
 };
 
 const itemsReducer = (state = INITIAL_STATE, action) => {
@@ -19,18 +25,39 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
             return {...state, loading: true, error: null };
 
         case GET_ITEMS_SUCCESS:
-            return {...state, items: action.payload, loading: false, error: null, selectedItem: action.payload.groups[0]};
+
+            let shortcutItemsIds = action.payload.g2g
+                .filter(relation => relation.containerGroupId === "1")
+                .map(relation => relation.containedGroupId);
+
+            let shortcutItems = action.payload.groups
+                .filter(group => shortcutItemsIds.some(id => id === group.id));
+
+            return {
+                ...state,
+                items: action.payload,
+                loading: false,
+                error: null,
+                selectedItem: action.payload.groups[0],
+                shortcutItems: shortcutItems
+            };
 
         case GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};
 
         case SELECT_ITEM:
-            return {...state, selectedItem: action.payload};
+            return {
+                ...state,
+                previousSelectedItem:
+                state.selectedItem,
+                selectedItem: action.payload
+            };
 
         case REFRESH_ITEMS_REQUEST:
             return {...state, loading: true};
 
         case REFRESH_ITEMS_SUCCESS:
+
             let selectedItem = JSON.parse(localStorage.getItem("selectedItem"));
             let selectedItemId = selectedItem["id"];
             let selectedItemType = selectedItem["type"];
@@ -49,6 +76,13 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
         case REFRESH_ITEMS_FAILURE:
             return { ...state, loading: false };
+
+        case GO_BACK:
+            return {
+                ...state,
+                selectedItem: state.previousSelectedItem,
+                previousSelectedItem: state.selectedItem
+            };
 
         default:
             return state;
