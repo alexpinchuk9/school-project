@@ -1,38 +1,56 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import FaHome from 'react-icons/lib/fa/home';
+
+import SearchBarComponent from "./SearchBarComponent";
 
 class HeaderComponent extends Component {
 
-    renderShortcuts = () => {
-
-        const { shortcutItems,selectItem } = this.props;
-
-        return shortcutItems.map(item => <button
-                                            key={item.id}
-                                            className="shortcut-button"
-                                            onClick={() => selectItem(item)}>{item.groupName}</button>);
-    }
     render() {
 
-        const { onRefresh, onGoBack, previousItem } = this.props;
+        const {
+            onRefresh,
+            onGoBack,
+            previousParentItems,
+            items,
+            searchItems,
+            search,
+            resetSearchResults,
+            homeItem,
+            selectItem } = this.props;
 
-        const goBackButton = previousItem ?
-            <button className="go-back-button" onClick={onGoBack}>Go back</button> :
-            <button className="go-back-button disabled">Go back</button>;
+        const goBackButton = previousParentItems.length ?
+            <button className="go-back-button" onClick={onGoBack}></button> :
+            <button className="go-back-button disabled"></button>;
+
+        const homeButton = homeItem ?
+            <div className="shortcut-container" onClick={() => selectItem(homeItem)}>
+                <FaHome />
+                <button className="shortcut-button">
+                    {homeItem.groupName}
+                </button>
+            </div>
+            : null;
 
         return (
             <div className="header">
 
-                <div>
-                    <button className="refresh-button" onClick={onRefresh}>
-                        Refresh
-                    </button>
+                    {homeButton}
+
+                <SearchBarComponent
+                    items={items}
+                    searchItems={searchItems}
+                    search={search}
+                    selectItem={selectItem}
+                    resetSearchResults={resetSearchResults}
+                />
+
+                <div className="header-action-buttons">
+                    <button className="refresh-button" onClick={onRefresh}></button>
                     {goBackButton}
                 </div>
 
-                <div>
-                    {this.renderShortcuts()}
-                </div>
+
 
             </div>
         );

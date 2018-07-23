@@ -1,3 +1,6 @@
-body {
+@import 'variables.scss';
+
+body, html {
   direction: rtl;
+  background: $backgroundColor;
 }

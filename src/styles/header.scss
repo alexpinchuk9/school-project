@@ -4,12 +4,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   flex: none;
   padding: 25px;
-  margin-bottom: 40px;
+  position: fixed;
+  z-index: 2;
+  background: $backgroundColor;
+  box-shadow: 0 4px 2px -2px $grey;
   @media only screen and (max-width: 767px) {
     justify-content: center;
+  }
+  .header-action-buttons {
+    margin-left: 30px;
   }
   .refresh-button {
     position: relative;
@@ -17,8 +23,8 @@
     padding: 10px 10px 10px 45px;
     font-size: 150%;
     background: transparent;
-    border: 3px solid $black;
-    margin-left: 20px;
+    border: none;
+    outline: none;
     &:before {
       content: "";
       display: block;
@@ -42,7 +48,8 @@
     padding: 10px 10px 10px 45px;
     font-size: 150%;
     background: transparent;
-    border: 3px solid $black;
+    border: none;
+    outline: none;
     &:before {
       content: "";
       display: block;
@@ -66,22 +73,29 @@
       }
     }
   }
-  .shortcut-button {
-    border: none;
-    background: transparent;
-    font-size: 200%;
-    margin-right: 15px;
-    padding: 0 10px;
-    &:not(:first-child) {
-      border-right: 2px solid $black;
-    }
+  .shortcut-container {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
-      color: $red;
     }
-    &:active, &:focus {
-      outline: none;
+    .shortcut-button {
+      border: none;
+      background: transparent;
+      margin-right: 15px;
+      padding: 0 10px;
+      font-size: 40px;
+      &:hover {
+        cursor: pointer;
+      }
+      &:active, &:focus {
+        outline: none;
+      }
     }
+
   }
+
 }

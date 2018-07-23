@@ -2,21 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   flex: none;
   padding: 25px;
-  margin-bottom: 40px; }
+  position: fixed;
+  z-index: 2;
+  background: #e8f1f3;
+  box-shadow: 0 4px 2px -2px #808080; }
   @media only screen and (max-width: 767px) {
     .header {
       justify-content: center; } }
+  .header .header-action-buttons {
+    margin-left: 30px; }
   .header .refresh-button {
     position: relative;
     width: auto;
     padding: 10px 10px 10px 45px;
     font-size: 150%;
     background: transparent;
-    border: 3px solid #000000;
-    margin-left: 20px; }
+    border: none;
+    outline: none; }
     .header .refresh-button:before {
       content: "";
       display: block;
@@ -37,7 +42,8 @@
     padding: 10px 10px 10px 45px;
     font-size: 150%;
     background: transparent;
-    border: 3px solid #000000; }
+    border: none;
+    outline: none; }
     .header .go-back-button:before {
       content: "";
       display: block;
@@ -55,17 +61,21 @@
     .header .go-back-button.disabled:hover {
       cursor: not-allowed;
       transform: none; }
-  .header .shortcut-button {
-    border: none;
-    background: transparent;
-    font-size: 200%;
-    margin-right: 15px;
-    padding: 0 10px; }
-    .header .shortcut-button:not(:first-child) {
-      border-right: 2px solid #000000; }
-    .header .shortcut-button:hover {
+  .header .shortcut-container {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    margin-right: 30px; }
+    .header .shortcut-container:hover {
       cursor: pointer;
-      transform: scale(1.1);
-      color: #bb3838; }
-    .header .shortcut-button:active, .header .shortcut-button:focus {
-      outline: none; }
+      transform: scale(1.1); }
+    .header .shortcut-container .shortcut-button {
+      border: none;
+      background: transparent;
+      margin-right: 15px;
+      padding: 0 10px;
+      font-size: 40px; }
+      .header .shortcut-container .shortcut-button:hover {
+        cursor: pointer; }
+      .header .shortcut-container .shortcut-button:active, .header .shortcut-container .shortcut-button:focus {
+        outline: none; }

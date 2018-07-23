@@ -36,7 +36,9 @@ import {
     REFRESH_ITEMS_REQUEST,
     REFRESH_ITEMS_SUCCESS,
     REFRESH_ITEMS_FAILURE,
-    GO_BACK
+    GO_BACK,
+    SEARCH_ITEMS,
+    RESET_SEARCH_RESULTS
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -512,6 +514,28 @@ export const goBack = () => {
 
         dispatch({
             type: GO_BACK
+        })
+    }
+}
+
+export const searchItems = (query, items) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: SEARCH_ITEMS,
+            payload: query,
+            items: items
+        })
+    }
+}
+
+export const resetSearchResults = () => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: RESET_SEARCH_RESULTS
         })
     }
 }

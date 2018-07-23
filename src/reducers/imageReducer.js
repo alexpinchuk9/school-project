@@ -7,7 +7,9 @@ const INITIAL_STATE = {
 };
 
 const imageReducer = (state = INITIAL_STATE, action) => {
+
     switch(action.type) {
+
         case UPLOAD_IMAGE_REQUEST:
 
             return {...state, imageUploading: true};

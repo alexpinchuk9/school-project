@@ -1,2 +1,3 @@
-body {
-  direction: rtl; }
+body, html {
+  direction: rtl;
+  background: #e8f1f3; }

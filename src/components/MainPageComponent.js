@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { ClipLoader } from 'react-spinners';
+
+import filters from "../utils/filters";
+
 import SelectedItemViewComponent from "./SelectedItemViewComponent";
 import RelatedItemsViewComponent from "./RelatedItemsViewComponent";
 import HeaderComponent from "./HeaderComponent";
-import { ClipLoader } from 'react-spinners';
+
+
 
 class MainPageComponent extends Component {
+
     componentDidMount() {
         this.props.getItems();
     }
@@ -16,14 +22,7 @@ class MainPageComponent extends Component {
 
           if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
-              const groupsAboveIds = items.p2g
-                  .filter(relation => relation.peopleId === selectedItem.id)
-                  .map(relation => relation.groupId);
-
-
-              const groupsAbove = items.groups
-                  .filter(group => groupsAboveIds
-                      .some(groupAboveId => groupAboveId === group.id));
+              const groupsAbove = filters.filterContainerGroupsForPeople(items, selectedItem);
 
               return <RelatedItemsViewComponent
                                 groups={groupsAbove}
@@ -34,13 +33,7 @@ class MainPageComponent extends Component {
 
           } else if (selectedItem) {
 
-              const groupsAboveIds = items.g2g
-                  .filter(relation => relation.containedGroupId === selectedItem.id)
-                  .map(relation => relation.containerGroupId);
-
-              const groupsAbove = items.groups
-                  .filter(group => groupsAboveIds
-                      .some(groupAboveId => groupAboveId === group.id));
+              const groupsAbove = filters.filterContainerGroupsForGroup(items, selectedItem);
 
              return  <RelatedItemsViewComponent
                                 groups={groupsAbove}
@@ -57,31 +50,9 @@ class MainPageComponent extends Component {
 
         if (selectedItem && selectedItem.hasOwnProperty('surname')) {
 
-            const dependantPeopleIds = items.p2p
-                .filter(relation => relation.guardianId === selectedItem.id)
-                .map(relation => ({id: relation.peopleId}));
 
-            const dependantPeople = items.people
-                .filter(person => dependantPeopleIds
-                    .some(dependantPeopleId => dependantPeopleId.id === person.id));
-
-            const guardianPeopleIds = items.p2p
-                .filter(relation => relation.peopleId === selectedItem.id)
-                .map(relation => ({id: relation.guardianId, relation: relation.relation}));
-
-            const guardianPeople = items.people
-                .filter(person => guardianPeopleIds
-                    .some(guardianPeopleId => guardianPeopleId.id === person.id))
-                .map(person => {
-                    let result = {};
-                    guardianPeopleIds.map(guardianPeopleId => {
-                        if (person.id === guardianPeopleId.id) {
-                            result = {...person, relation: guardianPeopleId.relation}
-                        }
-                    });
-
-                    return result;
-                });
+            const dependantPeople = filters.filterDependantPeople(items, selectedItem);
+            const guardianPeople = filters.filterGuardianPeople(items, selectedItem);
 
             const peopleBelow = [...dependantPeople, ...guardianPeople];
 
@@ -94,31 +65,9 @@ class MainPageComponent extends Component {
 
         } else if (selectedItem) {
 
-            const peopleBelowIds = items.p2g
-                .filter(relation => relation.groupId === selectedItem.id)
-                .map(relation => ({id: relation.peopleId, relation: relation.relation}));
-            const groupsBelowIds = items.g2g
-                .filter(relation => relation.containerGroupId === selectedItem.id)
-                .map(relation => relation.containedGroupId);
 
-            const peopleBelow = items.people
-                .filter(person => peopleBelowIds
-                    .some(personBelowId => personBelowId.id === person.id))
-                    .map(person => {
-                    let result = {};
-                    peopleBelowIds.map(personBelowId => {
-                        if (person.id === personBelowId.id) {
-                            result = {...person, relation: personBelowId.relation}
-                        }
-                    });
-
-                    return result;
-                });
-
-
-            const groupsBelow = items.groups
-                .filter(group => groupsBelowIds
-                    .some(groupBelowId => groupBelowId === group.id));
+            const groupsBelow = filters.filterContainedGroups(items, selectedItem);
+            const peopleBelow = filters.filterContainedPeople(items, selectedItem);
 
            return <RelatedItemsViewComponent
                                 people={peopleBelow}
@@ -138,9 +87,22 @@ class MainPageComponent extends Component {
     }
 
     render() {
-        const {  loading, error, selectedItem, previousSelectedItem, shortcutItems } = this.props.items;
 
-        const { refreshItems, goBack, selectItem } = this.props;
+        const {
+            refreshItems,
+            goBack,
+            search,
+            searchItems,
+            selectItem,
+            resetSearchResults,
+            items: {
+                loading,
+                items,
+                error,
+                selectedItem,
+                previousParentItems,
+                homeItem }
+        } = this.props;
 
         if (loading) {
             return (
@@ -162,14 +124,19 @@ class MainPageComponent extends Component {
                 <HeaderComponent
                     onRefresh={() => refreshItems(selectedItem)}
                     onGoBack={goBack}
-                    previousItem={previousSelectedItem}
-                    shortcutItems={shortcutItems}
+                    previousParentItems={previousParentItems}
+                    homeItem={homeItem}
                     selectItem={selectItem}
-                >
-                </HeaderComponent>
-                {this.renderRelatedItemsAbove()}
-                {this.renderSelectedItem()}
-                {this.renderRelatedItemsBelow()}
+                    items={items}
+                    searchItems={searchItems}
+                    search={search}
+                    resetSearchResults={resetSearchResults}
+                />
+                <div className="items-container">
+                    {this.renderRelatedItemsAbove()}
+                    {this.renderSelectedItem()}
+                    {this.renderRelatedItemsBelow()}
+                </div>
             </div>
         );
     }

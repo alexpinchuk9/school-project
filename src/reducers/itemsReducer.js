@@ -9,16 +9,20 @@ import {
     GO_BACK
 } from '../constants/actionTypes';
 
+import filters from "../utils/filters";
+
 const INITIAL_STATE = {
     items: {},
     selectedItem: null,
+    previousParentItems: [],
     previousSelectedItem: null,
     loading: false,
     error: null,
-    shortcutItems: []
+    homeItem: null
 };
 
 const itemsReducer = (state = INITIAL_STATE, action) => {
+
     switch (action.type) {
 
         case GET_ITEMS_REQUEST:
@@ -26,32 +30,53 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
         case GET_ITEMS_SUCCESS:
 
-            let shortcutItemsIds = action.payload.g2g
-                .filter(relation => relation.containerGroupId === "1")
-                .map(relation => relation.containedGroupId);
-
-            let shortcutItems = action.payload.groups
-                .filter(group => shortcutItemsIds.some(id => id === group.id));
-
             return {
                 ...state,
                 items: action.payload,
                 loading: false,
                 error: null,
                 selectedItem: action.payload.groups[0],
-                shortcutItems: [...shortcutItems, action.payload.groups[0]]
+                previousSelectedItem: null,
+                homeItem: action.payload.groups[0]
             };
 
         case GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};
 
-        case SELECT_ITEM:
+        case SELECT_ITEM: {
+
+            const selectedItem = action.payload;
+            let newPreviousParentItems = [...state.previousParentItems];
+            const { items } = state;
+
+            if (selectedItem.hasOwnProperty('surname')) {
+
+                const dependantPeople = filters.filterDependantPeople(items, selectedItem);
+                const containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
+
+
+                if (containerGroups.some(group => group.id === state.selectedItem.id) ||
+                    dependantPeople.some(person => person.id === state.selectedItem.id)
+                ) {
+                    newPreviousParentItems.push(state.selectedItem);
+                }
+            } else if (state.previousSelectedItem) {
+
+                const containerGroups = filters.filterContainerGroupsForGroup(items, selectedItem);
+
+
+                if (containerGroups.some(group => group.id === state.selectedItem.id)) {
+                    newPreviousParentItems.push(state.selectedItem);
+                }
+            }
+
             return {
                 ...state,
-                previousSelectedItem:
-                state.selectedItem,
-                selectedItem: action.payload
+                previousSelectedItem: state.selectedItem,
+                selectedItem: action.payload,
+                previousParentItems: newPreviousParentItems
             };
+        }
 
         case REFRESH_ITEMS_REQUEST:
             return {...state, loading: true};
@@ -77,12 +102,24 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
         case REFRESH_ITEMS_FAILURE:
             return { ...state, loading: false };
 
-        case GO_BACK:
+        case GO_BACK: {
+
+            let newPreviousParentItems = [...state.previousParentItems];
+            let newSelectedItem = state.items.groups[0];
+
+            if(state.previousParentItems.length) {
+                newSelectedItem = state.previousParentItems[state.previousParentItems.length - 1];
+                newPreviousParentItems.pop();
+            }
+
+
             return {
                 ...state,
-                selectedItem: state.previousSelectedItem,
-                previousSelectedItem: state.selectedItem
+                selectedItem: newSelectedItem,
+                previousParentItems: newPreviousParentItems
             };
+
+        }
 
         default:
             return state;

@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 import MainPageComponent from '../components/MainPageComponent';
-import { getItems, selectItem, refreshItems, goBack } from '../actions';
+import { getItems, selectItem, refreshItems, goBack, searchItems, resetSearchResults } from '../actions';
 
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        popup: state.popup
+        popup: state.popup,
+        search: state.search
     };
 };
 
@@ -22,6 +23,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         goBack: () => {
             dispatch(goBack())
+        },
+        searchItems: (query, items) => {
+            dispatch(searchItems(query, items))
+        },
+        resetSearchResults: () => {
+            dispatch(resetSearchResults())
         }
     }
 };
