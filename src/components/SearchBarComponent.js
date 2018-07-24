@@ -16,7 +16,7 @@ class SearchBarComponent extends Component {
         }, () => {
             if (this.state.query) {
                 this.props.searchItems(this.state.query, this.props.items);
-                this.setState({ activeId: 1 })
+                this.setState({ activeId: 0 })
             } else this.props.resetSearchResults();
         });
     };
@@ -65,7 +65,9 @@ class SearchBarComponent extends Component {
         // this.setState({
         //     query: value
         // });
-        // this.setState((state,props) => ({ activeId: index}));
+
+        console.log(index);
+        this.setState((state,props) => ({ activeId: index}));
     }
 
     handleBlur = () => {
@@ -82,41 +84,56 @@ class SearchBarComponent extends Component {
        searchResults.classList.add('visible')
     };
 
+    handleArrowUpScroll = (newActiveId, results) => {
+
+        const searchResults = document.getElementsByClassName('search-result-list')[0];
+
+        if (newActiveId > 3 && newActiveId !== 0) searchResults.scrollTop += 40;
+        if (newActiveId === 0) searchResults.scrollTop = 0;
+    }
+
+    handleArrowDonwScroll = (newActiveId, results) => {
+
+        const searchResults = document.getElementsByClassName('search-result-list')[0];
+
+        if (newActiveId < results.length - 3) searchResults.scrollTop -= 40;
+        else if (newActiveId === results.length - 1) searchResults.scrollTop = 40 * results.length;
+    }
+
     handleKeyUp = (event) => {
 
-        // const { peopleResults, groupResults } = this.props.search;
-        //
-        // const results = [...peopleResults, ...groupResults];
-        //
-        // const { activeId } = this.state;
-        // const { selectItem } = this.props;
-        //
-        // let key = event.keyCode;
-        //
-        // switch (key) {
-        //
-        //     case 40: {
-        //         let newActiveId = activeId === results.length ? 1 : activeId + 1;
-        //
-        //         this.setState((state, props) => ({ activeId: newActiveId }));
-        //         break;
-        //     }
-        //
-        //
-        //     case 38: {
-        //         let newActiveId = activeId === results.length ? 1 : activeId - 1;
-        //
-        //         this.setState((state, props) => ({ activeId: newActiveId }));
-        //         break;
-        //     }
-        //
-        //     case 13: {
-        //         this.handleResultClick(results[activeId]);
-        //         break;
-        //     }
-        // }
+        const { peopleResults, groupResults } = this.props.search;
+        const results = [...peopleResults, ...groupResults];
+        const { activeId } = this.state;
+        let key = event.keyCode;
 
-        //console.log(activeId);
+
+        switch (key) {
+
+            case 40: {
+                let newActiveId = activeId === results.length - 1 ? 0 : activeId + 1;
+
+                this.handleArrowUpScroll(newActiveId, results);
+                this.setState((state, props) => ({ activeId: newActiveId }));
+                break;
+            }
+
+
+            case 38: {
+                let newActiveId = activeId === 0 ? results.length - 1 : activeId - 1;
+
+                this.handleArrowDonwScroll(newActiveId, results);
+                this.setState((state, props) => ({ activeId: newActiveId }));
+                break;
+            }
+
+            case 13: {
+                this.handleResultClick(results[activeId]);
+                break;
+            }
+        }
+
+        console.log(activeId);
 
     }
 

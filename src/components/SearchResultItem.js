@@ -5,12 +5,12 @@ class SearchResultItem extends Component {
 
     render() {
 
-        const { item, onClick, onMouseEnter } = this.props;
+        const { item, onClick, onMouseEnter, className } = this.props;
 
         const displayText = item.hasOwnProperty('surname') ? `${item.name} ${item.surname}` : item.groupName;
 
         return (
-            <div className="search-result-item" onClick={onClick} onMouseEnter={onMouseEnter}>
+            <div className={`search-result-item ${className}`} onClick={onClick} onMouseEnter={onMouseEnter}>
                 {displayText}
             </div>
         );

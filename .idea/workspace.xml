@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HeaderComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HeaderComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainPageComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPageComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchBarComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBarComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResultItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/itemsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/itemsReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/searchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/searchBar.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/styles/searchBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/searchBar.scss" afterDir="false" />
@@ -46,13 +42,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchBarComponent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SearchBarComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/SearchBarComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
+            <state relative-caret-position="96">
+              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
+                <marker date="1532418936117" expanded="true" signature="2941:3911" ph="..." />
               </folding>
             </state>
           </provider>
@@ -88,7 +85,7 @@
       <file leaf-file-name="header.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/header.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
+            <state relative-caret-position="195">
               <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
             </state>
           </provider>
@@ -115,11 +112,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchBar.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchBar.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/styles/searchBar.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+            <state relative-caret-position="300">
+              <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -127,8 +124,8 @@
       <file leaf-file-name="SearchResultItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/SearchResultItem.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="180">
+              <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -193,12 +190,12 @@
         <option value="$PROJECT_DIR$/src/reducers/searchReducer.js" />
         <option value="$PROJECT_DIR$/src/styles/header.scss" />
         <option value="$PROJECT_DIR$/src/reducers/imageReducer.js" />
-        <option value="$PROJECT_DIR$/src/styles/searchBar.scss" />
         <option value="$PROJECT_DIR$/src/reducers/itemsReducer.js" />
         <option value="$PROJECT_DIR$/src/components/MainPageComponent.js" />
         <option value="$PROJECT_DIR$/src/components/HeaderComponent.js" />
         <option value="$PROJECT_DIR$/src/components/SearchResultItem.js" />
         <option value="$PROJECT_DIR$/src/components/SearchBarComponent.js" />
+        <option value="$PROJECT_DIR$/src/styles/searchBar.scss" />
       </list>
     </option>
   </component>
@@ -219,7 +216,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1745" />
+    <option name="x" value="-1615" />
     <option name="y" value="-4" />
     <option name="width" value="1615" />
     <option name="height" value="1054" />
@@ -374,15 +371,15 @@
       <workItem from="1532005180720" duration="11505000" />
       <workItem from="1532063010221" duration="7856000" />
       <workItem from="1532331568723" duration="26570000" />
-      <workItem from="1532412858754" duration="4226000" />
+      <workItem from="1532412858754" duration="6551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171772000" />
+    <option name="totallyTimeSpent" value="174097000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
+    <frame x="-1615" y="-4" width="1615" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -754,13 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/header.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/searchReducer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -775,13 +765,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/styles/searchBar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -808,16 +791,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/SearchResultItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/HeaderComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -828,13 +801,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/SearchResultItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/SearchBarComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="118" column="10" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
+        <state relative-caret-position="96">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
+            <marker date="1532418936117" expanded="true" signature="2941:3911" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/header.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/searchBar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
         </state>
       </provider>
     </entry>
