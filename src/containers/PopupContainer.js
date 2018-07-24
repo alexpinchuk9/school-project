@@ -11,13 +11,19 @@ import {
     deleteGroup,
     deletePerson,
     addGroup,
-    addPerson
+    addPerson,
+    addPersonToGroup,
+    searchGroups,
+    resetSearchResults,
+    selectGroup
 } from "../actions";
 
 const mapStateToProps = (state) => {
     return {
         image: state.image,
-        popup: state.popup
+        popup: state.popup,
+        items: state.items,
+        search: state.search
     };
 };
 
@@ -52,6 +58,18 @@ const mapDispatchToProps = (dispatch) => {
         },
         addPerson: (values) => {
             dispatch(addPerson(values))
+        },
+        addPersonToGroup: (values) => {
+            dispatch(addPersonToGroup(values))
+        },
+        searchGroups: (query, groups) => {
+            dispatch(searchGroups(query, groups))
+        },
+        resetSearchResults: () => {
+            dispatch(resetSearchResults())
+        },
+        selectGroup: (group) => {
+            dispatch(selectGroup(group))
         }
     }
 };

@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, UPDATE_PERSON, UPDATE_GROUP, PHONE, DELETE, ADD_GROUP, ADD_PERSON} from "../constants/popupTypes";
+import {
+    MESSAGE,
+    UPDATE_PERSON,
+    UPDATE_GROUP,
+    PHONE,
+    DELETE,
+    ADD_GROUP,
+    ADD_PERSON,
+    ADD_PERSON_TO_GROUP
+} from "../constants/popupTypes";
 import {
     DELETE_GROUP_REQUEST,
     DELETE_PERSON_REQUEST,
@@ -9,7 +18,8 @@ import {
     UPDATE_GROUP_REQUEST,
     UPDATE_PERSON_REQUEST,
     ADD_GROUP_REQUEST,
-    ADD_PERSON_REQUEST
+    ADD_PERSON_REQUEST,
+    ADD_PERSON_TO_GROUP_REQUEST
 } from "../constants/actionTypes";
 
 import AddGroupForm from "./popup-forms/AddGroupForm";
@@ -19,12 +29,32 @@ import UpdatePersonForm from "./popup-forms/UpdatePersonForm";
 import UpdateGroupForm from "./popup-forms/UpdateGroupForm";
 import DeleteForm from "./popup-forms/DeleteForm";
 import AddPersonForm from "./popup-forms/AddPersonForm";
+import AddPersonToGroupForm from "./popup-forms/AddPersonToGroupForm";
 
 class PopupComponent extends Component {
 
     renderForm = () => {
 
-        const { type, group, person, handleSubmit, handleClose, uploadImage, image } = this.props;
+        const {
+            type,
+            group,
+            person,
+            handleSubmit,
+            handleClose,
+            uploadImage,
+            image,
+            search,
+            searchGroups,
+            resetSearchResults,
+            selectGroup,
+            items: {
+                items: {
+                    people,
+                    groups
+                }
+            }
+        } = this.props;
+
 
         switch(type) {
 
@@ -63,8 +93,7 @@ class PopupComponent extends Component {
                             group={group}
                             handleClose={handleClose}
                             onSubmit={this.handleSubmit}
-                            handleSubmit={handleSubmit}
-                        />;
+                            handleSubmit={handleSubmit}/>;
 
             case ADD_GROUP:
                 return <AddGroupForm
@@ -80,7 +109,19 @@ class PopupComponent extends Component {
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}
                             uploadImage={uploadImage}
-                            image={image}/>
+                            image={image}/>;
+
+            case ADD_PERSON_TO_GROUP:
+                return <AddPersonToGroupForm
+                            onSubmit={this.handleSubmit}
+                            handleSubmit={handleSubmit}
+                            handleClose={handleClose}
+                            groups={groups}
+                            search={search}
+                            searchGroups={searchGroups}
+                            resetSearchResults={resetSearchResults}
+                            person={person}
+                            selectGroup={selectGroup}/>;
 
             default:
                 return null;
@@ -100,6 +141,7 @@ class PopupComponent extends Component {
             deleteGroup,
             addGroup,
             addPerson,
+            addPersonToGroup,
             person,
             group,
             image } = this.props;
@@ -130,12 +172,15 @@ class PopupComponent extends Component {
                 break;
 
             case ADD_PERSON_REQUEST:
-
                 addPerson({...values, pic: image.name, groupId: group.id });
                 break;
 
             case ADD_GROUP_REQUEST:
                 addGroup(values);
+                break;
+
+            case ADD_PERSON_TO_GROUP_REQUEST:
+                addPersonToGroup(values);
                 break;
 
             default:

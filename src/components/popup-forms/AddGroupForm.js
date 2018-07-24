@@ -11,7 +11,7 @@ class AddGroupForm extends Component {
 
         return (
         <form className="form add-form" onSubmit={handleSubmit(values => onSubmit(values, ADD_GROUP_REQUEST))}>
-            <button className="button-close" onClick={handleClose}></button>
+            <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
             <div className="form-row">
                 <label htmlFor="name" className="field-label">Group Name</label>

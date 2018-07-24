@@ -1,9 +1,16 @@
-import {RESET_SEARCH_RESULTS, SEARCH_ITEMS} from "../constants/actionTypes";
+import {
+    RESET_SEARCH_RESULTS,
+    SEARCH_ITEMS,
+    SEARCH_PEOPLE,
+    SEARCH_GROUPS,
+    SELECT_GROUP
+} from "../constants/actionTypes";
 
 const INITIAL_STATE = {
-    query: "",
     peopleResults: [],
-    groupResults: []
+    groupResults: [],
+    itemResults: [],
+    lastSelectedGroup: null
 };
 
 const searchReducer = (state = INITIAL_STATE, action) => {
@@ -12,29 +19,53 @@ const searchReducer = (state = INITIAL_STATE, action) => {
 
     switch (type) {
 
-        case SEARCH_ITEMS:
+        case SEARCH_ITEMS: {
 
             const { groups, people } = items;
 
             const newGroupsResults = groups.filter(group => group.groupName.startsWith(payload));
             const newPeopleResults = people.filter(person => {
                 return person.name.startsWith(payload) ||
-                       person.surname.startsWith(payload) ||
-                       `${person.name} ${person.surname}`.startsWith(payload) ||
-                       `${person.surname} ${person.name}`.startsWith(payload);
+                    person.surname.startsWith(payload) ||
+                    `${person.name} ${person.surname}`.startsWith(payload) ||
+                    `${person.surname} ${person.name}`.startsWith(payload);
             });
+
+            const newItemResults = [...newPeopleResults, ...newGroupsResults];
 
             return {
                 ...state,
-                peopleResults: newPeopleResults,
-                groupResults: newGroupsResults,
-                query: payload
+                itemResults: newItemResults
             };
+
+        }
+
+
+        case SEARCH_GROUPS: {
+
+            const { groups } = action;
+
+
+            const newGroupResults = groups.filter(group => group.groupName.startsWith(payload));
+
+            return {
+                ...state,
+                groupResults: newGroupResults
+            }
+        }
+
 
         case RESET_SEARCH_RESULTS:
             return {
-                ...INITIAL_STATE
+                ...INITIAL_STATE,
+                lastSelectedGroup: state.lastSelectedGroup
             };
+
+        case SELECT_GROUP:
+            return {
+                ...state,
+                lastSelectedGroup: action.payload
+            }
 
         default:
             return state;

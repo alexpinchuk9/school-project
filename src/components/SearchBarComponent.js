@@ -24,14 +24,12 @@ class SearchBarComponent extends Component {
 
     renderSearchResults = () => {
 
-        const { peopleResults, groupResults } = this.props.search;
-
-        const results = [...peopleResults, ...groupResults];
+        const { itemResults } = this.props.search;
 
         const { activeId } = this.state;
 
 
-        if( this.state.query !== "" && !results.length ) {
+        if( this.state.query !== "" && !itemResults.length ) {
             return (
                 <div className="no-results">
                     Sorry, nothing matches your search
@@ -39,7 +37,7 @@ class SearchBarComponent extends Component {
             );
         }
 
-        return results.map((result, index) => <SearchResultItem
+        return itemResults.map((result, index) => <SearchResultItem
                                         key={result.id}
                                         item={result}
                                         onClick={() => this.handleResultClick(result)}
@@ -84,7 +82,7 @@ class SearchBarComponent extends Component {
        searchResults.classList.add('visible')
     };
 
-    handleArrowUpScroll = (newActiveId, results) => {
+    handleArrowUpScroll = (newActiveId, itemResults) => {
 
         const searchResults = document.getElementsByClassName('search-result-list')[0];
 
@@ -92,18 +90,18 @@ class SearchBarComponent extends Component {
         if (newActiveId === 0) searchResults.scrollTop = 0;
     }
 
-    handleArrowDonwScroll = (newActiveId, results) => {
+    handleArrowDonwScroll = (newActiveId, itemResults) => {
 
         const searchResults = document.getElementsByClassName('search-result-list')[0];
 
-        if (newActiveId < results.length - 3) searchResults.scrollTop -= 40;
-        else if (newActiveId === results.length - 1) searchResults.scrollTop = 40 * results.length;
+        if (newActiveId < itemResults.length - 3) searchResults.scrollTop -= 40;
+        else if (newActiveId === itemResults.length - 1) searchResults.scrollTop = 40 * itemResults.length;
     }
 
     handleKeyUp = (event) => {
 
-        const { peopleResults, groupResults } = this.props.search;
-        const results = [...peopleResults, ...groupResults];
+        const { itemResults } = this.props.search;
+
         const { activeId } = this.state;
         let key = event.keyCode;
 
@@ -111,24 +109,24 @@ class SearchBarComponent extends Component {
         switch (key) {
 
             case 40: {
-                let newActiveId = activeId === results.length - 1 ? 0 : activeId + 1;
+                let newActiveId = activeId === itemResults.length - 1 ? 0 : activeId + 1;
 
-                this.handleArrowUpScroll(newActiveId, results);
+                this.handleArrowUpScroll(newActiveId, itemResults);
                 this.setState((state, props) => ({ activeId: newActiveId }));
                 break;
             }
 
 
             case 38: {
-                let newActiveId = activeId === 0 ? results.length - 1 : activeId - 1;
+                let newActiveId = activeId === 0 ? itemResults.length - 1 : activeId - 1;
 
-                this.handleArrowDonwScroll(newActiveId, results);
+                this.handleArrowDonwScroll(newActiveId, itemResults);
                 this.setState((state, props) => ({ activeId: newActiveId }));
                 break;
             }
 
             case 13: {
-                this.handleResultClick(results[activeId]);
+                this.handleResultClick(itemResults[activeId]);
                 break;
             }
         }

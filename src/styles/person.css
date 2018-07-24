@@ -21,7 +21,10 @@
     display: block;
     height: 30px;
     width: 30px;
-    margin-top: 5px; }
+    margin-top: 5px;
+    background: transparent;
+    border: none;
+    outline: none; }
     .actions .relate-people-people:hover, .actions .delete-people:hover {
       cursor: pointer;
       transform: scale(1.1); }
@@ -73,7 +76,10 @@
       display: block;
       height: 30px;
       width: 30px;
-      background-size: 30px 30px; }
+      background-size: 30px 30px;
+      background: transparent;
+      border: none;
+      outline: none; }
       .person .person-actions .mail:hover, .person .person-actions .message:hover, .person .person-actions .call:hover, .person .person-actions .edit:hover {
         cursor: pointer;
         transform: scale(1.1); }

@@ -13,9 +13,14 @@
   box-shadow: 0 4px 2px -2px $grey;
   @media only screen and (max-width: 767px) {
     justify-content: center;
+    flex-direction: column;
+    height: 180px;
   }
   .header-action-buttons {
     margin-left: 30px;
+    @media only screen and (max-width: 767px) {
+      margin: 15px 0;
+    }
   }
   .refresh-button {
     position: relative;
@@ -78,6 +83,9 @@
     display: flex;
     align-items: center;
     margin-right: 30px;
+    @media only screen and (max-width: 767px) {
+      margin: 15px 0;
+    }
     &:hover {
       cursor: pointer;
       transform: scale(1.1);

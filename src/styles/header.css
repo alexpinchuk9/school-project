@@ -11,9 +11,14 @@
   box-shadow: 0 4px 2px -2px #808080; }
   @media only screen and (max-width: 767px) {
     .header {
-      justify-content: center; } }
+      justify-content: center;
+      flex-direction: column;
+      height: 180px; } }
   .header .header-action-buttons {
     margin-left: 30px; }
+    @media only screen and (max-width: 767px) {
+      .header .header-action-buttons {
+        margin: 15px 0; } }
   .header .refresh-button {
     position: relative;
     width: auto;
@@ -66,6 +71,9 @@
     display: flex;
     align-items: center;
     margin-right: 30px; }
+    @media only screen and (max-width: 767px) {
+      .header .shortcut-container {
+        margin: 15px 0; } }
     .header .shortcut-container:hover {
       cursor: pointer;
       transform: scale(1.1); }

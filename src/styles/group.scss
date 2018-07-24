@@ -25,6 +25,9 @@
     height: 30px;
     width: 30px;
     margin-top: 5px;
+    background: transparent;
+    border: none;
+    outline: none;
     &:hover {
       cursor: pointer;
       transform: scale(1.1);
@@ -38,9 +41,6 @@
   }
   .add-group {
     background: url("/statics/img/add_icon_small.png") no-repeat center center;
-  }
-  .relate-people-group {
-    background: url("/statics/img/connect_icon_small.png") no-repeat center center;
   }
   .delete-group {
     background: url("/statics/img/delete_icon_small.png") no-repeat center center;
@@ -92,6 +92,9 @@
       height: 30px;
       width: 30px;
       background-size: 30px 30px;
+      background: transparent;
+      border: none;
+      outline: none;
       &:hover {
         cursor: pointer;
         transform: scale(1.1);

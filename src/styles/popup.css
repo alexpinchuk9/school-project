@@ -20,7 +20,6 @@
   .popup .form {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
     position: relative; }
     .popup .form.delete-form .form-row {
       display: flex;

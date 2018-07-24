@@ -20,7 +20,7 @@ class AddPersonForm extends Component {
 
         return (
             <form className="form add-form" onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}>
-                <button className="button-close" onClick={handleClose}></button>
+                <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
                 <div className="form-row">
                     <label htmlFor="groupId" className="field-label">Group id</label>
@@ -53,6 +53,10 @@ class AddPersonForm extends Component {
                     </label>
                     <label htmlFor="picture" className="picture-label">בחר תמונה</label>
                     <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
+                </div>
+
+                <div className="form-row">
+
                 </div>
 
                 <div className="form-row">

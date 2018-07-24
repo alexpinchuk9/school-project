@@ -17,7 +17,7 @@ class UpdatePersonForm extends Component {
 
             return (
                 <form className="form update-form" onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}>
-                    <button className="button-close" onClick={handleClose}></button>
+                    <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>
@@ -47,6 +47,10 @@ class UpdatePersonForm extends Component {
                         </label>
                         <label htmlFor="picture" className="picture-label">בחר תמונה</label>
                         <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
+                    </div>
+
+                    <div className="form-row">
+
                     </div>
 
                     <div className="form-row">

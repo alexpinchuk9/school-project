@@ -38,7 +38,12 @@ import {
     REFRESH_ITEMS_FAILURE,
     GO_BACK,
     SEARCH_ITEMS,
-    RESET_SEARCH_RESULTS
+    RESET_SEARCH_RESULTS,
+    ADD_PERSON_TO_GROUP_REQUEST,
+    ADD_PERSON_TO_GROUP_SUCCESS,
+    ADD_PERSON_TO_GROUP_FAILURE,
+    SEARCH_GROUPS,
+    SEARCH_PEOPLE, SELECT_GROUP
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -530,6 +535,19 @@ export const searchItems = (query, items) => {
     }
 }
 
+
+export const searchGroups = (query, groups) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: SEARCH_GROUPS,
+            payload: query,
+            groups: groups
+        })
+    }
+}
+
 export const resetSearchResults = () => {
 
     return (dispatch) => {
@@ -540,3 +558,50 @@ export const resetSearchResults = () => {
     }
 }
 
+export const addPersonToGroup = (values) => {
+
+     return (dispatch) => {
+
+         dispatch({
+             type: ADD_PERSON_TO_GROUP_REQUEST
+         })
+
+         let bodyFormData = new FormData();
+         const { peopleId, groupId, relation  } = values;
+
+         bodyFormData.set('formName', 'relateP2G');
+         bodyFormData.set('peopleId', peopleId);
+         bodyFormData.set('groupId', groupId);
+         if (relation) bodyFormData.set('relation', relation);
+
+         axios({
+             method: 'post',
+             url: serverUrl,
+             data: bodyFormData,
+             config: { headers: {'Content-Type': 'multipart/form-data' }}
+         })
+             .then(response => {
+                 dispatch({
+                     type: ADD_PERSON_TO_GROUP_SUCCESS,
+                     payload: response.data ? response.data : response.statusText
+                 })
+             })
+             .catch(response => {
+                 dispatch({
+                     type: ADD_PERSON_TO_GROUP_FAILURE,
+                     error: response.error
+                 })
+             });
+     }
+};
+
+export const selectGroup = (group) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: SELECT_GROUP,
+            payload: group
+        })
+    }
+};

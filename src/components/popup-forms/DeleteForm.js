@@ -13,7 +13,7 @@ class DeleteForm extends Component {
 
         return (
             <div className="form delete-form">
-                <button className="button-close" onClick={handleClose}></button>
+                <button className="button-close" onClick={handleClose} title="Close popup"></button>
                 <div className="form-row">
                     {message}
                 </div>

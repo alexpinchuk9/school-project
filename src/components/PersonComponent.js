@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { MESSAGE, PHONE, UPDATE_PERSON, DELETE } from "../constants/popupTypes";
+import { MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP } from "../constants/popupTypes";
 import { filePath } from "../constants/api";
 import styled from 'styled-components';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import PopupComponent from "../containers/PopupContainer";
 
@@ -51,16 +53,35 @@ class PersonComponent extends Component {
         };
 
         const mailActionButton = person.email ?
-            <span className="mail"><a href={`mailto:${person.email}`} className="mail-link"></a></span> :
-            <span className="mail disabled"></span>;
+                                        <button title="E-mail this person" className="mail">
+                                            <a href={`mailto:${person.email}`} className="mail-link"></a>
+                                        </button> :
+                                        <button
+                                            title="We don't have an e-mail address for this person yet"
+                                            className="mail disabled">
+                                        </button>;
 
-        const messageActionButton =    person.email ?
-            <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span> :
-            <span className="message disabled"></span>;
+        const messageActionButton = person.email ?
+                                        <button
+                                            title="Message this person"
+                                            className="message"
+                                            onClick={() => this.handlePopupOpen(MESSAGE)}>
+                                        </button> :
+                                        <button
+                                            title="We don't have an e-mail address for this person yet"
+                                            className="message disabled">
+                                        </button>;
 
-        const callActionButton =      person.cellphone ?
-            <span className="call" onClick={() => this.handlePopupOpen(PHONE)}></span> :
-            <span className="call disabled"></span>;
+        const callActionButton = person.cellphone ?
+                                        <button
+                                            title="Copy this person's phone number"
+                                            className="call"
+                                            onClick={() => this.handlePopupOpen(PHONE)}>
+                                        </button> :
+                                        <button
+                                            title="We don't have a phone number for this person yet"
+                                            className="call disabled">
+                                        </button>;
 
 
         const image = person.picSource ?
@@ -77,10 +98,13 @@ class PersonComponent extends Component {
         return (
             <div className="wrapper">
                 <div className={`${className} person person-full-representation`}>
+
                     <PersonImage color={person.color}>
                         {image}
                     </PersonImage>
+
                     <div className="person-info">
+
                         <div className="person-name">
                             <h1 className="name">
                                 {person.name}
@@ -89,19 +113,40 @@ class PersonComponent extends Component {
                                 {person.surname}
                             </h3>
                         </div>
+
                         <div className="person-actions">
                             {mailActionButton}
                             {messageActionButton}
                             {callActionButton}
-                            <span className="edit" onClick={() => this.handlePopupOpen(UPDATE_PERSON)}></span>
+                            <button
+                                title="Update this person's info"
+                                className="edit"
+                                onClick={() => this.handlePopupOpen(UPDATE_PERSON)}>
+                            </button>
                         </div>
+
                     </div>
-                    {open && <PopupComponent type={type} handleClose={this.handlePopupClose} person={person}
+
+                    {open && <PopupComponent type={type}
+                                             handleClose={this.handlePopupClose}
+                                             person={person}
                                              initialValues={initialValues}/>}
                 </div>
+
                 <div className="actions">
-                    <span className="relate-people-people"></span>
-                    <span className="delete-people" onClick={() => this.handlePopupOpen(DELETE)}></span>
+
+                    <button className="relate-people-group"
+                            title="Add this person to a group"
+                            onClick={() => this.handlePopupOpen(ADD_PERSON_TO_GROUP)}>
+                        <FontAwesomeIcon size="lg" icon={faLink}/>
+                    </button>
+
+                    <button
+                        title="Delete this person"
+                        className="delete-people"
+                        onClick={() => this.handlePopupOpen(DELETE)}>
+                    </button>
+
                 </div>
             </div>
         );

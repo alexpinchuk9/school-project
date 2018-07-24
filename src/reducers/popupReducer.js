@@ -23,14 +23,17 @@ import {
     ADD_GROUP_FAILURE,
     ADD_PERSON_REQUEST,
     ADD_PERSON_SUCCESS,
-    ADD_PERSON_FAILURE
+    ADD_PERSON_FAILURE,
+    ADD_PERSON_TO_GROUP_REQUEST,
+    ADD_PERSON_TO_GROUP_SUCCESS,
+    ADD_PERSON_TO_GROUP_FAILURE
 } from "../constants/actionTypes";
 
 const INITIAL_STATE = {
     loading: false,
     serverResponse: null,
     error: null,
-    open: false
+    open: false,
 };
 
 const popupReducer = (state = INITIAL_STATE, action) => {
@@ -45,6 +48,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case DELETE_PERSON_REQUEST:
         case ADD_GROUP_REQUEST:
         case ADD_PERSON_REQUEST:
+        case ADD_PERSON_TO_GROUP_REQUEST:
             return {...state, loading: true, error: null, serverResponse: null};
 
         case UPDATE_PERSON_SUCCESS:
@@ -55,6 +59,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case DELETE_PERSON_SUCCESS:
         case ADD_GROUP_SUCCESS:
         case ADD_PERSON_SUCCESS:
+        case ADD_PERSON_TO_GROUP_SUCCESS:
             return {...state, loading: false, serverResponse: action.payload, open: false, error: null};
 
         case UPDATE_PERSON_FAILURE:
@@ -65,6 +70,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case DELETE_PERSON_FAILURE:
         case ADD_GROUP_FAILURE:
         case ADD_PERSON_FAILURE:
+        case ADD_PERSON_TO_GROUP_FAILURE:
             return {...state, loading: false, error: action.payload, serverResponse: null};
 
         case RESET_POPUP_STATE:

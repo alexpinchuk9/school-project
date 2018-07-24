@@ -64,17 +64,40 @@ class GroupComponent extends Component {
                                 </h1>
                             </div>
                             <div className="group-actions">
-                                <span className="message" onClick={() => this.handlePopupOpen(MESSAGE)}></span>
-                                <span className="edit" onClick={() => this.handlePopupOpen(UPDATE_GROUP)}></span>
+                                <button
+                                    title="Message this group"
+                                    className="message"
+                                    onClick={() => this.handlePopupOpen(MESSAGE)}>
+                                </button>
+                                <button
+                                    title="Update this group"
+                                    className="edit"
+                                    onClick={() => this.handlePopupOpen(UPDATE_GROUP)}>
+                                </button>
                             </div>
                         </div>
-                        { open && <PopupComponent type={type} handleClose={this.handlePopupClose} group={group} initialValues={initialValues}/>}
+                        { open && <PopupComponent
+                                            type={type}
+                                            handleClose={this.handlePopupClose}
+                                            group={group}
+                                            initialValues={initialValues}/>}
                     </div>
                 <div className="actions">
-                    <span className="add-group"  onClick={() => this.handlePopupOpen(ADD_GROUP)}></span>
-                    <span className="relate-people-group"></span>
-                    <span className="delete-group" onClick={() => this.handlePopupOpen(DELETE)}></span>
-                    <span className="add-people" onClick={() => this.handlePopupOpen(ADD_PERSON)}></span>
+                    <button
+                        className="add-group"
+                        title="Add a group"
+                        onClick={() => this.handlePopupOpen(ADD_GROUP)}>
+                    </button>
+                    <button
+                        className="delete-group"
+                        title="Delete this group"
+                        onClick={() => this.handlePopupOpen(DELETE)}>
+                    </button>
+                    <button
+                        className="add-people"
+                        title="Add people to this group"
+                        onClick={() => this.handlePopupOpen(ADD_PERSON)}>
+                    </button>
                 </div>
             </div>
         );
