@@ -10,7 +10,7 @@ class SearchResultItem extends Component {
         const displayText = item.hasOwnProperty('surname') ? `${item.name} ${item.surname}` : item.groupName;
 
         return (
-            <div className="search-result-item" onClick={onClick} onMouseEnter={ () => onMouseEnter(displayText)}>
+            <div className="search-result-item" onClick={onClick} onMouseEnter={onMouseEnter}>
                 {displayText}
             </div>
         );

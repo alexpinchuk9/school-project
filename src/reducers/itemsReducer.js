@@ -9,13 +9,12 @@ import {
     GO_BACK
 } from '../constants/actionTypes';
 
-import filters from "../utils/filters";
+//import filters from "../utils/filters";
 
 const INITIAL_STATE = {
     items: {},
     selectedItem: null,
-    previousParentItems: [],
-    previousSelectedItem: null,
+    previousSelectedItems: [],
     loading: false,
     error: null,
     homeItem: null
@@ -45,36 +44,37 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
         case SELECT_ITEM: {
 
-            const selectedItem = action.payload;
-            let newPreviousParentItems = [...state.previousParentItems];
-            const { items } = state;
+            const newSelectedItem = action.payload;
+            const newPreviousSelectedItem = state.selectedItem;
+            let newPreviousSelectedItems = [...state.previousSelectedItems, newPreviousSelectedItem];
+            // let newPreviousParentItems = [...state.previousParentItems];
+            // const { items } = state;
 
-            if (selectedItem.hasOwnProperty('surname')) {
-
-                const dependantPeople = filters.filterDependantPeople(items, selectedItem);
-                const containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
-
-
-                if (containerGroups.some(group => group.id === state.selectedItem.id) ||
-                    dependantPeople.some(person => person.id === state.selectedItem.id)
-                ) {
-                    newPreviousParentItems.push(state.selectedItem);
-                }
-            } else if (state.previousSelectedItem) {
-
-                const containerGroups = filters.filterContainerGroupsForGroup(items, selectedItem);
-
-
-                if (containerGroups.some(group => group.id === state.selectedItem.id)) {
-                    newPreviousParentItems.push(state.selectedItem);
-                }
-            }
+            // if (selectedItem.hasOwnProperty('surname')) {
+            //
+            //     const dependantPeople = filters.filterDependantPeople(items, selectedItem);
+            //     const containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
+            //
+            //
+            //     if (containerGroups.some(group => group.id === state.selectedItem.id) ||
+            //         dependantPeople.some(person => person.id === state.selectedItem.id)
+            //     ) {
+            //         newPreviousParentItems.push(state.selectedItem);
+            //     }
+            // } else if (state.previousSelectedItem) {
+            //
+            //     const containerGroups = filters.filterContainerGroupsForGroup(items, selectedItem);
+            //
+            //
+            //     if (containerGroups.some(group => group.id === state.selectedItem.id)) {
+            //         newPreviousParentItems.push(state.selectedItem);
+            //     }
+            // }
 
             return {
                 ...state,
-                previousSelectedItem: state.selectedItem,
-                selectedItem: action.payload,
-                previousParentItems: newPreviousParentItems
+                selectedItem: newSelectedItem,
+                previousSelectedItems: newPreviousSelectedItems
             };
         }
 
@@ -104,19 +104,19 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
         case GO_BACK: {
 
-            let newPreviousParentItems = [...state.previousParentItems];
+            let newPreviousSelectedItems = [...state.previousSelectedItems];
             let newSelectedItem = state.items.groups[0];
 
-            if(state.previousParentItems.length) {
-                newSelectedItem = state.previousParentItems[state.previousParentItems.length - 1];
-                newPreviousParentItems.pop();
+            if(state.previousSelectedItems.length) {
+                newSelectedItem = state.previousSelectedItems[state.previousSelectedItems.length - 1];
+                newPreviousSelectedItems.pop();
             }
 
 
             return {
                 ...state,
                 selectedItem: newSelectedItem,
-                previousParentItems: newPreviousParentItems
+                previousSelectedItems: newPreviousSelectedItems
             };
 
         }

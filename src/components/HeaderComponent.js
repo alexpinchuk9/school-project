@@ -11,7 +11,7 @@ class HeaderComponent extends Component {
         const {
             onRefresh,
             onGoBack,
-            previousParentItems,
+            previousSelectedItems,
             items,
             searchItems,
             search,
@@ -19,7 +19,7 @@ class HeaderComponent extends Component {
             homeItem,
             selectItem } = this.props;
 
-        const goBackButton = previousParentItems.length ?
+        const goBackButton = previousSelectedItems.length ?
             <button className="go-back-button" onClick={onGoBack}></button> :
             <button className="go-back-button disabled"></button>;
 

@@ -100,7 +100,7 @@ class MainPageComponent extends Component {
                 items,
                 error,
                 selectedItem,
-                previousParentItems,
+                previousSelectedItems,
                 homeItem }
         } = this.props;
 
@@ -124,7 +124,7 @@ class MainPageComponent extends Component {
                 <HeaderComponent
                     onRefresh={() => refreshItems(selectedItem)}
                     onGoBack={goBack}
-                    previousParentItems={previousParentItems}
+                    previousSelectedItems={previousSelectedItems}
                     homeItem={homeItem}
                     selectItem={selectItem}
                     items={items}

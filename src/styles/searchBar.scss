@@ -18,7 +18,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     max-height: 150px;
     overflow-y: scroll;
-   // display: none;
+    display: none;
     &.visible {
       display: block;
     }
@@ -31,7 +31,6 @@
       &:hover {
         background: $lightgreen;
         cursor: pointer;
-        font-size: 20px;
         color: $black;
       }
     }
