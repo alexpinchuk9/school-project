@@ -214,11 +214,16 @@ class PopupComponent extends Component {
 
     render() {
         const { serverResponse, error } = this.props.popup;
-        const { className } = this.props;
+        const { className, refreshItems, group, person } = this.props;
 
 
         if (serverResponse) {
-            this.handleServerResponse(serverResponse)
+            this.handleServerResponse(serverResponse);
+            if (person) {
+                refreshItems(person);
+            } else {
+                refreshItems(group);
+            }
         } else if (error) {
             this.handleServerResponse(error);
         }

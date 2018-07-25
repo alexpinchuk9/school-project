@@ -16,7 +16,7 @@ import {
     searchGroups,
     resetSearchResults,
     selectGroup,
-    searchPeople
+    searchPeople, refreshItems
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -74,7 +74,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         searchPeople: (query, people) => {
             dispatch(searchPeople(query, people))
-        }
+        },
+        refreshItems: (selectedItem) => {
+            dispatch(refreshItems(selectedItem))
+        },
     }
 };
 
