@@ -1,13 +1,23 @@
 .popup {
   position: fixed;
   padding: 20px;
-  width: 280px;
+  width: auto;
   left: 50%;
   margin-left: -150px;
+  width: 280px;
+  top: 50%;
   margin-top: -100px;
   background: #ffffff;
   z-index: 3;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.75); }
+  .popup.guardian-popup {
+    top: 50%;
+    margin-top: -200px;
+    min-width: 350px; }
+  .popup.add-person-popup, .popup.update-person-popup {
+    top: 0;
+    margin-top: 100px;
+    min-width: 350px; }
   @media only screen and (max-width: 1024px) {
     .popup {
       top: 25%; } }

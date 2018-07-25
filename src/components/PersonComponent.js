@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP } from "../constants/popupTypes";
+import {MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP, ADD_PERSON} from "../constants/popupTypes";
 import { filePath } from "../constants/api";
 import styled from 'styled-components';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
@@ -130,6 +130,7 @@ class PersonComponent extends Component {
                     {open && <PopupComponent type={type}
                                              handleClose={this.handlePopupClose}
                                              person={person}
+                                             className={type === UPDATE_PERSON ? "update-person-popup" : ""}
                                              initialValues={initialValues}/>}
                 </div>
 

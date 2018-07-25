@@ -48,6 +48,7 @@ class PopupComponent extends Component {
             resetSearchResults,
             selectGroup,
             searchPeople,
+            isAddGuardianForm,
             items: {
                 items: {
                     people,
@@ -118,6 +119,7 @@ class PopupComponent extends Component {
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}
                             uploadImage={uploadImage}
+                            isAddGuardianForm={isAddGuardianForm}
                             image={image}/>;
 
             case ADD_PERSON_TO_GROUP:
@@ -212,6 +214,8 @@ class PopupComponent extends Component {
 
     render() {
         const { serverResponse, error } = this.props.popup;
+        const { className } = this.props;
+
 
         if (serverResponse) {
             this.handleServerResponse(serverResponse)
@@ -220,7 +224,7 @@ class PopupComponent extends Component {
         }
 
         return (
-            <div className={`popup`}>
+            <div className={`popup ${className}`}>
                 {this.renderForm()}
             </div>
         );

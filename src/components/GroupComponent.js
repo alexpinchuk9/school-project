@@ -80,6 +80,7 @@ class GroupComponent extends Component {
                                             type={type}
                                             handleClose={this.handlePopupClose}
                                             group={group}
+                                            className={type === ADD_PERSON ? "add-person-popup" : ""}
                                             initialValues={initialValues}/>}
                     </div>
                 <div className="actions">

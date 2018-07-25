@@ -1,0 +1,50 @@
+@import 'variables.scss';
+
+.update-form {
+  &.update-person-form {
+    .add-relation-row {
+      width: 100%;
+      flex-direction: row;
+      margin-bottom: 10px;
+      .people-search-form {
+        .search-input {
+          width: 120px;
+        }
+        .people-search-result-list {
+          width: 250px;
+          z-index: 3;
+        }
+      }
+      .button-add-relation {
+        color: $white;
+        font-weight: 500;
+        border-radius: 4px;
+        background: $brightOrange;
+        border: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 15px;
+        &:hover {
+          cursor: pointer;
+          background: $darkOrange;
+        }
+        svg {
+          margin-right: 5px;
+        }
+      }
+      .relation-type {
+        .form-field {
+          width: 120px;
+        }
+      }
+    }
+    .add-guardian-fields-button {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+  }
+}

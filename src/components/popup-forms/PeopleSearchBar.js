@@ -17,7 +17,7 @@ class PeopleSearchBar extends Component {
             if (this.state.query) {
                 this.props.searchPeople(this.state.query, this.props.people);
                 this.setState({ activeId: 0 })
-            } else this.props.resetSearchResults();
+            } // else this.props.resetSearchResults();
         });
     };
 
@@ -50,12 +50,15 @@ class PeopleSearchBar extends Component {
 
         const { selectPerson, resetSearchResults } = this.props;
 
-        this.setState({
-            query: ""
-        });
+        this.setState( () => ({
+            query: `${result.name} ${result.surname}`
+        }));
+
 
         selectPerson(result);
-        resetSearchResults()
+       // resetSearchResults()
+
+        this.handleBlur()
     }
 
     handleResultMouseEnter = (index) => {
@@ -65,27 +68,34 @@ class PeopleSearchBar extends Component {
         //     query: value
         // });
 
-        console.log(index);
         this.setState((state,props) => ({ activeId: index}));
     }
 
     handleBlur = () => {
 
-        const searchResults = document.getElementsByClassName('people-search-result-list')[0];
 
-        searchResults.classList.remove('visible')
+
+        const searchResults = document.getElementById(this.props.searchResultId);
+
+        console.log(searchResults);
+
+        searchResults.classList.remove('visible');
+
+        //this.props.resetSearchResults();
+
+
     };
 
     handleFocus = () => {
 
-        const searchResults = document.getElementsByClassName('people-search-result-list')[0];
+        const searchResults = document.getElementById(this.props.searchResultId);
 
         searchResults.classList.add('visible')
     };
 
     handleArrowUpScroll = (newActiveId, peopleResults) => {
 
-        const searchResults = document.getElementsByClassName('people-search-result-list')[0];
+        const searchResults = document.getElementById(this.props.searchResultId);
 
         if (newActiveId > 3 && newActiveId !== 0) searchResults.scrollTop += 40;
         if (newActiveId === 0) searchResults.scrollTop = 0;
@@ -93,7 +103,7 @@ class PeopleSearchBar extends Component {
 
     handleArrowDonwScroll = (newActiveId, peopleResults) => {
 
-        const searchResults = document.getElementsByClassName('people-search-result-list')[0];
+        const searchResults = document.getElementById(this.props.searchResultId);
 
         if (newActiveId < peopleResults.length - 3) searchResults.scrollTop -= 40;
         else if (newActiveId === peopleResults.length - 1) searchResults.scrollTop = 40 * peopleResults.length;
@@ -151,7 +161,7 @@ class PeopleSearchBar extends Component {
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
                 />
-                <div className="people-search-result-list">
+                <div className="people-search-result-list"  id={this.props.searchResultId}>
                     {this.renderSearchResults()}
                 </div>
             </div>

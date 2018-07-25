@@ -1,0 +1,30 @@
+.add-form.add-person-form .add-relation-row {
+  width: 100%;
+  flex-direction: row;
+  margin-bottom: 10px; }
+  .add-form.add-person-form .add-relation-row .people-search-form .search-input {
+    width: 120px; }
+  .add-form.add-person-form .add-relation-row .people-search-form .people-search-result-list {
+    width: 250px;
+    z-index: 3; }
+  .add-form.add-person-form .add-relation-row .button-add-relation {
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 4px;
+    background: #FF6204;
+    border: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px; }
+    .add-form.add-person-form .add-relation-row .button-add-relation:hover {
+      cursor: pointer;
+      background: #DC5D14; }
+    .add-form.add-person-form .add-relation-row .button-add-relation svg {
+      margin-right: 5px; }
+  .add-form.add-person-form .add-relation-row .relation-type .form-field {
+    width: 120px; }
+
+.add-form.add-person-form .add-guardian-fields-button:hover {
+  cursor: pointer; }

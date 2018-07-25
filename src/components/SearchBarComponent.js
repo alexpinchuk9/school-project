@@ -98,7 +98,7 @@ class SearchBarComponent extends Component {
         else if (newActiveId === itemResults.length - 1) searchResults.scrollTop = 40 * itemResults.length;
     }
 
-    handleKeyUp = (event) => {
+    handleKeyDown = (event) => {
 
         const { itemResults } = this.props.search;
 
@@ -142,7 +142,7 @@ class SearchBarComponent extends Component {
                  tabIndex="0"
                  onBlur={this.handleBlur}
                  onFocus={this.handleFocus}
-                 onKeyUp={this.handleKeyUp}>
+                 onKeyDown={this.handleKeyDown}>
                 <input
                     placeholder="Search"
                     ref={input => this.search = input}
