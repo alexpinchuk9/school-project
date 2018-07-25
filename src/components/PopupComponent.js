@@ -47,6 +47,7 @@ class PopupComponent extends Component {
             searchGroups,
             resetSearchResults,
             selectGroup,
+            searchPeople,
             items: {
                 items: {
                     people,
@@ -76,6 +77,10 @@ class PopupComponent extends Component {
             case UPDATE_PERSON:
                 return <UpdatePersonForm
                             person={person}
+                            people={people}
+                            search={search}
+                            searchPeople={searchPeople}
+                            resetSearchResults={resetSearchResults}
                             onSubmit={this.handleSubmit}
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}
@@ -105,6 +110,10 @@ class PopupComponent extends Component {
             case ADD_PERSON:
                 return <AddPersonForm
                             person={person}
+                            people={people}
+                            search={search}
+                            searchPeople={searchPeople}
+                            resetSearchResults={resetSearchResults}
                             onSubmit={this.handleSubmit}
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}

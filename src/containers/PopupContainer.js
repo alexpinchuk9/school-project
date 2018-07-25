@@ -15,7 +15,8 @@ import {
     addPersonToGroup,
     searchGroups,
     resetSearchResults,
-    selectGroup
+    selectGroup,
+    searchPeople
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -70,6 +71,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         selectGroup: (group) => {
             dispatch(selectGroup(group))
+        },
+        searchPeople: (query, people) => {
+            dispatch(searchPeople(query, people))
         }
     }
 };

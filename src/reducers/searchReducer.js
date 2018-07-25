@@ -54,6 +54,24 @@ const searchReducer = (state = INITIAL_STATE, action) => {
             }
         }
 
+        case SEARCH_PEOPLE: {
+
+            const { people } = action;
+
+
+            const newPeopleResults = people.filter(person => {
+                return person.name.startsWith(payload) ||
+                    person.surname.startsWith(payload) ||
+                    `${person.name} ${person.surname}`.startsWith(payload) ||
+                    `${person.surname} ${person.name}`.startsWith(payload);
+            });
+
+            return {
+                ...state,
+                peopleResults: newPeopleResults
+            }
+        }
+
 
         case RESET_SEARCH_RESULTS:
             return {

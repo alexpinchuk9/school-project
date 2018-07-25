@@ -548,6 +548,18 @@ export const searchGroups = (query, groups) => {
     }
 }
 
+export const searchPeople = (query, people) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: SEARCH_PEOPLE,
+            payload: query,
+            people: people
+        })
+    }
+}
+
 export const resetSearchResults = () => {
 
     return (dispatch) => {
