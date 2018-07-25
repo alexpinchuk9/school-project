@@ -185,6 +185,7 @@ class PopupComponent extends Component {
                 break;
 
             case ADD_GROUP_REQUEST:
+                console.log(values);
                 addGroup(values);
                 break;
 

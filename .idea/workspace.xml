@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PopupComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/PopupContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/PopupContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/searchReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/searchReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/popup.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,18 +18,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GroupSearchBar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/popup-forms/GroupSearchBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="22" selection-start-line="22" selection-end-line="22" />
-              <folding>
-                <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AddPersonForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -83,18 +63,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PopupContainer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/PopupContainer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="peopleSearchBar.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/peopleSearchBar.scss">
           <provider selected="true" editor-type-id="text-editor">
@@ -117,8 +85,8 @@
       <file leaf-file-name="PopupComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
+            <state relative-caret-position="516">
+              <caret line="187" column="36" lean-forward="true" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -126,11 +94,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="popup.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="popup.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/popup.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddGroupForm.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -180,7 +172,6 @@
         <option value="$PROJECT_DIR$/src/components/popup-forms/PhoneForm.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/UpdateGroupForm.js" />
         <option value="$PROJECT_DIR$/src/components/HeaderComponent.js" />
-        <option value="$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js" />
         <option value="$PROJECT_DIR$/src/styles/groupSearchBar.scss" />
         <option value="$PROJECT_DIR$/src/styles/group.scss" />
@@ -194,14 +185,15 @@
         <option value="$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/GroupSearchBar.js" />
         <option value="$PROJECT_DIR$/src/reducers/searchReducer.js" />
-        <option value="$PROJECT_DIR$/src/components/PopupComponent.js" />
-        <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/containers/PopupContainer.js" />
         <option value="$PROJECT_DIR$/src/styles/peopleSearchBar.scss" />
         <option value="$PROJECT_DIR$/src/styles/index.scss" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" />
         <option value="$PROJECT_DIR$/src/styles/popup.scss" />
+        <option value="$PROJECT_DIR$/src/actions/index.js" />
+        <option value="$PROJECT_DIR$/src/components/PopupComponent.js" />
+        <option value="$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js" />
       </list>
     </option>
   </component>
@@ -378,15 +370,15 @@
       <workItem from="1532063010221" duration="7856000" />
       <workItem from="1532331568723" duration="26570000" />
       <workItem from="1532412858754" duration="25873000" />
-      <workItem from="1532498217297" duration="1246000" />
+      <workItem from="1532498217297" duration="2416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194665000" />
+    <option name="totallyTimeSpent" value="195835000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1745" y="-4" width="1615" height="1054" extended-state="6" />
+    <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
@@ -544,6 +536,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="23" lean-forward="true" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,6 +613,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
           <caret line="31" column="18" lean-forward="true" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -627,16 +625,6 @@
           <caret line="102" column="32" selection-start-line="102" selection-start-column="32" selection-end-line="102" selection-end-column="32" />
           <caret line="126" column="36" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
           <caret line="126" column="59" selection-start-line="126" selection-start-column="59" selection-end-line="126" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -668,6 +656,10 @@
           <caret line="120" column="62" selection-start-line="120" selection-start-column="62" selection-end-line="120" selection-end-column="62" />
           <caret line="122" column="67" selection-start-line="122" selection-start-column="67" selection-end-line="122" selection-end-column="67" />
           <caret line="128" column="50" selection-start-line="128" selection-start-column="50" selection-end-line="128" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <marker date="1532424715585" expanded="true" signature="2891:3805" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -748,13 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="555" column="31" selection-start-line="555" selection-start-column="31" selection-end-line="555" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/popup-forms/GroupSearchBar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -807,16 +792,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="80" column="43" selection-start-line="80" selection-start-column="43" selection-end-line="80" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -841,6 +816,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="516">
+          <caret line="187" column="36" lean-forward="true" selection-start-line="187" selection-start-column="36" selection-end-line="187" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="407" column="26" selection-start-line="407" selection-start-column="26" selection-end-line="407" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

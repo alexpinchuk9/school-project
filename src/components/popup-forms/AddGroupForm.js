@@ -7,20 +7,19 @@ class AddGroupForm extends Component {
 
     render() {
 
-        const { handleClose, handleSubmit, pristine, submitting, onSubmit } = this.props;
+        const { handleClose, handleSubmit, pristine, submitting, onSubmit, group } = this.props;
 
         return (
-        <form className="form add-form" onSubmit={handleSubmit(values => onSubmit(values, ADD_GROUP_REQUEST))}>
+        <form className="form add-form" onSubmit={handleSubmit(values => onSubmit(
+            { name: values.newGroupName,
+                parentGroupId: group.id
+            }, ADD_GROUP_REQUEST))}>
+
             <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
             <div className="form-row">
                 <label htmlFor="name" className="field-label">Group Name</label>
-                <Field component="input" type="text" name="name" className="form-field" />
-            </div>
-
-            <div className="form-row">
-                <label htmlFor="parentGroupId" className="field-label">Parent Group ID (optional)</label>
-                <Field component="input" type="text" name="parentGroupId" className="form-field" />
+                <Field component="input" type="text" name="newGroupName" className="form-field" />
             </div>
 
 

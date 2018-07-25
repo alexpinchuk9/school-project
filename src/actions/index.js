@@ -405,6 +405,8 @@ export const addGroup = (values) => {
             type: ADD_GROUP_REQUEST
         });
 
+        console.log(values);
+
         let bodyFormData = new FormData();
         const { name, parentGroupId } = values;
 
