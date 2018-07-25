@@ -45,8 +45,15 @@ class AddPersonForm extends Component {
         this.props.uploadImage(image);
     };
 
-    selectPerson = (person) => {
-        console.log(person);
+    selectPerson = (guardian, guardianIndex) => {
+
+        const { person } = this.props;
+
+        const values = {
+            peopleId: person.id,
+            guardianId: guardian.id,
+
+        }
     };
 
     renderGuardianFields = () => {
@@ -64,18 +71,21 @@ class AddPersonForm extends Component {
             guardianArray.push(i)
         }
 
+        const addButton = (
+            <span
+                title="Add a new person"
+                className="button-add-relation"
+                onClick={() => this.handlePopupOpen(ADD_PERSON)}>
+                        Add
+                         <FontAwesomeIcon size="xs" icon={faPlus}/>
+                    </span>
+        );
 
         return guardianArray.map((guardianNumber, index) => {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
-                    <span
-                        title="Add a new person"
-                        className="button-add-relation"
-                        onClick={() => this.handlePopupOpen(ADD_PERSON)}>
-                        Add
-                         <FontAwesomeIcon size="xs" icon={faPlus}/>
-                    </span>
+
 
                     <PeopleSearchBar
                         people={people}
@@ -87,7 +97,12 @@ class AddPersonForm extends Component {
                     />
 
                     <div className="relation-type">
-                        <Field component="input" type="text" name="relation" placeholder="Relation (optional)" className="form-field"/>
+                        <Field
+                            component="input"
+                            name={`guardian${guardianNumber}`}
+                            type="text" name="relation"
+                            placeholder="Relation (optional)"
+                            className="form-field"/>
                     </div>
 
 
@@ -96,6 +111,7 @@ class AddPersonForm extends Component {
         })
 
     }
+
 
     addGuardianFields = () => {
 
@@ -196,8 +212,6 @@ class AddPersonForm extends Component {
                         <label htmlFor="picture" className="picture-label">בחר תמונה</label>
                         <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                     </div>
-
-                    {this.renderGuardianSection()}
 
 
                     <div className="form-row">

@@ -3,12 +3,48 @@
 .update-form {
   &.update-person-form {
     .add-relation-row {
-      width: 100%;
+      width: 90%;
       flex-direction: row;
       margin-bottom: 10px;
       .people-search-form {
+        position: relative;
+        outline: none;
+        &.add-guardian-success {
+          &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -10px;
+            top: 15px;
+            width: 3px;
+            height: 6px;
+            border: solid $lightgreen;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+          }
+        }
+        &.add-guardian-failure {
+          &:after, &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -10px;
+            top: 15px;
+            width: 2px;
+            background: $red;
+          }
+          &:after {
+            height: 10px;
+            transform: rotate(45deg);
+          }
+          &:before {
+            height: 8px;
+            transform: rotate(-45deg);
+          }
+        }
         .search-input {
           width: 120px;
+          outline: none;
         }
         .people-search-result-list {
           width: 250px;

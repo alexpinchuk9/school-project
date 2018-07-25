@@ -44,8 +44,21 @@ class UpdatePersonForm extends Component {
         this.props.uploadImage(image);
     }
 
-    selectPerson = (person) => {
-        console.log(person);
+    selectPerson = (guardian, guardianIndex) => {
+
+        const { person } = this.props;
+
+        const relation = this[`relation${guardianIndex}`].value;
+
+        const values = {
+            peopleId: person.id,
+            guardianId: guardian.id,
+            relation: relation,
+            guardianIndex: guardianIndex
+        }
+
+        this.props.relateGuardianToPerson(values);
+
     };
 
     renderGuardianFields = () => {
@@ -55,6 +68,7 @@ class UpdatePersonForm extends Component {
             people,
             resetSearchResults,
             searchPeople } = this.props;
+
         const { guardianFieldsNumber } = this.state;
 
         let guardianArray = [];
@@ -63,18 +77,21 @@ class UpdatePersonForm extends Component {
             guardianArray.push(i)
         }
 
+        const addButton = (
+            <span
+                title="Add a new person"
+                className="button-add-relation"
+                onClick={() => this.handlePopupOpen(ADD_PERSON)}>
+                        Add
+                         <FontAwesomeIcon size="xs" icon={faPlus}/>
+                    </span>
+        );
+
+
 
         return guardianArray.map((guardianNumber, index) => {
             return (
                 <div className="form-row add-relation-row" key={index} >
-
-                    <span
-                        title="Add a new person"
-                        className="button-add-relation"
-                        onClick={() => this.handlePopupOpen(ADD_PERSON)}>
-                        Add
-                         <FontAwesomeIcon size="xs" icon={faPlus}/>
-                    </span>
 
                     <PeopleSearchBar
                         people={people}
@@ -82,11 +99,18 @@ class UpdatePersonForm extends Component {
                         searchPeople={searchPeople}
                         resetSearchResults={resetSearchResults}
                         selectPerson={this.selectPerson}
+                        guardianNumber={guardianNumber}
                         searchResultId={`people-search-result-list-${guardianNumber}`}
                     />
 
                     <div className="relation-type">
-                        <Field component="input" type="text" name="relation" placeholder="Relation (optional)" className="form-field"/>
+                        <input
+                           // component="input"
+                            type="text"
+                            name={`relation${guardianNumber}`}
+                            ref={input => this[`relation${guardianNumber}`] = input}
+                            placeholder="Relation (optional)"
+                            className="form-field"/>
                     </div>
 
 

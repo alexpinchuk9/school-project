@@ -48,14 +48,14 @@ class PeopleSearchBar extends Component {
 
     handleResultClick = (result) => {
 
-        const { selectPerson, resetSearchResults } = this.props;
+        const { selectPerson, resetSearchResults, guardianNumber } = this.props;
 
         this.setState( () => ({
             query: `${result.name} ${result.surname}`
         }));
 
 
-        selectPerson(result);
+        selectPerson(result, guardianNumber);
        // resetSearchResults()
 
         this.handleBlur()
@@ -151,6 +151,7 @@ class PeopleSearchBar extends Component {
                  tabIndex="0"
                  onBlur={this.handleBlur}
                  onFocus={this.handleFocus}
+                 id={`people-search-form-${this.props.guardianNumber}`}
                  onKeyUp={this.handleKeyUp}>
                 <input
                     placeholder="Search"
@@ -160,6 +161,7 @@ class PeopleSearchBar extends Component {
                     className="search-input"
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
+
                 />
                 <div className="people-search-result-list"  id={this.props.searchResultId}>
                     {this.renderSearchResults()}

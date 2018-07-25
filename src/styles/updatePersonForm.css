@@ -1,12 +1,41 @@
 .update-form.update-person-form .add-relation-row {
-  width: 100%;
+  width: 90%;
   flex-direction: row;
   margin-bottom: 10px; }
-  .update-form.update-person-form .add-relation-row .people-search-form .search-input {
-    width: 120px; }
-  .update-form.update-person-form .add-relation-row .people-search-form .people-search-result-list {
-    width: 250px;
-    z-index: 3; }
+  .update-form.update-person-form .add-relation-row .people-search-form {
+    position: relative;
+    outline: none; }
+    .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-success:after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -10px;
+      top: 15px;
+      width: 3px;
+      height: 6px;
+      border: solid #5dbb38;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg); }
+    .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-failure:after, .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-failure:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: -10px;
+      top: 15px;
+      width: 2px;
+      background: #bb3838; }
+    .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-failure:after {
+      height: 10px;
+      transform: rotate(45deg); }
+    .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-failure:before {
+      height: 8px;
+      transform: rotate(-45deg); }
+    .update-form.update-person-form .add-relation-row .people-search-form .search-input {
+      width: 120px;
+      outline: none; }
+    .update-form.update-person-form .add-relation-row .people-search-form .people-search-result-list {
+      width: 250px;
+      z-index: 3; }
   .update-form.update-person-form .add-relation-row .button-add-relation {
     color: #ffffff;
     font-weight: 500;

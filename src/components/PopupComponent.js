@@ -49,13 +49,14 @@ class PopupComponent extends Component {
             selectGroup,
             searchPeople,
             isAddGuardianForm,
+            relateGuardianToPerson,
             items: {
                 items: {
                     people,
                     groups
                 }
             }
-        } = this.props;
+        } = this.props
 
 
         switch(type) {
@@ -86,6 +87,7 @@ class PopupComponent extends Component {
                             handleSubmit={handleSubmit}
                             handleClose={handleClose}
                             uploadImage={uploadImage}
+                            relateGuardianToPerson={relateGuardianToPerson}
                             image={image}/>;
 
             case PHONE:
@@ -120,6 +122,7 @@ class PopupComponent extends Component {
                             handleClose={handleClose}
                             uploadImage={uploadImage}
                             isAddGuardianForm={isAddGuardianForm}
+                            relateGuardianToPerson={relateGuardianToPerson}
                             image={image}/>;
 
             case ADD_PERSON_TO_GROUP:
@@ -187,7 +190,6 @@ class PopupComponent extends Component {
                 break;
 
             case ADD_GROUP_REQUEST:
-                console.log(values);
                 addGroup(values);
                 break;
 

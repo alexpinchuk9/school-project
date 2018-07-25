@@ -16,7 +16,9 @@ import {
     searchGroups,
     resetSearchResults,
     selectGroup,
-    searchPeople, refreshItems
+    searchPeople,
+    refreshItems,
+    relateGuardianToPerson
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -77,6 +79,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         refreshItems: (selectedItem) => {
             dispatch(refreshItems(selectedItem))
+        },
+        relateGuardianToPerson: (values) => {
+            dispatch(relateGuardianToPerson(values))
         },
     }
 };

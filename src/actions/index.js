@@ -43,7 +43,11 @@ import {
     ADD_PERSON_TO_GROUP_SUCCESS,
     ADD_PERSON_TO_GROUP_FAILURE,
     SEARCH_GROUPS,
-    SEARCH_PEOPLE, SELECT_GROUP
+    SEARCH_PEOPLE,
+    SELECT_GROUP,
+    RELATE_GUARDIAN_TO_PERSON_REQUEST,
+    RELATE_GUARDIAN_TO_PERSON_SUCCESS,
+    RELATE_GUARDIAN_TO_PERSON_FAILURE
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -405,7 +409,6 @@ export const addGroup = (values) => {
             type: ADD_GROUP_REQUEST
         });
 
-        console.log(values);
 
         let bodyFormData = new FormData();
         const { name, parentGroupId } = values;
@@ -619,3 +622,49 @@ export const selectGroup = (group) => {
         })
     }
 };
+
+
+export const relateGuardianToPerson = (values) => {
+
+    return (dispatch) => {
+
+        dispatch({
+            type: RELATE_GUARDIAN_TO_PERSON_REQUEST
+        })
+
+
+        let bodyFormData = new FormData();
+        const { peopleId, guardianId, relation, guardianIndex  } = values;
+
+        let searchForm = document.getElementById(`people-search-form-${guardianIndex}`);
+
+        searchForm.classList.remove('add-guardian-success', 'add-guardian-failure');
+
+        bodyFormData.set('formName', 'relateP2P');
+        bodyFormData.set('peopleId', peopleId);
+        bodyFormData.set('guardianId', guardianId);
+        if (relation) bodyFormData.set('relation', relation);
+
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                searchForm.classList.add('add-guardian-success');
+                dispatch({
+                    type: RELATE_GUARDIAN_TO_PERSON_SUCCESS,
+                    payload: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                searchForm.classList.add('add-guardian-failure');
+                dispatch({
+                    type: RELATE_GUARDIAN_TO_PERSON_FAILURE,
+                    error: response.error
+                })
+            });
+
+    }
+}
