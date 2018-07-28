@@ -186,7 +186,7 @@ class UpdatePersonForm extends Component {
         return (
             <Fragment>
                 <form className="form update-form update-person-form" onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}>
-                    <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                    <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>
@@ -221,7 +221,7 @@ class UpdatePersonForm extends Component {
                     {this.renderGuardianSection()}
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>Add person</button>
+                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכון</button>
                     </div>
                 </form>
                 {open && <PopupComponent type={type}
