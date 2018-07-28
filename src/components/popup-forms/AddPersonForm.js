@@ -178,7 +178,7 @@ class AddPersonForm extends Component {
         return (
             <Fragment>
                 <form className="form add-form add-person-form" onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}>
-                    <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                    <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                     <div className="form-row">
                         <label htmlFor="groupId" className="field-label">Group id</label>
