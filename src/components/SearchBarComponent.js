@@ -32,7 +32,7 @@ class SearchBarComponent extends Component {
         if( this.state.query !== "" && !itemResults.length ) {
             return (
                 <div className="no-results">
-                    Sorry, nothing matches your search
+                    אין תוצאות מתאימות
                 </div>
             );
         }
@@ -144,7 +144,7 @@ class SearchBarComponent extends Component {
                  onFocus={this.handleFocus}
                  onKeyDown={this.handleKeyDown}>
                 <input
-                    placeholder="Search"
+                    placeholder="חיפוש"
                     ref={input => this.search = input}
                     value={this.state.query}
                     onChange={this.handleInputChange}
