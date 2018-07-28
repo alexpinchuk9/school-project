@@ -33,7 +33,7 @@ class GroupSearchBar extends Component {
         if( this.state.query !== "" && !groupResults.length ) {
             return (
                 <div className="no-results">
-                    Sorry, nothing matches your search
+                    אין תוצאות מתאימות
                 </div>
             );
         }
@@ -145,7 +145,7 @@ class GroupSearchBar extends Component {
                  onFocus={this.handleFocus}
                  onKeyUp={this.handleKeyUp}>
                 <input
-                    placeholder="Search"
+                    placeholder="חיפוש קבוצה"
                     ref={input => this.groupSearch = input}
                     value={!this.state.query && lastSelectedGroup ?  lastSelectedGroup.groupName : this.state.query}
                     onChange={this.handleInputChange}
