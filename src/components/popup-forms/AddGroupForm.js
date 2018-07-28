@@ -15,16 +15,16 @@ class AddGroupForm extends Component {
                 parentGroupId: group.id
             }, ADD_GROUP_REQUEST))}>
 
-            <button className="button-close" onClick={handleClose} title="Close popup"></button>
+            <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
             <div className="form-row">
-                <label htmlFor="name" className="field-label">Group Name</label>
+                <label htmlFor="name" className="field-label">שם הקבוצה</label>
                 <Field component="input" type="text" name="newGroupName" className="form-field" />
             </div>
 
 
             <div className="form-row">
-                <button type="submit" className="button-submit" disabled={pristine || submitting}>Add Group</button>
+                <button type="submit" className="button-submit" disabled={pristine || submitting}>הוספה</button>
             </div>
 
         </form>
