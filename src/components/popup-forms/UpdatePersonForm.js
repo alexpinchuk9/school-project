@@ -109,7 +109,7 @@ class UpdatePersonForm extends Component {
                             type="text"
                             name={`relation${guardianNumber}`}
                             ref={input => this[`relation${guardianNumber}`] = input}
-                            placeholder="Relation (optional)"
+                            placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
 
@@ -137,7 +137,7 @@ class UpdatePersonForm extends Component {
             null :
             <span className="add-guardian-fields-button"
                   onClick={this.addGuardianFields}>
-                Add more +
+                הוסף הורה +
             </span>;
 
 
