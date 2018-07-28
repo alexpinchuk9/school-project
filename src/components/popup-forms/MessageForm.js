@@ -14,7 +14,7 @@ class MessageForm extends Component {
 
         return (
             <form className="form message-form" onSubmit={handleSubmit(values => onSubmit(values, ACTION_TYPE))}>
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                 <div className="form-row">
                     <label htmlFor="message" className="field-label">הודעה אל {messageName}</label>
