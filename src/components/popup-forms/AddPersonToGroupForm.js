@@ -31,7 +31,7 @@ class AddPersonToGroupForm extends Component {
         return (
             <form className="form add-form"
                   onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}>
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
 
 
@@ -46,15 +46,15 @@ class AddPersonToGroupForm extends Component {
                 </div>
 
                 <div className="form-row">
-                    <label htmlFor="relation">Relation <sub>*optional</sub></label>
-                    <Field component="input" type="text" name="relation"  className="form-field"/>
+                    <label htmlFor="relation">התפקיד (רשות)</label>
+                    <Field component="input" type="text" name="relation"  className="form-field" placeholder="מחנך/מנהל/..." />
                 </div>
 
                 <div className="form-row">
                     <button type="submit"
                             className="button-submit"
                             disabled={pristine || submitting || !search.lastSelectedGroup }>
-                        Add Person to Group
+                        הוספה לקבוצה
                     </button>
                 </div>
 
