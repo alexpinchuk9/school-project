@@ -53,33 +53,33 @@ class PersonComponent extends Component {
         };
 
         const mailActionButton = person.email ?
-                                        <button title="E-mail this person" className="mail">
+                                        <button title="שלח מייל" className="mail">
                                             <a href={`mailto:${person.email}`} className="mail-link"></a>
                                         </button> :
                                         <button
-                                            title="We don't have an e-mail address for this person yet"
+                                            title="כתובת המייל חסרה"
                                             className="mail disabled">
                                         </button>;
 
         const messageActionButton = person.email ?
                                         <button
-                                            title="Message this person"
+                                            title="שלח הודעה"
                                             className="message"
                                             onClick={() => this.handlePopupOpen(MESSAGE)}>
                                         </button> :
                                         <button
-                                            title="We don't have an e-mail address for this person yet"
+                                            title="חסרים פרטי התקשרות"
                                             className="message disabled">
                                         </button>;
 
         const callActionButton = person.cellphone ?
                                         <button
-                                            title="Copy this person's phone number"
+                                            title="טלפן"
                                             className="call"
                                             onClick={() => this.handlePopupOpen(PHONE)}>
                                         </button> :
                                         <button
-                                            title="We don't have a phone number for this person yet"
+                                            title="מספר הטלפון חסר"
                                             className="call disabled">
                                         </button>;
 
@@ -119,7 +119,7 @@ class PersonComponent extends Component {
                             {messageActionButton}
                             {callActionButton}
                             <button
-                                title="Update this person's info"
+                                title="עדכון פרטים"
                                 className="edit"
                                 onClick={() => this.handlePopupOpen(UPDATE_PERSON)}>
                             </button>
@@ -137,13 +137,13 @@ class PersonComponent extends Component {
                 <div className="actions">
 
                     <button className="relate-people-group"
-                            title="Add this person to a group"
+                            title="הוספה לקבוצה"
                             onClick={() => this.handlePopupOpen(ADD_PERSON_TO_GROUP)}>
                         <FontAwesomeIcon size="lg" icon={faLink}/>
                     </button>
 
                     <button
-                        title="Delete this person"
+                        title="מחיקה"
                         className="delete-people"
                         onClick={() => this.handlePopupOpen(DELETE)}>
                     </button>
