@@ -101,7 +101,7 @@ class AddPersonForm extends Component {
                             component="input"
                             name={`guardian${guardianNumber}`}
                             type="text" name="relation"
-                            placeholder="Relation (optional)"
+                            placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
 
@@ -130,7 +130,7 @@ class AddPersonForm extends Component {
             null :
             <span className="add-guardian-fields-button"
                   onClick={this.addGuardianFields}>
-                Add more +
+                + הוסף הורה
             </span>;
 
 
@@ -195,7 +195,7 @@ class AddPersonForm extends Component {
                       onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}
                       onKeyPress={this.onKeyPress}
                 >
-                    <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                    <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                     <div className="form-row">
                         <Field component="input" type="text" name="groupId" className="form-field" hidden/>

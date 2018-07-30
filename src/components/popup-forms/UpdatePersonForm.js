@@ -109,7 +109,7 @@ class UpdatePersonForm extends Component {
                             type="text"
                             name={`relation${guardianNumber}`}
                             ref={input => this[`relation${guardianNumber}`] = input}
-                            placeholder="Relation (optional)"
+                            placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
 
@@ -137,7 +137,7 @@ class UpdatePersonForm extends Component {
             null :
             <span className="add-guardian-fields-button"
                   onClick={this.addGuardianFields}>
-                Add more +
+                 + הוסף הורה
             </span>;
 
 
@@ -202,7 +202,7 @@ class UpdatePersonForm extends Component {
                       onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}
                       onKeyPress={this.onKeyPress}
                 >
-                    <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                    <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>
@@ -237,7 +237,7 @@ class UpdatePersonForm extends Component {
                     {this.renderGuardianSection()}
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>Add person</button>
+                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכן אדם</button>
                     </div>
                 </form>
                 {open && <PopupComponent type={type}

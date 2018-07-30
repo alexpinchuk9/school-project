@@ -12,7 +12,7 @@ class UpdateGroupForm extends Component {
         return (
             <form className="form update-form"
                   onSubmit={handleSubmit(values => onSubmit(values, UPDATE_GROUP_REQUEST))}>
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                 <div className="form-row">
                     <label htmlFor="groupName" className="field-label">שם הקבוצה</label>

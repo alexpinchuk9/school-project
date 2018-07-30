@@ -33,7 +33,7 @@ class PeopleSearchBar extends Component {
         if( this.state.query !== "" && !peopleResults.length ) {
             return (
                 <div className="no-results">
-                    Sorry, nothing matches your search
+                    אין תוצאות מתאימות
                 </div>
             );
         }
@@ -155,7 +155,7 @@ class PeopleSearchBar extends Component {
                  id={`people-search-form-${this.props.guardianNumber}`}
                  onKeyUp={this.handleKeyUp}>
                 <input
-                    placeholder="Search"
+                    placeholder="חיפוש אנשים"
                     ref={input => this.groupSearch = input}
                     value={this.state.query}
                     onChange={this.handleInputChange}

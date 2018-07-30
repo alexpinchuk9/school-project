@@ -65,12 +65,12 @@ class GroupComponent extends Component {
                             </div>
                             <div className="group-actions">
                                 <button
-                                    title="Message this group"
+                                    title="שלח הודעה"
                                     className="message"
                                     onClick={() => this.handlePopupOpen(MESSAGE)}>
                                 </button>
                                 <button
-                                    title="Update this group"
+                                    title="עדכון פרטים"
                                     className="edit"
                                     onClick={() => this.handlePopupOpen(UPDATE_GROUP)}>
                                 </button>
@@ -86,17 +86,17 @@ class GroupComponent extends Component {
                 <div className="actions">
                     <button
                         className="add-group"
-                        title="Add a group"
+                        title="הוספת תת-קבוצה"
                         onClick={() => this.handlePopupOpen(ADD_GROUP)}>
                     </button>
                     <button
                         className="delete-group"
-                        title="Delete this group"
+                        title="מחיקה"
                         onClick={() => this.handlePopupOpen(DELETE)}>
                     </button>
                     <button
                         className="add-people"
-                        title="Add people to this group"
+                        title="הוספה לקבוצה"
                         onClick={() => this.handlePopupOpen(ADD_PERSON)}>
                     </button>
                 </div>

@@ -20,13 +20,13 @@ class HeaderComponent extends Component {
             selectItem } = this.props;
 
         const goBackButton = previousSelectedItems.length ?
-            <button title="Go back" className="go-back-button" onClick={onGoBack}></button> :
-            <button title="Can't go back right now" className="go-back-button disabled"></button>;
+            <button title="למסך הקודם" className="go-back-button" onClick={onGoBack}></button> :
+            <button title="אין מסך קודם" className="go-back-button disabled"></button>;
 
         const homeButton = homeItem ?
             <div className="shortcut-container" onClick={() => selectItem(homeItem)}>
                 <FaHome />
-                <button className="shortcut-button" title="Go to home page">
+                <button className="shortcut-button" title="לדף הבית">
                     {homeItem.groupName}
                 </button>
             </div>
@@ -46,7 +46,7 @@ class HeaderComponent extends Component {
                 />
 
                 <div className="header-action-buttons">
-                    <button title="Refresh" className="refresh-button" onClick={onRefresh}></button>
+                    <button title="רענון" className="refresh-button" onClick={onRefresh}></button>
                     {goBackButton}
                 </div>
 

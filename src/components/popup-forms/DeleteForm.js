@@ -8,18 +8,18 @@ class DeleteForm extends Component {
 
         const { group, person, handleClose, onSubmit } = this.props;
         const ACTION_TYPE = person ? DELETE_PERSON_REQUEST : DELETE_GROUP_REQUEST;
-        const message = person ? "Are you sure you want to delete this person?" : "Are you sure you want to delete this group?";
+        const message = person ? "בטוח שברצונך למחוק?" : "בטוח שברצונך למחוק את הקבוצה?";
         const id = person ? person.id : group.groupId;
 
         return (
             <div className="form delete-form">
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                <button className="button-close" onClick={handleClose} title="סגירה"></button>
                 <div className="form-row">
                     {message}
                 </div>
                 <div className="form-row">
-                    <button className="button-submit" onClick={() => onSubmit(id, ACTION_TYPE)}>YES</button>
-                    <button className="button-cancel" onClick={handleClose}>NO</button>
+                    <button className="button-submit" onClick={() => onSubmit(id, ACTION_TYPE)}>כן</button>
+                    <button className="button-cancel" onClick={handleClose}>לא</button>
                 </div>
             </div>
         );

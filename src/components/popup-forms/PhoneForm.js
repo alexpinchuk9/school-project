@@ -23,7 +23,7 @@ class PhoneForm extends Component {
 
         return (
             <div className="form phone-form">
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
+                <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                 <div className="form-row">
                     <div className="form-text">
