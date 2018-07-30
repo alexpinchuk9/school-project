@@ -47,12 +47,8 @@ class AddPersonToGroupForm extends Component {
                   onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}
                   onKeyPress={this.onKeyPress}
             >
-                <button className="button-close" onClick={handleClose} title="Close popup"></button>
-                  onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}>
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
-
-
-
+                
                 <div className="form-row">
                     <GroupSearchBar
                         groups={groups}
