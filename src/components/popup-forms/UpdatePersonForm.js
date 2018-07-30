@@ -156,6 +156,19 @@ class UpdatePersonForm extends Component {
         );
     }
 
+    onKeyPress = (event) => {
+        let { which, target } = event;
+
+        if (which === 13) {
+            while (target.tagName !== 'FORM') {
+                if (target.classList.contains('people-search-form')) {
+                    event.preventDefault();
+                }
+                target = target.parentElement;
+            }
+        }
+    }
+
 
     render() {
 
@@ -185,7 +198,10 @@ class UpdatePersonForm extends Component {
 
         return (
             <Fragment>
-                <form className="form update-form update-person-form" onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}>
+                <form className="form update-form update-person-form"
+                      onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}
+                      onKeyPress={this.onKeyPress}
+                >
                     <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
                     <div className="form-row">

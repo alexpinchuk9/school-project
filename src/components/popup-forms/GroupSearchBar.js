@@ -127,6 +127,7 @@ class GroupSearchBar extends Component {
             }
 
             case 13: {
+                event.preventDefault();
                 this.handleResultClick(groupResults[activeId]);
                 break;
             }

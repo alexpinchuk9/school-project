@@ -61,14 +61,14 @@ class PersonComponent extends Component {
                                             className="mail disabled">
                                         </button>;
 
-        const messageActionButton = person.email ?
+        const messageActionButton = (person.email || person.cellphone) ?
                                         <button
                                             title="Message this person"
                                             className="message"
                                             onClick={() => this.handlePopupOpen(MESSAGE)}>
                                         </button> :
                                         <button
-                                            title="We don't have an e-mail address for this person yet"
+                                            title="We don't have an e-mail address or a phone number for this person yet"
                                             className="message disabled">
                                         </button>;
 

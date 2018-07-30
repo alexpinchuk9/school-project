@@ -18,7 +18,7 @@ class MessageForm extends Component {
 
                 <div className="form-row">
                     <label htmlFor="message" className="field-label">הודעה אל {messageName}</label>
-                    <Field name={fieldName} component="textarea" className="form-field textarea-field"></Field>
+                    <Field name={fieldName} component="textarea" rows={10} className="form-field textarea-field"></Field>
                 </div>
 
                 <div className="form-row">

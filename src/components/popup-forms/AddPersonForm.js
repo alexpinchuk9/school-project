@@ -149,6 +149,20 @@ class AddPersonForm extends Component {
         );
     }
 
+    onKeyPress = (event) => {
+        let { which, target } = event;
+
+        if (which === 13) {
+            while (target.tagName !== 'FORM') {
+                if (target.classList.contains('people-search-form')) {
+                    event.preventDefault();
+                }
+                target = target.parentElement;
+            }
+        }
+    }
+
+
 
     render() {
 
@@ -177,12 +191,14 @@ class AddPersonForm extends Component {
 
         return (
             <Fragment>
-                <form className="form add-form add-person-form" onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}>
+                <form className="form add-form add-person-form"
+                      onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}
+                      onKeyPress={this.onKeyPress}
+                >
                     <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
                     <div className="form-row">
-                        <label htmlFor="groupId" className="field-label">Group id</label>
-                        <Field component="input" type="text" name="groupId" className="form-field"/>
+                        <Field component="input" type="text" name="groupId" className="form-field" hidden/>
                     </div>
 
                     <div className="form-row">

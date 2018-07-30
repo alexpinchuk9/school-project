@@ -137,6 +137,7 @@ class PeopleSearchBar extends Component {
             }
 
             case 13: {
+                event.preventDefault();
                 this.handleResultClick(peopleResults[activeId]);
                 break;
             }
