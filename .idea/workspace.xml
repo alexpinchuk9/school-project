@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PersonComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PersonComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/GroupSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/GroupSearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/MessageForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/MessageForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -73,14 +67,47 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UpdatePersonForm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddGroupForm.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdatePersonForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="163" column="65" selection-start-line="163" selection-start-column="65" selection-end-line="163" selection-end-column="65" />
+            <state relative-caret-position="332">
+              <caret line="158" column="3" lean-forward="true" selection-start-line="158" selection-start-column="3" selection-end-line="170" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddPersonToGroupForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="705">
+              <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeleteForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/popup-forms/DeleteForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -92,36 +119,6 @@
               <caret line="139" column="39" selection-start-line="139" selection-start-column="39" selection-end-line="139" selection-end-column="39" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updatePersonForm.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/updatePersonForm.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="addPersonForm.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/addPersonForm.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9045">
-              <caret line="654" column="62" selection-start-line="654" selection-start-column="62" selection-end-line="654" selection-end-column="62" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -173,7 +170,6 @@
         <option value="$PROJECT_DIR$/src/styles/header.scss" />
         <option value="$PROJECT_DIR$/src/styles/mainPage.scss" />
         <option value="$PROJECT_DIR$/src/reducers/popupReducer.js" />
-        <option value="$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js" />
         <option value="$PROJECT_DIR$/src/styles/peopleSearchBar.scss" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js" />
         <option value="$PROJECT_DIR$/src/styles/variables.scss" />
@@ -194,6 +190,7 @@
         <option value="$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js" />
         <option value="$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js" />
+        <option value="$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js" />
       </list>
     </option>
   </component>
@@ -215,7 +212,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1745" />
-    <option name="y" value="-4" />
+    <option name="y" value="-1054" />
     <option name="width" value="1615" />
     <option name="height" value="1054" />
   </component>
@@ -374,16 +371,15 @@
       <workItem from="1532521576458" duration="6204000" />
       <workItem from="1532589099963" duration="1455000" />
       <workItem from="1532671694325" duration="2069000" />
-      <workItem from="1532933288796" duration="3943000" />
+      <workItem from="1532933288796" duration="4314000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="223838000" />
+    <option name="totallyTimeSpent" value="224209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1615" height="1054" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -431,8 +427,13 @@
           <url>file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js</url>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="5" />
+      <option name="time" value="6" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -531,13 +532,6 @@
             <element signature="e#0#222#0" expanded="true" />
             <marker date="1532414354006" expanded="true" signature="1414:1427" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/DeleteForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -645,13 +639,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="49" column="98" selection-start-line="48" selection-start-column="18" selection-end-line="49" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -718,16 +705,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PopupComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -779,27 +756,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/MessageForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="75" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
+        <state relative-caret-position="351">
+          <caret line="156" column="65" selection-start-line="156" selection-start-column="65" selection-end-line="156" selection-end-column="65" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/PhoneForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="25" column="100" selection-start-line="25" selection-start-column="100" selection-end-line="25" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="139" column="39" selection-start-line="139" selection-start-column="39" selection-end-line="139" selection-end-column="39" />
+        <state relative-caret-position="332">
+          <caret line="158" column="3" lean-forward="true" selection-start-line="158" selection-start-column="3" selection-end-line="170" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonToGroupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="45" selection-start-line="47" selection-start-column="45" selection-end-line="47" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/DeleteForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -813,19 +800,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddPersonForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/MessageForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="156" column="65" selection-start-line="156" selection-start-column="65" selection-end-line="156" selection-end-column="65" />
+        <state relative-caret-position="255">
+          <caret line="20" column="75" selection-start-line="20" selection-start-column="75" selection-end-line="20" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UpdatePersonForm.js">
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/PeopleSearchBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="163" column="65" selection-start-line="163" selection-start-column="65" selection-end-line="163" selection-end-column="65" />
+        <state relative-caret-position="381">
+          <caret line="139" column="39" selection-start-line="139" selection-start-column="39" selection-end-line="139" selection-end-column="39" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/PhoneForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="25" column="100" selection-start-line="25" selection-start-column="100" selection-end-line="25" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/AddGroupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

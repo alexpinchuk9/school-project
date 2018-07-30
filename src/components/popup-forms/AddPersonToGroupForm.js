@@ -6,6 +6,20 @@ import GroupSearchBar from "./GroupSearchBar";
 
 class AddPersonToGroupForm extends Component {
 
+    onKeyPress = (event) => {
+        let { which, target } = event;
+
+        if (which === 13) {
+            while (target.tagName !== 'FORM') {
+                if (target.classList.contains('group-search-form')) {
+                    event.preventDefault();
+                }
+                target = target.parentElement;
+            }
+        }
+    }
+
+
     render() {
 
         const {
@@ -30,7 +44,9 @@ class AddPersonToGroupForm extends Component {
 
         return (
             <form className="form add-form"
-                  onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}>
+                  onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}
+                  onKeyPress={this.onKeyPress}
+            >
                 <button className="button-close" onClick={handleClose} title="Close popup"></button>
 
 
