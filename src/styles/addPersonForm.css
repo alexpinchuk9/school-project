@@ -1,5 +1,5 @@
 .add-form.add-person-form .add-relation-row {
-  width: 90%;
+  width: 100%;
   flex-direction: row;
   margin-bottom: 10px; }
   .add-form.add-person-form .add-relation-row .people-search-form .search-input {
