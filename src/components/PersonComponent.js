@@ -7,6 +7,7 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import PopupComponent from "../containers/PopupContainer";
+import checkMobile from "../utils/checkmobile";
 
 class PersonComponent extends Component {
 
@@ -72,7 +73,7 @@ class PersonComponent extends Component {
                                             className="message disabled">
                                         </button>;
 
-        const callActionButton = person.cellphone ?
+        const desktopCallButton = person.cellphone ?
                                         <button
                                             title="טלפן"
                                             className="call"
@@ -83,6 +84,19 @@ class PersonComponent extends Component {
                                             className="call disabled">
                                         </button>;
 
+        const mobileCallButton = person.cellphone ?
+                                    <a
+                                    title="Call this number"
+                                    className="call"
+                                    href={`tel:${person.cellphone}`}></a> :
+                                    <button
+                                    title="מספר הטלפון חסר"
+                                    className="call disabled"></button>;
+
+        const currentDeviceIsMobile = checkMobile();
+
+        const callActionButton = currentDeviceIsMobile ? mobileCallButton : desktopCallButton;
+        console.log(currentDeviceIsMobile);
 
         const image = person.picSource ?
                                         <img src={`${filePath}${person.picSource}`}

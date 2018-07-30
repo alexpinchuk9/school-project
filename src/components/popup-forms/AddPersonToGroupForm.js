@@ -48,7 +48,7 @@ class AddPersonToGroupForm extends Component {
                   onKeyPress={this.onKeyPress}
             >
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
-                
+
                 <div className="form-row">
                     <GroupSearchBar
                         groups={groups}
