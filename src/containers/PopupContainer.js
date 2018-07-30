@@ -18,7 +18,8 @@ import {
     selectGroup,
     searchPeople,
     refreshItems,
-    relateGuardianToPerson
+    relateGuardianToPerson,
+    addGuardian
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -83,6 +84,9 @@ const mapDispatchToProps = (dispatch) => {
         relateGuardianToPerson: (values) => {
             dispatch(relateGuardianToPerson(values))
         },
+        addGuardian: (values) => {
+            dispatch(addGuardian(values))
+        }
     }
 };
 

@@ -93,6 +93,8 @@ class UpdatePersonForm extends Component {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
+
+                    {addButton}
                     <PeopleSearchBar
                         people={people}
                         search={search}
@@ -185,15 +187,14 @@ class UpdatePersonForm extends Component {
         // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
         //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
 
-        const { guardianFieldsNumber } = this.state;
+        const {
+            guardianFieldsNumber,
+            popup:
+                {
+                    guardianNumber
+                }
+        } = this.state;
         const {open, type} = this.state.popup;
-
-        const addGuardianFieldsButton = guardianFieldsNumber === 4 ?
-            null :
-            <span className="add-guardian-fields-button"
-                  onClick={this.addGuardianFields}>
-                Add more +
-            </span>;
 
 
         return (
@@ -242,7 +243,7 @@ class UpdatePersonForm extends Component {
                 </form>
                 {open && <PopupComponent type={type}
                                          handleClose={this.handlePopupClose}
-                                         isAddGuardianForm={true}
+                                         guardianNumber={guardianNumber}
                                          className="guardian-popup"
                 />}
             </Fragment>

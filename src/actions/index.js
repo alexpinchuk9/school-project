@@ -47,7 +47,7 @@ import {
     SELECT_GROUP,
     RELATE_GUARDIAN_TO_PERSON_REQUEST,
     RELATE_GUARDIAN_TO_PERSON_SUCCESS,
-    RELATE_GUARDIAN_TO_PERSON_FAILURE
+    RELATE_GUARDIAN_TO_PERSON_FAILURE, ADD_GUARDIAN_REQUEST, ADD_GUARDIAN_SUCCESS, ADD_GUARDIAN_FAILURE
 } from '../constants/actionTypes';
 import { serverUrl } from "../constants/api";
 
@@ -662,6 +662,48 @@ export const relateGuardianToPerson = (values) => {
                 searchForm.classList.add('add-guardian-failure');
                 dispatch({
                     type: RELATE_GUARDIAN_TO_PERSON_FAILURE,
+                    error: response.error
+                })
+            });
+
+    }
+}
+
+export const addGuardian = (values) => {
+
+    return (dispatch) => {
+        dispatch({
+            type: ADD_GUARDIAN_REQUEST
+        });
+
+        console.log(values);
+
+        let bodyFormData = new FormData();
+        const { guardianName, guardianSurname, guardianEmail, guardianCellphone  } = values;
+
+
+        bodyFormData.set('formName', 'addPeople');
+        bodyFormData.set('name', guardianName);
+        bodyFormData.set('surname', guardianSurname);
+        bodyFormData.set('email', guardianEmail);
+        bodyFormData.set('cellphone', guardianCellphone);
+
+        axios({
+            method: 'post',
+            url: serverUrl,
+            data: bodyFormData,
+            config: { headers: {'Content-Type': 'multipart/form-data' }}
+        })
+            .then(response => {
+                console.log(response);
+                dispatch({
+                    type: ADD_GUARDIAN_SUCCESS,
+                    guardianId: response.data ? response.data : response.statusText
+                })
+            })
+            .catch(response => {
+                dispatch({
+                    type: ADD_GUARDIAN_FAILURE,
                     error: response.error
                 })
             });

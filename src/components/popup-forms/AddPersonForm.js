@@ -7,7 +7,7 @@ import { ADD_PERSON_REQUEST} from "../../constants/actionTypes";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ADD_PERSON } from "../../constants/popupTypes";
+import {ADD_GUARDIAN, ADD_PERSON} from "../../constants/popupTypes";
 import PopupComponent from '../../containers/PopupContainer';
 
 class AddPersonForm extends Component {
@@ -75,7 +75,7 @@ class AddPersonForm extends Component {
             <span
                 title="Add a new person"
                 className="button-add-relation"
-                onClick={() => this.handlePopupOpen(ADD_PERSON)}>
+                onClick={() => this.handlePopupOpen(ADD_GUARDIAN)}>
                         Add
                          <FontAwesomeIcon size="xs" icon={faPlus}/>
                     </span>
@@ -85,7 +85,7 @@ class AddPersonForm extends Component {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
-
+                    {addButton}
 
                     <PeopleSearchBar
                         people={people}
@@ -96,11 +96,13 @@ class AddPersonForm extends Component {
                         searchResultId={`people-search-result-list-${guardianNumber}`}
                     />
 
+                    <Field name={`guardian${guardianNumber}-id`} type="hidden" component="input" />
+
                     <div className="relation-type">
                         <Field
                             component="input"
-                            name={`guardian${guardianNumber}`}
-                            type="text" name="relation"
+                            name={`guardian${guardianNumber}-relation`}
+                            type="text"
                             placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
@@ -178,16 +180,14 @@ class AddPersonForm extends Component {
         // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
         //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
 
-        const { guardianFieldsNumber } = this.state;
+        const {
+            guardianFieldsNumber,
+            popup:
+                {
+                    guardianNumber
+                } 
+        } = this.state;
         const {open, type} = this.state.popup;
-
-        const addGuardianFieldsButton = guardianFieldsNumber === 4 ?
-                                                                    null :
-                                                                    <span className="add-guardian-fields-button"
-                                                                            onClick={this.addGuardianFields}
-                                                                        >
-                                                                        Add more +
-                                                                    </span>;
 
         return (
             <Fragment>
@@ -229,14 +229,19 @@ class AddPersonForm extends Component {
                         <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                     </div>
 
+                    {this.renderGuardianSection()}
+
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading || pristine }>עדכון</button>
+                        <button
+                            type="submit"
+                            className="button-submit"
+                            disabled={submitting || image.imageUploading || pristine }>עדכון</button>
                     </div>
                 </form>
                 {open && <PopupComponent type={type}
                                          handleClose={this.handlePopupClose}
-                                         isAddGuardianForm={true}
+                                         guardianNumber={guardianNumber}
                                          className="guardian-popup"
                 />}
             </Fragment>

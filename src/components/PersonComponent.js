@@ -5,6 +5,7 @@ import { filePath } from "../constants/api";
 import styled from 'styled-components';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { filterGuardians } from "../utils/filters"
 
 import PopupComponent from "../containers/PopupContainer";
 import checkMobile from "../utils/checkmobile";
@@ -43,8 +44,9 @@ class PersonComponent extends Component {
 
     renderPersonFullRepresentation = () => {
 
-        const {person, className} = this.props;
+        const {guardians, person, className} = this.props;
         const {open, type} = this.state.popup;
+
         const initialValues = {
             name: person.name,
             surname: person.surname,
@@ -52,6 +54,8 @@ class PersonComponent extends Component {
             cellphone: person.cellphone,
             picture: person.picSource
         };
+
+        // for (let i = 0; i < guardians.length, i++) initialValues[{`guardian`}]
 
         const mailActionButton = person.email ?
                                         <button title="שלח מייל" className="mail">
@@ -96,7 +100,6 @@ class PersonComponent extends Component {
         const currentDeviceIsMobile = checkMobile();
 
         const callActionButton = currentDeviceIsMobile ? mobileCallButton : desktopCallButton;
-        console.log(currentDeviceIsMobile);
 
         const image = person.picSource ?
                                         <img src={`${filePath}${person.picSource}`}
