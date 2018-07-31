@@ -35,7 +35,32 @@ const INITIAL_STATE = {
     serverResponse: null,
     error: null,
     open: false,
-    newGuardianId: null
+    guardians: [
+        {
+            number: 0,
+            id: null,
+            name: null,
+            surname: null
+        },
+        {
+            number: 1,
+            id: null,
+            name: null,
+            surname: null
+        },
+        {
+            number: 2,
+            id: null,
+            name: null,
+            surname: null
+        },
+        {
+            number: 3,
+            id: null,
+            name: null,
+            surname: null
+        },
+    ]
 };
 
 const popupReducer = (state = INITIAL_STATE, action) => {
@@ -76,7 +101,14 @@ const popupReducer = (state = INITIAL_STATE, action) => {
             return {...state, loading: false, error: action.payload, serverResponse: null};
 
         case ADD_GUARDIAN_SUCCESS:
-            return {...state, newGuardianId: action.guardianId };
+            const { guardianNumber, guardianId, guardianName, guardianSurname } = action;
+            const newGuardians = state.guardians.map(guardian => guardian.number === guardianNumber ? {
+                ...guardian,
+                id: guardianId,
+                name: guardianName,
+                surname: guardianSurname,
+            } : guardian);
+            return {...state, guardians: newGuardians };
 
         case RESET_POPUP_STATE:
             return INITIAL_STATE;

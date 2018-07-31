@@ -53,9 +53,10 @@ class PopupComponent extends Component {
             searchPeople,
             isAddGuardianForm,
             relateGuardianToPerson,
-            popup: {
-                newGuardianId
-            },
+            guardianNumber,
+            existingGuardians,
+            popup,
+            selectGuardian,
             items: {
                 items: {
                     people,
@@ -84,7 +85,8 @@ class PopupComponent extends Component {
 
             case UPDATE_PERSON:
                 return <UpdatePersonForm
-                            newGuardianId={newGuardianId}
+                            selectGuardian={selectGuardian}
+                            popup={popup}
                             person={person}
                             people={people}
                             search={search}
@@ -95,6 +97,7 @@ class PopupComponent extends Component {
                             handleClose={handleClose}
                             uploadImage={uploadImage}
                             relateGuardianToPerson={relateGuardianToPerson}
+                            existingGuardians={existingGuardians}
                             image={image}/>;
 
             case PHONE:
@@ -119,7 +122,8 @@ class PopupComponent extends Component {
 
             case ADD_PERSON:
                 return <AddPersonForm
-                            newGuardianId={newGuardianId}
+                            selectGuardian={selectGuardian}
+                            popup={popup}
                             person={person}
                             people={people}
                             search={search}
@@ -131,6 +135,7 @@ class PopupComponent extends Component {
                             uploadImage={uploadImage}
                             isAddGuardianForm={isAddGuardianForm}
                             relateGuardianToPerson={relateGuardianToPerson}
+                            existingGuardians={existingGuardians}
                             image={image}/>;
 
             case ADD_PERSON_TO_GROUP:
@@ -147,6 +152,7 @@ class PopupComponent extends Component {
 
             case ADD_GUARDIAN:
                 return <AddGuardianForm
+                            guardianNumber={guardianNumber}
                             handleClose={handleClose}
                             handleSubmit={handleSubmit}
                             onSubmit={this.handleSubmit}/>

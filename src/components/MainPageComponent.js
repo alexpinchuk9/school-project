@@ -83,7 +83,7 @@ class MainPageComponent extends Component {
         let guardianPeople = [];
 
         if (selectedItem && selectedItem.hasOwnProperty('surname')) {
-            const guardianPeople = filters.filterGuardianPeople(items, selectedItem);
+          guardianPeople = filters.filterGuardianPeople(items, selectedItem);
         }
 
         if (selectedItem) {

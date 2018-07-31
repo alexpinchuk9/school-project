@@ -192,7 +192,21 @@ export const updatePerson = (id, values) => {
             type: UPDATE_PERSON_REQUEST
         });
 
-        const { name, surname, email, cellphone, picture } = values;
+        const {
+            name,
+            surname,
+            email,
+            cellphone,
+            picture,
+            guardianId1,
+            relation1,
+            guardianId2,
+            relation2,
+            guardianId3,
+            relation3,
+            guardianId4,
+            relation4
+        } = values;
         let bodyFormData = new FormData();
 
         bodyFormData.set('formName', 'updatePerson');
@@ -201,7 +215,15 @@ export const updatePerson = (id, values) => {
         bodyFormData.set('surname', surname);
         bodyFormData.set('email', email);
         bodyFormData.set('cellphone', cellphone);
-        bodyFormData.set('picture', picture)
+        bodyFormData.set('pic', picture);
+        bodyFormData.set('guardianId1', guardianId1);
+        bodyFormData.set('relation1', relation1);
+        bodyFormData.set('guardianId2', guardianId2);
+        bodyFormData.set('relation2', relation2);
+        bodyFormData.set('guardianId3', guardianId3);
+        bodyFormData.set('relation3', relation3);
+        bodyFormData.set('guardianId4', guardianId4);
+        bodyFormData.set('relation4', relation4);
 
 
         axios({
@@ -447,7 +469,21 @@ export const addPerson = (values) => {
         });
 
         let bodyFormData = new FormData();
-        const { name, surname, cellphone, email, pic, groupId  } = values;
+        const {
+            name,
+            surname,
+            cellphone,
+            email,
+            pic,
+            groupId,
+            guardianId1,
+            relation1,
+            guardianId2,
+            relation2,
+            guardianId3,
+            relation3,
+            guardianId4,
+            relation4  } = values;
 
         bodyFormData.set('formName', 'addPeople');
         bodyFormData.set('groupId', groupId);
@@ -455,7 +491,16 @@ export const addPerson = (values) => {
         bodyFormData.set('surname', surname);
         bodyFormData.set('email', email);
         bodyFormData.set('cellphone', cellphone);
-        bodyFormData.set('pic', pic)
+        bodyFormData.set('pic', pic);
+        bodyFormData.set('guardianId1', guardianId1);
+        bodyFormData.set('relation1', relation1);
+        bodyFormData.set('guardianId2', guardianId2);
+        bodyFormData.set('relation2', relation2);
+        bodyFormData.set('guardianId3', guardianId3);
+        bodyFormData.set('relation3', relation3);
+        bodyFormData.set('guardianId4', guardianId4);
+        bodyFormData.set('relation4', relation4);
+
 
         axios({
             method: 'post',
@@ -676,11 +721,9 @@ export const addGuardian = (values) => {
             type: ADD_GUARDIAN_REQUEST
         });
 
-        console.log(values);
 
         let bodyFormData = new FormData();
-        const { guardianName, guardianSurname, guardianEmail, guardianCellphone  } = values;
-
+        const { guardianName, guardianSurname, guardianEmail, guardianCellphone, guardianNumber  } = values;
 
         bodyFormData.set('formName', 'addPeople');
         bodyFormData.set('name', guardianName);
@@ -698,7 +741,10 @@ export const addGuardian = (values) => {
                 console.log(response);
                 dispatch({
                     type: ADD_GUARDIAN_SUCCESS,
-                    guardianId: response.data ? response.data : response.statusText
+                    guardianId: response.data ? response.data : response.statusText,
+                    guardianNumber,
+                    guardianName,
+                    guardianSurname
                 })
             })
             .catch(response => {
@@ -708,5 +754,19 @@ export const addGuardian = (values) => {
                 })
             });
 
+
+        }
+}
+
+export const selectGuardian = (values) => {
+    return (dispatch) => {
+        const { guardianId, guardianName, guardianSurname, guardianNumber } = values;
+        dispatch({
+            type: ADD_GUARDIAN_SUCCESS,
+            guardianId,
+            guardianName,
+            guardianSurname,
+            guardianNumber
+        })
     }
 }

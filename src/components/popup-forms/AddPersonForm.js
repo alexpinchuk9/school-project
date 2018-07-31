@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 //  import {filePath} from "../../constants/api";
 import PeopleSearchBar from "./PeopleSearchBar";
-import { ADD_PERSON_REQUEST} from "../../constants/actionTypes";
+import {ADD_PERSON_REQUEST, UPDATE_PERSON_REQUEST} from "../../constants/actionTypes";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -16,15 +16,17 @@ class AddPersonForm extends Component {
         guardianFieldsNumber: 2,
         popup: {
             open: false,
-            type: null
+            type: null,
+            guardianNumber: null
         }
     }
 
-    handlePopupOpen = (type) => {
+    handlePopupOpen = (type, guardianNumber) => {
         this.setState({
             popup: {
                 open: true,
-                type: type
+                type: type,
+                guardianNumber: guardianNumber
             }
         });
     }
@@ -34,7 +36,8 @@ class AddPersonForm extends Component {
         this.setState({
             popup: {
                 open: false,
-                type: null
+                type: null,
+                guardianNumber: null
             }
         });
     }
@@ -45,24 +48,35 @@ class AddPersonForm extends Component {
         this.props.uploadImage(image);
     };
 
-    selectPerson = (guardian, guardianIndex) => {
+    selectPerson = (guardian, guardianNumber) => {
 
-        const { person } = this.props;
 
+        const { id, name, surname } = guardian;
         const values = {
-            peopleId: person.id,
-            guardianId: guardian.id,
-
+            guardianId: id,
+            guardianName: name,
+            guardianSurname: surname,
+            guardianNumber
         }
+
+        this.props.selectGuardian(values)
+
+
     };
 
     renderGuardianFields = () => {
 
 
-       const { search,
+        const {
+            search,
             people,
             resetSearchResults,
-            searchPeople } = this.props;
+            searchPeople,
+            popup,
+            existingGuardians
+        }
+            = this.props;
+
         const { guardianFieldsNumber } = this.state;
 
         let guardianArray = [];
@@ -71,49 +85,46 @@ class AddPersonForm extends Component {
             guardianArray.push(i)
         }
 
-        const addButton = (
-            <span
-                title="Add a new person"
-                className="button-add-relation"
-                onClick={() => this.handlePopupOpen(ADD_GUARDIAN)}>
-                        Add
-                         <FontAwesomeIcon size="xs" icon={faPlus}/>
-                    </span>
-        );
+
 
         return guardianArray.map((guardianNumber, index) => {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
-                    {addButton}
-
+                      <span
+                          title="Add a new person"
+                          className="button-add-relation"
+                          onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
+                          Add
+                          <FontAwesomeIcon size="xs" icon={faPlus}/>
+                      </span>
                     <PeopleSearchBar
+                        existingGuardian={existingGuardians[guardianNumber]}
+                        newGuardian={popup.guardians[guardianNumber]}
                         people={people}
                         search={search}
                         searchPeople={searchPeople}
                         resetSearchResults={resetSearchResults}
                         selectPerson={this.selectPerson}
+                        guardianNumber={guardianNumber}
                         searchResultId={`people-search-result-list-${guardianNumber}`}
                     />
 
-                    <Field name={`guardian${guardianNumber}-id`} type="hidden" component="input" />
-
                     <div className="relation-type">
-                        <Field
-                            component="input"
-                            name={`guardian${guardianNumber}-relation`}
+                        <input
+                            defaultValue={existingGuardians[guardianNumber] ? existingGuardians[guardianNumber].relation : ""}
                             type="text"
+                            name={`relation${guardianNumber}`}
+                            ref={input => this[`relation${guardianNumber}`] = input}
                             placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
-
 
                 </div>
             );
         })
 
     }
-
 
     addGuardianFields = () => {
 
@@ -135,10 +146,6 @@ class AddPersonForm extends Component {
                 + הוסף הורה
             </span>;
 
-
-        if(this.props.isAddGuardianForm) {
-            return null;
-        }
 
         return (
             <div className="guardian-section">
@@ -165,8 +172,36 @@ class AddPersonForm extends Component {
     }
 
 
+    handleFormSubmission = (values) => {
+        const {
+            handleClose,
+            handleSubmit,
+            pristine,
+            submitting,
+            image,
+            onSubmit,
+            person,
+            existingGuardians,
+        } = this.props;
+
+        const { guardians } = this.props.popup;
+        const newValues = {
+            guardianId1: guardians[0].id  || "",
+            relation1: this.relation0 ? this.relation0.value : "" || "",
+            guardianId2: guardians[1].id || "",
+            relation2: this.relation1 ? this.relation1.value : "" || "",
+            guardianId3: guardians[2].id || "",
+            relation3: this.relation2 ? this.relation2.value : "" || "",
+            guardianId4: guardians[3].id || "",
+            relation4: this.relation3 ? this.relation3.value : "" || "",
+        };
+
+        onSubmit({...values, ...newValues}, ADD_PERSON_REQUEST)
+    }
+
 
     render() {
+
 
         const {
             handleClose,
@@ -175,24 +210,18 @@ class AddPersonForm extends Component {
             submitting,
             image,
             onSubmit,
+            person
         } = this.props;
 
-        // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
-        //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
 
-        const {
-            guardianFieldsNumber,
-            popup:
-                {
-                    guardianNumber
-                } 
-        } = this.state;
-        const {open, type} = this.state.popup;
+        const { popup } = this.state;
+        const { open, type, guardianNumber } = popup;
+
 
         return (
             <Fragment>
-                <form className="form add-form add-person-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}
+                <form className="form update-form update-person-form"
+                      onSubmit={handleSubmit(values => this.handleFormSubmission(values))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>

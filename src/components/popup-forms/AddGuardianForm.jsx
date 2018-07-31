@@ -1,29 +1,28 @@
 import React, {Component } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-//  import {filePath} from "../../constants/api";
 
 import { ADD_GUARDIAN_REQUEST } from "../../constants/actionTypes";
 
 class AddGuardianForm extends Component {
 
 
+    handleFormSubmission = (values) => {
 
+        const {
+            handleClose,
+            onSubmit,
+            guardianNumber
+        } = this.props;
 
-    onKeyPress = (event) => {
-        let { which, target } = event;
-
-        if (which === 13) {
-            while (target.tagName !== 'FORM') {
-                if (target.classList.contains('people-search-form')) {
-                    event.preventDefault();
-                }
-                target = target.parentElement;
-            }
-        }
+        onSubmit({
+            guardianName: values.guardianName,
+            guardianSurname: values.guardianSurname,
+            guardianEmail: values.guardianEmail,
+            guardianCellphone: values.guardianCellphone,
+            guardianNumber}, ADD_GUARDIAN_REQUEST);
+        handleClose()
     }
-
-
 
     render() {
 
@@ -32,17 +31,14 @@ class AddGuardianForm extends Component {
             handleSubmit,
             pristine,
             submitting,
-            onSubmit,
         } = this.props;
-
 
         return (
                 <form className="form add-form add-guardian-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, ADD_GUARDIAN_REQUEST))}
+                      onSubmit={handleSubmit(values => this.handleFormSubmission(values))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="close"></button>
-
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">Guardian Name</label>

@@ -148,6 +148,7 @@ class PersonComponent extends Component {
                                              handleClose={this.handlePopupClose}
                                              person={person}
                                              className={type === UPDATE_PERSON ? "update-person-popup" : ""}
+                                             existingGuardians={guardians}
                                              initialValues={initialValues}/>}
                 </div>
 
