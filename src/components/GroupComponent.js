@@ -77,6 +77,7 @@ class GroupComponent extends Component {
                             </div>
                         </div>
                         { open && <PopupComponent
+                                            existingGuardians={[]}
                                             type={type}
                                             handleClose={this.handlePopupClose}
                                             group={group}
