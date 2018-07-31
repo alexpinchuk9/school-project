@@ -329,11 +329,13 @@
   background: #ffffff; }
   .popup.guardian-popup {
     margin-top: -300px;
-    min-width: 350px; }
+    min-width: 450px; }
+    .popup.guardian-popup .add-guardian-form {
+      z-index: 5; }
   .popup.add-person-popup, .popup.update-person-popup {
     top: 0;
     margin-top: 100px;
-    min-width: 350px; }
+    min-width: 450px; }
   @media only screen and (max-width: 1024px) {
     .popup {
       top: 25%; } }

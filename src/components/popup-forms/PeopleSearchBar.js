@@ -146,7 +146,12 @@ class PeopleSearchBar extends Component {
     }
 
     render() {
+        const { existingGuardian, newGuardian } = this.props;
 
+        console.log(existingGuardian);
+
+        let oldValue = existingGuardian && existingGuardian.name ? `${existingGuardian.name} ${existingGuardian.surname}` : "";
+        let newValue = newGuardian && newGuardian.name ?  `${newGuardian.name} ${newGuardian.surname}` : "";
         return (
             <div className="people-search-form"
                  tabIndex="0"
@@ -157,7 +162,7 @@ class PeopleSearchBar extends Component {
                 <input
                     placeholder="חיפוש אנשים"
                     ref={input => this.groupSearch = input}
-                    value={this.state.query}
+                    value={ newValue || this.state.query || oldValue }
                     onChange={this.handleInputChange}
                     className="search-input"
                     onBlur={this.handleBlur}

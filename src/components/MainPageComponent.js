@@ -79,10 +79,17 @@ class MainPageComponent extends Component {
     }
 
     renderSelectedItem = () => {
-        const { selectedItem } = this.props.items;
+        const { selectedItem, items } = this.props.items;
+        let guardianPeople = [];
+
+        if (selectedItem && selectedItem.hasOwnProperty('surname')) {
+          guardianPeople = filters.filterGuardianPeople(items, selectedItem);
+        }
 
         if (selectedItem) {
-            return <SelectedItemViewComponent item={selectedItem} />
+            return <SelectedItemViewComponent
+                        guardians={guardianPeople}
+                        item={selectedItem} />
         }
     }
 
