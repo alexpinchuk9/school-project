@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {DELETE_GROUP_REQUEST, DELETE_PERSON_REQUEST} from "../../constants/actionTypes";
+import * as constantsGroup from "../../constants/actionTypes/deleteGroup";
+import * as constantsPerson from "../../constants/actionTypes/deletePerson";
 
 class DeleteForm extends Component {
 
     render() {
 
         const { group, person, handleClose, onSubmit } = this.props;
-        const ACTION_TYPE = person ? DELETE_PERSON_REQUEST : DELETE_GROUP_REQUEST;
+        const ACTION_TYPE = person ? constantsPerson.DELETE_PERSON_REQUEST : constantsGroup.DELETE_GROUP_REQUEST;
         const message = person ? "בטוח שברצונך למחוק?" : "בטוח שברצונך למחוק את הקבוצה?";
         const id = person ? person.id : group.groupId;
 

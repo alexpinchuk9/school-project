@@ -10,17 +10,16 @@ import {
     ADD_PERSON,
     ADD_PERSON_TO_GROUP
 } from "../constants/popupTypes";
-import {
-    DELETE_GROUP_REQUEST,
-    DELETE_PERSON_REQUEST,
-    MESSAGE_GROUP_REQUEST,
-    MESSAGE_PERSON_REQUEST,
-    UPDATE_GROUP_REQUEST,
-    UPDATE_PERSON_REQUEST,
-    ADD_GROUP_REQUEST,
-    ADD_PERSON_REQUEST,
-    ADD_PERSON_TO_GROUP_REQUEST
-} from "../constants/actionTypes";
+
+import { DELETE_GROUP_REQUEST } from "../constants/actionTypes/deleteGroup";
+import { DELETE_PERSON_REQUEST } from "../constants/actionTypes/deletePerson";
+import { MESSAGE_GROUP_REQUEST } from "../constants/actionTypes/messageGroup";
+import { MESSAGE_PERSON_REQUEST } from "../constants/actionTypes/messagePerson";
+import { UPDATE_PERSON_REQUEST } from "../constants/actionTypes/updatePerson";
+import { UPDATE_GROUP_REQUEST } from "../constants/actionTypes/updateGroup";
+import { ADD_GROUP_REQUEST } from "../constants/actionTypes/addGroup";
+import { ADD_PERSON_REQUEST } from "../constants/actionTypes/addPerson";
+import { ADD_PERSON_TO_GROUP_REQUEST } from "../constants/actionTypes/addPersonToGroup";
 
 import AddGroupForm from "./popup-forms/AddGroupForm";
 import PhoneForm from "./popup-forms/PhoneForm";

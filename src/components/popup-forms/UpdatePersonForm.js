@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {filePath} from "../../constants/api";
-import { UPDATE_PERSON_REQUEST } from "../../constants/actionTypes";
+import * as constants from "../../constants/actionTypes/updatePerson";
 import { Field } from 'redux-form';
 import {ADD_PERSON} from "../../constants/popupTypes";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/index";
@@ -199,7 +199,7 @@ class UpdatePersonForm extends Component {
         return (
             <Fragment>
                 <form className="form update-form update-person-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, UPDATE_PERSON_REQUEST))}
+                      onSubmit={handleSubmit(values => onSubmit(values, constants.UPDATE_PERSON_REQUEST))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>

@@ -1,4 +1,4 @@
-import { UPLOAD_IMAGE_REQUEST, UPLOAD_IMAGE_FAILURE, UPLOAD_IMAGE_SUCCESS } from '../constants/actionTypes';
+import { UPLOAD_IMAGE_REQUEST, UPLOAD_IMAGE_FAILURE, UPLOAD_IMAGE_SUCCESS } from '../constants/actionTypes/uploadImage';
 
 const INITIAL_STATE = {
     imageUploading: false,

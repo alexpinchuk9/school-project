@@ -3,8 +3,10 @@ import {
     SEARCH_ITEMS,
     SEARCH_PEOPLE,
     SEARCH_GROUPS,
+} from "../constants/actionTypes/search";
+import {
     SELECT_GROUP
-} from "../constants/actionTypes";
+} from "../constants/actionTypes/selectGroup";
 
 const INITIAL_STATE = {
     peopleResults: [],

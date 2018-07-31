@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-//  import {filePath} from "../../constants/api";
+
 import PeopleSearchBar from "./PeopleSearchBar";
-import { ADD_PERSON_REQUEST} from "../../constants/actionTypes";
+import * as constants from "../../constants/actionTypes/addPerson";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -178,21 +178,13 @@ class AddPersonForm extends Component {
         // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
         //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
 
-        const { guardianFieldsNumber } = this.state;
         const {open, type} = this.state.popup;
 
-        const addGuardianFieldsButton = guardianFieldsNumber === 4 ?
-                                                                    null :
-                                                                    <span className="add-guardian-fields-button"
-                                                                            onClick={this.addGuardianFields}
-                                                                        >
-                                                                        Add more +
-                                                                    </span>;
 
         return (
             <Fragment>
                 <form className="form add-form add-person-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, ADD_PERSON_REQUEST))}
+                      onSubmit={handleSubmit(values => onSubmit(values, constants.ADD_PERSON_REQUEST))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>

@@ -324,7 +324,7 @@
   margin-top: -100px;
   z-index: 3;
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.75);
-  height: 400px;
+  max-height: 400px;
   overflow: auto;
   background: #ffffff; }
   .popup.guardian-popup {
@@ -370,8 +370,8 @@
         background: #8B0000; }
     .popup .form .button-close {
       position: absolute;
-      top: 0;
-      left: 5px;
+      top: 10px;
+      left: 15px;
       border: none;
       outline: none;
       background: white;

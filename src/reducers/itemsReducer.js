@@ -6,10 +6,8 @@ import {
     REFRESH_ITEMS_SUCCESS,
     REFRESH_ITEMS_REQUEST,
     REFRESH_ITEMS_FAILURE,
-    GO_BACK
-} from '../constants/actionTypes';
-
-//import filters from "../utils/filters";
+} from '../constants/actionTypes/items';
+import { GO_BACK } from "../constants/actionTypes/goBack";
 
 const INITIAL_STATE = {
     items: {},
@@ -47,29 +45,6 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
             const newSelectedItem = action.payload;
             const newPreviousSelectedItem = state.selectedItem;
             let newPreviousSelectedItems = [...state.previousSelectedItems, newPreviousSelectedItem];
-            // let newPreviousParentItems = [...state.previousParentItems];
-            // const { items } = state;
-
-            // if (selectedItem.hasOwnProperty('surname')) {
-            //
-            //     const dependantPeople = filters.filterDependantPeople(items, selectedItem);
-            //     const containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
-            //
-            //
-            //     if (containerGroups.some(group => group.id === state.selectedItem.id) ||
-            //         dependantPeople.some(person => person.id === state.selectedItem.id)
-            //     ) {
-            //         newPreviousParentItems.push(state.selectedItem);
-            //     }
-            // } else if (state.previousSelectedItem) {
-            //
-            //     const containerGroups = filters.filterContainerGroupsForGroup(items, selectedItem);
-            //
-            //
-            //     if (containerGroups.some(group => group.id === state.selectedItem.id)) {
-            //         newPreviousParentItems.push(state.selectedItem);
-            //     }
-            // }
 
             return {
                 ...state,
