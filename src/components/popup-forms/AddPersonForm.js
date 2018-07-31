@@ -185,6 +185,7 @@ class AddPersonForm extends Component {
         } = this.props;
 
         const { guardians } = this.props.popup;
+        console.log(guardians)
         const newValues = {
             guardianId1: guardians[0].id  || "",
             relation1: this.relation0 ? this.relation0.value : "" || "",
@@ -216,7 +217,7 @@ class AddPersonForm extends Component {
 
         const { popup } = this.state;
         const { open, type, guardianNumber } = popup;
-
+  
 
         return (
             <Fragment>
@@ -225,10 +226,6 @@ class AddPersonForm extends Component {
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>
-
-                    <div className="form-row">
-                        <Field component="input" type="text" name="groupId" className="form-field" hidden/>
-                    </div>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>

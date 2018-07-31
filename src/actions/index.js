@@ -485,6 +485,8 @@ export const addPerson = (values) => {
             guardianId4,
             relation4  } = values;
 
+            console.log(values)
+
         bodyFormData.set('formName', 'addPeople');
         bodyFormData.set('groupId', groupId);
         bodyFormData.set('name', name);
@@ -509,6 +511,7 @@ export const addPerson = (values) => {
             config: { headers: {'Content-Type': 'multipart/form-data' }}
         })
             .then(response => {
+                console.log(response)
                 dispatch({
                     type: ADD_PERSON_SUCCESS,
                     payload: response.data ? response.data : response.statusText
@@ -741,7 +744,7 @@ export const addGuardian = (values) => {
                 console.log(response);
                 dispatch({
                     type: ADD_GUARDIAN_SUCCESS,
-                    guardianId: response.data ? response.data : response.statusText,
+                    guardianId: response.data,
                     guardianNumber,
                     guardianName,
                     guardianSurname

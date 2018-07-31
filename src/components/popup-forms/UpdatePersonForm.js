@@ -219,9 +219,6 @@ class UpdatePersonForm extends Component {
             person
         } = this.props;
 
-        // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
-        //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
-
         const { popup } = this.state;
         const { open, type, guardianNumber } = popup;
 
