@@ -485,8 +485,6 @@ export const addPerson = (values) => {
             guardianId4,
             relation4  } = values;
 
-            console.log(values)
-
         bodyFormData.set('formName', 'addPeople');
         bodyFormData.set('groupId', groupId);
         bodyFormData.set('name', name);
@@ -632,10 +630,11 @@ export const addPersonToGroup = (values) => {
          })
 
          let bodyFormData = new FormData();
-         const { peopleId, groupId, relation  } = values;
+
+         const { personId, groupId, relation  } = values;
 
          bodyFormData.set('formName', 'relateP2G');
-         bodyFormData.set('peopleId', peopleId);
+         bodyFormData.set('peopleId', personId);
          bodyFormData.set('groupId', groupId);
          if (relation) bodyFormData.set('relation', relation);
 

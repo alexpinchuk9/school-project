@@ -173,29 +173,21 @@ class AddPersonForm extends Component {
 
 
     handleFormSubmission = (values) => {
-        const {
-            handleClose,
-            handleSubmit,
-            pristine,
-            submitting,
-            image,
-            onSubmit,
-            person,
-            existingGuardians,
-        } = this.props;
+        const { onSubmit } = this.props;
 
         const { guardians } = this.props.popup;
-        console.log(guardians)
+
         const newValues = {
-            guardianId1: guardians[0].id  || "",
+            guardianId1: `${guardians[0].id}`  || "",
             relation1: this.relation0 ? this.relation0.value : "" || "",
-            guardianId2: guardians[1].id || "",
+            guardianId2: `${guardians[1].id}` || "",
             relation2: this.relation1 ? this.relation1.value : "" || "",
-            guardianId3: guardians[2].id || "",
+            guardianId3: `${guardians[2].id}` || "",
             relation3: this.relation2 ? this.relation2.value : "" || "",
-            guardianId4: guardians[3].id || "",
+            guardianId4: `${guardians[3].id}` || "",
             relation4: this.relation3 ? this.relation3.value : "" || "",
         };
+
 
         onSubmit({...values, ...newValues}, ADD_PERSON_REQUEST)
     }
@@ -210,14 +202,12 @@ class AddPersonForm extends Component {
             pristine,
             submitting,
             image,
-            onSubmit,
-            person
         } = this.props;
 
 
         const { popup } = this.state;
         const { open, type, guardianNumber } = popup;
-  
+
 
         return (
             <Fragment>

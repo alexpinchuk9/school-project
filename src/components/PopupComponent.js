@@ -215,6 +215,7 @@ class PopupComponent extends Component {
                 break;
 
             case ADD_PERSON_TO_GROUP_REQUEST:
+
                 addPersonToGroup(values);
                 break;
 

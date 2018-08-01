@@ -185,25 +185,25 @@ class UpdatePersonForm extends Component {
 
         const { guardians } = this.props.popup;
 
-        const guardianId1 = guardians [0] ? guardians[0].id : existingGuardians[0] ? existingGuardians[0].id : "";
-        const guardianId2 = guardians [1] ? guardians[1].id : existingGuardians[1] ? existingGuardians[1].id : "";
-        const guardianId3 = guardians [3] ? guardians[3].id : existingGuardians[3] ? existingGuardians[3].id : "";
-        const guardianId4 = guardians [4] ? guardians[4].id : existingGuardians[4] ? existingGuardians[4].id : "";
+        const guardianId1 = guardians [0] && guardians[0].id ? `${guardians[0].id}` : existingGuardians[0] ? existingGuardians[0].id : "";
+        const guardianId2 = guardians [1] && guardians[1].id ? `${guardians[1].id}` : existingGuardians[1] ? existingGuardians[1].id : "";
+        const guardianId3 = guardians [2] && guardians[2].id ? `${guardians[2].id}` : existingGuardians[2] ? existingGuardians[2].id : "";
+        const guardianId4 = guardians [3] && guardians[3].id ? `${guardians[3].id}` : existingGuardians[3] ? existingGuardians[3].id : "";
 
         const newValues = {
-            guardianId1: guardianId1,
-            relation1: this.relation1 ? this.relation1.value : "" || "",
+            guardianId1,
+            relation1: this.relation0 ? this.relation0.value : "" || "",
             guardianId2,
-            relation2: this.relation2 ? this.relation2.value : "" || "",
+            relation2: this.relation1 ? this.relation1.value : "" || "",
             guardianId3,
-            relation3: this.relation3 ? this.relation3.value : "" || "",
+            relation3: this.relation2 ? this.relation2.value : "" || "",
             guardianId4,
-            relation4: this.relation4 ? this.relation4.value : "" || "",
+            relation4: this.relation3 ? this.relation3.value : "" || "",
         };
 
         console.log('NEW VALUES', newValues);
 
-        onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
+       // onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
     }
 
 
@@ -212,10 +212,8 @@ class UpdatePersonForm extends Component {
         const {
             handleClose,
             handleSubmit,
-            pristine,
             submitting,
             image,
-            onSubmit,
             person
         } = this.props;
 
