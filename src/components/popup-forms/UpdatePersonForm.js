@@ -201,9 +201,7 @@ class UpdatePersonForm extends Component {
             relation4: this.relation3 ? this.relation3.value : "" || "",
         };
 
-        console.log('NEW VALUES', newValues);
-
-       // onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
+        onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
     }
 
 
