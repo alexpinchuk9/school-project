@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, UPDATE_GROUP, DELETE, ADD_GROUP, ADD_PERSON } from "../constants/popupTypes";
+import { MESSAGE, UPDATE_GROUP, DELETE, ADD_GROUP, ADD_PERSON } from "../constants/popupTypes";
 import PopupComponent from '../containers/PopupContainer';
 import styled from "styled-components";
 
