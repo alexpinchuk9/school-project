@@ -7,8 +7,7 @@ import filters from "../utils/filters";
 import SelectedItemViewComponent from "./SelectedItemViewComponent";
 import RelatedItemsViewComponent from "./RelatedItemsViewComponent";
 import HeaderComponent from "./HeaderComponent";
-
-
+import {isPerson} from "../utils/isPerson";
 
 class MainPageComponent extends Component {
 
@@ -20,7 +19,7 @@ class MainPageComponent extends Component {
 
         const { items, selectedItem } = this.props.items;
 
-          if (selectedItem && selectedItem.hasOwnProperty('surname')) {
+          if (selectedItem && isPerson(selectedItem)) {
 
               const groupsAbove = filters.filterContainerGroupsForPeople(items, selectedItem);
 
@@ -48,7 +47,7 @@ class MainPageComponent extends Component {
 
         const {items, selectedItem } = this.props.items;
 
-        if (selectedItem && selectedItem.hasOwnProperty('surname')) {
+        if (selectedItem && isPerson(selectedItem)) {
 
 
             const dependantPeople = filters.filterDependantPeople(items, selectedItem);
@@ -82,7 +81,7 @@ class MainPageComponent extends Component {
         const { selectedItem, items } = this.props.items;
         let guardianPeople = [];
 
-        if (selectedItem && selectedItem.hasOwnProperty('surname')) {
+        if (selectedItem && isPerson(selectedItem)) {
           guardianPeople = filters.filterGuardianPeople(items, selectedItem);
         }
 

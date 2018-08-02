@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import PersonComponent from "./PersonComponent";
 import GroupComponent from "./GroupComponent";
+import { isPerson } from "../utils/isPerson";
 
 class SelectedItemViewComponent extends Component {
 
@@ -9,7 +10,7 @@ class SelectedItemViewComponent extends Component {
 
         const { item, guardians } = this.props;
 
-        if (item.hasOwnProperty('surname')) {
+        if (isPerson(item)) {
             return <PersonComponent guardians={guardians} person={item} isSelected={true} className="selected-item" />
         } else {
             return <GroupComponent group={item} isSelected={true} className="selected-item"/>

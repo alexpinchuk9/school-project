@@ -55,7 +55,6 @@ class PersonComponent extends Component {
             picture: person.picSource
         };
 
-        // for (let i = 0; i < guardians.length, i++) initialValues[{`guardian`}]
 
         const mailActionButton = person.email ?
                                         <button title="שלח מייל" className="mail">
