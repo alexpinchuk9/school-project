@@ -1,13 +1,4 @@
-import {
-    GET_ITEMS_REQUEST,
-    GET_ITEMS_SUCCESS,
-    GET_ITEMS_FAILURE,
-    SELECT_ITEM,
-    REFRESH_ITEMS_SUCCESS,
-    REFRESH_ITEMS_REQUEST,
-    REFRESH_ITEMS_FAILURE,
-} from '../constants/actionTypes/items';
-import { GO_BACK } from "../constants/actionTypes/goBack";
+import * as constants from '../constants/actionTypes';
 
 const INITIAL_STATE = {
     items: {},
@@ -22,10 +13,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
 
-        case GET_ITEMS_REQUEST:
+        case constants.GET_ITEMS_REQUEST:
             return {...state, loading: true, error: null };
 
-        case GET_ITEMS_SUCCESS:
+        case constants.GET_ITEMS_SUCCESS:
 
             return {
                 ...state,
@@ -37,10 +28,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
                 homeItem: action.payload.groups[0]
             };
 
-        case GET_ITEMS_FAILURE:
+        case constants.GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};
 
-        case SELECT_ITEM: {
+        case constants.SELECT_ITEM: {
 
             const newSelectedItem = action.payload;
             const newPreviousSelectedItem = state.selectedItem;
@@ -53,10 +44,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
             };
         }
 
-        case REFRESH_ITEMS_REQUEST:
+        case constants.REFRESH_ITEMS_REQUEST:
             return {...state, loading: true};
 
-        case REFRESH_ITEMS_SUCCESS:
+        case constants.REFRESH_ITEMS_SUCCESS:
 
             let selectedItem = JSON.parse(localStorage.getItem("selectedItem"));
             let selectedItemId = selectedItem["id"];
@@ -74,10 +65,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
             return { ...state, loading: false, items, selectedItem: item };
 
-        case REFRESH_ITEMS_FAILURE:
+        case constants.REFRESH_ITEMS_FAILURE:
             return { ...state, loading: false };
 
-        case GO_BACK: {
+        case constants.GO_BACK: {
 
             let newPreviousSelectedItems = [...state.previousSelectedItems];
             let newSelectedItem = state.items.groups[0];

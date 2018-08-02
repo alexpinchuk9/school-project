@@ -11,15 +11,7 @@ import {
     ADD_PERSON_TO_GROUP
 } from "../constants/popupTypes";
 
-import { DELETE_GROUP_REQUEST } from "../constants/actionTypes/deleteGroup";
-import { DELETE_PERSON_REQUEST } from "../constants/actionTypes/deletePerson";
-import { MESSAGE_GROUP_REQUEST } from "../constants/actionTypes/messageGroup";
-import { MESSAGE_PERSON_REQUEST } from "../constants/actionTypes/messagePerson";
-import { UPDATE_PERSON_REQUEST } from "../constants/actionTypes/updatePerson";
-import { UPDATE_GROUP_REQUEST } from "../constants/actionTypes/updateGroup";
-import { ADD_GROUP_REQUEST } from "../constants/actionTypes/addGroup";
-import { ADD_PERSON_REQUEST } from "../constants/actionTypes/addPerson";
-import { ADD_PERSON_TO_GROUP_REQUEST } from "../constants/actionTypes/addPersonToGroup";
+import * as constants from "../constants/actionTypes"
 
 import AddGroupForm from "./popup-forms/AddGroupForm";
 import PhoneForm from "./popup-forms/PhoneForm";
@@ -160,39 +152,39 @@ class PopupComponent extends Component {
             image } = this.props;
 
         switch(ACTION_TYPE) {
-            case MESSAGE_PERSON_REQUEST:
+            case constants.MESSAGE_PERSON_REQUEST:
                 messagePerson(person.id, values.personMessage);
                 break;
 
-            case MESSAGE_GROUP_REQUEST:
+            case constants.MESSAGE_GROUP_REQUEST:
                 messageGroup(group.id, values.groupMessage);
                 break;
 
-            case UPDATE_PERSON_REQUEST:
+            case constants.UPDATE_PERSON_REQUEST:
                 updatePerson(person.id, {...values, picture: image.name });
                 break;
 
-            case UPDATE_GROUP_REQUEST:
+            case constants.UPDATE_GROUP_REQUEST:
                 updateGroup(group.id, values.groupName);
                 break;
 
-            case DELETE_GROUP_REQUEST:
+            case constants.DELETE_GROUP_REQUEST:
                 deleteGroup(group.id);
                 break;
 
-            case DELETE_PERSON_REQUEST:
+            case constants.DELETE_PERSON_REQUEST:
                 deletePerson(person.id);
                 break;
 
-            case ADD_PERSON_REQUEST:
+            case constants.ADD_PERSON_REQUEST:
                 addPerson({...values, pic: image.name, groupId: group.id });
                 break;
 
-            case ADD_GROUP_REQUEST:
+            case constants.ADD_GROUP_REQUEST:
                 addGroup(values);
                 break;
 
-            case ADD_PERSON_TO_GROUP_REQUEST:
+            case constants.ADD_PERSON_TO_GROUP_REQUEST:
                 addPersonToGroup(values);
                 break;
 
