@@ -1,14 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-
+//  import {filePath} from "../../constants/api";
 import PeopleSearchBar from "./PeopleSearchBar";
-import {ADD_PERSON_REQUEST} from "../../constants/actionTypes";
-import * as constants from "../../constants/actionTypes/addPerson";
+import {ADD_PERSON_REQUEST, UPDATE_PERSON_REQUEST} from "../../constants/actionTypes";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import {ADD_GUARDIAN} from "../../constants/popupTypes";
+import {ADD_GUARDIAN, ADD_PERSON} from "../../constants/popupTypes";
 import PopupComponent from '../../containers/PopupContainer';
 
 class AddPersonForm extends Component {
@@ -188,7 +187,7 @@ class AddPersonForm extends Component {
             guardianId4: `${guardians[3].id}` || "",
             relation4: this.relation3 ? this.relation3.value : "" || "",
         };
-
+        
         onSubmit({...values, ...newValues}, ADD_PERSON_REQUEST)
     }
 

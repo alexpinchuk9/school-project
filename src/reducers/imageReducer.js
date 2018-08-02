@@ -1,4 +1,4 @@
-import * as constants from '../constants/actionTypes/uploadImage';
+import { UPLOAD_IMAGE_REQUEST, UPLOAD_IMAGE_FAILURE, UPLOAD_IMAGE_SUCCESS } from '../constants/actionTypes';
 
 const INITIAL_STATE = {
     imageUploading: false,
@@ -10,14 +10,14 @@ const imageReducer = (state = INITIAL_STATE, action) => {
 
     switch(action.type) {
 
-        case constants.UPLOAD_IMAGE_REQUEST:
+        case UPLOAD_IMAGE_REQUEST:
 
             return {...state, imageUploading: true};
 
-        case constants.UPLOAD_IMAGE_SUCCESS:
+        case UPLOAD_IMAGE_SUCCESS:
             return {...state, name: action.payload, imageUploading: false};
 
-        case constants.UPLOAD_IMAGE_FAILURE:
+        case UPLOAD_IMAGE_FAILURE:
             return {...state, imageUploading: false, name: null, error: action.payload};
 
         default:

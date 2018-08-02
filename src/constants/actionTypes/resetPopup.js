@@ -1,1 +1,0 @@
-export const RESET_POPUP_STATE = 'RESET_POPUP_STATE';

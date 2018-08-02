@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP } from "../constants/popupTypes";
+import {MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP, ADD_PERSON} from "../constants/popupTypes";
 import { filePath } from "../constants/api";
 import styled from 'styled-components';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { filterGuardianPeople } from "../utils/filters"
+import { filterGuardians } from "../utils/filters"
 
 import PopupComponent from "../containers/PopupContainer";
 import checkMobile from "../utils/checkmobile";
@@ -54,6 +54,8 @@ class PersonComponent extends Component {
             cellphone: person.cellphone,
             picture: person.picSource
         };
+
+        // for (let i = 0; i < guardians.length, i++) initialValues[{`guardian`}]
 
         const mailActionButton = person.email ?
                                         <button title="שלח מייל" className="mail">

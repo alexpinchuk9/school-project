@@ -1,4 +1,15 @@
-import * as constants from '../constants/actionTypes';
+import {
+    GET_ITEMS_REQUEST,
+    GET_ITEMS_SUCCESS,
+    GET_ITEMS_FAILURE,
+    SELECT_ITEM,
+    REFRESH_ITEMS_SUCCESS,
+    REFRESH_ITEMS_REQUEST,
+    REFRESH_ITEMS_FAILURE,
+    GO_BACK
+} from '../constants/actionTypes';
+
+//import filters from "../utils/filters";
 
 const INITIAL_STATE = {
     items: {},
@@ -13,10 +24,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
     switch (action.type) {
 
-        case constants.GET_ITEMS_REQUEST:
+        case GET_ITEMS_REQUEST:
             return {...state, loading: true, error: null };
 
-        case constants.GET_ITEMS_SUCCESS:
+        case GET_ITEMS_SUCCESS:
 
             return {
                 ...state,
@@ -28,14 +39,37 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
                 homeItem: action.payload.groups[0]
             };
 
-        case constants.GET_ITEMS_FAILURE:
+        case GET_ITEMS_FAILURE:
             return {...state, loading: false, error: action.payload};
 
-        case constants.SELECT_ITEM: {
+        case SELECT_ITEM: {
 
             const newSelectedItem = action.payload;
             const newPreviousSelectedItem = state.selectedItem;
             let newPreviousSelectedItems = [...state.previousSelectedItems, newPreviousSelectedItem];
+            // let newPreviousParentItems = [...state.previousParentItems];
+            // const { items } = state;
+
+            // if (selectedItem.hasOwnProperty('surname')) {
+            //
+            //     const dependantPeople = filters.filterDependantPeople(items, selectedItem);
+            //     const containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
+            //
+            //
+            //     if (containerGroups.some(group => group.id === state.selectedItem.id) ||
+            //         dependantPeople.some(person => person.id === state.selectedItem.id)
+            //     ) {
+            //         newPreviousParentItems.push(state.selectedItem);
+            //     }
+            // } else if (state.previousSelectedItem) {
+            //
+            //     const containerGroups = filters.filterContainerGroupsForGroup(items, selectedItem);
+            //
+            //
+            //     if (containerGroups.some(group => group.id === state.selectedItem.id)) {
+            //         newPreviousParentItems.push(state.selectedItem);
+            //     }
+            // }
 
             return {
                 ...state,
@@ -44,10 +78,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
             };
         }
 
-        case constants.REFRESH_ITEMS_REQUEST:
+        case REFRESH_ITEMS_REQUEST:
             return {...state, loading: true};
 
-        case constants.REFRESH_ITEMS_SUCCESS:
+        case REFRESH_ITEMS_SUCCESS:
 
             let selectedItem = JSON.parse(localStorage.getItem("selectedItem"));
             let selectedItemId = selectedItem["id"];
@@ -65,10 +99,10 @@ const itemsReducer = (state = INITIAL_STATE, action) => {
 
             return { ...state, loading: false, items, selectedItem: item };
 
-        case constants.REFRESH_ITEMS_FAILURE:
+        case REFRESH_ITEMS_FAILURE:
             return { ...state, loading: false };
 
-        case constants.GO_BACK: {
+        case GO_BACK: {
 
             let newPreviousSelectedItems = [...state.previousSelectedItems];
             let newSelectedItem = state.items.groups[0];

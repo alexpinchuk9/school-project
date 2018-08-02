@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import * as constants from "../../constants/actionTypes/addGroup";
+import {ADD_GROUP_REQUEST} from "../../constants/actionTypes";
 import { Field } from 'redux-form';
 
 class AddGroupForm extends Component {
@@ -13,7 +13,7 @@ class AddGroupForm extends Component {
         <form className="form add-form" onSubmit={handleSubmit(values => onSubmit(
             { name: values.newGroupName,
                 parentGroupId: group.id
-            }, constants.ADD_GROUP_REQUEST))}>
+            }, ADD_GROUP_REQUEST))}>
 
             <button className="button-close" onClick={handleClose} title="סגירה"></button>
 

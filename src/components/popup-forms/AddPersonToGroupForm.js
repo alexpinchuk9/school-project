@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import * as constants from "../../constants/actionTypes/addPersonToGroup";
+import { ADD_PERSON_TO_GROUP_REQUEST } from "../../constants/actionTypes";
 import { Field } from 'redux-form';
 import GroupSearchBar from "./GroupSearchBar";
 
@@ -44,7 +44,7 @@ class AddPersonToGroupForm extends Component {
 
         return (
             <form className="form add-form"
-                  onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, constants.ADD_PERSON_TO_GROUP_REQUEST))}
+                  onSubmit={handleSubmit(values => onSubmit({...additionalValues, relation: values.relation}, ADD_PERSON_TO_GROUP_REQUEST))}
                   onKeyPress={this.onKeyPress}
             >
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
