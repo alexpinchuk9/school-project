@@ -187,8 +187,7 @@ class AddPersonForm extends Component {
             guardianId4: `${guardians[3].id}` || "",
             relation4: this.relation3 ? this.relation3.value : "" || "",
         };
-
-
+        
         onSubmit({...values, ...newValues}, ADD_PERSON_REQUEST)
     }
 
