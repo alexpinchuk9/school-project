@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {UPDATE_GROUP_REQUEST} from "../../constants/actionTypes";
+import * as constants from "../../constants/actionTypes/updateGroup";
 import { Field } from 'redux-form';
 
 class UpdateGroupForm extends Component {
@@ -11,7 +11,7 @@ class UpdateGroupForm extends Component {
 
         return (
             <form className="form update-form"
-                  onSubmit={handleSubmit(values => onSubmit(values, UPDATE_GROUP_REQUEST))}>
+                  onSubmit={handleSubmit(values => onSubmit(values, constants.UPDATE_GROUP_REQUEST))}>
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                 <div className="form-row">

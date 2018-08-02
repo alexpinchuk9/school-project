@@ -11,18 +11,8 @@ import {
     ADD_PERSON_TO_GROUP,
     ADD_GUARDIAN
 } from "../constants/popupTypes";
-import {
-    DELETE_GROUP_REQUEST,
-    DELETE_PERSON_REQUEST,
-    MESSAGE_GROUP_REQUEST,
-    MESSAGE_PERSON_REQUEST,
-    UPDATE_GROUP_REQUEST,
-    UPDATE_PERSON_REQUEST,
-    ADD_GROUP_REQUEST,
-    ADD_PERSON_REQUEST,
-    ADD_PERSON_TO_GROUP_REQUEST,
-    ADD_GUARDIAN_REQUEST
-} from "../constants/actionTypes";
+
+import * as constants from "../constants/actionTypes"
 
 import AddGroupForm from "./popup-forms/AddGroupForm";
 import PhoneForm from "./popup-forms/PhoneForm";
@@ -182,44 +172,43 @@ class PopupComponent extends Component {
             image } = this.props;
 
         switch(ACTION_TYPE) {
-            case MESSAGE_PERSON_REQUEST:
+            case constants.MESSAGE_PERSON_REQUEST:
                 messagePerson(person.id, values.personMessage);
                 break;
 
-            case MESSAGE_GROUP_REQUEST:
+            case constants.MESSAGE_GROUP_REQUEST:
                 messageGroup(group.id, values.groupMessage);
                 break;
 
-            case UPDATE_PERSON_REQUEST:
+            case constants.UPDATE_PERSON_REQUEST:
                 updatePerson(person.id, {...values, picture: image.name });
                 break;
 
-            case UPDATE_GROUP_REQUEST:
+            case constants.UPDATE_GROUP_REQUEST:
                 updateGroup(group.id, values.groupName);
                 break;
 
-            case DELETE_GROUP_REQUEST:
+            case constants.DELETE_GROUP_REQUEST:
                 deleteGroup(group.id);
                 break;
 
-            case DELETE_PERSON_REQUEST:
+            case constants.DELETE_PERSON_REQUEST:
                 deletePerson(person.id);
                 break;
 
-            case ADD_PERSON_REQUEST:
+            case constants.ADD_PERSON_REQUEST:
                 addPerson({...values, pic: image.name, groupId: group.id });
                 break;
 
-            case ADD_GROUP_REQUEST:
+            case constants.ADD_GROUP_REQUEST:
                 addGroup(values);
                 break;
 
-            case ADD_PERSON_TO_GROUP_REQUEST:
-
+            case constants.ADD_PERSON_TO_GROUP_REQUEST:
                 addPersonToGroup(values);
                 break;
 
-            case ADD_GUARDIAN_REQUEST:
+            case constants.ADD_GUARDIAN_REQUEST:
                 addGuardian(values);
                 break;
 

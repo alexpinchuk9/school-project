@@ -1,10 +1,4 @@
-import {
-    RESET_SEARCH_RESULTS,
-    SEARCH_ITEMS,
-    SEARCH_PEOPLE,
-    SEARCH_GROUPS,
-    SELECT_GROUP
-} from "../constants/actionTypes";
+import * as constants from "../constants/actionTypes";
 
 const INITIAL_STATE = {
     peopleResults: [],
@@ -19,7 +13,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
 
     switch (type) {
 
-        case SEARCH_ITEMS: {
+        case constants.SEARCH_ITEMS: {
 
             const { groups, people } = items;
 
@@ -41,7 +35,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
         }
 
 
-        case SEARCH_GROUPS: {
+        case constants.SEARCH_GROUPS: {
 
             const { groups } = action;
 
@@ -54,7 +48,7 @@ const searchReducer = (state = INITIAL_STATE, action) => {
             }
         }
 
-        case SEARCH_PEOPLE: {
+        case constants.SEARCH_PEOPLE: {
 
             const { people } = action;
 
@@ -73,13 +67,13 @@ const searchReducer = (state = INITIAL_STATE, action) => {
         }
 
 
-        case RESET_SEARCH_RESULTS:
+        case constants.RESET_SEARCH_RESULTS:
             return {
                 ...INITIAL_STATE,
                 lastSelectedGroup: state.lastSelectedGroup
             };
 
-        case SELECT_GROUP:
+        case constants.SELECT_GROUP:
             return {
                 ...state,
                 lastSelectedGroup: action.payload

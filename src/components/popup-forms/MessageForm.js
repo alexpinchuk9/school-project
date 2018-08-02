@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE_GROUP_REQUEST, MESSAGE_PERSON_REQUEST} from "../../constants/actionTypes";
+import * as constantsGroup from "../../constants/actionTypes/messageGroup";
+import * as constantsPerson from "../../constants/actionTypes/messagePerson";
 import { Field } from 'redux-form';
 
 class MessageForm extends Component {
@@ -8,7 +9,7 @@ class MessageForm extends Component {
     render() {
 
         const { group, person, handleClose, handleSubmit, pristine, submitting, onSubmit } = this.props;
-        const ACTION_TYPE = person ? MESSAGE_PERSON_REQUEST : MESSAGE_GROUP_REQUEST;
+        const ACTION_TYPE = person ? constantsPerson.MESSAGE_PERSON_REQUEST : constantsGroup.MESSAGE_GROUP_REQUEST;
         const fieldName = person ? "personMessage" : "groupMessage";
         const messageName = person ? person.name : group.groupName;
 

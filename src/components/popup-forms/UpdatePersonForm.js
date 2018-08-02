@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {filePath} from "../../constants/api";
-import { UPDATE_PERSON_REQUEST } from "../../constants/actionTypes";
+import * as constants from "../../constants/actionTypes/updatePerson";
 import { Field } from 'redux-form';
 import {ADD_GUARDIAN} from "../../constants/popupTypes";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/index";
@@ -201,7 +201,7 @@ class UpdatePersonForm extends Component {
             relation4: this.relation3 ? this.relation3.value : "" || "",
         };
 
-        onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
+        onSubmit({...values, ...newValues}, constants.UPDATE_PERSON_REQUEST)
     }
 
 
