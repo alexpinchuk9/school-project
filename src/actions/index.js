@@ -1,4 +1,5 @@
 import { addGroup } from "./addGroup";
+import { addGuardian, selectGuardian } from "./addGuardian";
 import { addPerson } from "./addPerson";
 import { addPersonToGroup } from "./addPersonToGroup";
 import { deleteGroup } from "./deleteGroup";
@@ -20,6 +21,7 @@ import { uploadImage } from "./uploadImage";
 export {
     addGroup,
     addPerson,
+    addGuardian,
     addPersonToGroup,
     deleteGroup,
     deletePerson,
@@ -35,6 +37,7 @@ export {
     searchPeople,
     resetSearchResults,
     selectGroup,
+    selectGuardian,
     selectItem,
     updateGroup,
     updatePerson,

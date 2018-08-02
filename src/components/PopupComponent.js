@@ -8,7 +8,8 @@ import {
     DELETE,
     ADD_GROUP,
     ADD_PERSON,
-    ADD_PERSON_TO_GROUP
+    ADD_PERSON_TO_GROUP,
+    ADD_GUARDIAN
 } from "../constants/popupTypes";
 
 import * as constants from "../constants/actionTypes"
@@ -21,6 +22,7 @@ import UpdateGroupForm from "./popup-forms/UpdateGroupForm";
 import DeleteForm from "./popup-forms/DeleteForm";
 import AddPersonForm from "./popup-forms/AddPersonForm";
 import AddPersonToGroupForm from "./popup-forms/AddPersonToGroupForm";
+import AddGuardianForm from "./popup-forms/AddGuardianForm";
 
 class PopupComponent extends Component {
 
@@ -41,6 +43,10 @@ class PopupComponent extends Component {
             searchPeople,
             isAddGuardianForm,
             relateGuardianToPerson,
+            guardianNumber,
+            existingGuardians,
+            popup,
+            selectGuardian,
             items: {
                 items: {
                     people,
@@ -69,6 +75,8 @@ class PopupComponent extends Component {
 
             case UPDATE_PERSON:
                 return <UpdatePersonForm
+                            selectGuardian={selectGuardian}
+                            popup={popup}
                             person={person}
                             people={people}
                             search={search}
@@ -79,6 +87,7 @@ class PopupComponent extends Component {
                             handleClose={handleClose}
                             uploadImage={uploadImage}
                             relateGuardianToPerson={relateGuardianToPerson}
+                            existingGuardians={existingGuardians}
                             image={image}/>;
 
             case PHONE:
@@ -103,6 +112,8 @@ class PopupComponent extends Component {
 
             case ADD_PERSON:
                 return <AddPersonForm
+                            selectGuardian={selectGuardian}
+                            popup={popup}
                             person={person}
                             people={people}
                             search={search}
@@ -114,6 +125,7 @@ class PopupComponent extends Component {
                             uploadImage={uploadImage}
                             isAddGuardianForm={isAddGuardianForm}
                             relateGuardianToPerson={relateGuardianToPerson}
+                            existingGuardians={existingGuardians}
                             image={image}/>;
 
             case ADD_PERSON_TO_GROUP:
@@ -127,6 +139,13 @@ class PopupComponent extends Component {
                             resetSearchResults={resetSearchResults}
                             person={person}
                             selectGroup={selectGroup}/>;
+
+            case ADD_GUARDIAN:
+                return <AddGuardianForm
+                            guardianNumber={guardianNumber}
+                            handleClose={handleClose}
+                            handleSubmit={handleSubmit}
+                            onSubmit={this.handleSubmit}/>
 
             default:
                 return null;
@@ -147,6 +166,7 @@ class PopupComponent extends Component {
             addGroup,
             addPerson,
             addPersonToGroup,
+            addGuardian,
             person,
             group,
             image } = this.props;
@@ -186,6 +206,10 @@ class PopupComponent extends Component {
 
             case constants.ADD_PERSON_TO_GROUP_REQUEST:
                 addPersonToGroup(values);
+                break;
+
+            case constants.ADD_GUARDIAN_REQUEST:
+                addGuardian(values);
                 break;
 
             default:

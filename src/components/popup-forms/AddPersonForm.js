@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 import PeopleSearchBar from "./PeopleSearchBar";
+import {ADD_PERSON_REQUEST} from "../../constants/actionTypes";
 import * as constants from "../../constants/actionTypes/addPerson";
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ADD_PERSON } from "../../constants/popupTypes";
+import {ADD_GUARDIAN} from "../../constants/popupTypes";
 import PopupComponent from '../../containers/PopupContainer';
 
 class AddPersonForm extends Component {
@@ -16,15 +17,17 @@ class AddPersonForm extends Component {
         guardianFieldsNumber: 2,
         popup: {
             open: false,
-            type: null
+            type: null,
+            guardianNumber: null
         }
     }
 
-    handlePopupOpen = (type) => {
+    handlePopupOpen = (type, guardianNumber) => {
         this.setState({
             popup: {
                 open: true,
-                type: type
+                type: type,
+                guardianNumber: guardianNumber
             }
         });
     }
@@ -34,7 +37,8 @@ class AddPersonForm extends Component {
         this.setState({
             popup: {
                 open: false,
-                type: null
+                type: null,
+                guardianNumber: null
             }
         });
     }
@@ -45,24 +49,35 @@ class AddPersonForm extends Component {
         this.props.uploadImage(image);
     };
 
-    selectPerson = (guardian, guardianIndex) => {
+    selectPerson = (guardian, guardianNumber) => {
 
-        const { person } = this.props;
 
+        const { id, name, surname } = guardian;
         const values = {
-            peopleId: person.id,
-            guardianId: guardian.id,
-
+            guardianId: id,
+            guardianName: name,
+            guardianSurname: surname,
+            guardianNumber
         }
+
+        this.props.selectGuardian(values)
+
+
     };
 
     renderGuardianFields = () => {
 
 
-       const { search,
+        const {
+            search,
             people,
             resetSearchResults,
-            searchPeople } = this.props;
+            searchPeople,
+            popup,
+            existingGuardians
+        }
+            = this.props;
+
         const { guardianFieldsNumber } = this.state;
 
         let guardianArray = [];
@@ -71,47 +86,46 @@ class AddPersonForm extends Component {
             guardianArray.push(i)
         }
 
-        const addButton = (
-            <span
-                title="Add a new person"
-                className="button-add-relation"
-                onClick={() => this.handlePopupOpen(ADD_PERSON)}>
-                        Add
-                         <FontAwesomeIcon size="xs" icon={faPlus}/>
-                    </span>
-        );
+
 
         return guardianArray.map((guardianNumber, index) => {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
-
-
+                      <span
+                          title="Add a new person"
+                          className="button-add-relation"
+                          onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
+                          Add
+                          <FontAwesomeIcon size="xs" icon={faPlus}/>
+                      </span>
                     <PeopleSearchBar
+                        existingGuardian={existingGuardians[guardianNumber]}
+                        newGuardian={popup.guardians[guardianNumber]}
                         people={people}
                         search={search}
                         searchPeople={searchPeople}
                         resetSearchResults={resetSearchResults}
                         selectPerson={this.selectPerson}
+                        guardianNumber={guardianNumber}
                         searchResultId={`people-search-result-list-${guardianNumber}`}
                     />
 
                     <div className="relation-type">
-                        <Field
-                            component="input"
-                            name={`guardian${guardianNumber}`}
-                            type="text" name="relation"
+                        <input
+                            defaultValue={existingGuardians[guardianNumber] ? existingGuardians[guardianNumber].relation : ""}
+                            type="text"
+                            name={`relation${guardianNumber}`}
+                            ref={input => this[`relation${guardianNumber}`] = input}
                             placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
-
 
                 </div>
             );
         })
 
     }
-
 
     addGuardianFields = () => {
 
@@ -133,10 +147,6 @@ class AddPersonForm extends Component {
                 + הוסף הורה
             </span>;
 
-
-        if(this.props.isAddGuardianForm) {
-            return null;
-        }
 
         return (
             <div className="guardian-section">
@@ -163,8 +173,28 @@ class AddPersonForm extends Component {
     }
 
 
+    handleFormSubmission = (values) => {
+        const { onSubmit } = this.props;
+
+        const { guardians } = this.props.popup;
+
+        const newValues = {
+            guardianId1: `${guardians[0].id}`  || "",
+            relation1: this.relation0 ? this.relation0.value : "" || "",
+            guardianId2: `${guardians[1].id}` || "",
+            relation2: this.relation1 ? this.relation1.value : "" || "",
+            guardianId3: `${guardians[2].id}` || "",
+            relation3: this.relation2 ? this.relation2.value : "" || "",
+            guardianId4: `${guardians[3].id}` || "",
+            relation4: this.relation3 ? this.relation3.value : "" || "",
+        };
+
+        onSubmit({...values, ...newValues}, ADD_PERSON_REQUEST)
+    }
+
 
     render() {
+
 
         const {
             handleClose,
@@ -172,26 +202,20 @@ class AddPersonForm extends Component {
             pristine,
             submitting,
             image,
-            onSubmit,
         } = this.props;
 
-        // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
-        //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
 
-        const {open, type} = this.state.popup;
+        const { popup } = this.state;
+        const { open, type, guardianNumber } = popup;
 
 
         return (
             <Fragment>
-                <form className="form add-form add-person-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, constants.ADD_PERSON_REQUEST))}
+                <form className="form update-form update-person-form"
+                      onSubmit={handleSubmit(values => this.handleFormSubmission(values))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>
-
-                    <div className="form-row">
-                        <Field component="input" type="text" name="groupId" className="form-field" hidden/>
-                    </div>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>
@@ -221,14 +245,19 @@ class AddPersonForm extends Component {
                         <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                     </div>
 
+                    {this.renderGuardianSection()}
+
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={submitting || image.imageUploading || pristine }>עדכון</button>
+                        <button
+                            type="submit"
+                            className="button-submit"
+                            disabled={submitting || image.imageUploading || pristine }>עדכון</button>
                     </div>
                 </form>
                 {open && <PopupComponent type={type}
                                          handleClose={this.handlePopupClose}
-                                         isAddGuardianForm={true}
+                                         guardianNumber={guardianNumber}
                                          className="guardian-popup"
                 />}
             </Fragment>

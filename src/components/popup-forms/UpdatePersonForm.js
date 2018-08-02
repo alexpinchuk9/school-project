@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {filePath} from "../../constants/api";
 import * as constants from "../../constants/actionTypes/updatePerson";
 import { Field } from 'redux-form';
-import {ADD_PERSON} from "../../constants/popupTypes";
+import {ADD_GUARDIAN} from "../../constants/popupTypes";
 import {faPlus} from "@fortawesome/free-solid-svg-icons/index";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PopupComponent from '../../containers/PopupContainer';
@@ -16,15 +16,17 @@ class UpdatePersonForm extends Component {
         guardianFieldsNumber: 2,
         popup: {
             open: false,
-            type: null
+            type: null,
+            guardianNumber: null
         }
     }
 
-    handlePopupOpen = (type) => {
+    handlePopupOpen = (type, guardianNumber) => {
         this.setState({
             popup: {
                 open: true,
-                type: type
+                type: type,
+                guardianNumber: guardianNumber
             }
         });
     }
@@ -34,7 +36,8 @@ class UpdatePersonForm extends Component {
         this.setState({
             popup: {
                 open: false,
-                type: null
+                type: null,
+                guardianNumber: null
             }
         });
     }
@@ -44,30 +47,34 @@ class UpdatePersonForm extends Component {
         this.props.uploadImage(image);
     }
 
-    selectPerson = (guardian, guardianIndex) => {
+    selectPerson = (guardian, guardianNumber) => {
 
-        const { person } = this.props;
 
-        const relation = this[`relation${guardianIndex}`].value;
-
+        const { id, name, surname } = guardian;
         const values = {
-            peopleId: person.id,
-            guardianId: guardian.id,
-            relation: relation,
-            guardianIndex: guardianIndex
+            guardianId: id,
+            guardianName: name,
+            guardianSurname: surname,
+            guardianNumber
         }
 
-        this.props.relateGuardianToPerson(values);
+        this.props.selectGuardian(values)
+
 
     };
 
     renderGuardianFields = () => {
 
 
-        const { search,
+        const {
+            search,
             people,
             resetSearchResults,
-            searchPeople } = this.props;
+            searchPeople,
+            popup,
+            existingGuardians
+        }
+         = this.props;
 
         const { guardianFieldsNumber } = this.state;
 
@@ -77,15 +84,6 @@ class UpdatePersonForm extends Component {
             guardianArray.push(i)
         }
 
-        const addButton = (
-            <span
-                title="Add a new person"
-                className="button-add-relation"
-                onClick={() => this.handlePopupOpen(ADD_PERSON)}>
-                        Add
-                         <FontAwesomeIcon size="xs" icon={faPlus}/>
-                    </span>
-        );
 
 
 
@@ -93,7 +91,16 @@ class UpdatePersonForm extends Component {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
+                      <span
+                          title="Add a new person"
+                          className="button-add-relation"
+                          onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
+                          Add
+                          <FontAwesomeIcon size="xs" icon={faPlus}/>
+                      </span>
                     <PeopleSearchBar
+                        existingGuardian={existingGuardians[guardianNumber]}
+                        newGuardian={popup.guardians[guardianNumber]}
                         people={people}
                         search={search}
                         searchPeople={searchPeople}
@@ -105,14 +112,13 @@ class UpdatePersonForm extends Component {
 
                     <div className="relation-type">
                         <input
-                           // component="input"
+                            defaultValue={existingGuardians[guardianNumber] ? existingGuardians[guardianNumber].relation : ""}
                             type="text"
                             name={`relation${guardianNumber}`}
                             ref={input => this[`relation${guardianNumber}`] = input}
                             placeholder="אבא/אמא/..."
                             className="form-field"/>
                     </div>
-
 
                 </div>
             );
@@ -141,10 +147,6 @@ class UpdatePersonForm extends Component {
             </span>;
 
 
-        if(this.props.isAddGuardianForm) {
-            return null;
-        }
-
         return (
             <div className="guardian-section">
                 {this.renderGuardianFields()}
@@ -169,9 +171,7 @@ class UpdatePersonForm extends Component {
         }
     }
 
-
-    render() {
-
+    handleFormSubmission = (values) => {
         const {
             handleClose,
             handleSubmit,
@@ -179,27 +179,50 @@ class UpdatePersonForm extends Component {
             submitting,
             image,
             onSubmit,
+            person,
+            existingGuardians
+        } = this.props;
+
+        const { guardians } = this.props.popup;
+
+        const guardianId1 = guardians [0] && guardians[0].id ? `${guardians[0].id}` : existingGuardians[0] ? existingGuardians[0].id : "";
+        const guardianId2 = guardians [1] && guardians[1].id ? `${guardians[1].id}` : existingGuardians[1] ? existingGuardians[1].id : "";
+        const guardianId3 = guardians [2] && guardians[2].id ? `${guardians[2].id}` : existingGuardians[2] ? existingGuardians[2].id : "";
+        const guardianId4 = guardians [3] && guardians[3].id ? `${guardians[3].id}` : existingGuardians[3] ? existingGuardians[3].id : "";
+
+        const newValues = {
+            guardianId1,
+            relation1: this.relation0 ? this.relation0.value : "" || "",
+            guardianId2,
+            relation2: this.relation1 ? this.relation1.value : "" || "",
+            guardianId3,
+            relation3: this.relation2 ? this.relation2.value : "" || "",
+            guardianId4,
+            relation4: this.relation3 ? this.relation3.value : "" || "",
+        };
+
+        onSubmit({...values, ...newValues}, constants.UPDATE_PERSON_REQUEST)
+    }
+
+
+    render() {
+
+        const {
+            handleClose,
+            handleSubmit,
+            submitting,
+            image,
             person
         } = this.props;
 
-        // const picture = image.name ? <img src={`${filePath}${image.name}`} className="form-image" alt="User Avatar" />:
-        //                              <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>
-
-        const { guardianFieldsNumber } = this.state;
-        const {open, type} = this.state.popup;
-
-        const addGuardianFieldsButton = guardianFieldsNumber === 4 ?
-            null :
-            <span className="add-guardian-fields-button"
-                  onClick={this.addGuardianFields}>
-                Add more +
-            </span>;
+        const { popup } = this.state;
+        const { open, type, guardianNumber } = popup;
 
 
         return (
             <Fragment>
                 <form className="form update-form update-person-form"
-                      onSubmit={handleSubmit(values => onSubmit(values, constants.UPDATE_PERSON_REQUEST))}
+                      onSubmit={handleSubmit(values => this.handleFormSubmission(values))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>
@@ -242,7 +265,7 @@ class UpdatePersonForm extends Component {
                 </form>
                 {open && <PopupComponent type={type}
                                          handleClose={this.handlePopupClose}
-                                         isAddGuardianForm={true}
+                                         guardianNumber={guardianNumber}
                                          className="guardian-popup"
                 />}
             </Fragment>
