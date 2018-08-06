@@ -17,7 +17,7 @@
   @media only screen and (max-width: 767px) {
     .actions {
       left: 0; } }
-  .actions .relate-people-people, .actions .delete-people {
+  .actions .relate-people-people, .actions .delete-people, .actions .unlink-people-group {
     display: block;
     height: 30px;
     width: 30px;
@@ -25,10 +25,10 @@
     background: transparent;
     border: none;
     outline: none; }
-    .actions .relate-people-people:hover, .actions .delete-people:hover {
+    .actions .relate-people-people:hover, .actions .delete-people:hover, .actions .unlink-people-group:hover {
       cursor: pointer;
       transform: scale(1.1); }
-    .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover {
+    .actions .relate-people-people.disabled:hover, .actions .delete-people.disabled:hover, .actions .unlink-people-group.disabled:hover {
       cursor: not-allowed;
       transform: none; }
   .actions .relate-people-people {
@@ -781,3 +781,9 @@ body, html {
 
 .update-form.update-person-form .add-guardian-fields-button:hover {
   cursor: pointer; }
+
+.unlink-person-from-group-form .form-row.unlink-group-row {
+  flex-direction: row-reverse;
+  align-items: center; }
+  .unlink-person-from-group-form .form-row.unlink-group-row .unlink-group-checkbox {
+    margin-left: 15px; }

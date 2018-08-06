@@ -8,12 +8,20 @@ class SelectedItemViewComponent extends Component {
 
     renderSelectedItem = () => {
 
-        const { item, guardians } = this.props;
+        const { item, guardians, containerGroups } = this.props;
 
         if (isPerson(item)) {
-            return <PersonComponent guardians={guardians} person={item} isSelected={true} className="selected-item" />
+            return <PersonComponent
+                            guardians={guardians}
+                            person={item}
+                            isSelected
+                            className="selected-item"
+                            containerGroups={containerGroups}/>
         } else {
-            return <GroupComponent group={item} isSelected={true} className="selected-item"/>
+            return <GroupComponent
+                            group={item}
+                            isSelected
+                            className="selected-item"/>
         }
     }
 

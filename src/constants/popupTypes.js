@@ -7,3 +7,4 @@ export const ADD_GROUP = 'ADD_GROUP';
 export const ADD_PERSON = 'ADD_PERSON';
 export const ADD_PERSON_TO_GROUP = 'ADD_PERSON_TO_GROUP';
 export const ADD_GUARDIAN = 'ADD_GUARDIAN';
+export const UNLINK_PERSON_FROM_GROUP = 'UNLINK_PERSON_FROM_GROUP';

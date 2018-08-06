@@ -27,7 +27,10 @@ import {
     ADD_PERSON_TO_GROUP_REQUEST,
     ADD_PERSON_TO_GROUP_SUCCESS,
     ADD_PERSON_TO_GROUP_FAILURE,
-    ADD_GUARDIAN_SUCCESS
+    ADD_GUARDIAN_SUCCESS,
+    UNLINK_PERSON_FROM_GROUP_REQUEST,
+    UNLINK_PERSON_FROM_GROUP_SUCCESS,
+    UNLINK_PERSON_FROM_GROUP_FAILURE
 } from "../constants/actionTypes";
 
 const INITIAL_STATE = {
@@ -76,6 +79,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case ADD_GROUP_REQUEST:
         case ADD_PERSON_REQUEST:
         case ADD_PERSON_TO_GROUP_REQUEST:
+        case UNLINK_PERSON_FROM_GROUP_REQUEST:
             return {...state, loading: true, error: null, serverResponse: null};
 
         case UPDATE_PERSON_SUCCESS:
@@ -87,6 +91,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case ADD_GROUP_SUCCESS:
         case ADD_PERSON_SUCCESS:
         case ADD_PERSON_TO_GROUP_SUCCESS:
+        case UNLINK_PERSON_FROM_GROUP_SUCCESS:
             return {...state, loading: false, serverResponse: action.payload, open: false, error: null};
 
         case UPDATE_PERSON_FAILURE:
@@ -98,6 +103,7 @@ const popupReducer = (state = INITIAL_STATE, action) => {
         case ADD_GROUP_FAILURE:
         case ADD_PERSON_FAILURE:
         case ADD_PERSON_TO_GROUP_FAILURE:
+        case UNLINK_PERSON_FROM_GROUP_FAILURE:
             return {...state, loading: false, error: action.payload, serverResponse: null};
 
         case ADD_GUARDIAN_SUCCESS:

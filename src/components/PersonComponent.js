@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {MESSAGE, PHONE, UPDATE_PERSON, DELETE, ADD_PERSON_TO_GROUP, ADD_PERSON} from "../constants/popupTypes";
+import {
+    MESSAGE,
+    PHONE,
+    UPDATE_PERSON,
+    DELETE,
+    ADD_PERSON_TO_GROUP,
+    UNLINK_PERSON_FROM_GROUP
+} from "../constants/popupTypes";
 import { filePath } from "../constants/api";
 import styled from 'styled-components';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faUnlink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { filterGuardians } from "../utils/filters"
 
@@ -44,7 +51,12 @@ class PersonComponent extends Component {
 
     renderPersonFullRepresentation = () => {
 
-        const {guardians, person, className} = this.props;
+        const {
+            guardians,
+            person,
+            className,
+            containerGroups
+        } = this.props;
         const {open, type} = this.state.popup;
 
         const initialValues = {
@@ -54,6 +66,19 @@ class PersonComponent extends Component {
             cellphone: person.cellphone,
             picture: person.picSource
         };
+
+        const unlinkActionButton = containerGroups.length ?
+                                        <button className="unlink-people-group"
+                                                title="Unlink this person from a group"
+                                                onClick={() => this.handlePopupOpen(UNLINK_PERSON_FROM_GROUP)}
+                                        >
+                                            <FontAwesomeIcon size="lg" icon={faUnlink}/>
+                                        </button> :
+                                        <button className="unlink-people-group disabled"
+                                                title="This person doesn't have any groups to unlink"
+                                        >
+                                            <FontAwesomeIcon size="lg" icon={faUnlink}/>
+                                        </button>
 
 
         const mailActionButton = person.email ?
@@ -148,6 +173,7 @@ class PersonComponent extends Component {
                                              person={person}
                                              className={type === UPDATE_PERSON ? "update-person-popup" : ""}
                                              existingGuardians={guardians}
+                                             containerGroups={containerGroups}
                                              initialValues={initialValues}/>}
                 </div>
 
@@ -159,11 +185,14 @@ class PersonComponent extends Component {
                         <FontAwesomeIcon size="lg" icon={faLink}/>
                     </button>
 
+                    {unlinkActionButton}
+
                     <button
                         title="מחיקה"
                         className="delete-people"
                         onClick={() => this.handlePopupOpen(DELETE)}>
                     </button>
+
 
                 </div>
             </div>

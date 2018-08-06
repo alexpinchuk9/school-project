@@ -80,13 +80,16 @@ class MainPageComponent extends Component {
     renderSelectedItem = () => {
         const { selectedItem, items } = this.props.items;
         let guardianPeople = [];
+        let containerGroups = [];
 
         if (selectedItem && isPerson(selectedItem)) {
           guardianPeople = filters.filterGuardianPeople(items, selectedItem);
+          containerGroups = filters.filterContainerGroupsForPeople(items, selectedItem);
         }
 
         if (selectedItem) {
             return <SelectedItemViewComponent
+                        containerGroups={containerGroups}
                         guardians={guardianPeople}
                         item={selectedItem} />
         }

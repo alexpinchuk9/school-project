@@ -1,0 +1,5 @@
+.unlink-person-from-group-form .form-row.unlink-group-row {
+  flex-direction: row-reverse;
+  align-items: center; }
+  .unlink-person-from-group-form .form-row.unlink-group-row .unlink-group-checkbox {
+    margin-left: 15px; }

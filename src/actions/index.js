@@ -14,6 +14,7 @@ import { resetPopupState } from "./resetPopup";
 import { searchItems, searchPeople, searchGroups, resetSearchResults } from "./search";
 import { selectGroup } from "./selectGroup";
 import { selectItem } from "./selectItem";
+import { unlinkPersonFromGroup } from "./unlinkPersonFromGroup";
 import { updateGroup } from "./updateGroup";
 import { updatePerson } from "./updatePerson";
 import { uploadImage } from "./uploadImage";
@@ -39,6 +40,7 @@ export {
     selectGroup,
     selectGuardian,
     selectItem,
+    unlinkPersonFromGroup,
     updateGroup,
     updatePerson,
     uploadImage

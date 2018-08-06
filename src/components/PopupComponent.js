@@ -9,7 +9,8 @@ import {
     ADD_GROUP,
     ADD_PERSON,
     ADD_PERSON_TO_GROUP,
-    ADD_GUARDIAN
+    ADD_GUARDIAN,
+    UNLINK_PERSON_FROM_GROUP
 } from "../constants/popupTypes";
 import {
     DELETE_GROUP_REQUEST,
@@ -21,7 +22,7 @@ import {
     ADD_GROUP_REQUEST,
     ADD_PERSON_REQUEST,
     ADD_PERSON_TO_GROUP_REQUEST,
-    ADD_GUARDIAN_REQUEST
+    ADD_GUARDIAN_REQUEST, UNLINK_PERSON_FROM_GROUP_REQUEST
 } from "../constants/actionTypes";
 
 import AddGroupForm from "./popup-forms/AddGroupForm";
@@ -33,6 +34,7 @@ import DeleteForm from "./popup-forms/DeleteForm";
 import AddPersonForm from "./popup-forms/AddPersonForm";
 import AddPersonToGroupForm from "./popup-forms/AddPersonToGroupForm";
 import AddGuardianForm from "./popup-forms/AddGuardianForm";
+import UnlinkPersonFromGroupForm from "./popup-forms/UnlinkPersonFromGroupForm";
 
 class PopupComponent extends Component {
 
@@ -57,6 +59,7 @@ class PopupComponent extends Component {
             existingGuardians,
             popup,
             selectGuardian,
+            containerGroups,
             items: {
                 items: {
                     people,
@@ -155,7 +158,14 @@ class PopupComponent extends Component {
                             guardianNumber={guardianNumber}
                             handleClose={handleClose}
                             handleSubmit={handleSubmit}
-                            onSubmit={this.handleSubmit}/>
+                            onSubmit={this.handleSubmit}/>;
+
+            case UNLINK_PERSON_FROM_GROUP:
+                return <UnlinkPersonFromGroupForm
+                            containerGroups={containerGroups}
+                            handleClose={handleClose}
+                            handleSubmit={handleSubmit}
+                            onSubmit={this.handleSubmit}/>;
 
             default:
                 return null;
@@ -177,6 +187,7 @@ class PopupComponent extends Component {
             addPerson,
             addPersonToGroup,
             addGuardian,
+            unlinkPersonFromGroup,
             person,
             group,
             image } = this.props;
@@ -221,6 +232,11 @@ class PopupComponent extends Component {
 
             case ADD_GUARDIAN_REQUEST:
                 addGuardian(values);
+                break;
+
+            case UNLINK_PERSON_FROM_GROUP_REQUEST:
+                console.log(values);
+                unlinkPersonFromGroup({...values, peopleId: person.id});
                 break;
 
             default:

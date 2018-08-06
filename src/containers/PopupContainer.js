@@ -20,7 +20,8 @@ import {
     refreshItems,
     relateGuardianToPerson,
     addGuardian,
-    selectGuardian
+    selectGuardian,
+    unlinkPersonFromGroup
 } from "../actions";
 
 const mapStateToProps = (state) => {
@@ -90,6 +91,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         selectGuardian: (values) => {
             dispatch(selectGuardian(values))
+        },
+        unlinkPersonFromGroup: (values) => {
+            dispatch(unlinkPersonFromGroup(values))
         }
     }
 };
