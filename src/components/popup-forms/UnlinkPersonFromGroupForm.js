@@ -63,7 +63,7 @@ class UnlinkPersonFromGroupForm extends Component {
                 {this.renderContainerGroups()}
 
                 <div className="form-row">
-                    <button type="submit" className="button-submit" disabled={pristine || submitting || !groupsToDelete.length}>עדכון</button>
+                    <button type="submit" className="button-submit" disabled={pristine || submitting || groupsToDelete.length == 0}>UNLINK</button>
                 </div>
 
             </form>

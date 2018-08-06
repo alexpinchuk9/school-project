@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainPageComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPageComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PersonComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PersonComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PopupComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SelectedItemViewComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SelectedItemViewComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/actionTypes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/actionTypes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/popupTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/popupTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/PopupContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/PopupContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/popupReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/popupReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/person.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/person.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/person.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/person.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UnlinkPersonFromGroupForm.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UnlinkPersonFromGroupForm.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
+            <state relative-caret-position="615">
+              <caret line="65" column="138" selection-start-line="65" selection-start-column="138" selection-end-line="65" selection-end-column="138" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -113,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonComponent.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PersonComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/PersonComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="77" column="101" selection-start-line="77" selection-start-column="101" selection-end-line="77" selection-end-column="101" />
+            <state relative-caret-position="-330">
+              <caret line="80" column="49" lean-forward="true" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -201,10 +188,10 @@
         <option value="$PROJECT_DIR$/src/reducers/popupReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/unlinkPersonFromGroup.js" />
         <option value="$PROJECT_DIR$/src/styles/index.scss" />
-        <option value="$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js" />
         <option value="$PROJECT_DIR$/src/styles/unlinkPersonFromGroupForm.scss" />
         <option value="$PROJECT_DIR$/src/styles/person.scss" />
         <option value="$PROJECT_DIR$/src/components/PersonComponent.js" />
+        <option value="$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js" />
       </list>
     </option>
   </component>
@@ -225,7 +212,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1615" />
+    <option name="x" value="1745" />
     <option name="y" value="-4" />
     <option name="width" value="1615" />
     <option name="height" value="1054" />
@@ -390,12 +377,12 @@
       <workItem from="1532958479746" duration="5333000" />
       <workItem from="1533018176404" duration="11362000" />
       <workItem from="1533105438309" duration="2656000" />
-      <workItem from="1533558495255" duration="4657000" />
+      <workItem from="1533558495255" duration="5028000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="263426000" />
+    <option name="totallyTimeSpent" value="263797000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -848,16 +835,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="56" selection-start-line="20" selection-start-column="56" selection-end-line="20" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/unlinkPersonFromGroupForm.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -874,8 +851,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PersonComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="77" column="101" selection-start-line="77" selection-start-column="101" selection-end-line="77" selection-end-column="101" />
+        <state relative-caret-position="-330">
+          <caret line="80" column="49" lean-forward="true" selection-start-line="80" selection-start-column="49" selection-end-line="80" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/popup-forms/UnlinkPersonFromGroupForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="65" column="138" selection-start-line="65" selection-start-column="138" selection-end-line="65" selection-end-column="138" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
