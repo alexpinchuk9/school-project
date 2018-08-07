@@ -1,6 +1,6 @@
 .update-form.update-person-form .add-relation-row {
   width: 100%;
-  flex-direction: row;
+  flex-direction: row-reverse;
   margin-bottom: 10px; }
   .update-form.update-person-form .add-relation-row .people-search-form {
     position: relative;
@@ -46,7 +46,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 15px; }
+    padding: 5px 15px;
+    margin: 0 5px 0 0; }
     .update-form.update-person-form .add-relation-row .button-add-relation:hover {
       cursor: pointer;
       background: #DC5D14; }

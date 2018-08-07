@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { filterGuardians } from "../utils/filters"
 
 import PopupComponent from "../containers/PopupContainer";
-import checkMobile from "../utils/checkmobile";
+import checkMobile from "../utils/checkMobile";
 
 class PersonComponent extends Component {
 

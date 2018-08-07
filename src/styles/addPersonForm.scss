@@ -4,7 +4,7 @@
   &.add-person-form {
     .add-relation-row {
       width: 100%;
-      flex-direction: row;
+      flex-direction: row-reverse;
       margin-bottom: 10px;
       .people-search-form {
         .search-input {
@@ -26,6 +26,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px 15px;
+        margin: 0 5px 0 0;
         &:hover {
           cursor: pointer;
           background: $darkOrange;

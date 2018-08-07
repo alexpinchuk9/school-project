@@ -49,7 +49,7 @@ class AddPersonToGroupForm extends Component {
             >
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
-                <div className="form-row">
+                {/*<div className="form-row">*/}
                     <GroupSearchBar
                         groups={groups}
                         search={search}
@@ -57,10 +57,10 @@ class AddPersonToGroupForm extends Component {
                         resetSearchResults={resetSearchResults}
                         selectGroup={selectGroup}
                     />
-                </div>
+                {/*</div>*/}
 
                 <div className="form-row">
-                    <label htmlFor="relation">התפקיד (רשות)</label>
+                    <label htmlFor="relation" className="field-label">התפקיד (רשות)</label>
                     <Field component="input" type="text" name="relation"  className="form-field" placeholder="מחנך/מנהל/..." />
                 </div>
 

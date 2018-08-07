@@ -1,14 +1,29 @@
 @import 'variables.scss';
 
-.popup {
+.overlay {
   position: fixed;
-  left: 50%;
-  margin-left: -150px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 200ms;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.popup {
+  //position: absolute;
+  //left: 50%;
+ // margin-left: -150px;
   width: auto;
   min-width: 280px;
-  top: 50%;
-  margin-top: -100px;
-  z-index: 3;
+ // top: 50%;
+ // margin-top: -100px;
+  z-index: 6;
   box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.75);
   max-height: 400px;
   overflow: auto;
@@ -72,14 +87,14 @@
       }
     }
     .button-close {
-      position: absolute;
-      top: 10px;
-      left: 20px;
       border: none;
       outline: none;
       background: white;
       width: 15px;
       height: 15px;
+      position: sticky;
+      top: 20px;
+      margin-right: auto;
       &:hover {
         cursor: pointer;
       }
@@ -102,7 +117,7 @@
     }
     .form-row {
       display: flex;
-      width: 90%;
+      width: 95%;
       flex-direction: column;
       justify-content: flex-end;
     }
@@ -114,6 +129,7 @@
       display: block;
       text-align: right;
       margin: 0 5px;
+      font-size: 14px;
     }
     .form-image-row {
       flex-direction: row;
@@ -175,6 +191,7 @@
       text-align: right;
       padding: 5px;
       margin: 5px;
+      font-size: 16px;
       &[type="file"] {
         display: none;
       }
@@ -198,26 +215,26 @@
       }
     }
   }
-  &:after {
-    position: fixed;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: -2;
-  }
-  &:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: $white;
-    z-index: -1;
-  }
+  //&:after {
+  //  position: fixed;
+  //  content: "";
+  //  top: 0;
+  //  left: 0;
+  //  bottom: 0;
+  //  right: 0;
+  //  background: rgba(0,0,0,0.5);
+  //  z-index: -2;
+  //}
+  //&:before {
+  //  position: absolute;
+  //  content: "";
+  //  top: 0;
+  //  left: 0;
+  //  bottom: 0;
+  //  right: 0;
+  //  background: $white;
+  //  z-index: -1;
+  //}
 }
 
 

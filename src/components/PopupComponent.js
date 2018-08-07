@@ -273,8 +273,10 @@ class PopupComponent extends Component {
         }
 
         return (
-            <div className={`popup ${className}`}>
-                {this.renderForm()}
+            <div className="overlay">
+                <div className={`popup ${className}`}>
+                    {this.renderForm()}
+                </div>
             </div>
         );
     }

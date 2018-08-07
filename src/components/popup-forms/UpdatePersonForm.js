@@ -91,13 +91,17 @@ class UpdatePersonForm extends Component {
             return (
                 <div className="form-row add-relation-row" key={index} >
 
-                      <span
-                          title="Add a new person"
-                          className="button-add-relation"
-                          onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
-                          Add
-                          <FontAwesomeIcon size="xs" icon={faPlus}/>
-                      </span>
+                    <div className="relation-type">
+                        <input
+                            defaultValue={existingGuardians[guardianNumber] ? existingGuardians[guardianNumber].relation : ""}
+                            type="text"
+                            name={`relation${guardianNumber}`}
+                            ref={input => this[`relation${guardianNumber}`] = input}
+                            placeholder="אבא/אמא/..."
+                            className="form-field"/>
+                    </div>
+
+
                     <PeopleSearchBar
                         existingGuardian={existingGuardians[guardianNumber]}
                         newGuardian={popup.guardians[guardianNumber]}
@@ -110,15 +114,13 @@ class UpdatePersonForm extends Component {
                         searchResultId={`people-search-result-list-${guardianNumber}`}
                     />
 
-                    <div className="relation-type">
-                        <input
-                            defaultValue={existingGuardians[guardianNumber] ? existingGuardians[guardianNumber].relation : ""}
-                            type="text"
-                            name={`relation${guardianNumber}`}
-                            ref={input => this[`relation${guardianNumber}`] = input}
-                            placeholder="אבא/אמא/..."
-                            className="form-field"/>
-                    </div>
+                    <span
+                        title="Add a new person"
+                        className="button-add-relation"
+                        onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
+                          Add
+                          <FontAwesomeIcon size="xs" icon={faPlus}/>
+                      </span>
 
                 </div>
             );
