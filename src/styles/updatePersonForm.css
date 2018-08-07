@@ -2,9 +2,15 @@
   width: 100%;
   flex-direction: row-reverse;
   margin-bottom: 10px; }
+  @media only screen and (max-width: 400px) {
+    .update-form.update-person-form .add-relation-row {
+      flex-direction: column; } }
   .update-form.update-person-form .add-relation-row .people-search-form {
     position: relative;
     outline: none; }
+    @media only screen and (max-width: 400px) {
+      .update-form.update-person-form .add-relation-row .people-search-form {
+        width: 100%; } }
     .update-form.update-person-form .add-relation-row .people-search-form.add-guardian-success:after {
       content: '';
       display: block;
@@ -33,6 +39,9 @@
     .update-form.update-person-form .add-relation-row .people-search-form .search-input {
       width: 120px;
       outline: none; }
+      @media only screen and (max-width: 400px) {
+        .update-form.update-person-form .add-relation-row .people-search-form .search-input {
+          width: 270px; } }
     .update-form.update-person-form .add-relation-row .people-search-form .people-search-result-list {
       width: 250px;
       z-index: 3; }
@@ -48,13 +57,22 @@
     justify-content: center;
     padding: 5px 15px;
     margin: 0 5px 0 0; }
+    @media only screen and (max-width: 400px) {
+      .update-form.update-person-form .add-relation-row .button-add-relation {
+        width: 255px; } }
     .update-form.update-person-form .add-relation-row .button-add-relation:hover {
       cursor: pointer;
       background: #DC5D14; }
     .update-form.update-person-form .add-relation-row .button-add-relation svg {
       margin-right: 5px; }
+  @media only screen and (max-width: 400px) {
+    .update-form.update-person-form .add-relation-row .relation-type {
+      width: 100%; } }
   .update-form.update-person-form .add-relation-row .relation-type .form-field {
     width: 120px; }
+    @media only screen and (max-width: 400px) {
+      .update-form.update-person-form .add-relation-row .relation-type .form-field {
+        width: 270px; } }
 
 .update-form.update-person-form .add-guardian-fields-button:hover {
   cursor: pointer; }

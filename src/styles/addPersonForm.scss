@@ -6,13 +6,24 @@
       width: 100%;
       flex-direction: row-reverse;
       margin-bottom: 10px;
+      @media only screen and (max-width: 400px) {
+        flex-direction: column;
+      }
       .people-search-form {
-        .search-input {
-          width: 120px;
+        position: relative;
+        outline: none;
+        @media only screen and (max-width: 400px) {
+          width: 100%;
         }
         .people-search-result-list {
           width: 250px;
           z-index: 3;
+        }
+        .search-input {
+          @media only screen and (max-width: 400px) {
+            width: 270px;
+          }
+
         }
       }
       .button-add-relation {
@@ -27,6 +38,10 @@
         justify-content: center;
         padding: 5px 15px;
         margin: 0 5px 0 0;
+        @media only screen and (max-width: 400px) {
+          width: 255px;
+        }
+
         &:hover {
           cursor: pointer;
           background: $darkOrange;
@@ -36,8 +51,15 @@
         }
       }
       .relation-type {
+        @media only screen and (max-width: 400px) {
+          width: 100%;
+        }
         .form-field {
           width: 120px;
+          @media only screen and (max-width: 400px) {
+            width: 270px;
+          }
+
         }
       }
     }
