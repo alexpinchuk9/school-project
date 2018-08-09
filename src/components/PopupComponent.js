@@ -202,11 +202,11 @@ class PopupComponent extends Component {
 
         switch(ACTION_TYPE) {
             case MESSAGE_PERSON_REQUEST:
-                messagePerson(person.id, values.personMessage);
+                messagePerson(person.id, values.message);
                 break;
 
             case MESSAGE_GROUP_REQUEST:
-                messageGroup(group.id, values.groupMessage);
+                messageGroup(group.id, values.message);
                 break;
 
             case UPDATE_PERSON_REQUEST:
@@ -243,7 +243,6 @@ class PopupComponent extends Component {
                 break;
 
             case UNLINK_PERSON_FROM_GROUP_REQUEST:
-                console.log(values);
                 unlinkPersonFromGroup({...values, peopleId: person.id});
                 break;
 
@@ -254,25 +253,9 @@ class PopupComponent extends Component {
         reset();
     }
 
-    handleServerResponse = (serverMessage) => {
-
-        const { handleClose, resetPopupState } = this.props;
-
-       this.setState({
-           serverResponseModal: {
-               ...this.state.serverResponseModal,
-               open: true,
-               message: serverMessage
-           }
-       })
-        //
-        // resetPopupState();
-        // setTimeout(handleClose, 0);
-    }
-
     closeServerResponseModal = () => {
         const { handleClose, resetPopupState } = this.props;
-        const { className, refreshItems, group, person } = this.props;
+        const { refreshItems, group, person } = this.props;
 
         this.setState((state, props) => ({
             serverResponseModal:
@@ -313,23 +296,8 @@ class PopupComponent extends Component {
     }
 
     render() {
-        const { serverResponse, error } = this.props.popup;
-        const { className, refreshItems, group, person } = this.props;
+        const { className } = this.props;
         const { serverResponseModal } = this.state;
-
-        console.log(this.state);
-
-        // if (serverResponse) {
-        //     this.handleServerResponse(serverResponse);
-        //     // if (person) {
-        //     //     refreshItems(person);
-        //     // } else {
-        //     //     refreshItems(group);
-        //     // }
-        // } else if (error) {
-        //     this.handleServerResponse(error);
-        // }
-
         return (
             <div className="overlay">
                 <div className={`popup ${className}`}>

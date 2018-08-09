@@ -4,5 +4,11 @@
   display: flex;
   align-items: center;
   font-size: 24px; }
-  .welcome-form:hover {
-    cursor: pointer; }
+  @media only screen and (max-width: 767px) {
+    .welcome-form {
+      margin: 0; } }
+  .welcome-form .user-link {
+    margin: 0 5px; }
+    .welcome-form .user-link:hover {
+      cursor: pointer;
+      text-decoration: underline; }

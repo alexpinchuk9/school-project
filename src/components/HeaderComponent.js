@@ -29,7 +29,7 @@ class HeaderComponent extends Component {
             (
                 <span title="למסך הקודם">
                     <FontAwesomeIcon
-                        size="xxl"
+                        size="2x"
                         icon={faChevronCircleLeft}
                         className="go-back-button"
                         onClick={onGoBack}/>
@@ -39,7 +39,7 @@ class HeaderComponent extends Component {
             (
                 <span title="אין מסך קודם">
                     <FontAwesomeIcon
-                        size="xxl"
+                        size="2x"
                         icon={faChevronCircleLeft}
                         className="go-back-button disabled"/>
                 </span>
@@ -71,19 +71,21 @@ class HeaderComponent extends Component {
         return (
             <div className="header">
                 {homeButton}
-                {profileSection}
-                <SearchBarComponent
-                    items={items}
-                    searchItems={searchItems}
-                    search={search}
-                    selectItem={selectItem}
-                    resetSearchResults={resetSearchResults}
-                />
+                <div className="profile-and-search-wrapper">
+                    {profileSection}
+                    <SearchBarComponent
+                        items={items}
+                        searchItems={searchItems}
+                        search={search}
+                        selectItem={selectItem}
+                        resetSearchResults={resetSearchResults}
+                    />
+                </div>
 
                 <div className="header-action-buttons">
                     <span title="רענון">
                        <FontAwesomeIcon
-                           size="xxl"
+                           size="2x"
                            icon={faUndoAlt}
                            onClick={onRefresh}
                            className="refresh-button" />

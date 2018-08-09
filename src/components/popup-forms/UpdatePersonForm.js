@@ -65,7 +65,6 @@ class UpdatePersonForm extends Component {
 
     renderGuardianFields = () => {
 
-
         const {
             search,
             people,
@@ -73,19 +72,13 @@ class UpdatePersonForm extends Component {
             searchPeople,
             popup,
             existingGuardians
-        }
-         = this.props;
-
+        } = this.props;
         const { guardianFieldsNumber } = this.state;
-
         let guardianArray = [];
 
         for (let i = 0; i < guardianFieldsNumber; i++) {
             guardianArray.push(i)
         }
-
-
-
 
         return guardianArray.map((guardianNumber, index) => {
             return (
@@ -174,17 +167,7 @@ class UpdatePersonForm extends Component {
     }
 
     handleFormSubmission = (values) => {
-        const {
-            handleClose,
-            handleSubmit,
-            pristine,
-            submitting,
-            image,
-            onSubmit,
-            person,
-            existingGuardians
-        } = this.props;
-
+        const { onSubmit, existingGuardians} = this.props;
         const { guardians } = this.props.popup;
 
         const guardianId1 = guardians [0] && guardians[0].id ? `${guardians[0].id}` : existingGuardians[0] ? existingGuardians[0].id : "";
@@ -206,7 +189,6 @@ class UpdatePersonForm extends Component {
         onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
     }
 
-
     render() {
 
         const {
@@ -219,7 +201,6 @@ class UpdatePersonForm extends Component {
 
         const { popup } = this.state;
         const { open, type, guardianNumber } = popup;
-
 
         return (
             <Fragment>

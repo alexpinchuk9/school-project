@@ -1,5 +1,10 @@
 @import "variables.scss";
 
+.header-search-form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .header-search-form {
   position: relative;
   margin: 0 15px;
@@ -9,6 +14,12 @@
     outline: none;
     border: 1px solid $blue;
     font-size: 18px;
+  }
+  .search-icon {
+    margin: 0 15px 0 0;
+    @media only screen and (max-width: 768px) {
+      margin: 0 10px 0 0;
+    }
   }
   @media only screen and (max-width: 420px) {
     margin: 0 0 0 20px;
@@ -39,6 +50,7 @@
       }
     }
     .no-results {
+      color: $black;
       width: auto;
       padding: 10px 15px;
     }

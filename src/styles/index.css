@@ -312,7 +312,7 @@
     margin-top: 120px; }
     @media only screen and (max-width: 767px) {
       .main-page .items-container {
-        margin-top: 250px; } }
+        margin-top: 230px; } }
 
 .overlay {
   position: fixed;
@@ -373,6 +373,8 @@
     background: #ffffff;
     padding: 20px 25px;
     flex: none; }
+    .popup .form.message-form {
+      overflow: hidden; }
     .popup .form.delete-form .form-row {
       display: flex;
       flex-direction: row;
@@ -429,6 +431,8 @@
       text-align: right;
       margin: 0 5px;
       font-size: 14px; }
+      .popup .form .field-label.label-message {
+        margin: 0 5px 15px 5px; }
     .popup .form .form-image-row {
       flex-direction: row;
       justify-content: space-between;
@@ -497,7 +501,12 @@
 
 body, html {
   direction: rtl;
-  background: #e8f1f3; }
+  background: #e8f1f3;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
 
 .header {
   display: flex;
@@ -508,13 +517,25 @@ body, html {
   padding: 25px;
   position: fixed;
   z-index: 2;
-  background: #e8f1f3;
-  box-shadow: 0 4px 2px -2px #808080; }
+  background: #4b8491;
+  color: #ffffff;
+  box-shadow: 0 4px 2px -2px #808080;
+  max-height: 50px; }
   @media only screen and (max-width: 767px) {
     .header {
       justify-content: center;
+      align-items: flex-start;
       flex-direction: column;
-      height: 210px; } }
+      padding: 10px 45px 10px 0;
+      max-height: 210px; } }
+  .header .profile-and-search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    @media screen and (max-width: 768px) {
+      .header .profile-and-search-wrapper {
+        flex-direction: column;
+        align-items: flex-start; } }
   .header .header-action-buttons {
     margin-left: 30px; }
     @media only screen and (max-width: 767px) {
@@ -550,16 +571,15 @@ body, html {
     align-items: center; }
     @media only screen and (max-width: 420px) {
       .header .profile-section {
-        padding: 15px;
-        margin-left: -20px; } }
+        padding: 15px 0; } }
   .header .shortcut-container {
     font-size: 40px;
     display: flex;
     align-items: center;
     margin-right: 30px; }
-    @media only screen and (max-width: 767px) {
+    @media only screen and (max-width: 1024px) {
       .header .shortcut-container {
-        margin: 15px 0; } }
+        margin: 0 10px 0 0; } }
     .header .shortcut-container:hover {
       cursor: pointer;
       transform: scale(1.1); }
@@ -568,11 +588,20 @@ body, html {
       background: transparent;
       margin-right: 15px;
       padding: 0 10px;
-      font-size: 40px; }
+      font-size: 40px;
+      color: #ffffff; }
+      @media only screen and (max-width: 768px) {
+        .header .shortcut-container .shortcut-button {
+          font-size: 30px; } }
       .header .shortcut-container .shortcut-button:hover {
         cursor: pointer; }
       .header .shortcut-container .shortcut-button:active, .header .shortcut-container .shortcut-button:focus {
         outline: none; }
+
+.header-search-form-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .header-search-form {
   position: relative;
@@ -583,6 +612,11 @@ body, html {
     outline: none;
     border: 1px solid #3869bb;
     font-size: 18px; }
+  .header-search-form .search-icon {
+    margin: 0 15px 0 0; }
+    @media only screen and (max-width: 768px) {
+      .header-search-form .search-icon {
+        margin: 0 10px 0 0; } }
   @media only screen and (max-width: 420px) {
     .header-search-form {
       margin: 0 0 0 20px; } }
@@ -608,6 +642,7 @@ body, html {
         cursor: pointer;
         color: #000000; }
     .header-search-form .search-result-list .no-results {
+      color: #000000;
       width: auto;
       padding: 10px 15px; }
 
@@ -819,10 +854,14 @@ body, html {
   position: relative;
   margin: 0 15px;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: flex-end; }
+  @media only screen and (max-width: 768px) {
+    .login-form {
+      margin: 5px 15px; } }
   @media only screen and (max-width: 420px) {
     .login-form {
-      margin: 0 0 10px 0; } }
+      margin: 10px 0 10px 0; } }
   .login-form .login-input {
     padding: 10px 15px;
     border-radius: 4px;
@@ -837,15 +876,17 @@ body, html {
     border: none;
     outline: none;
     background: transparent;
-    font-size: 24px; }
-    @media only screen and (max-width: 420px) {
+    font-size: 24px;
+    color: #ffffff; }
+    @media only screen and (max-width: 768px) {
       .login-form .login-button {
         display: none; } }
   @media only screen and (max-width: 420px) {
     .login-form .login-icon {
       margin-left: -10px; } }
   .login-form .login-icon:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    transform: scale(1.1); }
 
 .welcome-form {
   position: relative;
@@ -853,8 +894,26 @@ body, html {
   display: flex;
   align-items: center;
   font-size: 24px; }
-  .welcome-form:hover {
-    cursor: pointer; }
+  @media only screen and (max-width: 767px) {
+    .welcome-form {
+      margin: 0; } }
+  .welcome-form .user-link {
+    margin: 0 5px; }
+    .welcome-form .user-link:hover {
+      cursor: pointer;
+      text-decoration: underline; }
+
+.modal-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+  .modal-overlay.visible {
+    z-index: 8;
+    background-color: rgba(0, 0, 0, 0.25);
+    pointer-events: auto; }
 
 .modal {
   opacity: 0;
@@ -862,6 +921,7 @@ body, html {
   transition: all 300ms linear;
   background: #ffffff;
   margin-top: -100vh;
+  max-width: 300px;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -869,7 +929,8 @@ body, html {
   border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 40px 50px;
   z-index: 9;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  color: #000000; }
   @media only screen and (max-width: 420px) {
     .modal {
       width: 65%;
@@ -907,5 +968,10 @@ body, html {
         cursor: pointer;
         background: #843100; }
 
-.logout-form:hover {
-  cursor: pointer; }
+.logout-form {
+  color: #ffffff;
+  padding: 0 10px;
+  border-right: 2px solid #ffffff; }
+  .logout-form svg:hover {
+    transform: scale(1.1);
+    cursor: pointer; }

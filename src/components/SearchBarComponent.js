@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SearchResultItem from "./SearchResultItem";
+import { faSearch } from "@fortawesome/free-solid-svg-icons/index";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBarComponent extends Component {
 
@@ -27,7 +29,8 @@ class SearchBarComponent extends Component {
         const { itemResults } = this.props.search;
 
         const { activeId } = this.state;
-
+        console.log(this.state.query);
+        console.log(itemResults.length);
 
         if( this.state.query !== "" && !itemResults.length ) {
             return (
@@ -58,27 +61,16 @@ class SearchBarComponent extends Component {
     }
 
     handleResultMouseEnter = (index) => {
-        //
-        // this.search.value = value;
-        // this.setState({
-        //     query: value
-        // });
-
-        console.log(index);
         this.setState((state,props) => ({ activeId: index}));
     }
 
     handleBlur = () => {
-
        const searchResults = document.getElementsByClassName('search-result-list')[0];
-
        searchResults.classList.remove('visible')
     };
 
     handleFocus = () => {
-
        const searchResults = document.getElementsByClassName('search-result-list')[0];
-
        searchResults.classList.add('visible')
     };
 
@@ -130,32 +122,37 @@ class SearchBarComponent extends Component {
                 break;
             }
         }
-
-        console.log(activeId);
-
     }
 
     render() {
 
         return (
-            <div className="header-search-form"
-                 tabIndex="0"
-                 onBlur={this.handleBlur}
-                 onFocus={this.handleFocus}
-                 onKeyDown={this.handleKeyDown}>
-                <input
-                    placeholder="חיפוש"
-                    ref={input => this.search = input}
-                    value={this.state.query}
-                    onChange={this.handleInputChange}
-                    className="search-input"
-                    onBlur={this.handleBlur}
-                    onFocus={this.handleFocus}
-                />
-                <div className="search-result-list">
-                    {this.renderSearchResults()}
+            <div className="header-search-form-wrapper">
+                <div className="header-search-form"
+                     tabIndex="0"
+                     onBlur={this.handleBlur}
+                     onFocus={this.handleFocus}
+                     onKeyDown={this.handleKeyDown}>
+                    <input
+                        placeholder="חיפוש"
+                        ref={input => this.search = input}
+                        value={this.state.query}
+                        onChange={this.handleInputChange}
+                        className="search-input"
+                        onBlur={this.handleBlur}
+                        onFocus={this.handleFocus}
+                    />
+                    <div className="search-result-list">
+                        {this.renderSearchResults()}
+                    </div>
                 </div>
+                <span title="Perform search" className="search-icon">
+                <FontAwesomeIcon
+                size="lg"
+                icon={faSearch}/>
+                </span>
             </div>
+
         )
     }
 }

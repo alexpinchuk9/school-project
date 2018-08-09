@@ -57,6 +57,8 @@
     background: #ffffff;
     padding: 20px 25px;
     flex: none; }
+    .popup .form.message-form {
+      overflow: hidden; }
     .popup .form.delete-form .form-row {
       display: flex;
       flex-direction: row;
@@ -113,6 +115,8 @@
       text-align: right;
       margin: 0 5px;
       font-size: 14px; }
+      .popup .form .field-label.label-message {
+        margin: 0 5px 15px 5px; }
     .popup .form .form-image-row {
       flex-direction: row;
       justify-content: space-between;

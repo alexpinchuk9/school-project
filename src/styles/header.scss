@@ -9,12 +9,25 @@
   padding: 25px;
   position: fixed;
   z-index: 2;
-  background: $backgroundColor;
+  background: darken($backgroundColor, 50%);
+  color: $white;
   box-shadow: 0 4px 2px -2px $grey;
+  max-height: 50px;
   @media only screen and (max-width: 767px) {
     justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
-    height: 210px;
+    padding: 10px 45px 10px 0;
+    max-height: 210px;
+  }
+  .profile-and-search-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   .header-action-buttons {
     margin-left: 30px;
@@ -58,8 +71,7 @@
     display: flex;
     align-items: center;
     @media only screen and (max-width: 420px) {
-      padding: 15px;
-      margin-left: -20px;
+      padding: 15px 0;
     }
   }
   .shortcut-container {
@@ -67,8 +79,8 @@
     display: flex;
     align-items: center;
     margin-right: 30px;
-    @media only screen and (max-width: 767px) {
-      margin: 15px 0;
+    @media only screen and (max-width: 1024px) {
+      margin: 0 10px 0 0;
     }
     &:hover {
       cursor: pointer;
@@ -80,6 +92,10 @@
       margin-right: 15px;
       padding: 0 10px;
       font-size: 40px;
+      color: $white;
+      @media only screen and (max-width: 768px) {
+        font-size: 30px;
+      }
       &:hover {
         cursor: pointer;
       }

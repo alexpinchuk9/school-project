@@ -29,6 +29,8 @@ class LoginForm extends Component {
         const newServerResponse = login.serverResponse;
 
         if (prevServerResponse !== newServerResponse && newServerResponse) {
+            const serverResponseModalOverlay = document.getElementsByClassName('modal-overlay')[0];
+            serverResponseModalOverlay.focus();
             this.setState({
                 serverResponseModal: {
                     ...this.state.serverResponseModal,
@@ -48,18 +50,23 @@ class LoginForm extends Component {
     }
 
     closeServerResponseModal = () => {
-        const { reinitLogin } = this.props;
+        const { reinitLogin, login } = this.props;
+        const loginInput = document.getElementsByClassName('login-input')[0];
+        loginInput.focus();
 
         this.setState((state, props) => ({
             serverResponseModal:
                 {
                     ...state.serverResponseModal,
-                    open: false
+                    open: false,
+                    message: ''
                 }
         }), () => {
             setTimeout(() => {
-                reinitLogin()
-            }, 400)
+                if (!login.phoneVerified && !login.codeVerified) {
+                    reinitLogin()
+                }
+            }, 0)
         });
     }
 

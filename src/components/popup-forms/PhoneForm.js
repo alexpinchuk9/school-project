@@ -48,7 +48,7 @@ class PhoneForm extends Component {
 
 PhoneForm.propTypes = {
     person: PropTypes.object.isRequired,
-    handleClose: PropTypes.object.isRequired
+    handleClose: PropTypes.func.isRequired
 };
 
 export default PhoneForm;

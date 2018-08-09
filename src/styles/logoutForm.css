@@ -1,2 +1,7 @@
-.logout-form:hover {
-  cursor: pointer; }
+.logout-form {
+  color: #ffffff;
+  padding: 0 10px;
+  border-right: 2px solid #ffffff; }
+  .logout-form svg:hover {
+    transform: scale(1.1);
+    cursor: pointer; }

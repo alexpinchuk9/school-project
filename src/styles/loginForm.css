@@ -2,10 +2,14 @@
   position: relative;
   margin: 0 15px;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: flex-end; }
+  @media only screen and (max-width: 768px) {
+    .login-form {
+      margin: 5px 15px; } }
   @media only screen and (max-width: 420px) {
     .login-form {
-      margin: 0 0 10px 0; } }
+      margin: 10px 0 10px 0; } }
   .login-form .login-input {
     padding: 10px 15px;
     border-radius: 4px;
@@ -20,12 +24,14 @@
     border: none;
     outline: none;
     background: transparent;
-    font-size: 24px; }
-    @media only screen and (max-width: 420px) {
+    font-size: 24px;
+    color: #ffffff; }
+    @media only screen and (max-width: 768px) {
       .login-form .login-button {
         display: none; } }
   @media only screen and (max-width: 420px) {
     .login-form .login-icon {
       margin-left: -10px; } }
   .login-form .login-icon:hover {
-    cursor: pointer; }
+    cursor: pointer;
+    transform: scale(1.1); }

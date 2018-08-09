@@ -23,7 +23,8 @@ export default (state = INITIAL_STATE, action) => {
                 return {
                     ...state,
                     phone: payload,
-                    phoneVerified: true
+                    phoneVerified: true,
+                    serverResponse: "Please type the code that was sent to you by text message."
                 }
             } else {
                 return {

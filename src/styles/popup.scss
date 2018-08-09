@@ -70,6 +70,9 @@
     background: $white;
     padding: 20px 25px;
     flex: none;
+    &.message-form {
+      overflow: hidden;
+    }
     &.delete-form {
       .form-row {
         display: flex;
@@ -139,6 +142,9 @@
       text-align: right;
       margin: 0 5px;
       font-size: 14px;
+      &.label-message {
+        margin: 0 5px 15px 5px;
+      }
     }
     .form-image-row {
       flex-direction: row;

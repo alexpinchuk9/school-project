@@ -6,8 +6,14 @@ class WelcomeForm extends Component {
     render() {
         const { person, selectItem } = this.props;
         return (
-            <div className="welcome-form" onClick={() => selectItem(person)} title="Click here to select user">
-                Welcome, {person.name}!
+            <div className="welcome-form">
+                Hello
+                <span
+                    className="user-link"
+                    onClick={() => selectItem(person)}
+                    title="Click here to select user">
+                  {person.name}!
+                </span>
             </div>
         );
     }

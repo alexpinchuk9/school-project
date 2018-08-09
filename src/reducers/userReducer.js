@@ -4,17 +4,6 @@ const INITIAL_STATE = {
     isAdmin: false,
     isStaff: false,
     user: null,
-    // user: {
-    //     cellphone: "052-4549068",
-    //     color: "green",
-    //     email: "arnonmatat@gmail.com",
-    //     id: "1",
-    //     isDependant: "0",
-    //     name: "ארנון",
-    //     pic: "",
-    //     picSource: "",
-    //     surname: "אבני"
-    // }
 }
 
 export default (state = INITIAL_STATE, action) => {
