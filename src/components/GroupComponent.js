@@ -38,7 +38,7 @@ class GroupComponent extends Component {
 
     renderGroupFullRepresentation = () => {
 
-        const { group, className } = this.props;
+        const { group, className, user } = this.props;
         const { open, type } = this.state.popup;
         const initialValues = {
             groupName: group.groupName,
@@ -46,44 +46,8 @@ class GroupComponent extends Component {
         };
 
 
-        return (
-            <div className="wrapper">
-
-                    <div className={`${className} group group-full-representation`}>
-                        <GroupImage color={group.color}>
-                            <img
-                                src='/statics/img/group_sm_icon.png'
-                                alt="Group Avatar"
-                                className="group-image"
-                            />
-                        </GroupImage>
-                        <div className="group-info">
-                            <div className="group-name">
-                                <h1 className="name">
-                                    {group.groupName}
-                                </h1>
-                            </div>
-                            <div className="group-actions">
-                                <button
-                                    title="שלח הודעה"
-                                    className="message"
-                                    onClick={() => this.handlePopupOpen(MESSAGE)}>
-                                </button>
-                                <button
-                                    title="עדכון פרטים"
-                                    className="edit"
-                                    onClick={() => this.handlePopupOpen(UPDATE_GROUP)}>
-                                </button>
-                            </div>
-                        </div>
-                        { open && <PopupComponent
-                                            existingGuardians={[]}
-                                            type={type}
-                                            handleClose={this.handlePopupClose}
-                                            group={group}
-                                            className={type === ADD_PERSON ? "add-person-popup" : ""}
-                                            initialValues={initialValues}/>}
-                    </div>
+        const actions = user.isAdmin ?
+            (
                 <div className="actions">
                     <button
                         className="add-group"
@@ -101,6 +65,55 @@ class GroupComponent extends Component {
                         onClick={() => this.handlePopupOpen(ADD_PERSON)}>
                     </button>
                 </div>
+            ) : null;
+
+        const permissionsMessageButton = user.isAdmin || user.isStaff ?
+            (
+                <button
+                    title="שלח הודעה"
+                    className="message"
+                    onClick={() => this.handlePopupOpen(MESSAGE)}>
+                </button>
+            ) : null;
+
+        const updateButton = (
+            <button
+                title="עדכון פרטים"
+                className="edit"
+                onClick={() => this.handlePopupOpen(UPDATE_GROUP)}>
+            </button>
+        );
+
+        const permissionsUpdateButton = user.isAdmin ? updateButton : null;
+        return (
+            <div className="wrapper">
+
+                    <div className={`${className} group group-full-representation`}>
+                        <GroupImage color={group.color}>
+                            <img
+                                src='/statics/img/group_sm_icon.png'
+                                alt="Group Avatar"
+                                className="group-image"
+                            />
+                        </GroupImage>
+                        <div className="group-info">
+                            <div className="group-name">
+                                <h1 className="name">{group.groupName}</h1>
+                            </div>
+                            <div className="group-actions">
+                                {permissionsMessageButton}
+                                {permissionsUpdateButton}
+                            </div>
+                        </div>
+                        { open && <PopupComponent
+                                            existingGuardians={[]}
+                                            type={type}
+                                            handleClose={this.handlePopupClose}
+                                            group={group}
+                                            className={type === ADD_PERSON ? "add-person-popup" : ""}
+                                            initialValues={initialValues}/>}
+                    </div>
+                {actions}
             </div>
         );
     }
@@ -108,7 +121,6 @@ class GroupComponent extends Component {
     renderGroupShortRepresentation = () => {
 
         const { group, className } = this.props;
-
         return (
             <div className={`${className} group group-short-representation`} onClick={this.props.onClick}>
                 <GroupImage color={group.color}>

@@ -7,6 +7,9 @@
     outline: none;
     border: 1px solid #3869bb;
     font-size: 18px; }
+  @media only screen and (max-width: 420px) {
+    .header-search-form {
+      margin: 0 0 0 20px; } }
   .header-search-form .search-result-list {
     position: absolute;
     width: 100%;

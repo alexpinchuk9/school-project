@@ -55,7 +55,8 @@ class PersonComponent extends Component {
             guardians,
             person,
             className,
-            containerGroups
+            containerGroups,
+            user
         } = this.props;
         const {open, type} = this.state.popup;
 
@@ -125,6 +126,36 @@ class PersonComponent extends Component {
 
         const callActionButton = currentDeviceIsMobile ? mobileCallButton : desktopCallButton;
 
+        const actions = user.isAdmin ?
+            (
+                <div className="actions">
+                    <button className="relate-people-group"
+                            title="הוספה לקבוצה"
+                            onClick={() => this.handlePopupOpen(ADD_PERSON_TO_GROUP)}>
+                        <FontAwesomeIcon size="lg" icon={faLink}/>
+                    </button>
+                    {unlinkActionButton}
+                    <button
+                        title="מחיקה"
+                        className="delete-people"
+                        onClick={() => this.handlePopupOpen(DELETE)}>
+                    </button>
+                </div>
+            ) : null;
+
+        const updateButton = (
+            <button
+                title="עדכון פרטים"
+                className="edit"
+                onClick={() => this.handlePopupOpen(UPDATE_PERSON)}>
+            </button>
+        );
+
+        const permissionsCallButton = user.isAdmin || user.isStaff || user.loginPeopleId ? callActionButton : null;
+        const permissionsMessageButton = user.isAdmin || user.isStaff || user.loginPeopleId ? messageActionButton : null;
+        const permissionsMailButton = user.isAdmin || user.isStaff || user.loginPeopleId ? mailActionButton : null;
+        const permissionsUpdateButton =  user.isAdmin  ? updateButton : null;
+
         const image = person.picSource ?
                                         <img src={`${filePath}${person.picSource}`}
                                         alt="User Avatar"
@@ -139,31 +170,19 @@ class PersonComponent extends Component {
         return (
             <div className="wrapper">
                 <div className={`${className} person person-full-representation`}>
-
-                    <PersonImage color={person.color}>
-                        {image}
-                    </PersonImage>
-
+                    <PersonImage color={person.color}>{image}</PersonImage>
                     <div className="person-info">
 
                         <div className="person-name">
-                            <h1 className="name">
-                                {person.name}
-                            </h1>
-                            <h3 className="surname">
-                                {person.surname}
-                            </h3>
+                            <h1 className="name">{person.name}</h1>
+                            <h3 className="surname">{person.surname}</h3>
                         </div>
 
                         <div className="person-actions">
-                            {mailActionButton}
-                            {messageActionButton}
-                            {callActionButton}
-                            <button
-                                title="עדכון פרטים"
-                                className="edit"
-                                onClick={() => this.handlePopupOpen(UPDATE_PERSON)}>
-                            </button>
+                            {permissionsMailButton}
+                            {permissionsMessageButton}
+                            {permissionsCallButton}
+                            {permissionsUpdateButton}
                         </div>
 
                     </div>
@@ -177,24 +196,7 @@ class PersonComponent extends Component {
                                              initialValues={initialValues}/>}
                 </div>
 
-                <div className="actions">
-
-                    <button className="relate-people-group"
-                            title="הוספה לקבוצה"
-                            onClick={() => this.handlePopupOpen(ADD_PERSON_TO_GROUP)}>
-                        <FontAwesomeIcon size="lg" icon={faLink}/>
-                    </button>
-
-                    {unlinkActionButton}
-
-                    <button
-                        title="מחיקה"
-                        className="delete-people"
-                        onClick={() => this.handlePopupOpen(DELETE)}>
-                    </button>
-
-
-                </div>
+                {actions}
             </div>
         );
 

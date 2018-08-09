@@ -6,7 +6,8 @@ const mapStateToProps = (state) => {
     return {
         items: state.items,
         popup: state.popup,
-        search: state.search
+        search: state.search,
+        user: state.user
     };
 };
 

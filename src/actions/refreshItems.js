@@ -1,6 +1,7 @@
 import axios from "axios/index";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/items";
+import {getCookie} from "../utils/cookies";
 
 export const refreshItems = (selectedItem) => {
 
@@ -19,6 +20,8 @@ export const refreshItems = (selectedItem) => {
 
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'getTree');
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
         axios({
             method: 'post',
             url: serverUrl,

@@ -1,0 +1,8 @@
+.welcome-form {
+  position: relative;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  font-size: 24px; }
+  .welcome-form:hover {
+    cursor: pointer; }

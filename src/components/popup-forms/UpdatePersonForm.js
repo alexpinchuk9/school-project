@@ -259,7 +259,7 @@ class UpdatePersonForm extends Component {
                         <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
                     </div>
 
-                    {this.renderGuardianSection()}
+                    { person.isDependant === "0" ? null : this.renderGuardianSection()}
 
                     <div className="form-row">
                         <button type="submit" className="button-submit" disabled={submitting || image.imageUploading }>עדכן אדם</button>

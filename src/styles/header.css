@@ -13,59 +13,44 @@
     .header {
       justify-content: center;
       flex-direction: column;
-      height: 180px; } }
+      height: 210px; } }
   .header .header-action-buttons {
     margin-left: 30px; }
     @media only screen and (max-width: 767px) {
       .header .header-action-buttons {
-        margin: 15px 0; } }
+        margin: 0; } }
   .header .refresh-button {
     position: relative;
     width: auto;
-    padding: 10px 10px 10px 45px;
+    padding: 10px;
     font-size: 150%;
     background: transparent;
     border: none;
     outline: none; }
-    .header .refresh-button:before {
-      content: "";
-      display: block;
-      background: url("/statics/img/refresh.svg") no-repeat center center;
-      background-size: 30px 30px;
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      top: 50%;
-      left: 5px;
-      transform: translate(0, -50%); }
     .header .refresh-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
   .header .go-back-button {
     position: relative;
     width: auto;
-    padding: 10px 10px 10px 45px;
+    padding: 10px;
     font-size: 150%;
     background: transparent;
     border: none;
     outline: none; }
-    .header .go-back-button:before {
-      content: "";
-      display: block;
-      background: url("/statics/img/go_back_icon.svg") no-repeat center center;
-      background-size: 30px 30px;
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      top: 50%;
-      left: 5px;
-      transform: translate(0, -50%); }
     .header .go-back-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
     .header .go-back-button.disabled:hover {
       cursor: not-allowed;
       transform: none; }
+  .header .profile-section {
+    display: flex;
+    align-items: center; }
+    @media only screen and (max-width: 420px) {
+      .header .profile-section {
+        padding: 15px;
+        margin-left: -20px; } }
   .header .shortcut-container {
     font-size: 40px;
     display: flex;

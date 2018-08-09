@@ -79,6 +79,7 @@ class MainPageComponent extends Component {
 
     renderSelectedItem = () => {
         const { selectedItem, items } = this.props.items;
+        const { user } = this.props;
         let guardianPeople = [];
         let containerGroups = [];
 
@@ -89,12 +90,12 @@ class MainPageComponent extends Component {
 
         if (selectedItem) {
             return <SelectedItemViewComponent
+                        user={user}
                         containerGroups={containerGroups}
                         guardians={guardianPeople}
                         item={selectedItem} />
         }
     }
-
     render() {
 
         const {
@@ -104,6 +105,7 @@ class MainPageComponent extends Component {
             searchItems,
             selectItem,
             resetSearchResults,
+            user,
             items: {
                 loading,
                 items,
@@ -139,6 +141,7 @@ class MainPageComponent extends Component {
                     items={items}
                     searchItems={searchItems}
                     search={search}
+                    user={user.user}
                     resetSearchResults={resetSearchResults}
                 />
                 <div className="items-container">

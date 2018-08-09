@@ -35,8 +35,16 @@ import AddPersonForm from "./popup-forms/AddPersonForm";
 import AddPersonToGroupForm from "./popup-forms/AddPersonToGroupForm";
 import AddGuardianForm from "./popup-forms/AddGuardianForm";
 import UnlinkPersonFromGroupForm from "./popup-forms/UnlinkPersonFromGroupForm";
+import ServerResponseModal from "./ServerResponseModal";
 
 class PopupComponent extends Component {
+
+    state = {
+        serverResponseModal: {
+            open: false,
+            message: ''
+        }
+    }
 
     renderForm = () => {
 
@@ -69,7 +77,7 @@ class PopupComponent extends Component {
         } = this.props
 
 
-        switch(type) {
+        switch (type) {
 
             case MESSAGE:
                 return <MessageForm
@@ -250,33 +258,87 @@ class PopupComponent extends Component {
 
         const { handleClose, resetPopupState } = this.props;
 
-        alert(serverMessage);
+       this.setState({
+           serverResponseModal: {
+               ...this.state.serverResponseModal,
+               open: true,
+               message: serverMessage
+           }
+       })
+        //
+        // resetPopupState();
+        // setTimeout(handleClose, 0);
+    }
 
-        resetPopupState();
-        setTimeout(handleClose, 0);
+    closeServerResponseModal = () => {
+        const { handleClose, resetPopupState } = this.props;
+        const { className, refreshItems, group, person } = this.props;
+
+        this.setState((state, props) => ({
+            serverResponseModal:
+                {
+                    ...state.serverResponseModal,
+                    open: false
+                }
+        }), () => {
+            setTimeout(() => {
+                resetPopupState();
+                handleClose();
+
+                if (person) {
+                    refreshItems(person);
+                } else {
+                    refreshItems(group);
+                }
+            }, 400)
+        });
+
+
+
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        const prevServerResponse = prevProps.popup.serverResponse;
+        const newServerResponse = this.props.popup.serverResponse;
+
+        if (prevServerResponse !== newServerResponse && newServerResponse) {
+           this.setState({
+                serverResponseModal: {
+                    ...this.state.serverResponseModal,
+                    open: true,
+                    message: newServerResponse
+                }
+           })
+        }
     }
 
     render() {
         const { serverResponse, error } = this.props.popup;
         const { className, refreshItems, group, person } = this.props;
+        const { serverResponseModal } = this.state;
 
+        console.log(this.state);
 
-        if (serverResponse) {
-            this.handleServerResponse(serverResponse);
-            if (person) {
-                refreshItems(person);
-            } else {
-                refreshItems(group);
-            }
-        } else if (error) {
-            this.handleServerResponse(error);
-        }
+        // if (serverResponse) {
+        //     this.handleServerResponse(serverResponse);
+        //     // if (person) {
+        //     //     refreshItems(person);
+        //     // } else {
+        //     //     refreshItems(group);
+        //     // }
+        // } else if (error) {
+        //     this.handleServerResponse(error);
+        // }
 
         return (
             <div className="overlay">
                 <div className={`popup ${className}`}>
                     {this.renderForm()}
                 </div>
+                <ServerResponseModal
+                    message={serverResponseModal.message}
+                    isOpen={serverResponseModal.open}
+                    closeModal={this.closeServerResponseModal}/>
             </div>
         );
     }

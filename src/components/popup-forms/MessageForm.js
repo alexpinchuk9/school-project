@@ -2,6 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {MESSAGE_GROUP_REQUEST, MESSAGE_PERSON_REQUEST} from "../../constants/actionTypes";
 import { Field } from 'redux-form';
+import 'froala-editor/js/froala_editor.pkgd.min.js';
+
+// Require Editor CSS files.
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+
+// Require Font Awesome.
+import 'font-awesome/css/font-awesome.css';
+
+import FroalaEditor from 'react-froala-wysiwyg';
+
 
 class MessageForm extends Component {
 
@@ -18,6 +29,7 @@ class MessageForm extends Component {
 
                 <div className="form-row">
                     <label htmlFor="message" className="field-label">הודעה אל {messageName}</label>
+                    {/*<FroalaEditor tag='textarea'/>*/}
                     <Field name={fieldName} component="textarea" rows={10} className="form-field textarea-field"></Field>
                 </div>
 

@@ -1,8 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import PropTypes from 'prop-types';
 import FaHome from 'react-icons/lib/fa/home';
 
 import SearchBarComponent from "./SearchBarComponent";
+import LoginForm from "./LoginForm";
+import WelcomeForm from "./WelcomeForm";
+import LogoutForm from "./LogoutForm";
+import { faUndoAlt, faChevronCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class HeaderComponent extends Component {
 
@@ -17,11 +22,42 @@ class HeaderComponent extends Component {
             search,
             resetSearchResults,
             homeItem,
+            user,
             selectItem } = this.props;
 
         const goBackButton = previousSelectedItems.length ?
-            <button title="למסך הקודם" className="go-back-button" onClick={onGoBack}></button> :
-            <button title="אין מסך קודם" className="go-back-button disabled"></button>;
+            (
+                <span title="למסך הקודם">
+                    <FontAwesomeIcon
+                        size="xxl"
+                        icon={faChevronCircleLeft}
+                        className="go-back-button"
+                        onClick={onGoBack}/>
+                </span>
+
+            ) :
+            (
+                <span title="אין מסך קודם">
+                    <FontAwesomeIcon
+                        size="xxl"
+                        icon={faChevronCircleLeft}
+                        className="go-back-button disabled"/>
+                </span>
+
+            );
+
+        const profileSection = user ?
+            (
+                <div className="profile-section">
+                    <WelcomeForm person={user} selectItem={selectItem}/>
+                    <LogoutForm refreshItems={onRefresh}/>
+                </div>
+            ) :
+            (
+                <LoginForm refreshItems={onRefresh}/>
+            );
+
+
 
         const homeButton = homeItem ?
             <div className="shortcut-container" onClick={() => selectItem(homeItem)}>
@@ -34,9 +70,8 @@ class HeaderComponent extends Component {
 
         return (
             <div className="header">
-
-                    {homeButton}
-
+                {homeButton}
+                {profileSection}
                 <SearchBarComponent
                     items={items}
                     searchItems={searchItems}
@@ -46,7 +81,13 @@ class HeaderComponent extends Component {
                 />
 
                 <div className="header-action-buttons">
-                    <button title="רענון" className="refresh-button" onClick={onRefresh}></button>
+                    <span title="רענון">
+                       <FontAwesomeIcon
+                           size="xxl"
+                           icon={faUndoAlt}
+                           onClick={onRefresh}
+                           className="refresh-button" />
+                    </span>
                     {goBackButton}
                 </div>
 

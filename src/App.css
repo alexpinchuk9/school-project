@@ -514,59 +514,44 @@ body, html {
     .header {
       justify-content: center;
       flex-direction: column;
-      height: 180px; } }
+      height: 210px; } }
   .header .header-action-buttons {
     margin-left: 30px; }
     @media only screen and (max-width: 767px) {
       .header .header-action-buttons {
-        margin: 15px 0; } }
+        margin: 0; } }
   .header .refresh-button {
     position: relative;
     width: auto;
-    padding: 10px 10px 10px 45px;
+    padding: 10px;
     font-size: 150%;
     background: transparent;
     border: none;
     outline: none; }
-    .header .refresh-button:before {
-      content: "";
-      display: block;
-      background: url("/statics/img/refresh.svg") no-repeat center center;
-      background-size: 30px 30px;
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      top: 50%;
-      left: 5px;
-      transform: translate(0, -50%); }
     .header .refresh-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
   .header .go-back-button {
     position: relative;
     width: auto;
-    padding: 10px 10px 10px 45px;
+    padding: 10px;
     font-size: 150%;
     background: transparent;
     border: none;
     outline: none; }
-    .header .go-back-button:before {
-      content: "";
-      display: block;
-      background: url("/statics/img/go_back_icon.svg") no-repeat center center;
-      background-size: 30px 30px;
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      top: 50%;
-      left: 5px;
-      transform: translate(0, -50%); }
     .header .go-back-button:hover {
       cursor: pointer;
       transform: scale(1.1); }
     .header .go-back-button.disabled:hover {
       cursor: not-allowed;
       transform: none; }
+  .header .profile-section {
+    display: flex;
+    align-items: center; }
+    @media only screen and (max-width: 420px) {
+      .header .profile-section {
+        padding: 15px;
+        margin-left: -20px; } }
   .header .shortcut-container {
     font-size: 40px;
     display: flex;
@@ -598,6 +583,9 @@ body, html {
     outline: none;
     border: 1px solid #3869bb;
     font-size: 18px; }
+  @media only screen and (max-width: 420px) {
+    .header-search-form {
+      margin: 0 0 0 20px; } }
   .header-search-form .search-result-list {
     position: absolute;
     width: 100%;
@@ -826,3 +814,98 @@ body, html {
   align-items: center; }
   .unlink-person-from-group-form .form-row.unlink-group-row .unlink-group-checkbox {
     margin-left: 15px; }
+
+.login-form {
+  position: relative;
+  margin: 0 15px;
+  display: flex;
+  align-items: center; }
+  @media only screen and (max-width: 420px) {
+    .login-form {
+      margin: 0 0 10px 0; } }
+  .login-form .login-input {
+    padding: 10px 15px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #3869bb;
+    font-size: 18px;
+    margin: 0 0 0 15px; }
+    @media only screen and (max-width: 420px) {
+      .login-form .login-input {
+        margin: 0 0 0 10px; } }
+  .login-form .login-button {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 24px; }
+    @media only screen and (max-width: 420px) {
+      .login-form .login-button {
+        display: none; } }
+  @media only screen and (max-width: 420px) {
+    .login-form .login-icon {
+      margin-left: -10px; } }
+  .login-form .login-icon:hover {
+    cursor: pointer; }
+
+.welcome-form {
+  position: relative;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  font-size: 24px; }
+  .welcome-form:hover {
+    cursor: pointer; }
+
+.modal {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 300ms linear;
+  background: #ffffff;
+  margin-top: -100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 40px 50px;
+  z-index: 9;
+  transform: translate(-50%, -50%); }
+  @media only screen and (max-width: 420px) {
+    .modal {
+      width: 65%;
+      min-height: 20%; } }
+  .modal.visible {
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 0; }
+  .modal .modal-header {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3); }
+  .modal .modal-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; }
+  .modal .modal-close {
+    display: flex; }
+    .modal .modal-close .modal-close-button {
+      width: 100%;
+      color: #ffffff;
+      font-weight: 500;
+      border-radius: 4px;
+      background: #FF6204;
+      border: none;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 15px;
+      margin: 10px 0 0 0; }
+      .modal .modal-close .modal-close-button:hover {
+        cursor: pointer;
+        background: #843100; }
+
+.logout-form:hover {
+  cursor: pointer; }
