@@ -14,7 +14,6 @@ export const addPersonToGroup = (values) => {
         let bodyFormData = new FormData();
         const { personId, groupId, relation  } = values;
 
-
         bodyFormData.set('formName', 'relateP2G');
         bodyFormData.set('peopleId', personId);
         bodyFormData.set('groupId', groupId);

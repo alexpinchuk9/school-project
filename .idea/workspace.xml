@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/actions/addPerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addPerson.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/addPersonToGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addPersonToGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/updatePerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/updatePerson.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,15 +37,6 @@
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginForm.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/loginForm.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -84,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addPersonToGroup.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addPersonToGroup.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/addPersonToGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+            <state relative-caret-position="345">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -96,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addGroup.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/addGroup.js">
+      <file leaf-file-name="updateGroup.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/updateGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+            <state relative-caret-position="414">
+              <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -108,11 +101,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logout.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/logout.js">
+      <file leaf-file-name="updatePerson.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/updatePerson.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="506">
+              <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="addPerson.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/actions/addPerson.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="69">
+              <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -178,7 +186,6 @@
         <option value="$PROJECT_DIR$/src/styles/mainPage.scss" />
         <option value="$PROJECT_DIR$/src/components/MainPageComponent.js" />
         <option value="$PROJECT_DIR$/src/actions/addGroup.js" />
-        <option value="$PROJECT_DIR$/src/actions/addPerson.js" />
         <option value="$PROJECT_DIR$/src/actions/deleteGroup.js" />
         <option value="$PROJECT_DIR$/src/actions/deletePerson.js" />
         <option value="$PROJECT_DIR$/src/actions/messageGroup.js" />
@@ -187,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/actions/relateGuardianToPerson.js" />
         <option value="$PROJECT_DIR$/src/actions/unlinkPersonFromGroup.js" />
         <option value="$PROJECT_DIR$/src/actions/updateGroup.js" />
-        <option value="$PROJECT_DIR$/src/actions/updatePerson.js" />
         <option value="$PROJECT_DIR$/src/actions/addGuardian.js" />
         <option value="$PROJECT_DIR$/src/actions/logout.js" />
         <option value="$PROJECT_DIR$/src/components/LoginForm.js" />
@@ -195,6 +201,8 @@
         <option value="$PROJECT_DIR$/src/reducers/loginReducer.js" />
         <option value="$PROJECT_DIR$/src/reducers/userReducer.js" />
         <option value="$PROJECT_DIR$/src/actions/addPersonToGroup.js" />
+        <option value="$PROJECT_DIR$/src/actions/addPerson.js" />
+        <option value="$PROJECT_DIR$/src/actions/updatePerson.js" />
       </list>
     </option>
   </component>
@@ -215,8 +223,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1616" />
-    <option name="y" value="-11" />
+    <option name="x" value="1744" />
+    <option name="y" value="-1061" />
     <option name="width" value="1617" />
     <option name="height" value="1062" />
   </component>
@@ -385,12 +393,12 @@
       <workItem from="1533711999164" duration="1610000" />
       <workItem from="1533714084813" duration="19222000" />
       <workItem from="1533798896765" duration="8049000" />
-      <workItem from="1533879404973" duration="3096000" />
+      <workItem from="1533879404973" duration="3897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="326208000" />
+    <option name="totallyTimeSpent" value="327009000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -656,26 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/updatePerson.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/updateGroup.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/unlinkPersonFromGroup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -759,16 +747,6 @@
           <caret line="17" column="70" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/addPerson.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="70" selection-start-line="23" selection-start-column="70" selection-end-line="23" selection-end-column="70" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -862,10 +840,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/addPersonToGroup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state relative-caret-position="345">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/updateGroup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/addPerson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/updatePerson.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="27" column="8" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
