@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ee56cc8-4e3a-44cd-a58b-ba87c0938f10" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/addGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/addGuardian.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addGuardian.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/addPerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addPerson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/addPersonToGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/addPersonToGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/deleteGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/deleteGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/deletePerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/deletePerson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/messageGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/messageGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/messagePerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/messagePerson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/refreshItems.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/refreshItems.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/relateGuardianToPerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/relateGuardianToPerson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/unlinkPersonFromGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/unlinkPersonFromGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/updateGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/updateGroup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/updatePerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/updatePerson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/logout.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,15 +19,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/actions/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="76" column="24" selection-start-line="76" selection-start-column="24" selection-end-line="76" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/index.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -114,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addGuardian.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="addGuardian.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/addGuardian.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="-1265">
+              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
               <folding>
                 <element signature="e#0#65#0" expanded="true" />
               </folding>
@@ -129,11 +107,20 @@
       <file leaf-file-name="addGroup.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/addGroup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
+            <state relative-caret-position="225">
               <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="logout.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/logout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -168,7 +155,6 @@
         <option value="$PROJECT_DIR$/src/constants/actionTypes/login.js" />
         <option value="$PROJECT_DIR$/src/actions/getItems.js" />
         <option value="$PROJECT_DIR$/src/actions/login.js" />
-        <option value="$PROJECT_DIR$/src/actions/logout.js" />
         <option value="$PROJECT_DIR$/src/components/LogoutForm.js" />
         <option value="$PROJECT_DIR$/node_modules/react-scripts/config/webpack.config.dev.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
@@ -207,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/actions/updateGroup.js" />
         <option value="$PROJECT_DIR$/src/actions/updatePerson.js" />
         <option value="$PROJECT_DIR$/src/actions/addGuardian.js" />
+        <option value="$PROJECT_DIR$/src/actions/logout.js" />
       </list>
     </option>
   </component>
@@ -227,8 +214,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1744" />
-    <option name="y" value="-1061" />
+    <option name="x" value="-1616" />
+    <option name="y" value="-11" />
     <option name="width" value="1617" />
     <option name="height" value="1062" />
   </component>
@@ -397,12 +384,12 @@
       <workItem from="1533711999164" duration="1610000" />
       <workItem from="1533714084813" duration="19222000" />
       <workItem from="1533798896765" duration="8049000" />
-      <workItem from="1533879404973" duration="504000" />
+      <workItem from="1533879404973" duration="1801000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="323616000" />
+    <option name="totallyTimeSpent" value="324913000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -414,7 +401,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1617" height="1062" extended-state="6" />
+    <frame x="-1616" y="-11" width="1617" height="1062" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26633167" />
@@ -784,13 +771,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/logout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
@@ -857,9 +837,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/addGuardian.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1265">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#65#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/actions/addGroup.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
+        <state relative-caret-position="225">
           <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
@@ -867,13 +857,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/addGuardian.js">
+    <entry file="file://$PROJECT_DIR$/src/actions/logout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="368">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
         </state>
       </provider>
     </entry>

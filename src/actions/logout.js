@@ -1,7 +1,7 @@
 import * as constants from "../constants/actionTypes/logout";
 import axios from "axios";
 import {serverUrl} from "../constants/api";
-import { deleteCookie } from "../utils/cookies";
+import {deleteCookie, getCookie} from "../utils/cookies";
 
 export const logout = () => {
 
@@ -11,11 +11,13 @@ export const logout = () => {
             type: constants.LOGOUT_REQUEST
         });
 
-        deleteCookie('sessionCode');
 
         let bodyFormData = new FormData();
         bodyFormData.set('formName', 'logout');
-
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
+        deleteCookie('sessionCode');
+        
         axios({
             method: 'post',
             url: serverUrl,
