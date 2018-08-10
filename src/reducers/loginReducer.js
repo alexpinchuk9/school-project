@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 }
 
 export default (state = INITIAL_STATE, action) => {
-    const { type, payload } = action;
+    const { type, payload, phone } = action;
     switch (type) {
         case constants.SUBMIT_PHONE_FOR_LOGIN_REQUEST:
         case constants.SUBMIT_CODE_FOR_LOGIN_REQUEST:
@@ -22,7 +22,7 @@ export default (state = INITIAL_STATE, action) => {
             if (payload === 'OK') {
                 return {
                     ...state,
-                    phone: payload,
+                    phone: phone,
                     phoneVerified: true,
                     serverResponse: "Please type the code that was sent to you by text message."
                 }

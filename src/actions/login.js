@@ -24,7 +24,8 @@ export const submitPhoneForLogin = data => {
             .then(response => {
                 dispatch({
                     type: constants.SUBMIT_PHONE_FOR_LOGIN_SUCCESS,
-                    payload: response.data ? response.data : response.statusText
+                    payload: response.data ? response.data : response.statusText,
+                    phone: phone
                 })
             })
             .catch(response => {
@@ -49,6 +50,7 @@ export const submitCodeForLogin = data => {
         bodyFormData.set('formName', 'verifyCode');
         bodyFormData.set('cellphone', phone);
         bodyFormData.set('code', code);
+        console.log(phone, code);
 
         axios({
             method: 'post',

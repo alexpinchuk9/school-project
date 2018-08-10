@@ -17,7 +17,7 @@ export const logout = () => {
         const sessionCode = getCookie('sessionCode');
         if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
         deleteCookie('sessionCode');
-        
+
         axios({
             method: 'post',
             url: serverUrl,

@@ -104,8 +104,8 @@ class LoginForm extends Component {
         );
 
         const codeForm = (
-            <div className="login-form" onKeyPress={(event) => this.handleKeyPress(event, { code, phone }, submitCodeForLogin)}>
-                <button  onClick={() => submitCodeForLogin({ code, phone })} className="login-button">Your code:</button>
+            <div className="login-form" onKeyPress={(event) => this.handleKeyPress(event, { code, phone: login.phone }, submitCodeForLogin)}>
+                <button  onClick={() => submitCodeForLogin({ code, phone: login.phone })} className="login-button">Your code:</button>
                 <input
                     type="text"
                     value={code}
@@ -118,7 +118,7 @@ class LoginForm extends Component {
                         size="lg"
                         icon={faSignInAlt}
                         className="login-icon"
-                        onClick={() => submitCodeForLogin({ code, phone })}/>
+                        onClick={() => submitCodeForLogin({ code, phone: login.phone })}/>
                 </span>
             </div>
         )
