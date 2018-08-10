@@ -1,6 +1,7 @@
 import * as constants from "../constants/actionTypes/unlinkPersonFromGroup";
 import axios from "axios/index";
 import {serverUrl} from "../constants/api";
+import {getCookie} from "../utils/cookies";
 
 
 export const unlinkPersonFromGroup = (values) => {
@@ -20,6 +21,8 @@ export const unlinkPersonFromGroup = (values) => {
             bodyFormData.set('formName', 'unrelateP2G');
             bodyFormData.set('peopleId', peopleId);
             bodyFormData.set('groupId', groupId);
+            const sessionCode = getCookie('sessionCode');
+            if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
             axios({
                 method: 'post',

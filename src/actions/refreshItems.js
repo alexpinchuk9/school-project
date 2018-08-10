@@ -22,6 +22,7 @@ export const refreshItems = (selectedItem) => {
         bodyFormData.set('formName', 'getTree');
         const sessionCode = getCookie('sessionCode');
         if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
+
         axios({
             method: 'post',
             url: serverUrl,

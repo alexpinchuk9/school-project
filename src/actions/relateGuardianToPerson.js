@@ -1,6 +1,7 @@
 import axios from "axios/index";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/relateGuardianToPerson";
+import {getCookie} from "../utils/cookies";
 
 export const relateGuardianToPerson = (values) => {
 
@@ -22,6 +23,8 @@ export const relateGuardianToPerson = (values) => {
         bodyFormData.set('peopleId', peopleId);
         bodyFormData.set('guardianId', guardianId);
         if (relation) bodyFormData.set('relation', relation);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',

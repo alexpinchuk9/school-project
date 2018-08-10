@@ -1,6 +1,7 @@
 import axios from "axios/index";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/addPerson";
+import {getCookie} from "../utils/cookies";
 
 export const addPerson = (values) => {
     return (dispatch) => {
@@ -18,7 +19,9 @@ export const addPerson = (values) => {
         bodyFormData.set('surname', surname);
         bodyFormData.set('email', email);
         bodyFormData.set('cellphone', cellphone);
-        bodyFormData.set('pic', pic)
+        bodyFormData.set('pic', pic);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',

@@ -1,7 +1,9 @@
 import * as constants from "../constants/actionTypes/addGuardian"
 import axios from 'axios';
 import { serverUrl } from "../constants/api";
+import {getCookie} from "../utils/cookies";
 
+// TODO: deprecated api, should it be deleted?
 export const relateGuardianToPerson = (values) => {
 
     return (dispatch) => {
@@ -9,7 +11,6 @@ export const relateGuardianToPerson = (values) => {
         dispatch({
             type: constants.RELATE_GUARDIAN_TO_PERSON_REQUEST
         })
-
 
         let bodyFormData = new FormData();
         const { peopleId, guardianId, relation, guardianIndex  } = values;
@@ -22,6 +23,8 @@ export const relateGuardianToPerson = (values) => {
         bodyFormData.set('peopleId', peopleId);
         bodyFormData.set('guardianId', guardianId);
         if (relation) bodyFormData.set('relation', relation);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',
@@ -63,6 +66,8 @@ export const addGuardian = (values) => {
         bodyFormData.set('surname', guardianSurname);
         bodyFormData.set('email', guardianEmail);
         bodyFormData.set('cellphone', guardianCellphone);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',

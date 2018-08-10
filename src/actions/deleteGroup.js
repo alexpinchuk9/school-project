@@ -1,6 +1,7 @@
 import axios from "axios";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/deleteGroup";
+import {getCookie} from "../utils/cookies";
 
 export const deleteGroup = (id) => {
     return (dispatch) => {
@@ -13,6 +14,8 @@ export const deleteGroup = (id) => {
 
         bodyFormData.set('formName', 'deleteGroup');
         bodyFormData.set('groupId', id);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',

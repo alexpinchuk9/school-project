@@ -1,6 +1,7 @@
 import axios from "axios";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/messagePerson";
+import {getCookie} from "../utils/cookies";
 
 export const messagePerson = (id, message) => {
     return (dispatch) => {
@@ -14,6 +15,8 @@ export const messagePerson = (id, message) => {
         bodyFormData.set('formName', 'sendMessageToPeople');
         bodyFormData.set('peopleId', id);
         bodyFormData.set('txt', message);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',

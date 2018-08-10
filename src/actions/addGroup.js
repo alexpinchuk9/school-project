@@ -1,6 +1,7 @@
 import axios from "axios";
 import {serverUrl} from "../constants/api";
 import * as constants from "../constants/actionTypes/addGroup"
+import {getCookie} from "../utils/cookies";
 
 export const addGroup = (values) => {
     return (dispatch) => {
@@ -16,6 +17,8 @@ export const addGroup = (values) => {
         bodyFormData.set('formName', 'addGroup');
         bodyFormData.set('name', name);
         if (parentGroupId) bodyFormData.set('parentGroupId', parentGroupId);
+        const sessionCode = getCookie('sessionCode');
+        if (sessionCode) bodyFormData.set('sessionCode', sessionCode);
 
         axios({
             method: 'post',
