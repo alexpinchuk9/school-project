@@ -25,7 +25,7 @@ export const updatePerson = (id, values) => {
             guardianId4,
             relation4, } = values;
         let bodyFormData = new FormData();
-        
+
         bodyFormData.set('formName', 'updatePerson');
         bodyFormData.set('id', id);
         bodyFormData.set('name', name);

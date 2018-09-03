@@ -28,7 +28,7 @@ class AddGuardianForm extends Component {
         let { which } = event;
 
         if (which === 13) {
-            
+
         }
     }
 
@@ -49,28 +49,28 @@ class AddGuardianForm extends Component {
                     <button className="button-close" onClick={handleClose} title="close"></button>
 
                     <div className="form-row">
-                        <label htmlFor="name" className="field-label">Guardian Name</label>
+                        <label htmlFor="name" className="field-label">שם האפוטרופוס</label>
                         <Field component="input" type="text" name="guardianName" className="form-field"/>
                     </div>
 
                     <div className="form-row">
-                        <label htmlFor="surname" className="field-label">Guardian Last Name:</label>
+                        <label htmlFor="surname" className="field-label">גרדיאן שם משפחה</label>
                         <Field component="input" type="text" name="guardianSurname" className="form-field"/>
                     </div>
 
                     <div className="form-row">
-                        <label htmlFor="email" className="field-label">E-mail</label>
+                        <label htmlFor="email" className="field-label">אֶלֶקטרוֹנִי</label>
                         <Field component="input" type="email" name="guardianEmail" className="form-field"/>
                     </div>
 
                     <div className="form-row">
-                        <label htmlFor="cellphone" className="field-label">Guardian cellphone</label>
+                        <label htmlFor="cellphone" className="field-label">טלפון נייד</label>
                         <Field component="input" type="phone" name="guardianCellphone"  className="form-field"/>
                     </div>
 
 
                     <div className="form-row">
-                        <button type="submit" className="button-submit" disabled={pristine || submitting}>Submit</button>
+                        <button type="submit" className="button-submit" disabled={pristine || submitting}>שלח</button>
                     </div>
                 </form>
 

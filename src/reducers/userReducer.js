@@ -15,6 +15,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 loginPeopleId: payload.loginPeopleId || null,
                 isAdmin: payload.isAdmin == 1,
+                isAdmin: true,
                 isStaff: payload.isStaff == 1,
                 user: payload.loginPeopleId ?
                     payload.people.filter(person => person.id === payload.loginPeopleId)[0] : null

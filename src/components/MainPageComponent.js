@@ -124,7 +124,8 @@ class MainPageComponent extends Component {
             return (
                 <div className="main-page">
                     <div className="error-message">
-                        Oops! Something went wrong.
+
+                        אופס! משהו השתבש
                     </div>
                 </div>
             );

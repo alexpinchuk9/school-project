@@ -70,13 +70,13 @@ class PersonComponent extends Component {
 
         const unlinkActionButton = containerGroups.length ?
                                         <button className="unlink-people-group"
-                                                title="Unlink this person from a group"
+                                                title="בטל קישור של משתמש זה מקבוצה"
                                                 onClick={() => this.handlePopupOpen(UNLINK_PERSON_FROM_GROUP)}
                                         >
                                             <FontAwesomeIcon size="lg" icon={faUnlink}/>
                                         </button> :
                                         <button className="unlink-people-group disabled"
-                                                title="This person doesn't have any groups to unlink"
+                                                title="לאדם זה אין קבוצות לביטול הקישור"
                                         >
                                             <FontAwesomeIcon size="lg" icon={faUnlink}/>
                                         </button>
@@ -115,7 +115,7 @@ class PersonComponent extends Component {
 
         const mobileCallButton = person.cellphone ?
                                     <a
-                                    title="Call this number"
+                                    title="תתקשר למספר הזה"
                                     className="call"
                                     href={`tel:${person.cellphone}`}></a> :
                                     <button

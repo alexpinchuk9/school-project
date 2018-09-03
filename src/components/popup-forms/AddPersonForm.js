@@ -117,7 +117,7 @@ class AddPersonForm extends Component {
                         title="Add a new person"
                         className="button-add-relation"
                         onClick={() => this.handlePopupOpen(ADD_GUARDIAN, guardianNumber)}>
-                          Add
+                         לְהוֹסִיף
                           <FontAwesomeIcon size="xs" icon={faPlus}/>
                       </span>
 

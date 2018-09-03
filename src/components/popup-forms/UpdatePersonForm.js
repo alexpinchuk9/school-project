@@ -12,12 +12,20 @@ import PeopleSearchBar from "./PeopleSearchBar";
 
 class UpdatePersonForm extends Component {
 
-    state = {
-        guardianFieldsNumber: 2,
-        popup: {
-            open: false,
-            type: null,
-            guardianNumber: null
+    constructor(props) {
+        super(props);
+        const { name, surname, email, cellphone } = props.person;
+        this.state = {
+            guardianFieldsNumber: 2,
+            popup: {
+                open: false,
+                type: null,
+                guardianNumber: null
+            },
+            name,
+            surname,
+            email,
+            cellphone
         }
     }
 
@@ -189,8 +197,17 @@ class UpdatePersonForm extends Component {
         onSubmit({...values, ...newValues}, UPDATE_PERSON_REQUEST)
     }
 
-    render() {
+    handleInputChange = (name) => {
+        const value = this[`${name}`].value;
+        console.log(value);
+        this.setState({
+            [`${name}`]: value
+        });
+    }
 
+
+
+    render() {
         const {
             handleClose,
             handleSubmit,
@@ -198,36 +215,59 @@ class UpdatePersonForm extends Component {
             image,
             person
         } = this.props;
-
-        const { popup } = this.state;
+        const { name, surname, cellphone, email, popup } = this.state;
         const { open, type, guardianNumber } = popup;
 
         return (
             <Fragment>
                 <form className="form update-form update-person-form"
-                      onSubmit={handleSubmit(values => this.handleFormSubmission(values))}
+                      onSubmit={handleSubmit(() => this.handleFormSubmission({ name, surname, cellphone, email }))}
                       onKeyPress={this.onKeyPress}
                 >
                     <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                     <div className="form-row">
                         <label htmlFor="name" className="field-label">שם פרטי:</label>
-                        <Field component="input" type="text" name="name" className="form-field"/>
+                        <input
+                            ref={(input) => this.name = input}
+                            onChange={() => this.handleInputChange('name')}
+                            type="text"
+                            name="name"
+                            className="form-field"
+                            value={name}/>
                     </div>
 
                     <div className="form-row">
                         <label htmlFor="surname" className="field-label">שם משפחה:</label>
-                        <Field component="input" type="text" name="surname" className="form-field"/>
+                        <input
+                            ref={(input) => this.surname = input}
+                            onChange={() => this.handleInputChange('surname')}
+                            type="text"
+                            name="surname"
+                            className="form-field"
+                            value={surname || ""}/>
                     </div>
 
                     <div className="form-row">
                         <label htmlFor="email" className="field-label">אימייל:</label>
-                        <Field component="input" type="email" name="email"   className="form-field"/>
+                        <input
+                            ref={(input) => this.email = input}
+                            onChange={() => this.handleInputChange('email')}
+                            type="email"
+                            name="email"
+                            className="form-field"
+                            value={email || ""}/>
                     </div>
 
                     <div className="form-row">
                         <label htmlFor="cellphone" className="field-label">טלפון נייד:</label>
-                        <Field component="input" type="phone" name="cellphone"  className="form-field"/>
+                        <input
+                            ref={(input) => this.cellphone = input}
+                            onChange={() => this.handleInputChange('cellphone')}
+                            type="phone"
+                            name="cellphone"
+                            className="form-field"
+                            value={cellphone || ""}/>
                     </div>
 
                     <div className="form-row form-image-row">
@@ -237,7 +277,13 @@ class UpdatePersonForm extends Component {
                                 <img src='/statics/img/single_user.png' className="form-image" alt="User Avatar"/>}
                         </label>
                         <label htmlFor="picture" className="picture-label">בחר תמונה</label>
-                        <input id="picture" type="file" name="picture" accept="image/*" className="form-field" onChange={this.handleUploadImage}/>
+                        <input
+                            id="picture"
+                            type="file"
+                            name="picture"
+                            accept="image/*"
+                            className="form-field"
+                            onChange={this.handleUploadImage}/>
                     </div>
 
                     { person.isDependant === "0" ? null : this.renderGuardianSection()}

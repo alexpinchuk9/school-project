@@ -57,13 +57,13 @@ class UnlinkPersonFromGroupForm extends Component {
                 <button className="button-close" onClick={handleClose} title="סגירה"></button>
 
                 <div className="form-header">
-                    Check groups you want to unlink:
+                    בדוק את הקבוצות שברצונך לבטל את הקישור
                 </div>
 
                 {this.renderContainerGroups()}
 
                 <div className="form-row">
-                    <button type="submit" className="button-submit" disabled={pristine || submitting || groupsToDelete.length == 0}>UNLINK</button>
+                    <button type="submit" className="button-submit" disabled={pristine || submitting || groupsToDelete.length == 0}>הקישור</button>
                 </div>
 
             </form>

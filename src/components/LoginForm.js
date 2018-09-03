@@ -84,15 +84,15 @@ class LoginForm extends Component {
 
         const phoneForm = (
             <div className="login-form" onKeyPress={(event) => this.handleKeyPress(event, { phone }, submitPhoneForLogin)}>
-                <button onClick={() => submitPhoneForLogin({ phone })} className="login-button">Log in:</button>
+                <button onClick={() => submitPhoneForLogin({ phone })} className="login-button">התחברות</button>
                 <input
                     type="tel"
                     value={phone}
                     onChange={() => this.handleChange('phone')}
                     ref={input => this.phone = input}
-                    placeholder="Enter your phone number"
+                    placeholder="תכניס את מספר הטלפון שלך"
                     className="login-input"/>
-                <span title="Click to submit phone number">
+                <span title="לחץ כדי לשלוח מספר טלפון">
                     <FontAwesomeIcon
                         size="lg"
                         icon={faSignInAlt}
@@ -105,15 +105,15 @@ class LoginForm extends Component {
 
         const codeForm = (
             <div className="login-form" onKeyPress={(event) => this.handleKeyPress(event, { code, phone: login.phone }, submitCodeForLogin)}>
-                <button  onClick={() => submitCodeForLogin({ code, phone: login.phone })} className="login-button">Your code:</button>
+                <button  onClick={() => submitCodeForLogin({ code, phone: login.phone })} className="login-button">הקוד שלך</button>
                 <input
                     type="text"
                     value={code}
                     onChange={() => this.handleChange('code')}
                     ref={input => this.code = input}
-                    placeholder="Code from your phone"
+                    placeholder="קוד מהטלפון שלך"
                     className="login-input"/>
-                <span title="Click to submit code">
+                <span title="לחץ כדי לשלוח קוד">
                     <FontAwesomeIcon
                         size="lg"
                         icon={faSignInAlt}

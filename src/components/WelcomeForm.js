@@ -7,11 +7,11 @@ class WelcomeForm extends Component {
         const { person, selectItem } = this.props;
         return (
             <div className="welcome-form">
-                Hello
+                שלום
                 <span
                     className="user-link"
                     onClick={() => selectItem(person)}
-                    title="Click here to select user">
+                    title="לחץ כאן כדי לבחור את המשתמש">
                   {person.name}!
                 </span>
             </div>

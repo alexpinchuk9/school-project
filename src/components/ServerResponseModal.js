@@ -35,13 +35,13 @@ class ServerResponseModal extends Component {
                 onKeyPress={this.handleKeyEvent}
                 tabIndex={-1}>
                 <div className={`server-response-modal modal ${isOpen ? 'visible' : ''} `}>
-                    <h1 className="modal-header">Here's what the server said:</h1>
+                    <h1 className="modal-header">הנה מה השרת אמר:</h1>
                     <div className="modal-message">
                         {message}
                     </div>
                     <div className="modal-close">
                         <button className="modal-close-button" onClick={closeModal}>
-                            Okay, got it! Close modal
+                            אוקיי, יש את זה! סגור מודאלי
                         </button>
                     </div>
                 </div>
